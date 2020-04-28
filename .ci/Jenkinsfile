@@ -39,8 +39,8 @@ pipeline {
       steps {
         deleteDir()
         unstash 'source'
-        insideGo(){
-          dir("${BASE_DIR}"){
+        dir("${BASE_DIR}"){
+          insideGo(){
             sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build ')
           }
         }
