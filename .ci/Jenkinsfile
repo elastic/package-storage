@@ -39,8 +39,8 @@ pipeline {
       steps {
         deleteDir()
         unstash 'source'
-        dir("${BASE_DIR}"){
-          insideGo(){
+        insideGo(){
+          dir("${BASE_DIR}"){
             sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build ')
           }
         }
@@ -67,7 +67,7 @@ def insideGo(Closure body){
   def goAgent = docker.build("go-agent", ".ci/jenkins-go-agent")
   goAgent.inside(){
     withEnv([
-      "HOME=${env.WORKSPACE}",
+      "HOME=${env.WORKSPACE}/${BASE_DIR}",
       "GOPATH=${env.WORKSPACE}",
       "GOROOT=/go",
       "PATH=${env.WORKSPACE}/bin:/go/bin:${env.PATH}",
