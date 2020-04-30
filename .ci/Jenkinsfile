@@ -42,6 +42,7 @@ pipeline {
         dir("${BASE_DIR}"){
           insideGo(){
             sh(label: 'Checks if the packages can be build and are valid',script: '''
+            #!/bin/bash
             export
             pwd
             id
