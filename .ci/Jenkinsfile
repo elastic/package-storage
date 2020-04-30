@@ -75,6 +75,7 @@ def insideGo(Closure body){
     withEnv([
       "HOME=${env.WORKSPACE}/${BASE_DIR}",
       "GOPATH=/go",
+      "GOROOT=/go"
     ]) {
       sh(label: 'Go version', script: 'go version')
       sh(label: 'Install Mage', script: 'mage -version')
