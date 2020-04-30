@@ -41,7 +41,12 @@ pipeline {
         unstash 'source'
         dir("${BASE_DIR}"){
           insideGo(){
-            sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build ')
+            sh(label: 'Checks if the packages can be build and are valid',script: '''
+            export
+            pwd
+            id
+            mage -debug build 
+            ''')
           }
         }
       }
