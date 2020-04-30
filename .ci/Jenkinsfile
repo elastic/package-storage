@@ -41,16 +41,7 @@ pipeline {
         unstash 'source'
         dir("${BASE_DIR}"){
           insideGo(){
-            sh(label: 'Checks if the packages can be build and are valid',script: '''
-            #!/bin/bash
-            export
-            pwd
-            id
-            go get -u github.com/magefile/mage 
-            go get -u github.com/elastic/go-licenser 
-            go get -u -v golang.org/x/tools/cmd/goimports
-            mage -debug build 
-            ''')
+            sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build')
           }
         }
       }
@@ -80,7 +71,10 @@ def insideGo(Closure body){
       "GOPATH=/go",
     ]) {
       sh(label: 'Go version', script: 'go version')
-      sh(label: 'Install Mage', script: 'mage -version')
+      sh(label: 'Install Mage', script: '''
+        go get -u github.com/magefile/mage 
+        mage -version
+      ''')
       body()
     }
   }
