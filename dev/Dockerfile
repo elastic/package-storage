@@ -12,15 +12,6 @@ RUN \
 
 WORKDIR /home
 
-# Check out package storage
-RUN git clone https://github.com/elastic/package-storage.git
-WORKDIR /home/package-storage
-ARG PACKAGE_STORAGE_REVISION=master
-RUN git checkout ${PACKAGE_STORAGE_REVISION}
-LABEL package-storage-revision=${PACKAGE_STORAGE_REVISION}
-
-WORKDIR /home
-
 # Checkout out package registry
 RUN git clone https://github.com/elastic/package-registry.git
 WORKDIR "/home/package-registry"
@@ -28,9 +19,10 @@ ARG PACKAGE_REGISTRY_REVISION=master
 RUN git checkout ${PACKAGE_REGISTRY_REVISION}
 LABEL package-registry-revision=${PACKAGE_REGISTRY_REVISION}
 
+RUN mkdir -p /home/package-storage/packages/
 # Get package storage packages into registry
 # Note: In the future, packages will only be in the storage and not the registry
-RUN rsync -a /home/package-storage/packages/ /home/package-registry/dev/packages/example
+RUN rsync -a /home/package-storage/packages/ /home/package-registry/dev/packages/alpha
 
 EXPOSE 8080
 
@@ -38,7 +30,7 @@ ENV GO111MODULE=on
 RUN go mod vendor
 RUN go get -u github.com/magefile/mage
 # Prepare all the packages to be built
-RUN mage build
+RUN PACKAGE_PATHS=/home/package-registry/dev/packages/alpha mage build
 
 # Build binary
 RUN go build .
