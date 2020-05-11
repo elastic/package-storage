@@ -51,7 +51,7 @@ pipeline {
     stage('Docker image'){
       environment {
         DOCKER_IMAGE = "observability-ci/package-registry"
-        DOCKER_TAG = "experimental"
+        DOCKER_TAG = "${env.BRANCH_NAME}"
         DOCKER_IMAGE_NAME = "${env.DOCKER_REGISTRY}/${env.DOCKER_IMAGE}:${env.DOCKER_TAG}"
         DOCKER_IMAGE_NAME_SHA1 = "${env.DOCKER_REGISTRY}/${env.DOCKER_IMAGE}:${env.GIT_BASE_COMMIT}"
       }
