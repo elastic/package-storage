@@ -58,6 +58,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
+          branch 'experimental'
           branch "\\d+\\.\\d+"
           branch "v\\d?"
           tag "v\\d+\\.\\d+\\.\\d+*"
