@@ -48,36 +48,6 @@ pipeline {
         }
       }
     }
-    stage('Docker image'){
-      environment {
-        DOCKER_IMAGE = "observability-ci/package-registry"
-        DOCKER_TAG = "${env.BRANCH_NAME}"
-        DOCKER_IMAGE_NAME = "${env.DOCKER_REGISTRY}/${env.DOCKER_IMAGE}:${env.DOCKER_TAG}"
-        DOCKER_IMAGE_NAME_SHA1 = "${env.DOCKER_REGISTRY}/${env.DOCKER_IMAGE}:${env.GIT_BASE_COMMIT}"
-      }
-      when {
-        anyOf {
-          branch 'master'
-          branch 'experimental'
-          branch "\\d+\\.\\d+"
-          branch "v\\d?"
-          tag "v\\d+\\.\\d+\\.\\d+*"
-        }
-      }
-      steps {
-        dockerLogin(secret: "${env.DOCKER_REGISTRY_SECRET}", registry: "${env.DOCKER_REGISTRY}")
-        dir("${BASE_DIR}/dev"){
-          retry(3){
-            sh(label:'Build and push', script: """
-              docker buil -t ${env.DOCKER_IMAGE_NAME}
-              docker push ${env.DOCKER_IMAGE_NAME}
-              docker tag ${env.DOCKER_IMAGE_NAME} ${env.DOCKER_IMAGE_NAME_SHA1}
-              docker push ${env.DOCKER_IMAGE_NAME_SHA1}
-            """)
-          }
-        }
-      }
-    }
   }
   post {
     cleanup {

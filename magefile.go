@@ -22,7 +22,6 @@ var (
 )
 
 func Build() error {
-
 	err := os.RemoveAll(publicDir)
 	if err != nil {
 		return err
@@ -33,14 +32,17 @@ func Build() error {
 		return err
 	}
 
-	sh.Run("go", "get", "-u", "github.com/elastic/package-registry/dev/generator")
+	err = sh.Run("go", "get", "-u", "github.com/elastic/package-registry/dev/generator")
+	if err != nil {
+		return err
+	}
+
 	for _, p := range packagePaths {
 		err := sh.Run("generator", "-sourceDir="+p, "-publicDir="+publicDir, "-tarGz="+strconv.FormatBool(tarGz))
 		if err != nil {
 			return err
 		}
 	}
-
 	return nil
 }
 
