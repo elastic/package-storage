@@ -7,11 +7,10 @@
 package main
 
 import (
+	"fmt"
+	"github.com/magefile/mage/sh"
 	"os"
 	"path/filepath"
-	"strconv"
-
-	"github.com/magefile/mage/sh"
 )
 
 var (
@@ -32,13 +31,9 @@ func Build() error {
 		return err
 	}
 
-	err = sh.Run("go", "get", "-u", "github.com/elastic/package-registry/dev/generator")
-	if err != nil {
-		return err
-	}
-
 	for _, p := range packagePaths {
-		err := sh.Run("generator", "-sourceDir="+p, "-publicDir="+publicDir, "-tarGz="+strconv.FormatBool(tarGz))
+		err := sh.Run("go", "run", "github.com/elastic/package-registry/dev/generator",
+			"-sourceDir="+p, "-publicDir="+publicDir)
 		if err != nil {
 			return err
 		}
@@ -46,6 +41,40 @@ func Build() error {
 	return nil
 }
 
+func Check() error {
+	err := Build()
+	if err != nil {
+		return err
+	}
+
+	err = Vendor()
+	if err != nil {
+		return err
+	}
+
+	// Check if no changes are shown
+	err = sh.RunV("git", "update-index", "--refresh")
+	if err != nil {
+		return err
+	}
+	return sh.RunV("git", "diff-index", "--exit-code", "HEAD", "--")
+}
+
 func Clean() error {
 	return os.RemoveAll(buildDir)
+}
+
+func Vendor() error {
+	fmt.Println(">> mod - updating vendor directory")
+
+	err := sh.RunV("go", "mod", "vendor")
+	if err != nil {
+		return err
+	}
+
+	err = sh.RunV("go", "mod", "verify")
+	if err != nil {
+		return err
+	}
+	return nil
 }
