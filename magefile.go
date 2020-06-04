@@ -8,11 +8,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/magefile/mage/sh"
 	"os"
 	"path/filepath"
-	"strconv"
-
-	"github.com/magefile/mage/sh"
 )
 
 var (
@@ -35,7 +33,7 @@ func Build() error {
 
 	for _, p := range packagePaths {
 		err := sh.Run("go", "run", "github.com/elastic/package-registry/dev/generator",
-			"-sourceDir="+p, "-publicDir="+publicDir, "-tarGz="+strconv.FormatBool(tarGz))
+			"-sourceDir="+p, "-publicDir="+publicDir)
 		if err != nil {
 			return err
 		}
