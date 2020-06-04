@@ -38,6 +38,20 @@ pipeline {
       }
     }
     /**
+     Checks formatting / linting.
+     */
+    stage('Lint') {
+      steps {
+        deleteDir()
+        unstash 'source'
+        dir("${BASE_DIR}"){
+          insideGo{
+            sh(label: 'Checks formatting / linting',script: 'mage -debug check')
+          }
+        }
+      }
+    }
+    /**
      Builds and validates the packages
      */
     stage('Build') {
