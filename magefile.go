@@ -33,13 +33,9 @@ func Build() error {
 		return err
 	}
 
-	err = sh.Run("go", "get", "-u", "github.com/elastic/package-registry/dev/generator")
-	if err != nil {
-		return err
-	}
-
 	for _, p := range packagePaths {
-		err := sh.Run("generator", "-sourceDir="+p, "-publicDir="+publicDir, "-tarGz="+strconv.FormatBool(tarGz))
+		err := sh.Run("go", "run", "github.com/elastic/package-registry/dev/generator",
+			"-sourceDir="+p, "-publicDir="+publicDir, "-tarGz="+strconv.FormatBool(tarGz))
 		if err != nil {
 			return err
 		}
