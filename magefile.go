@@ -8,9 +8,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/magefile/mage/sh"
 	"os"
 	"path/filepath"
+
+	"github.com/magefile/mage/sh"
 )
 
 var (
