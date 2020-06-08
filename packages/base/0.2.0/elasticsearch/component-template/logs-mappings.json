@@ -33,6 +33,20 @@
                         }
                     }
                 },
+                "dataset": {
+                    "properties": {
+                        "type": {
+                            "type": "constant_keyword",
+                            "value": "events"
+                        },
+                        "name": {
+                            "type": "constant_keyword"
+                        },
+                        "namespace": {
+                            "type": "constant_keyword"
+                        }
+                    }
+                },
                 "agent": {
                     "properties": {
                         "hostname": {
