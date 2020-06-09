@@ -81,5 +81,9 @@ func Vendor() error {
 }
 
 func TestIntegration() error {
+	err := Build()
+	if err != nil {
+		return err
+	}
 	return sh.RunV("go", "test", "testing/main_integration_test.go", "-v", "-tags=integration", "2>&1", "|", "go-junit-report", ">", "junit-report.xml")
 }
