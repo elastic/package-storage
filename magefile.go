@@ -8,37 +8,16 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 
 	"github.com/magefile/mage/sh"
 )
 
 var (
 	buildDir     = "./build"
-	publicDir    = filepath.Join(buildDir, "public")
 	packagePaths = []string{"./packages"}
-	tarGz        = true
 )
 
 func Build() error {
-	err := os.RemoveAll(publicDir)
-	if err != nil {
-		return err
-	}
-
-	err = os.MkdirAll(publicDir, 0755)
-	if err != nil {
-		return err
-	}
-
-	for _, p := range packagePaths {
-		err := sh.Run("go", "run", "github.com/elastic/package-registry/dev/generator",
-			"-sourceDir="+p, "-publicDir="+publicDir)
-		if err != nil {
-			return err
-		}
-	}
 	return nil
 }
 
@@ -62,7 +41,7 @@ func Check() error {
 }
 
 func Clean() error {
-	return os.RemoveAll(buildDir)
+	return nil
 }
 
 func Vendor() error {
