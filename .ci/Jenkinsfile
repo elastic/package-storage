@@ -51,20 +51,6 @@ pipeline {
         }
       }
     }
-    /**
-     Builds and validates the packages
-     */
-    stage('Build') {
-      steps {
-        deleteDir()
-        unstash 'source'
-        dir("${BASE_DIR}"){
-          insideGo(){
-            sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build')
-          }
-        }
-      }
-    }
   }
   post {
     cleanup {
