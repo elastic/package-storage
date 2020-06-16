@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"stream.dataset:redis.log\"},\"version\":true}"
+      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"dataset.name:redis.log\"},\"version\":true}"
     },
     "title": "Log levels and roles breakdown [Logs Redis] ECS",
     "uiStateJSON": "{}",

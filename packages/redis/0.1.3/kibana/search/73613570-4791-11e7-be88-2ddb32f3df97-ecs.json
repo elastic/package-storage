@@ -9,7 +9,7 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"stream.dataset\",\"negate\":false,\"params\":{\"query\":\"redis.log\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"stream.dataset\":\"redis.log\"}}}],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"version\":true}"
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"dataset.name\",\"negate\":false,\"params\":{\"query\":\"redis.log\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"dataset.name\":\"redis.log\"}}}],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"version\":true}"
     },
     "sort": [
       [
