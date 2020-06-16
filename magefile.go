@@ -32,7 +32,7 @@ func Build() error {
 		return err
 	}
 
-	err = sh.Run("go", "get", "-u", "github.com/elastic/package-registry/dev/generator")
+	err = sh.Run("go", "get", "github.com/elastic/package-registry/dev/generator@experimental")
 	if err != nil {
 		return err
 	}
