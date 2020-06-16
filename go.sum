@@ -13,6 +13,8 @@ github.com/elastic/package-registry v0.4.1-0.20200608174321-955239d698d3 h1:dYB7
 github.com/elastic/package-registry v0.4.1-0.20200608174321-955239d698d3/go.mod h1:na9XU9OeCK7NOcsrpKxtKHgXdysHUJpq4Dam7EgvpyE=
 github.com/elastic/package-registry v0.4.1-0.20200609082938-e56da291a24e h1:XKn6lil8hTPTf5IFAVpwDQGWeWhzNljr6sfOppiFZZ4=
 github.com/elastic/package-registry v0.4.1-0.20200609082938-e56da291a24e/go.mod h1:na9XU9OeCK7NOcsrpKxtKHgXdysHUJpq4Dam7EgvpyE=
+github.com/elastic/package-registry v0.4.1-0.20200616071216-a501181d0902 h1:4oYpK6A2uICScU3u4547Ofton7SDirATYm+DgZ5qmHs=
+github.com/elastic/package-registry v0.4.1-0.20200616071216-a501181d0902/go.mod h1:na9XU9OeCK7NOcsrpKxtKHgXdysHUJpq4Dam7EgvpyE=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 h1:rp+c0RAYOWj8l6qbCUTSiRLG/iKnW3K3/QfPPuSsBt4=
