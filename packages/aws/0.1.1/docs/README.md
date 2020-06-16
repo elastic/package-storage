@@ -946,7 +946,7 @@ An example event for `elb` looks as following:
 
 ```$json
 {
-  "_index": "metrics-aws.elb-metrics-default-000001",
+  "_index": "metrics-aws.elb_metrics-default-000001",
   "_id": "i89vXHIBpGMSUzkZuSyO",
   "_version": 1,
   "_score": null,
@@ -1014,7 +1014,7 @@ An example event for `elb` looks as following:
     },
     "stream": {
       "type": "metrics",
-      "dataset": "aws.elb-metrics",
+      "dataset": "aws.elb_metrics",
       "namespace": "default"
     }
   },
