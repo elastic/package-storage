@@ -73,3 +73,4 @@
       type: keyword
       ignore_above: 1024
       description: Type of host.
+      
