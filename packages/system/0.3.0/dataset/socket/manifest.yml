@@ -30,11 +30,11 @@ streams:
         Success TTL for reverse DNS lookup on remote IP addresses in the socket metricset.
     - name: socket.reverse_lookup.failure_ttl
       type: duration
-      title: Reverse Lookup Success TTL
+      title: Reverse Lookup Failure TTL
       multi: false
       required: false
       show_user: true
       description: >
-        Failiure TTL for reverse DNS lookup on remote IP addresses in the socket metricset.
+        Failure TTL for reverse DNS lookup on remote IP addresses in the socket metricset.
   title: System socket metrics
   description: Collect System socket metrics
