@@ -3,7 +3,7 @@ module github.com/elastic/package-storage
 go 1.12
 
 require (
-	github.com/elastic/package-registry v0.4.1-0.20200616071216-a501181d0902
+	github.com/elastic/package-registry v0.4.1-0.20200617095959-29f7f04363ed
 	github.com/magefile/mage v1.9.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.4.0
