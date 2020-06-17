@@ -9,6 +9,7 @@ pipeline {
     DOCKER_REGISTRY = 'docker.elastic.co'
     DOCKER_REGISTRY_SECRET = 'secret/observability-team/ci/docker-registry/prod'
     PIPELINE_LOG_LEVEL='INFO'
+    GO_VERSION = '1.13.12'
   }
   options {
     timeout(time: 1, unit: 'HOURS')
@@ -42,10 +43,9 @@ pipeline {
      */
     stage('Lint') {
       steps {
-        deleteDir()
-        unstash 'source'
-        dir("${BASE_DIR}"){
-          insideGo{
+        cleanup()
+        withMageEnv(){
+          dir("${BASE_DIR}"){
             sh(label: 'Checks formatting / linting',script: 'mage -debug check')
           }
         }
@@ -56,10 +56,9 @@ pipeline {
      */
     stage('Build') {
       steps {
-        deleteDir()
-        unstash 'source'
-        dir("${BASE_DIR}"){
-          insideGo(){
+        cleanup()
+        withMageEnv(){
+          dir("${BASE_DIR}"){
             sh(label: 'Checks if the packages can be build and are valid',script: 'mage -debug build')
           }
         }
@@ -71,19 +70,21 @@ pipeline {
     stage('TestIntegration') {
       environment {
         HOME = "${env.WORKSPACE}"
-        PATH = "${env.HOME}/go/bin:${env.PATH}"
       }
       steps {
-        deleteDir()
-        unstash 'source'
-        dir("${BASE_DIR}"){
-          sh(label: 'Runs the (integration) tests',script: '''
-            eval "$(gvm 1.14.2)"
-            go get -u github.com/magefile/mage
-            go get -u github.com/elastic/go-licenser
-            go get -u -v golang.org/x/tools/cmd/goimports
-            mage -debug testIntegration
-          ''')
+        cleanup()
+        withMageEnv(){
+          dir("${BASE_DIR}"){
+            sh(label: 'Runs the (integration) tests',script: 'mage -debug testIntegration|tee tests-report.txt')
+          }
+        }
+      }
+      post {
+        always {
+          convertGoTestResults(
+            input: "${BASE_DIR}/tests-report.txt",
+            output: "${BASE_DIR}/junit-report.xml"
+          )
         }
       }
     }
@@ -95,19 +96,9 @@ pipeline {
   }
 }
 
-def insideGo(Closure body){
-  def goAgent = docker.build("go-agent", ".ci/jenkins-go-agent")
-  goAgent.inside("-v ${env.WORKSPACE}/src:/go/src"){
-    withEnv([
-      "HOME=${env.WORKSPACE}/${BASE_DIR}",
-      "GOPATH=/go",
-    ]) {
-      sh(label: 'Go version', script: 'go version')
-      sh(label: 'Install Mage', script: '''
-        go get -u github.com/magefile/mage 
-        mage -version
-      ''')
-      body()
-    }
+def cleanup(){
+  dir("${BASE_DIR}"){
+    deleteDir()
   }
+  unstash 'source'
 }
