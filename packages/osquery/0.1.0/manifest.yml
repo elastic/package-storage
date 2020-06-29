@@ -1,0 +1,35 @@
+format_version: 1.0.0
+name: osquery
+title: osquery
+version: 0.1.0
+license: basic
+description: OSQuery Integration
+type: integration
+categories:
+- security
+release: beta
+removable: true
+requirement:
+  kibana:
+    versions: '>=7.3.0'
+  elasticsearch:
+    versions: '>7.0.1'
+#screenshots:
+#- src: /img/kibana-nginx.png
+#  title: kibana nginx
+#  size: 1218x1266
+#  type: image/png
+icons:
+- src: /img/logo_osquery.svg
+  title: logo nginx
+  size: 32x32
+  type: image/svg+xml
+datasources:
+- name: osquery
+  title: OSQuery
+  description: Send interactive or scheduled queries to the osquery instances executed by the elastic-agent.
+  inputs:
+  - type: logs
+    title: Send queries to osquery instances
+    description: Send interactive or scheduled queries to the osquery instances executed by the elastic-agent.
+
