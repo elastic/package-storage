@@ -13,7 +13,7 @@ license: basic
 # The endpoint package cannot be removed
 removable: false
 
-datasources:
+config_templates:
   - name: endpoint
     title: Endpoint data source
     description: Interact with the endpoint.
