@@ -5,7 +5,6 @@ title: Customs logs
 description: >
   Collect your custom logs.
 version: 0.1.0
-categories: ["logs"]
 release: ga
 license: basic
 
