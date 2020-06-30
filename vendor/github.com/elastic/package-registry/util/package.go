@@ -18,7 +18,11 @@ import (
 	"github.com/elastic/go-ucfg/yaml"
 )
 
-const defaultType = "integration"
+const (
+	defaultType = "integration"
+	// Prefix used for all assets served for a package
+	packagePathPrefix = "/package"
+)
 
 var CategoryTitles = map[string]string{
 	"aws":               "AWS",
@@ -55,6 +59,7 @@ type Package struct {
 	versionSemVer   *semver.Version
 	Categories      []string         `config:"categories" json:"categories"`
 	Release         string           `config:"release,omitempty" json:"release,omitempty"`
+	Conditions      *Conditions      `config:"conditions,omitempty" json:"conditions,omitempty" yaml:"conditions,omitempty"`
 	Requirement     Requirement      `config:"requirement" json:"requirement"`
 	Screenshots     []Image          `config:"screenshots,omitempty" json:"screenshots,omitempty" yaml:"screenshots,omitempty"`
 	Assets          []string         `config:"assets,omitempty" json:"assets,omitempty" yaml:"assets,omitempty"`
@@ -92,6 +97,11 @@ type Requirement struct {
 	Kibana ProductRequirement `config:"kibana" json:"kibana,omitempty" yaml:"kibana"`
 }
 
+type Conditions struct {
+	KibanaVersion    string `config:"kibana.version,omitempty" json:"kibana.version,omitempty" yaml:"kibana.version,omitempty"`
+	kibanaConstraint *semver.Constraints
+}
+
 type ProductRequirement struct {
 	Versions    string `config:"versions,omitempty" json:"versions,omitempty" yaml:"versions,omitempty"`
 	semVerRange *semver.Constraints
@@ -114,7 +124,7 @@ type Image struct {
 }
 
 func (i Image) getPath(p *Package) string {
-	return path.Join("/package", p.Name, p.Version, i.Src)
+	return path.Join(packagePathPrefix, p.Name, p.Version, i.Src)
 }
 
 type Download struct {
@@ -145,7 +155,7 @@ func NewPackage(basePath string) (*Package, error) {
 	var p = &Package{
 		BasePath: basePath,
 	}
-	err = manifest.Unpack(p)
+	err = manifest.Unpack(p, ucfg.PathSep("."))
 	if err != nil {
 		return nil, err
 	}
@@ -180,8 +190,18 @@ func NewPackage(basePath string) (*Package, error) {
 
 	p.Downloads = []Download{NewDownload(*p, "tar")}
 
-	if p.Requirement.Kibana.Versions != "" {
-		p.Requirement.Kibana.semVerRange, err = semver.NewConstraint(p.Requirement.Kibana.Versions)
+	// If the new conditions are used, select them over the requirements
+	if p.Conditions != nil && p.Conditions.KibanaVersion != "" {
+		p.Conditions.kibanaConstraint, err = semver.NewConstraint(p.Conditions.KibanaVersion)
+		if err != nil {
+			return nil, errors.Wrapf(err, "invalid Kibana versions range: %s", p.Conditions.KibanaVersion)
+		}
+		// TODO: remove legacy part
+	} else if p.Requirement.Kibana.Versions != "" {
+		p.Conditions = &Conditions{
+			KibanaVersion: p.Requirement.Kibana.Versions,
+		}
+		p.Conditions.kibanaConstraint, err = semver.NewConstraint(p.Requirement.Kibana.Versions)
 		if err != nil {
 			return nil, errors.Wrapf(err, "invalid Kibana versions range: %s", p.Requirement.Kibana.Versions)
 		}
@@ -206,7 +226,7 @@ func NewPackage(basePath string) (*Package, error) {
 		if readme.IsDir() {
 			return nil, fmt.Errorf("README.md is a directory")
 		}
-		readmePathShort := path.Join("/package", p.Name, p.Version, "docs", "README.md")
+		readmePathShort := path.Join(packagePathPrefix, p.Name, p.Version, "docs", "README.md")
 		p.Readme = &readmePathShort
 	}
 
@@ -248,16 +268,11 @@ func (p *Package) HasCategory(category string) bool {
 func (p *Package) HasKibanaVersion(version *semver.Version) bool {
 
 	// If the version is not specified, it is for all versions
-	if p.Requirement.Kibana.Versions == "" {
+	if p.Conditions == nil || version == nil {
 		return true
 	}
 
-	if version != nil {
-		if !p.Requirement.Kibana.semVerRange.Check(version) {
-			return false
-		}
-	}
-	return true
+	return p.Conditions.kibanaConstraint.Check(version)
 }
 
 func (p *Package) IsNewerOrEqual(pp Package) bool {
@@ -295,8 +310,7 @@ func (p *Package) LoadAssets() (err error) {
 
 		// Strip away the basePath from the local system
 		a = a[len(p.BasePath)+1:]
-
-		a = path.Join("/package", p.GetPath(), a)
+		a = path.Join(packagePathPrefix, p.GetPath(), a)
 		p.Assets = append(p.Assets, a)
 	}
 	return nil
@@ -474,5 +488,5 @@ func (p *Package) GetDownloadPath() string {
 }
 
 func (p *Package) GetUrlPath() string {
-	return path.Join("/package", p.Name, p.Version)
+	return path.Join(packagePathPrefix, p.Name, p.Version)
 }
