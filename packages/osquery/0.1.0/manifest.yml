@@ -21,7 +21,7 @@ requirement:
 #  type: image/png
 icons:
 - src: /img/logo_osquery.svg
-  title: logo nginx
+  title: logo osquery
   size: 32x32
   type: image/svg+xml
 datasources:
@@ -29,7 +29,7 @@ datasources:
   title: OSQuery
   description: Send interactive or scheduled queries to the osquery instances executed by the elastic-agent.
   inputs:
-  - type: logs
+  - type: osquery
     title: Send queries to osquery instances
     description: Send interactive or scheduled queries to the osquery instances executed by the elastic-agent.
 
