@@ -6,16 +6,6 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/elastic/go-ucfg v0.8.4-0.20200415140258-1232bd4774a6 h1:Ehbr7du4rSSEypR8zePr0XRbMhO4PJgcHC9f8fDbgAg=
 github.com/elastic/go-ucfg v0.8.4-0.20200415140258-1232bd4774a6/go.mod h1:iaiY0NBIYeasNgycLyTvhJftQlQEUO2hpF+FX0JKxzo=
-github.com/elastic/package-registry v0.4.1-0.20200617095959-29f7f04363ed h1:XVk2o22WsRpk2ozT+vcUOG++iA+sD7c+bbhfwV74Ris=
-github.com/elastic/package-registry v0.4.1-0.20200617095959-29f7f04363ed/go.mod h1:oQx3Tg9ynuC6APd0o0OHud9kyPX6S6IzdJp/R4Hj1HY=
-github.com/elastic/package-registry v0.4.1-0.20200618094131-9b38a6660e60 h1:Piz/H5PKuy4taQZYxbp6np4otpO77J9RbjH0f+4hzys=
-github.com/elastic/package-registry v0.4.1-0.20200618094131-9b38a6660e60/go.mod h1:oQx3Tg9ynuC6APd0o0OHud9kyPX6S6IzdJp/R4Hj1HY=
-github.com/elastic/package-registry v0.4.1-0.20200618213757-98d7184cfe5b h1:NKaNWxpZjr2V750h2Q6q52W4ZGGHdX0TOcNaFrhnk3w=
-github.com/elastic/package-registry v0.4.1-0.20200618213757-98d7184cfe5b/go.mod h1:oQx3Tg9ynuC6APd0o0OHud9kyPX6S6IzdJp/R4Hj1HY=
-github.com/elastic/package-registry v0.4.1-0.20200630074455-f91d80e4786f h1:49Xi4IqaCYpD5v4orj+Ssv1Y1502Fn2Nx4S2qTAVng8=
-github.com/elastic/package-registry v0.4.1-0.20200630074455-f91d80e4786f/go.mod h1:ERTTIxAsQOCVZJDqR4LJbDDAtxV+pz4wdPPrKheiAUc=
-github.com/elastic/package-registry v0.4.1-0.20200630194022-7d56b1c7cc87 h1:I74RKrMdA2YmuZGG4zRbNJuWq1bxaC5Y6TL1hS8v47M=
-github.com/elastic/package-registry v0.4.1-0.20200630194022-7d56b1c7cc87/go.mod h1:ERTTIxAsQOCVZJDqR4LJbDDAtxV+pz4wdPPrKheiAUc=
 github.com/elastic/package-registry v0.4.1-0.20200630205652-7ced31a1b229 h1:QWEvxfzroDyVlsanafCybR9vRcPFkGjnJJaUGG6otUs=
 github.com/elastic/package-registry v0.4.1-0.20200630205652-7ced31a1b229/go.mod h1:ERTTIxAsQOCVZJDqR4LJbDDAtxV+pz4wdPPrKheiAUc=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
