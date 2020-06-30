@@ -23,7 +23,7 @@ config_templates:
     solution: endpoint
     multiple: false
 
-requirement:
+conditions:
   elasticsearch:
     versions: ">7.4.0"
   kibana:

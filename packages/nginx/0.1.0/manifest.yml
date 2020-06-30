@@ -7,7 +7,7 @@ description: Nginx Integration
 type: integration
 release: beta
 removable: true
-requirement:
+conditions:
   kibana:
     versions: '>=7.3.0 <8.0.0'
   elasticsearch:
