@@ -5,8 +5,6 @@ version: 0.1.0
 license: basic
 description: NetFlow Integration
 type: integration
-categories:
-- logs
 release: beta
 removable: true
 requirement:
