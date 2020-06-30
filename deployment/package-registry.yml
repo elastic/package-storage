@@ -1,5 +1,7 @@
 package_paths:
-  - /packages
+  - /packages/snapshot
+  - /packages/staging
+  - /packages/production
 
 cache_time.search: 10s
 cache_time.categories: 10s
