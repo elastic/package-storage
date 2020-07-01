@@ -5,12 +5,9 @@ version: 0.0.3
 license: basic
 description: AWS Integration
 type: integration
-categories:
-- logs
-- metrics
 release: beta
 removable: true
-requirement:
+conditions:
   kibana:
     versions: '>=8.0.0-SNAPSHOT <8.0.0'
   elasticsearch:
@@ -125,7 +122,7 @@ icons:
   title: logo aws
   size: 32x32
   type: image/svg+xml
-datasources:
+config_templates:
 - name: aws
   title: AWS logs and metrics
   description: Collect logs and metrics from AWS instances
