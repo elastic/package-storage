@@ -61,7 +61,10 @@ func promote() error {
 
 	oldPath := filepath.Join(from, "packages", p)
 	newPath := filepath.Join(to, "packages", p)
-	os.MkdirAll(newPath, 0755)
+	err = os.MkdirAll(newPath, 0755)
+	if err != nil {
+		return err
+	}
 
 	err = sh.Run("mv", oldPath, filepath.Dir(newPath))
 	if err != nil {
@@ -94,7 +97,7 @@ func promote() error {
 	}
 
 	// Check from package
-	err = os.Chdir(from)
+	err = os.Chdir("../" + from)
 	if err != nil {
 		return err
 	}
