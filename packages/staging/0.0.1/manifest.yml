@@ -1,0 +1,10 @@
+format_version: 1.0.0
+
+name: staging
+description: Indicator that this is the staging distribution or snapshot
+version: 0.0.1
+title: Staging
+categories: ["custom"]
+type: integration
+release: beta
+
