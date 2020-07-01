@@ -1,0 +1,16 @@
+// Promote snapshot/0.0.1 package from foo to bar
+
+// Create build directory
+// Git clone snapshot repo, checkout out branch
+// Git clone second repo
+// Copy over files
+// Commit new version to new snapshot, push it
+// Delete old directory
+// Commit changes
+// Push it
+
+
+rm -r build
+mkdir -p build
+cd build
+git clone github.com/elastic
