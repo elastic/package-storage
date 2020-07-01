@@ -5,12 +5,11 @@ title: Customs logs
 description: >
   Collect your custom logs.
 version: 0.1.0
-categories: ["logs"]
 release: ga
 license: basic
 
 
-datasources:
+config_templates:
   - name: logs
     title: Custom logs
     description: Collect your custom log files.

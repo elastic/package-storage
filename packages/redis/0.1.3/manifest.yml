@@ -5,12 +5,9 @@ version: 0.1.3
 license: basic
 description: Redis Integration
 type: integration
-categories:
-- logs
-- metrics
 release: beta
 removable: true
-requirement:
+conditions:
   kibana:
     versions: '>=7.3.0 <8.0.0'
   elasticsearch:
@@ -29,7 +26,7 @@ icons:
   title: logo redis
   size: 32x32
   type: image/svg+xml
-datasources:
+config_templates:
 - name: redis
   title: Redis logs and metrics
   description: Collect logs and metrics from Redis instances

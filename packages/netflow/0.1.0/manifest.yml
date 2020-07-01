@@ -5,16 +5,14 @@ version: 0.1.0
 license: basic
 description: NetFlow Integration
 type: integration
-categories:
-- logs
 release: beta
 removable: true
-requirement:
+conditions:
   kibana:
     versions: '>=7.3.0 <8.0.0'
   elasticsearch:
     versions: '>7.0.1'
-datasources:
+config_templates:
 - name: netflow
   title: NetFlow logs
   description: Collect Netflow logs from networks via UDP

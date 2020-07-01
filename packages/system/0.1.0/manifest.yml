@@ -5,9 +5,6 @@ version: 0.1.0
 license: basic
 description: System Integration
 type: integration
-categories:
-- logs
-- metrics
 release: beta
 removable: false
 screenshots:
@@ -28,7 +25,7 @@ icons:
   title: system
   size: 1000x1000
   type: image/svg+xml
-datasources:
+config_templates:
 - name: system
   title: System logs and metrics
   description: Collect logs and metrics from System instances
