@@ -18,6 +18,8 @@ RUN cp -r packages /packages/production
 
 # Get in staging packages
 RUN git checkout staging
+# If empty, create it. There might be no packages in staging. Otherwise cp fails
+RUN mkdir -p packages
 RUN cp -r packages /packages/staging
 
 WORKDIR /registry
