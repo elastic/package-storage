@@ -1,5 +1,8 @@
+# First package found wins
 package_paths:
-  - /packages
+  - /packages/production
+  - /packages/staging
+  - /packages/snapshot
 
 cache_time.search: 10s
 cache_time.categories: 10s

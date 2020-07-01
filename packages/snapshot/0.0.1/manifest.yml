@@ -1,0 +1,10 @@
+format_version: 1.0.0
+
+name: snapshot
+description: Indicator that this is the snapshot distribution
+version: 0.0.1
+title: Foo
+categories: ["custom"]
+type: integration
+release: beta
+
