@@ -22,7 +22,7 @@ type: integration
 conditions:
   elasticsearch:
     # Requires ILM which was released in 6.6.
-    versions: ">6.6.0"
+    version: ">6.6.0"
 
 # No icons
 icons:

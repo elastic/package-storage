@@ -9,9 +9,9 @@ release: beta
 removable: true
 conditions:
   kibana:
-    versions: '>=7.3.0 <8.0.0'
+    version: '>=7.3.0 <8.0.0'
   elasticsearch:
-    versions: '>7.0.1'
+    version: '>7.0.1'
 screenshots:
 - src: /img/kibana-redis.png
   title: kibana redis
