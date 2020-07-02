@@ -1,6 +1,6 @@
 # Here the version of the registry is specified this storage branch uses.
 # It should always be a specific version to make sure builds are reproducible.
-ARG PACKAGE_REGISTRY=57d417a84fa038cfb50a0cd661372c194199b3fd
+ARG PACKAGE_REGISTRY=41c150c8020efc53ab16e3bba774c62a419b51ea
 FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
 
 LABEL package-registry=${PACKAGE_REGISTRY}
