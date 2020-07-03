@@ -66,9 +66,6 @@ type Package struct {
 	Datasets        []*Dataset       `config:"datasets,omitempty" json:"datasets,omitempty" yaml:"datasets,omitempty"`
 	Owner           *Owner           `config:"owner,omitempty" json:"owner,omitempty" yaml:"owner,omitempty"`
 
-	// Introduce it temporary to fix outdated Kibana snapshot
-	Requirement map[string]interface{} `json:"requirement"`
-
 	// Local path to the package dir
 	BasePath string `json:"-" yaml:"-"`
 }
@@ -180,8 +177,6 @@ func NewPackage(basePath string) (*Package, error) {
 		}
 	}
 
-	p.Requirement = map[string]interface{}{}
-
 	if p.Conditions != nil && p.Conditions.KibanaVersion != "" {
 		p.Conditions.kibanaConstraint, err = semver.NewConstraint(p.Conditions.KibanaVersion)
 		if err != nil {
@@ -216,23 +211,14 @@ func NewPackage(basePath string) (*Package, error) {
 	p.Download = p.GetDownloadPath()
 	p.Path = p.GetUrlPath()
 
-	return p, nil
-}
-
-func NewPackageWithResources(path string) (*Package, error) {
-	p, err := NewPackage(path)
-	if err != nil {
-		return nil, errors.Wrapf(err, "building package from path '%s' failed", path)
-	}
-
 	err = p.LoadAssets()
 	if err != nil {
-		return nil, errors.Wrapf(err, "loading package assets failed (path '%s')", path)
+		return nil, errors.Wrapf(err, "loading package assets failed (path '%s')", p.BasePath)
 	}
 
 	err = p.LoadDataSets()
 	if err != nil {
-		return nil, errors.Wrapf(err, "loading package datasets failed (path '%s')", path)
+		return nil, errors.Wrapf(err, "loading package datasets failed (path '%s')", p.BasePath)
 	}
 	return p, nil
 }
@@ -287,6 +273,9 @@ func (p *Package) LoadAssets() (err error) {
 		}
 
 		if info.IsDir() {
+			if strings.Contains(info.Name(), "-") {
+				return fmt.Errorf("directory name inside package %s contains -: %s", p.Name, a)
+			}
 			continue
 		}
 
