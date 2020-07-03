@@ -4,15 +4,15 @@
 FROM docker.elastic.co/package-registry/distribution:production AS production
 FROM docker.elastic.co/package-registry/distribution:staging AS staging
 
-FROM docker.elastic.co/package-registry/package-registry:0579a6edb887c957c0fa64fc8ae82ca3f205a63b
-LABEL package-registry=0579a6edb887c957c0fa64fc8ae82ca3f205a63b
+FROM docker.elastic.co/package-registry/package-registry:v0.6.0
+LABEL package-registry=v0.6.0
 
 COPY --from=production /packages/production /packages/production
 COPY --from=staging /packages/production /packages/staging
 
 # Adds specific config and packages
 COPY deployment/package-registry.yml /package-registry/config.yml
-COPY packages /packages/staging
+COPY packages /packages/snapshot
 
 WORKDIR /package-registry
 
