@@ -5,10 +5,9 @@
 package main
 
 import (
+	"fmt"
+	"os"
 	"path/filepath"
-	"strings"
-
-	"github.com/magefile/mage/sh"
 )
 
 func main() {
@@ -16,8 +15,10 @@ func main() {
 	ingestPipelineDirs, _ := filepath.Glob("./*/*/dataset/*/elasticsearch/ingest-pi*")
 
 	for _, old := range ingestPipelineDirs {
-		new := strings.Replace(old, "-", "_", -1)
-		sh.Run("cp", "-r", old, new)
+		os.RemoveAll(old)
+		fmt.Println(old)
+		//new := strings.Replace(old, "-", "_", -1)
+		//sh.Run("cp", "-r", old, new)
 	}
 
 }
