@@ -12,7 +12,7 @@ COPY --from=staging /packages/production /packages/staging
 
 # Adds specific config and packages
 COPY deployment/package-registry.yml /package-registry/config.yml
-COPY packages /packages/staging
+COPY packages /packages/snapshot
 
 WORKDIR /package-registry
 
