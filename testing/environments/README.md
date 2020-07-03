@@ -10,5 +10,5 @@ $ docker-compose -f snapshot.yml pull
 Run docker containers (Elasticsearch, Kibana, Package Registry):
 
 ```bash
-$ docker-compose -f snapshot.yml -f local.yml up --force-recreate
+$ docker-compose -f snapshot.yml -f local.yml up --force-recreate --build
 ```
