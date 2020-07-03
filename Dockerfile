@@ -1,25 +1,18 @@
 # Here the version of the registry is specified this storage branch uses.
 # It should always be a specific version to make sure builds are reproducible.
-ARG PACKAGE_REGISTRY=e9dc95bbb8ffa8fcc222e5f939b41da44dba93c4
-FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
 
-LABEL package-registry=${PACKAGE_REGISTRY}
+FROM docker.elastic.co/package-registry/distribution:production AS production
+
+FROM docker.elastic.co/package-registry/package-registry:0579a6edb887c957c0fa64fc8ae82ca3f205a63b
+LABEL package-registry=0579a6edb887c957c0fa64fc8ae82ca3f205a63b
+
+COPY --from=production /packages/production /packages/production
 
 # Adds specific config and packages
-COPY deployment/package-registry.yml /registry/config.yml
+COPY deployment/package-registry.yml /package-registry/config.yml
 COPY packages /packages/staging
 
-RUN git clone https://github.com/elastic/package-storage
-WORKDIR /registry/package-storage
-
-# Get in production packages
-RUN git checkout production
-RUN cp -r packages /packages/production
-
-WORKDIR /registry
-
-# Cleanup
-RUN rm -r packages package-storage
+WORKDIR /package-registry
 
 # Sanity check on the packages. If packages are not valid, container does not even build.
 RUN ./package-registry -dry-run
