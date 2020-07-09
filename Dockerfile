@@ -4,8 +4,8 @@
 FROM docker.elastic.co/package-registry/distribution:production AS production
 FROM docker.elastic.co/package-registry/distribution:staging AS staging
 
-FROM docker.elastic.co/package-registry/package-registry:v0.6.0
-LABEL package-registry=v0.6.0
+FROM docker.elastic.co/package-registry/package-registry:v0.7.0
+LABEL package-registry=v0.7.0
 
 COPY --from=production /packages/production /packages/production
 COPY --from=staging /packages/production /packages/staging
