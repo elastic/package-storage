@@ -8,7 +8,7 @@ FROM docker.elastic.co/package-registry/package-registry:v0.7.0
 LABEL package-registry=v0.7.0
 
 COPY --from=production /packages/production /packages/production
-COPY --from=staging /packages/production /packages/staging
+COPY --from=staging /packages/staging /packages/staging
 
 # Adds specific config and packages
 COPY deployment/package-registry.yml /package-registry/config.yml
