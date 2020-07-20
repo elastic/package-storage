@@ -20,5 +20,5 @@ Here's how these branches relate to repositories and other aspects of packages.
 | Registry Version      | fixed version                | Stable release             | Stable release            |
 | Branch                | snapshot                    | staging                    | production                |
 | Packages              | snapshot+staging+prod       | staging+production         | production                |
-| Release               | Automated                   | Automated                  | Manual                 |
+| Release               | Manual                      | Manual                  | Manual                 |
 | Docker image          | snapshot                    | staging                    | production                |
