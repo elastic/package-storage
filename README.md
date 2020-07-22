@@ -1,7 +1,7 @@
 # EXPERIMENTAL: This is only for experimental use
 
 # Package Storage
-This is a storage repository for the packages served through the [package registry](https://github.com/elastic/package-registry) service.
+This is a storage repository for the packages served through the [package registry](https://github.com/elastic/package-registry) service. The repository contains three branches: [`snapshot`](https://github.com/elastic/package-storage/tree/snapshot), [`staging`](https://github.com/elastic/package-storage/tree/staging), and [`production`](https://github.com/elastic/package-storage/tree/production).
 
 There are three package registries in operation and they correspond to the three branches above as follows:
 
