@@ -41,7 +41,7 @@ Ultimately, every package dreams of of making it out in the wide world. But rath
 
 ## A package goes out into the wild world
 
-1. The golden moment has arrived! cCreate a PR to the `production` branch of this repository. The PR will contain the package's contents as they are in the `staging` branch. The PR must pass CI and be approved by a teammate before it can be merged.
+ 1. The golden moment has arrived! Create a PR to the `production` branch of this repository. The PR will contain the package's contents as they are in the `staging` branch. The PR must pass CI and be approved by a teammate before it can be merged.
 
 2. Once the PR is merged into the `production` branch, it is eligible to be served by the Production (and Staging and Snapshot) registries. However, this doesn't happen automatically! One must [kick off a build of the `production` branch](https://beats-ci.elastic.co/job/Beats/job/package-storage/job/production/build?delay=0sec), which will publish the Docker image containing packages for the Production registry.
 
