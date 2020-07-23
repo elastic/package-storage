@@ -25,7 +25,7 @@ streams:
     default: localhost
   - name: udp_port
     type: integer
-    title: UDP Port to listen on
+    title: UDP port to listen on
     multi: false
     required: true
     show_user: true
@@ -78,7 +78,7 @@ streams:
     default: localhost
   - name: tcp_port
     type: integer
-    title: TCP Port to listen on
+    title: TCP port to listen on
     multi: false
     required: true
     show_user: true
