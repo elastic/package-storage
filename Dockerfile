@@ -3,8 +3,8 @@
 
 FROM docker.elastic.co/package-registry/distribution:production AS production
 
-FROM docker.elastic.co/package-registry/package-registry:v0.7.0
-LABEL package-registry=v0.7.0
+FROM docker.elastic.co/package-registry/package-registry:v0.7.1
+LABEL package-registry=v0.7.1
 
 COPY --from=production /packages/production /packages/production
 
