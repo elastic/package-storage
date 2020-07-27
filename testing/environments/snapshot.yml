@@ -20,7 +20,7 @@ services:
     - "ELASTIC_PASSWORD=changeme"
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.0.0-SNAPSHOT
+    image: docker.elastic.co/kibana/kibana:7.10.0-SNAPSHOT
     depends_on:
       elasticsearch:
         condition: service_healthy
