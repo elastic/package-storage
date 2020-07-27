@@ -3,14 +3,16 @@ paths:
   - {{path}}
 {{/each}}
 exclude_files: [".gz$"]
-tags: {{tags}}
+tags:
+{{#each tags as |tag i|}}
+ - {{tag}}
+{{/each}}
 fields_under_root: true
 fields:
     observer:
         vendor: "Barracuda"
         product: "Web"
         type: "WAF"
-
 publisher_pipeline.disable_host: true
 
 processors:
