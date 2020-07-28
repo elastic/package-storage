@@ -47,23 +47,23 @@ mage vendor
 
 This will update the go module files and pull in the most recent vendor files.
 
-With all the changes above, a pull request can be opened. As soon as the pull request is merged, a new Dockerimage is automatically built by CI and can be deployed.
+With all the changes above, a pull request can be opened. As soon as the pull request is merged, a new Docker image is automatically built by CI and can be deployed.
 
 As each branch/distribution references its own version, each branch has to be updated with the above. It is encourage to keep the branches in sync related to registry versions.
 
 # Package promotion
 
-A package can go through different stages from snapshot to staging to production. To promote a package from one distribution to an other, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. If the same package version exists in both branches, the first one is taken. In the above case this is `staging`.
+A package can go through different stages from snapshot to staging to production. To promote a package from one distribution to another, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. If the same package version exists in both branches, the first one is taken. In the above case this is `staging`.
 
 As the staging distribution consists of `production + staging` packages and `snapshot` of `production + staging + snapshot` packages, a package that was promoted to the next stage, is always also available in the previous stage.
 
-The above implies, that as soon as the packages for `staging` as an example are built and the Dockerimage is available, also `snapshot` Dockerimage must be rebuilt as it depends on the `staging` one.
+The above implies, that as soon as the packages for `staging` as an example are built and the Dockerimage is available, also `snapshot` Docker image must be rebuilt as it depends on the `staging` one.
 
 # Release distribution
 
 Currently each distribution is released manually but should be release automatically in the future. To release a distribution with a new package, first the building of the Dockerimage must be completed which is automatic. For `snapshot` this pushes a new image to `docker.elastic.co/package-registry/distribution:snapshot`. At the same time, an image is built for each commit hash, for example `docker.elastic.co/package-registry/distribution:48f3935a72b0c5aacc6fec8ef36d559b089a238b`. The distribution specific images are constantly overwritten, the commit hash images stays as is in case an environment is need that does not change.
 
-As soon as the Dockerimage is built and added to the Docker registry, the rollout command for the k8s cluster can be run. For `staging` this looks as following:
+As soon as the Docker image is built and added to the Docker registry, the rollout command for the k8s cluster can be run. For `staging` this looks as following:
 
 ```
 kubectl rollout restart deployment package-registry-staging-vanilla -n package-registry
@@ -80,5 +80,5 @@ The current `package-storage` repository has a few branches. This is a quick sum
 * production: Packages for epr.elastic.co
 * staging: Packages for epr-staging.elastic.co
 * snapshot: Packages for epr-snapshot.elastic.co
-* experiemental: Packages for epr-experimental.elastic.co. These packages are served by Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
+* experimental: Packages for epr-experimental.elastic.co. These packages are served by Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
 * master: Contains docs and comment scripts for the distribution branches.
