@@ -95,7 +95,11 @@ pipeline {
      */
     stage('Publish Docker image'){
       when {
-        not { changeRequest() }
+        anyOf {
+          branch 'snapshot'
+          branch 'staging'
+          branch 'production'
+        }
       }
       environment {
         DOCKER_IMG_TAG = "${env.DOCKER_IMG}:${env.GIT_BASE_COMMIT}"
@@ -111,7 +115,7 @@ pipeline {
      */
     stage('Publish PR Docker image'){
       when {
-        changeRequest()
+        changeRequest(target: '(snapshot|staging|production)', comparator: 'REGEXP')
       }
       environment {
         DOCKER_IMG_TAG = "${env.DOCKER_IMG_PR}:${env.GIT_BASE_COMMIT}"
