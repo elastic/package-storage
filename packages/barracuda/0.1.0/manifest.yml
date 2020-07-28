@@ -3,7 +3,7 @@ name: barracuda
 title: Barracuda Web Application Firewall
 version: 0.1.0
 description: Barracuda Web Application Firewall Integration
-categories: [ "security" ]
+categories: ["network","security"]
 release: experimental
 removable: true
 license: basic
@@ -28,4 +28,9 @@ config_templates:
         title: Collect logs from Barracuda Web Application Firewall via file
         description: Collecting syslog from Barracuda Web Application Firewall via file.
 # No icon
-icon:
+icons:
+ - src: /img/logo.svg
+   title: Barracuda Web Application Firewall logo
+   size: 32x32
+   type: image/svg+xml
+
