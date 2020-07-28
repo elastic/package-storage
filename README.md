@@ -57,11 +57,11 @@ A package can go through different stages from snapshot to staging to production
 
 As the staging distribution consists of `production + staging` packages and `snapshot` of `production + staging + snapshot` packages, a package that was promoted to the next stage, is always also available in the previous stage.
 
-The above implies, that as soon as the packages for `staging` as an example are built and the Dockerimage is available, also `snapshot` Docker image must be rebuilt as it depends on the `staging` one.
+The above implies, that as soon as the packages for `staging` as an example are built and the Docker image is available, also `snapshot` Docker image must be rebuilt as it depends on the `staging` one.
 
 # Release distribution
 
-Currently each distribution is released manually but should be release automatically in the future. To release a distribution with a new package, first the building of the Dockerimage must be completed which is automatic. For `snapshot` this pushes a new image to `docker.elastic.co/package-registry/distribution:snapshot`. At the same time, an image is built for each commit hash, for example `docker.elastic.co/package-registry/distribution:48f3935a72b0c5aacc6fec8ef36d559b089a238b`. The distribution specific images are constantly overwritten, the commit hash images stays as is in case an environment is need that does not change.
+Currently each distribution is released manually but should be release automatically in the future. To release a distribution with a new package, first the building of the Docker image must be completed which is automatic. For `snapshot` this pushes a new image to `docker.elastic.co/package-registry/distribution:snapshot`. At the same time, an image is built for each commit hash, for example `docker.elastic.co/package-registry/distribution:48f3935a72b0c5aacc6fec8ef36d559b089a238b`. The distribution specific images are constantly overwritten, the commit hash images stays as is in case an environment is need that does not change.
 
 As soon as the Docker image is built and added to the Docker registry, the rollout command for the k8s cluster can be run. For `staging` this looks as following:
 
