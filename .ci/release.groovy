@@ -47,7 +47,7 @@ pipeline {
   stages {
     stage('Select Docker Image'){
       when {
-        expression { return '' == params.commit }
+        expression { return '' == env.TAG }
       }
       steps {
         gitCheckout(basedir: 'src', branch: "${env.BRANCH_NAME}",
