@@ -109,7 +109,7 @@ pipeline {
               reviewer: 'observability-robots',
               description: """
 This is an automatic generated PR to release `docker.elastic.co/package-registry/distribution:${env.TAG}` to ${env.BRANCH_NAME}.
-  * [ ] Check tge TAG ${env.TAG} and the enviroment ${env.BRANCH_NAME} is correct.
+  * [ ] Check the TAG ${env.TAG} and the enviroment ${env.BRANCH_NAME} is correct.
   * [ ] Review that the changes are correct.
   * [ ] Launch the infra test `jenkins test this please`
   * [ ] Merge the changes.
@@ -121,4 +121,3 @@ This is an automatic generated PR to release `docker.elastic.co/package-registry
     }
   }
 }
-
