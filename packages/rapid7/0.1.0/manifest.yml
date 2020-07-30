@@ -1,0 +1,31 @@
+format_version: 1.0.0
+name: rapid7
+title: Rapid7 NeXpose
+version: 0.1.0
+description: Rapid7 NeXpose Integration
+categories: ["security"]
+release: experimental
+removable: true
+license: basic
+type: integration
+conditions:
+    kibana:
+        version: '>=7.9.0'
+    elasticsearch:
+        version: '>=7.9.0'
+config_templates:
+- name: nexpose
+  title: Rapid7 NeXpose
+  description: Collect Rapid7 NeXpose logs from syslog or a file.
+  inputs:
+      - type: udp
+        title: Collect logs from Rapid7 NeXpose via UDP
+        description: Collecting syslog from Rapid7 NeXpose via UDP
+      - type: tcp
+        title: Collect logs from Rapid7 NeXpose via TCP
+        description: Collecting syslog from Rapid7 NeXpose via TCP
+      - type: file
+        title: Collect logs from Rapid7 NeXpose via file
+        description: Collecting syslog from Rapid7 NeXpose via file.
+# No icon
+icons:
