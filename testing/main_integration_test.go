@@ -128,7 +128,7 @@ type Package struct {
 }
 
 func getPackages(t *testing.T) ([]string, error) {
-	resp, err := http.Get("http://localhost:8080/search?experimental=true&kibana.version=8.0.0")
+	resp, err := http.Get("http://localhost:8080/search?experimental=true")
 	if err != nil {
 		return nil, err
 	}
