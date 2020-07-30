@@ -29,7 +29,7 @@ streams:
     multi: false
     required: true
     show_user: true
-    default: 9512
+    default: 9516
   - name: tz_offset
     type: text
     title: Timezone offset (+HH:mm format)
@@ -82,7 +82,7 @@ streams:
     multi: false
     required: true
     show_user: true
-    default: 9512
+    default: 9516
   - name: tz_offset
     type: text
     title: Timezone offset (+HH:mm format)
