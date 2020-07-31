@@ -128,7 +128,8 @@ type Package struct {
 }
 
 func getPackages(t *testing.T) ([]string, error) {
-	resp, err := http.Get("http://localhost:8080/search?experimental=true")
+	// The kibana.version must be in sync with the stack version used in snapshot.yml
+	resp, err := http.Get("http://localhost:8080/search?experimental=true&kibana.version=7.9.0")
 	if err != nil {
 		return nil, err
 	}
