@@ -51,6 +51,10 @@ With all the changes above, a pull request can be opened. As soon as the pull re
 
 As each branch/distribution references its own version, each branch has to be updated with the above. It is encourage to keep the branches in sync related to registry versions.
 
+# Pull request titles
+
+To easily differentiate PRs against snapshot, staging and production, each PR to one of these branches should be prefixed with `[{branch-name}]`, for example `[snapshot]`. This also makes sure if the same package is promoted to all 3 branches, they don't have the exact same names.
+
 # Package promotion
 
 A package can go through different stages from snapshot to staging to production. To promote a package from one distribution to another, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. If the same package version exists in both branches, the first one is taken. In the above case this is `staging`.
