@@ -3,7 +3,7 @@ module github.com/elastic/package-storage
 go 1.12
 
 require (
-	github.com/elastic/package-registry v0.7.1
+	github.com/elastic/package-registry v0.9.0
 	github.com/magefile/mage v1.9.0
 	github.com/pkg/errors v0.9.1
 	github.com/radovskyb/watcher v1.0.7 // indirect
