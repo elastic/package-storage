@@ -16,6 +16,9 @@ The `securesphere` dataset collects Imperva SecureSphere logs.
 | dataset.name | Dataset name. | constant_keyword |
 | dataset.namespace | Dataset namespace. | constant_keyword |
 | dataset.type | Dataset type. | constant_keyword |
+| datastream.dataset | Datastream dataset. | constant_keyword |
+| datastream.namespace | Datastream namespace. | constant_keyword |
+| datastream.type | Datastream type. | constant_keyword |
 | destination.address | Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket. You should always store the raw address in the `.address` field. Then it should be duplicated to `.ip` or `.domain`, depending on which one it is. | keyword |
 | destination.bytes | Bytes sent from the destination to the source. | long |
 | destination.domain | Destination domain. | keyword |
