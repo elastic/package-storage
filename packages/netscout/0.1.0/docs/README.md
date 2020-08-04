@@ -1,12 +1,12 @@
-# Barracuda integration
+# Netscout integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Netscout device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `sightline` dataset: supports Arbor Peakflow SP logs.
 
-### Waf
+### Sightline
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `sightline` dataset collects Arbor Peakflow SP logs.
 
 **Exported fields**
 

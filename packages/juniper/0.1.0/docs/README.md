@@ -1,12 +1,12 @@
-# Barracuda integration
+# Juniper integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Juniper device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `junos` dataset: supports Juniper JUNOS logs.
 
-### Waf
+### Junos
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `junos` dataset collects Juniper JUNOS logs.
 
 **Exported fields**
 

@@ -1,12 +1,12 @@
-# Barracuda integration
+# Infoblox integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Infoblox device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `nios` dataset: supports Infoblox NIOS logs.
 
-### Waf
+### Nios
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `nios` dataset collects Infoblox NIOS logs.
 
 **Exported fields**
 

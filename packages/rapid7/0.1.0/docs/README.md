@@ -1,12 +1,12 @@
-# Barracuda integration
+# Rapid7 integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Rapid7 device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `nexpose` dataset: supports Rapid7 NeXpose logs.
 
-### Waf
+### Nexpose
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `nexpose` dataset collects Rapid7 NeXpose logs.
 
 **Exported fields**
 

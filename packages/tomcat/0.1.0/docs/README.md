@@ -1,12 +1,12 @@
-# Barracuda integration
+# Tomcat integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Tomcat device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `log` dataset: supports Apache Tomcat logs.
 
-### Waf
+### Log
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `log` dataset collects Apache Tomcat logs.
 
 **Exported fields**
 

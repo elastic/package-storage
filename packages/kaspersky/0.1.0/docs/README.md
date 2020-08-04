@@ -1,12 +1,12 @@
-# Barracuda integration
+# Kaspersky integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Kaspersky device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `av` dataset: supports Kaspersky Anti-Virus logs.
 
-### Waf
+### Av
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `av` dataset collects Kaspersky Anti-Virus logs.
 
 **Exported fields**
 

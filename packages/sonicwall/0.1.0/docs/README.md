@@ -1,12 +1,12 @@
-# Barracuda integration
+# Sonicwall integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Sonicwall device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `firewall` dataset: supports Sonicwall-FW logs.
 
-### Waf
+### Firewall
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `firewall` dataset collects Sonicwall-FW logs.
 
 **Exported fields**
 

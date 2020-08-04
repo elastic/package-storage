@@ -1,12 +1,12 @@
-# Barracuda integration
+# Cylance integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Cylance device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `protect` dataset: supports CylanceProtect logs.
 
-### Waf
+### Protect
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `protect` dataset collects CylanceProtect logs.
 
 **Exported fields**
 

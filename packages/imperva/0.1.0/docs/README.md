@@ -1,12 +1,12 @@
-# Barracuda integration
+# Imperva integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Imperva device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `securesphere` dataset: supports Imperva SecureSphere logs.
 
-### Waf
+### Securesphere
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `securesphere` dataset collects Imperva SecureSphere logs.
 
 **Exported fields**
 

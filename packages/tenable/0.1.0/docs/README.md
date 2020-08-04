@@ -1,12 +1,12 @@
-# Barracuda integration
+# Tenable integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for Tenable device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `nessus_security` dataset: supports Tenable Network Security Nessus logs.
 
-### Waf
+### Nessus_security
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `nessus_security` dataset collects Tenable Network Security Nessus logs.
 
 **Exported fields**
 

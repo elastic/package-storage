@@ -1,12 +1,12 @@
-# Barracuda integration
+# F5 integration
 
-This integration is for Barracuda device's logs. It includes the following
+This integration is for F5 device's logs. It includes the following
 datasets for receiving logs over syslog or read from a file:
-- `waf` dataset: supports Barracuda Web Application Firewall logs.
+- `bigipapm` dataset: supports Big-IP Access Policy Manager logs.
 
-### Waf
+### Bigipapm
 
-The `waf` dataset collects Barracuda Web Application Firewall logs.
+The `bigipapm` dataset collects Big-IP Access Policy Manager logs.
 
 **Exported fields**
 
