@@ -136,10 +136,11 @@ func NewDataset(basePath string, p *Package) (*Dataset, error) {
 	for i, _ := range d.Streams {
 		if d.Streams[i].Enabled == nil {
 			d.Streams[i].Enabled = &trueValue
-			// TODO: validate that the template path actually exists
-			if d.Streams[i].TemplatePath == "" {
-				d.Streams[i].TemplatePath = "stream.yml.hbs"
-			}
+		}
+
+		// TODO: validate that the template path actually exists
+		if d.Streams[i].TemplatePath == "" {
+			d.Streams[i].TemplatePath = "stream.yml.hbs"
 		}
 	}
 
@@ -304,9 +305,9 @@ func (d *Dataset) validateRequiredFields() error {
 	}
 
 	// Verify required keys
-	err = requireField(allFields, "dataset.type", "constant_keyword", err)
-	err = requireField(allFields, "dataset.name", "constant_keyword", err)
-	err = requireField(allFields, "dataset.namespace", "constant_keyword", err)
+	err = requireField(allFields, "datastream.type", "constant_keyword", err)
+	err = requireField(allFields, "datastream.dataset", "constant_keyword", err)
+	err = requireField(allFields, "datastream.namespace", "constant_keyword", err)
 	err = requireField(allFields, "@timestamp", "date", err)
 	return err
 }
