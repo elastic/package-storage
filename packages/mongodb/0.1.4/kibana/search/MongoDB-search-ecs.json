@@ -6,7 +6,7 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"highlight\":{\"fields\":{\"*\":{}},\"fragment_size\":2147483647,\"post_tags\":[\"@/kibana-highlighted-field@\"],\"pre_tags\":[\"@kibana-highlighted-field@\"],\"require_field_match\":false},\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"(dataset.name:mongodb.collstats OR dataset.name:mongodb.dbstats OR dataset.name:mongodb.metrics OR dataset.name:mongodb.replstatus OR dataset.name:mongodb.status)\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"highlight\":{\"fields\":{\"*\":{}},\"fragment_size\":2147483647,\"post_tags\":[\"@/kibana-highlighted-field@\"],\"pre_tags\":[\"@kibana-highlighted-field@\"],\"require_field_match\":false},\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"(data_stream.dataset:mongodb.collstats OR data_stream.dataset:mongodb.dbstats OR data_stream.dataset:mongodb.metrics OR data_stream.dataset:mongodb.replstatus OR data_stream.dataset:mongodb.status)\"}}"
     },
     "sort": [
       [
