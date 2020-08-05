@@ -84,7 +84,7 @@
     type: constant_keyword
     description: Dataset type.
     default_field: false
-- name: datastream
+- name: data_stream
   title: datastream
   group: 2
   description: Fields describing the new indexing strategy <type>-<dataset>-<namespace>
