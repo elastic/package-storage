@@ -1,0 +1,36 @@
+format_version: 1.0.0
+name: kaspersky
+title: Kaspersky Anti-Virus
+version: 0.1.0
+description: Kaspersky Anti-Virus Integration
+categories: ["security"]
+release: experimental
+removable: true
+license: basic
+type: integration
+conditions:
+    kibana:
+        version: '>=7.9.0'
+    elasticsearch:
+        version: '>=7.9.0'
+config_templates:
+- name: av
+  title: Kaspersky Anti-Virus
+  description: Collect Kaspersky Anti-Virus logs from syslog or a file.
+  inputs:
+      - type: udp
+        title: Collect logs from Kaspersky Anti-Virus via UDP
+        description: Collecting syslog from Kaspersky Anti-Virus via UDP
+      - type: tcp
+        title: Collect logs from Kaspersky Anti-Virus via TCP
+        description: Collecting syslog from Kaspersky Anti-Virus via TCP
+      - type: file
+        title: Collect logs from Kaspersky Anti-Virus via file
+        description: Collecting syslog from Kaspersky Anti-Virus via file.
+# No icon
+icons:
+ - src: /img/logo.svg
+   title: Kaspersky Anti-Virus logo
+   size: 32x32
+   type: image/svg+xml
+
