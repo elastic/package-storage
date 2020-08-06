@@ -4,7 +4,7 @@ title: Custom logs
 description: >
   Collect your custom logs.
 type: integration
-version: 0.3.4
+version: 0.123.4
 release: experimental
 license: basic
 categories:
@@ -21,4 +21,4 @@ icons:
   - src: "/img/icon.svg"
     type: "image/svg+xml"
 owner:
-  github: elastic/integrations-services
+  github: elastic/security-ingest
