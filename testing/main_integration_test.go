@@ -98,28 +98,31 @@ func TestSetup(t *testing.T) {
 			// Get a local copy
 			p := p
 			t.Run(p, func(t *testing.T) {
-				t.Parallel()
-				req, err = http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/ingest_manager/epm/packages/"+p, nil)
-				if err != nil {
-					t.Error(err)
-				}
-				req.Header.Add("kbn-xsrf", "ingest_manager")
-				resp, err = http.DefaultClient.Do(req)
-				if err != nil {
-					t.Error(err)
-				}
-				defer resp.Body.Close()
-
-				assert.Equal(t, 200, resp.StatusCode)
-
-				body, err = ioutil.ReadAll(resp.Body)
-				if err != nil {
-					t.Error(err)
-				}
-				log.Println(p)
+				installPackage(t, p)
 			})
 		}
 	})
+}
+
+func installPackage(t *testing.T, p string) {
+	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/ingest_manager/epm/packages/"+p, nil)
+	if err != nil {
+		t.Error(err)
+	}
+	req.Header.Add("kbn-xsrf", "ingest_manager")
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Error(err)
+	}
+	defer resp.Body.Close()
+
+	assert.Equal(t, 200, resp.StatusCode)
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Error(err, string(body))
+	}
+	log.Println(p)
 }
 
 type Package struct {
