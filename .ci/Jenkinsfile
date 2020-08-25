@@ -41,19 +41,6 @@ pipeline {
       }
     }
     /**
-     Checks formatting / linting.
-     */
-    stage('Lint') {
-      steps {
-        cleanup()
-        withMageEnv(){
-          dir("${BASE_DIR}"){
-            sh(label: 'Checks formatting / linting',script: 'mage -debug check')
-          }
-        }
-      }
-    }
-    /**
      Builds and validates the packages
      */
     stage('Build') {
