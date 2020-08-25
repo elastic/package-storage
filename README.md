@@ -86,3 +86,15 @@ The current `package-storage` repository has a few branches. This is a quick sum
 * snapshot: Packages for epr-snapshot.elastic.co
 * experimental: Packages for epr-experimental.elastic.co. These packages are served by Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
 * master: Contains docs and comment scripts for the distribution branches.
+
+# Tags
+
+At the time of the Elastic Stack release, a tag off the `production` branch is created with an Elastic Stack release version. This will allow environments like Kibana tests to use a specific "known" tag for their testing. An additional benefit is that in the future if users potentially run the registry on premise, these tags can be used to have the on premise registry aligned with the Elastic Stack version instead of constantly pulling the most recent version.
+
+These tags trigger the build of the following docker images (7.9.0 as an example):
+
+```
+docker.elastic.co/package-registry/distribution:7.9.0
+```
+
+The tag does not contain a `v` prefix like most other version tags do. The reason is that this tag is used for the docker image name where the v prefix is not used.
