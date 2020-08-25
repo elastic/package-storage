@@ -89,7 +89,7 @@ The current `package-storage` repository has a few branches. This is a quick sum
 
 # Tags
 
-At the time of the Elastic Stack release, a tag off the `production` branch is created the Elastic Stack release number. This will allow environments like Kibana tests to use a specific "known" tag for their testing. An additional benefit is that in the future if users potentially run the registry on prem, these tags can be used to have the on prem registry aligned with the stack version instead of constantly pulling the most recent version.
+At the time of the Elastic Stack release, a tag off the `production` branch is created with an Elastic Stack release version. This will allow environments like Kibana tests to use a specific "known" tag for their testing. An additional benefit is that in the future if users potentially run the registry on premise, these tags can be used to have the on premise registry aligned with the Elastic Stack version instead of constantly pulling the most recent version.
 
 These tags trigger the build of the following docker images (7.9.0 as an example):
 
