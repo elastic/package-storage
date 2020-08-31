@@ -1,6 +1,6 @@
 package_paths:
   - /packages/production
 
-cache_time.search: 10s
-cache_time.categories: 10s
-cache_time.catch_all: 10s
+cache_time.search: 1m
+cache_time.categories: 10m
+cache_time.catch_all: 10m
