@@ -1,5 +1,3 @@
-# EXPERIMENTAL: This is only for experimental use
-
 # Package Storage
 This is a storage repository for the packages served through the [package registry](https://github.com/elastic/package-registry) service.
 
@@ -84,7 +82,8 @@ The current `package-storage` repository has a few branches. This is a quick sum
 * production: Packages for epr.elastic.co
 * staging: Packages for epr-staging.elastic.co
 * snapshot: Packages for epr-snapshot.elastic.co
-* experimental: Packages for epr-experimental.elastic.co. These packages are served by Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
+* production-7.9: Packages for epr-7-9.elastic.co. These packages are served for Kibana 7.9 versions. It is expected that all future changes to packages go into the production branch.
+* experimental: Packages for epr-experimental.elastic.co. These packages are served for Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
 * master: Contains docs and comment scripts for the distribution branches.
 
 # Tags
