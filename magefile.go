@@ -134,7 +134,7 @@ package_paths:
 
 	err = ioutil.WriteFile("config.yml", []byte(config), 0644)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "could not create package-registry config for testing")
 	}
 
 	err = sh.Run("go", "run", "github.com/elastic/package-registry", "-dry-run=true")
