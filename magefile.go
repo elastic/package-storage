@@ -8,6 +8,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -123,6 +124,17 @@ func dryRunPackageRegistry() error {
 	err = os.Chdir(buildDir)
 	if err != nil {
 		return errors.Wrapf(err, "can't change directory to %s", buildDir)
+	}
+
+	// Creates a basic package-registry config which points to the packages.
+	config := `
+package_paths:
+- "../packages"
+`
+
+	err = ioutil.WriteFile("config.yml", []byte(config), 0644)
+	if err != nil {
+		return err
 	}
 
 	err = sh.Run("go", "run", "github.com/elastic/package-registry", "-dry-run=true")
