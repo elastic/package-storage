@@ -120,21 +120,11 @@ func dryRunPackageRegistry() error {
 	}
 	defer os.Chdir(currentDir)
 
+	// Change to the testing directory to run package-registry from there as it contains the config for it.
 	err = os.Chdir("testing")
 	if err != nil {
 		return errors.Wrapf(err, "can't change directory to %s", "testing")
 	}
-
-	// Creates a basic package-registry config which points to the packages.
-	/*config := `
-	package_paths:
-	- "../packages"
-	`
-
-		err = ioutil.WriteFile("config.yml", []byte(config), 0644)
-		if err != nil {
-			return errors.Wrap(err, "could not create package-registry config for testing")
-		}*/
 
 	err = sh.Run("go", "run", "github.com/elastic/package-registry", "-dry-run=true")
 	if err != nil {
