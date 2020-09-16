@@ -1,0 +1,3 @@
+# This config file is used for the dry run of the package-registry to validate all packages
+package_paths:
+- "../packages"
