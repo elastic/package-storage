@@ -19,6 +19,7 @@ import (
 
 var (
 	buildDir     = "./build"
+	testingDir   = "./testing"
 	publicDir    = filepath.Join(buildDir, "public")
 	packagePaths = []string{"./packages"}
 )
@@ -120,9 +121,10 @@ func dryRunPackageRegistry() error {
 	}
 	defer os.Chdir(currentDir)
 
-	err = os.Chdir(buildDir)
+	// Change to the testing directory to run package-registry from there as it contains the config for it.
+	err = os.Chdir(testingDir)
 	if err != nil {
-		return errors.Wrapf(err, "can't change directory to %s", buildDir)
+		return errors.Wrapf(err, "can't change directory to %s", testingDir)
 	}
 
 	err = sh.Run("go", "run", "github.com/elastic/package-registry", "-dry-run=true")
