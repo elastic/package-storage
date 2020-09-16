@@ -3,6 +3,8 @@
 ARG PACKAGE_REGISTRY=v0.11.0
 FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
 
+LABEL package-registry=${PACKAGE_REGISTRY}
+
 # Adds specific config and packages
 COPY deployment/package-registry.yml /package-registry/config.yml
 COPY packages /packages/production
