@@ -1,0 +1,36 @@
+format_version: 1.0.0
+name: sophos
+title: Sophos
+version: 0.1.0
+description: Sophos UTM Integration
+categories: ["security"]
+release: experimental
+removable: true
+license: basic
+type: integration
+conditions:
+    kibana:
+        version: '^7.10.0'
+    elasticsearch:
+        version: '^7.10.0'
+config_templates:
+- name: utm
+  title: UTM
+  description: Collect Sophos UTM logs from syslog or a file.
+  inputs:
+      - type: udp
+        title: Collect logs from Sophos UTM via UDP
+        description: Collecting syslog from Sophos UTM via UDP
+      - type: tcp
+        title: Collect logs from Sophos UTM via TCP
+        description: Collecting syslog from Sophos UTM via TCP
+      - type: file
+        title: Collect logs from Sophos UTM via file
+        description: Collecting syslog from Sophos UTM via file.
+# No icon
+icons:
+ - src: /img/logo.svg
+   title: Sophos logo
+   size: 32x32
+   type: image/svg+xml
+
