@@ -14,8 +14,8 @@ conditions:
     elasticsearch:
         version: '^7.10.0'
 config_templates:
-- name: corepas
-  title: CyberArk
+- name: cyberark
+  title: CyberArk logs
   description: Collect CyberArk logs from syslog or a file.
   inputs:
       - type: udp
