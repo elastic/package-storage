@@ -14,19 +14,19 @@ conditions:
     elasticsearch:
         version: '^7.10.0'
 config_templates:
-- name: netscaler
-  title: Citrix NetScaler
-  description: Collect Citrix NetScaler logs from syslog or a file.
+- name: citrix
+  title: Citrix logs
+  description: Collect Citrix logs from syslog or a file.
   inputs:
       - type: udp
-        title: Collect logs from Citrix NetScaler via UDP
-        description: Collecting syslog from Citrix NetScaler via UDP
+        title: Collect logs from Citrix via UDP
+        description: Collecting syslog from Citrix via UDP
       - type: tcp
-        title: Collect logs from Citrix NetScaler via TCP
-        description: Collecting syslog from Citrix NetScaler via TCP
+        title: Collect logs from Citrix via TCP
+        description: Collecting syslog from Citrix via TCP
       - type: file
-        title: Collect logs from Citrix NetScaler via file
-        description: Collecting syslog from Citrix NetScaler via file.
+        title: Collect logs from Citrix via file
+        description: Collecting syslog from Citrix via file.
 icons:
  - src: /img/logo.svg
    title: Citrix logo
