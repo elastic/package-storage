@@ -14,22 +14,9 @@ conditions:
     elasticsearch:
         version: '^7.9.0'
 config_templates:
-- name: junos
-  title: Juniper JUNOS
-  description: Collect Juniper JUNOS logs from syslog or a file.
-  inputs:
-      - type: udp
-        title: Collect logs from Juniper via UDP
-        description: Collecting syslog from Juniper via UDP
-      - type: tcp
-        title: Collect logs from Juniper via TCP
-        description: Collecting syslog from Juniper via TCP
-      - type: file
-        title: Collect logs from Juniper via file
-        description: Collecting syslog from Juniper via file.
-- name: netscreen
-  title: Netscreen
-  description: Collect Netscreen logs from syslog or a file.
+- name: juniper
+  title: Juniper logs
+  description: Collect Juniper logs from syslog or a file.
   inputs:
       - type: udp
         title: Collect logs from Juniper via UDP
@@ -42,7 +29,7 @@ config_templates:
         description: Collecting syslog from Juniper via file.
 icons:
  - src: /img/logo.svg
-   title: Juniper JUNOS logo
+   title: Juniper logo
    size: 32x32
    type: image/svg+xml
 
