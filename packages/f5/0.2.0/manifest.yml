@@ -14,22 +14,9 @@ conditions:
     elasticsearch:
         version: '^7.9.0'
 config_templates:
-- name: bigipapm
-  title: Big-IP Access Policy Manager
-  description: Collect Big-IP Access Policy Manager logs from syslog or a file.
-  inputs:
-      - type: udp
-        title: Collect logs from F5 via UDP
-        description: Collecting syslog from F5 via UDP
-      - type: tcp
-        title: Collect logs from F5 via TCP
-        description: Collecting syslog from F5 via TCP
-      - type: file
-        title: Collect logs from F5 via file
-        description: Collecting syslog from F5 via file.
-- name: bigipafm
-  title: Big-IP Advanced Firewall Manager
-  description: Collect Big-IP Advanced Firewall Manager logs from syslog or a file.
+- name: F5
+  title: F5 logs
+  description: Collect F5 logs from syslog or a file.
   inputs:
       - type: udp
         title: Collect logs from F5 via UDP
