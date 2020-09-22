@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Big-IP Advanced Firewall Manager logs
   description: Collect Big-IP Advanced Firewall Manager logs from file
   vars:

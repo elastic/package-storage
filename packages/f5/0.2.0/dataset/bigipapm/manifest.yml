@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Big-IP Access Policy Manager logs
   description: Collect Big-IP Access Policy Manager logs from file
   vars:

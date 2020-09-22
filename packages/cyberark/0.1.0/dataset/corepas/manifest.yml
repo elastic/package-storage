@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: CyberArk logs
   description: Collect CyberArk logs from file
   vars:

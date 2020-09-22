@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Netscreen logs
   description: Collect Netscreen logs from file
   vars:

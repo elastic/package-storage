@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Barracuda Spam Firewall logs
   description: Collect Barracuda Spam Firewall logs from file
   vars:

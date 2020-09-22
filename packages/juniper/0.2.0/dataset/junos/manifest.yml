@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Juniper JUNOS logs
   description: Collect Juniper JUNOS logs from file
   vars:

@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Proofpoint Email Security logs
   description: Collect Proofpoint Email Security logs from file
   vars:

@@ -109,6 +109,7 @@ streams:
     default: false
 
 - input: file
+  enabled: false
   title: Barracuda Web Application Firewall logs
   description: Collect Barracuda Web Application Firewall logs from file
   vars:
