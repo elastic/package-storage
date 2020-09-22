@@ -14,8 +14,8 @@ conditions:
     elasticsearch:
         version: '^7.10.0'
 config_templates:
-- name: endpointprotection
-  title: Symantec AntiVirus/Endpoint Protection
+- name: symantec
+  title: Symantec AntiVirus/Endpoint Protection logs
   description: Collect Symantec AntiVirus/Endpoint Protection logs from syslog or a file.
   inputs:
       - type: udp
