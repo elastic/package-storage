@@ -1,7 +1,7 @@
 # Here the version of the registry is specified this storage branch uses.
 # It should always be a specific version to make sure builds are reproducible.
 ARG PACKAGE_REGISTRY=v0.11.0
-FROM docker.elastic.co/package-registry/package-registry:PR-641
+FROM docker.elastic.co/observability-ci/package-registry:PR-641
 
 LABEL package-registry=${PACKAGE_REGISTRY}
 
