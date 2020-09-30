@@ -13,7 +13,7 @@ conditions:
         version: '>=7.9.0'
     elasticsearch:
         version: '>=7.9.0'
-config_templates:
+policy_templates:
 - name: protect
   title: CylanceProtect
   description: Collect CylanceProtect logs from syslog or a file.
