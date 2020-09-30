@@ -69,7 +69,7 @@ pipeline {
     /**
      Execute integration tests.
      */
-    stage('TestIntegration') {
+    /*stage('TestIntegration') {
       environment {
         HOME = "${env.WORKSPACE}"
       }
@@ -89,7 +89,7 @@ pipeline {
           )
         }
       }
-    }
+    }*/
     /**
      Publish Docker images.
      */
