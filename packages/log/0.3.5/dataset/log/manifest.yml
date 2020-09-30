@@ -1,7 +1,6 @@
 title: Log Dataset
 
 type: logs
-name: log
 
 streams:
   - input: logfile
