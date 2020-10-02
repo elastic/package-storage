@@ -13,7 +13,7 @@ conditions:
         version: '^7.10.0'
     elasticsearch:
         version: '^7.10.0'
-config_templates:
+policy_templates:
 - name: citrix
   title: Citrix logs
   description: Collect Citrix logs from syslog or a file.

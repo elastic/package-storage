@@ -13,7 +13,7 @@ conditions:
         version: '^7.10.0'
     elasticsearch:
         version: '^7.10.0'
-config_templates:
+policy_templates:
 - name: sophos
   title: Sophos logs
   description: Collect Sophos logs from syslog or a file.

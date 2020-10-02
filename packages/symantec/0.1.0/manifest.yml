@@ -13,7 +13,7 @@ conditions:
         version: '^7.10.0'
     elasticsearch:
         version: '^7.10.0'
-config_templates:
+policy_templates:
 - name: symantec
   title: Symantec AntiVirus/Endpoint Protection logs
   description: Collect Symantec AntiVirus/Endpoint Protection logs from syslog or a file.
