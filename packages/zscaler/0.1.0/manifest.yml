@@ -13,7 +13,7 @@ conditions:
         version: '>=7.9.0'
     elasticsearch:
         version: '>=7.9.0'
-config_templates:
+policy_templates:
 - name: zia
   title: Zscaler NSS
   description: Collect Zscaler NSS logs from syslog or a file.

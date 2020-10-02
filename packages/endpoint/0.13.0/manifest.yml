@@ -11,7 +11,7 @@ release: beta
 type: solution
 license: basic
 
-config_templates:
+policy_templates:
   - name: endpoint
     title: Elastic Endpoint Security Integration
     description: Interact with the endpoint.

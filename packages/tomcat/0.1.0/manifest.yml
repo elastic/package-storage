@@ -13,7 +13,7 @@ conditions:
         version: '>=7.9.0'
     elasticsearch:
         version: '>=7.9.0'
-config_templates:
+policy_templates:
 - name: log
   title: Apache Tomcat
   description: Collect Apache Tomcat logs from syslog or a file.
