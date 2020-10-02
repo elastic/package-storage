@@ -13,7 +13,7 @@ conditions:
         version: '^7.10.0'
     elasticsearch:
         version: '^7.10.0'
-config_templates:
+policy_templates:
 - name: cyberark
   title: CyberArk logs
   description: Collect CyberArk logs from syslog or a file.
