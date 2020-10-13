@@ -67,8 +67,8 @@ func TestSetup(t *testing.T) {
 		time.Sleep(1 * time.Second)
 	}
 
-	// Run setup in ingest_manager against registry to see if no errors are returned
-	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/ingest_manager/setup", nil)
+	// Run setup in fleet against registry to see if no errors are returned
+	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/fleet/setup", nil)
 	if err != nil {
 		t.Error(err)
 	}
@@ -105,7 +105,7 @@ func TestSetup(t *testing.T) {
 }
 
 func installPackage(t *testing.T, p string) {
-	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/ingest_manager/epm/packages/"+p, nil)
+	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/fleet/epm/packages/"+p, nil)
 	if err != nil {
 		t.Error(err)
 	}
