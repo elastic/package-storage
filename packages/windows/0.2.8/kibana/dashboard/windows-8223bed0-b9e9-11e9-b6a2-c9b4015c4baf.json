@@ -11,7 +11,7 @@
     "title": "[Windows Security] User Management Events - Simple Metric",
     "version": 1
   },
-  "id": "8223bed0-b9e9-11e9-b6a2-c9b4015c4baf",
+  "id": "windows-8223bed0-b9e9-11e9-b6a2-c9b4015c4baf",
   "migrationVersion": {
     "dashboard": "7.3.0"
   },

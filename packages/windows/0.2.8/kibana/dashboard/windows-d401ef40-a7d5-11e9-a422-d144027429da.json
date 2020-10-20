@@ -11,7 +11,7 @@
     "title": "[Windows Security] Failed and Blocked Accounts",
     "version": 1
   },
-  "id": "d401ef40-a7d5-11e9-a422-d144027429da",
+  "id": "windows-d401ef40-a7d5-11e9-a422-d144027429da",
   "migrationVersion": {
     "dashboard": "7.3.0"
   },

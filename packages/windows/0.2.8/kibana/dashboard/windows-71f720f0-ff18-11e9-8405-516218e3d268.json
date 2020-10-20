@@ -11,7 +11,7 @@
     "title": "[Windows Security] User Management Events",
     "version": 1
   },
-  "id": "71f720f0-ff18-11e9-8405-516218e3d268",
+  "id": "windows-71f720f0-ff18-11e9-8405-516218e3d268",
   "migrationVersion": {
     "dashboard": "7.3.0"
   },
