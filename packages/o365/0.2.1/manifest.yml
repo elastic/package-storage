@@ -1,6 +1,6 @@
 name: o365
 title: Office 365
-version: 0.2.0
+version: 0.2.1
 release: experimental
 description: Office 365 Integration
 type: integration
@@ -97,4 +97,4 @@ policy_templates:
         title: "Collect Office 365 logs via log files"
         description: "Collecting logs from Office 365 via log files"
 owner:
-  github: elastic/security-ingest
+  github: elastic/security-external-integrations
