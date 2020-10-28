@@ -17,7 +17,7 @@
     "title": "All ASA Logs [Cisco]",
     "version": 1
   },
-  "id": "14fce5e0-498f-11e9-b8ce-ed898b5ef295",
+  "id": "cisco-14fce5e0-498f-11e9-b8ce-ed898b5ef295",
   "references": [
     {
       "id": "logs-*",
