@@ -9,7 +9,7 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"event.duration\\u003e30000000\"},\"version\":true}"
+      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"event.duration:*\"},\"version\":true}"
     },
     "sort": [
       [
@@ -17,10 +17,10 @@
         "desc"
       ]
     ],
-    "title": "Slow Queries [Logs PostgreSQL] ECS",
+    "title": "Query Durations [Logs PostgreSQL]",
     "version": 1
   },
-  "id": "Slow PostgreSQL Queries-ecs",
+  "id": "postgresql-query-durations",
   "migrationVersion": {
     "search": "7.4.0"
   },
