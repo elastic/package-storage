@@ -18,10 +18,10 @@
         "desc"
       ]
     ],
-    "title": "Nginx logs [Logs Nginx] ECS",
+    "title": "Nginx logs [Logs Nginx]",
     "version": 1
   },
-  "id": "Logs-Nginx-integration-ecs",
+  "id": "nginx-Logs-Nginx-integration",
   "migrationVersion": {
     "search": "7.4.0"
   },
