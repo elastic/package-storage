@@ -17,7 +17,7 @@
     "title": "MongoDB search",
     "version": 1
   },
-  "id": "MongoDB-search-ecs",
+  "id": "mongodb-MongoDB-search",
   "migrationVersion": {
     "search": "7.4.0"
   },

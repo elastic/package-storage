@@ -10,18 +10,18 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"log.level: F or log.level: W\"},\"version\":true}"
+      "searchSourceJSON": "{\"filter\":[],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"log.level: *\"},\"version\":true}"
     },
     "sort": [
       [
-        "@timestamp",
-        "desc"
+        "mongodb.log.timestamp",
+        "asc"
       ]
     ],
-    "title": "Error logs",
+    "title": "All logs",
     "version": 1
   },
-  "id": "e49fe000-0a7e-11e8-bffe-ff7d4f68cf94-ecs",
+  "id": "mongodb-bfc96a60-0a80-11e8-bffe-ff7d4f68cf94",
   "migrationVersion": {
     "search": "7.4.0"
   },
