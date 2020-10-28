@@ -17,10 +17,10 @@
         "desc"
       ]
     ],
-    "title": "Apache access logs [Logs Apache] ECS",
+    "title": "Apache access logs [Logs Apache]",
     "version": 1
   },
-  "id": "Apache-access-logs-ecs",
+  "id": "apache-access-logs",
   "migrationVersion": {
     "search": "7.4.0"
   },

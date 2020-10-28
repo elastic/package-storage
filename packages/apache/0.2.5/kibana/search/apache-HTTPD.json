@@ -14,10 +14,10 @@
         "desc"
       ]
     ],
-    "title": "Apache HTTPD ECS",
+    "title": "Apache HTTPD",
     "version": 1
   },
-  "id": "Apache-HTTPD-ecs",
+  "id": "apache-HTTPD",
   "migrationVersion": {
     "search": "7.4.0"
   },

@@ -17,10 +17,10 @@
         "desc"
       ]
     ],
-    "title": "Apache errors log [Logs Apache] ECS",
+    "title": "Apache errors log [Logs Apache]",
     "version": 1
   },
-  "id": "Apache-errors-log-ecs",
+  "id": "apache-errors-log",
   "migrationVersion": {
     "search": "7.4.0"
   },
