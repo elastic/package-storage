@@ -1,7 +1,7 @@
 format_version: 1.0.0
 name: microsoft
 title: Microsoft
-version: 0.2.0
+version: 0.3.0
 description: Microsoft Integration
 categories: ["network"]
 release: experimental
@@ -29,4 +29,4 @@ icons:
     size: 32x32
     type: image/svg+xml
 owner:
-  github: elastic/security-ingest
+  github: elastic/security-external-integrations
