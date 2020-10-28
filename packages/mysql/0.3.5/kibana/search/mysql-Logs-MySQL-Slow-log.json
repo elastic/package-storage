@@ -14,10 +14,10 @@
         "desc"
       ]
     ],
-    "title": "Slow logs [Logs MySQL] ECS",
+    "title": "Slow logs [Logs MySQL]",
     "version": 1
   },
-  "id": "Logs-MySQL-Slow-log-ecs",
+  "id": "mysql-Logs-MySQL-Slow-log",
   "migrationVersion": {
     "search": "7.4.0"
   },
