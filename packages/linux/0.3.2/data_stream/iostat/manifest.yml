@@ -1,4 +1,4 @@
-title: Kernel Samepage merging metrics
+title: Linux disk iostat metrics
 release: experimental
 type: metrics
 streams:
@@ -12,5 +12,5 @@ streams:
         show_user: true
         default: 10s
     enabled: false
-    title: System KSM metrics
-    description: Collect kernel samepage merging metrics
+    title: Linux iostat metrics
+    description: Linux disk stat metrics

@@ -1,4 +1,4 @@
-title: Kernel Samepage merging metrics
+title: Linux-only memory metrics
 release: experimental
 type: metrics
 streams:
@@ -12,5 +12,5 @@ streams:
         show_user: true
         default: 10s
     enabled: false
-    title: System KSM metrics
-    description: Collect kernel samepage merging metrics
+    title: Linux memory metrics
+    description: Linux paging and memory management metrics
