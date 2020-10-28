@@ -1,7 +1,7 @@
 format_version: 1.0.0
 name: juniper
 title: Juniper
-version: 0.3.0
+version: 0.4.0
 description: Juniper Integration
 categories: ["network", "security"]
 release: experimental
@@ -29,4 +29,4 @@ icons:
     size: 32x32
     type: image/svg+xml
 owner:
-  github: elastic/security-ingest
+  github: elastic/security-external-integrations
