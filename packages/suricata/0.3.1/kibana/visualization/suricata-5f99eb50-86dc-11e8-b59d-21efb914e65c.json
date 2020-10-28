@@ -10,7 +10,7 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Top Connection Source Countries\",\"field\":\"source.geo.country_iso_code\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"maxFontSize\":72,\"minFontSize\":18,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Top Connection Source Countries [Logs Suricata]\",\"type\":\"tagcloud\"}"
   },
-  "id": "5f99eb50-86dc-11e8-b59d-21efb914e65c-ecs",
+  "id": "suricata-5f99eb50-86dc-11e8-b59d-21efb914e65c",
   "migrationVersion": {
     "visualization": "7.8.0"
   },
@@ -19,7 +19,7 @@
   ],
   "references": [
     {
-      "id": "13dd22f0-86cc-11e8-b59d-21efb914e65c-ecs",
+      "id": "suricata-13dd22f0-86cc-11e8-b59d-21efb914e65c",
       "name": "search_0",
       "type": "search"
     }
