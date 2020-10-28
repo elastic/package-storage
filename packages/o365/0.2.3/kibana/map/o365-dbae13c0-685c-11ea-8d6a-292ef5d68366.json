@@ -6,7 +6,7 @@
     "title": "Client Geo Map [Logs o365 audit]",
     "uiStateJSON": "{\"isLayerTOCOpen\":true,\"openTOCDetails\":[]}"
   },
-  "id": "dbae13c0-685c-11ea-8d6a-292ef5d68366",
+  "id": "o365-dbae13c0-685c-11ea-8d6a-292ef5d68366",
   "migrationVersion": {
     "map": "7.9.0"
   },
