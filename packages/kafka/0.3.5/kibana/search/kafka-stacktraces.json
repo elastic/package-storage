@@ -16,10 +16,10 @@
         "desc"
       ]
     ],
-    "title": "Stacktraces [Logs Kafka] ECS",
+    "title": "Stacktraces [Logs Kafka]",
     "version": 1
   },
-  "id": "Kafka stacktraces-ecs",
+  "id": "kafka-stacktraces",
   "references": [
     {
       "id": "logs-*",

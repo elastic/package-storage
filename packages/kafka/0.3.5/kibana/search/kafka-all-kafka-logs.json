@@ -16,10 +16,10 @@
         "desc"
       ]
     ],
-    "title": "All logs [Logs Kafka] ECS",
+    "title": "All logs [Logs Kafka]",
     "version": 1
   },
-  "id": "All Kafka logs-ecs",
+  "id": "kafka-all-kafka-logs",
   "references": [
     {
       "id": "logs-*",
