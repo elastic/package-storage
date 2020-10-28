@@ -11,10 +11,10 @@
         "desc"
       ]
     ],
-    "title": "Metrics Rabbitmq ECS",
+    "title": "Metrics Rabbitmq",
     "version": 1
   },
-  "id": "Metrics-Rabbitmq-ecs",
+  "id": "rabbitmq-Metrics-Rabbitmq",
   "migrationVersion": {
     "search": "7.4.0"
   },
