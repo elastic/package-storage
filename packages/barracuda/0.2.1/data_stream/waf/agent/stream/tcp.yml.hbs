@@ -10,7 +10,9 @@ fields:
         vendor: "Barracuda"
         product: "Web"
         type: "WAF"
+{{#contains tags "forwarded"}}
 publisher_pipeline.disable_host: true
+{{/contains}}
 
 processors:
 - script:
@@ -3717,4 +3719,4 @@ processors:
 - add_fields:
     target: ''
     fields:
-        ecs.version: 1.5.0
+        ecs.version: 1.6.0
