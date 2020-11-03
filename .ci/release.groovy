@@ -26,10 +26,9 @@ pipeline {
     LANG = "C.UTF-8"
     LC_ALL = "C.UTF-8"
     HOME = "${env.WORKSPACE}"
-    PATH = "${env.HOME}/bin:${env.WORKSPACE}/src/.ci/scripts:${env.PATH}"
+    PATH = "${env.HOME}/bin:${env.PATH}"
     JOB_GIT_CREDENTIALS = "f6c7695a-671e-4f4f-a331-acdce44ff9ba"
-    TAG = "${params.commit}"
-    BRANCH_NAME = "${params.environment}"
+    CREDENTIALS_FILE = 'credentials.json'
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20', daysToKeepStr: '30'))
@@ -41,83 +40,67 @@ pipeline {
     disableConcurrentBuilds()
   }
   parameters {
-    choice(choices: ['snapshot', 'staging', 'production'], description: 'Branch and environment to Release the distribution.', name: 'environment')
-    string(name: 'commit', defaultValue: "", description: "Commit SHA1/Branch tag of the Docker image.")
+    choice(choices: ['none', 'snapshot', 'staging', 'prod', 'experimental', '7-9'], description: 'Environment to Rollout.', name: 'environment')
   }
   stages {
-    stage('Select Docker Image'){
+    stage('Rollout') {
       when {
-        expression { return '' == env.TAG }
-      }
-      steps {
-        gitCheckout(basedir: 'src', branch: "${env.BRANCH_NAME}",
-          repo: "git@github.com:elastic/${REPO}.git",
-          credentialsId: "${env.JOB_GIT_CREDENTIALS}"
-        )
-        dir('src'){
-          sh(label: 'Get latest commits', script: '''
-            echo "[" > latest-changes.json
-            git log -n 5 --pretty=format:'{"sha":"%H","msg":"%s","author":"%an"},' >> latest-changes.json
-            echo "]" >> latest-changes.json
-          ''')
-          script {
-            def json = readJSON(file: 'latest-changes.json')
-            def options = json?.collect{item -> "${item.msg}-${item.sha}"}
-            def choose = input(message: "Choose the version to release to ${env.BRANCH_NAME}",
-                        parameters: [
-                          choice(choices: options, 
-                            description: 'Select the commit to release',
-                            name: 'tag')
-                        ]
-                      )
-            setEnvVar('TAG', choose[-40..-1])
-            echo 
-          }
+        expression {
+          return params.environment != 'none'
         }
       }
-    }
-    stage('Release') {
+      environment{
+        PACKAGE_REGISTRY_DEPLOYMENT_NAME = "package-registry-${params.environment}-vanilla"
+      }
       steps {
-        deleteDir()
-        gitCheckout(basedir: 'infra', branch: "master",
-          repo: "git@github.com:elastic/infra.git",
-          credentialsId: "${env.JOB_GIT_CREDENTIALS}")
-        dir("infra"){
-          sshagent(["${env.JOB_GIT_CREDENTIALS}"]) {
-            sh(label: 'Create local branch', script: """
-              git checkout -b ${REPO}-release
-            """)
-            script {
-              def ymlFile = "terraform/providers/gcp/env/elastic-apps-web/helm/values/package-registry/package-registry-${env.BRANCH_NAME}.yaml"
-              def yml = readYaml(file: ymlFile)
-              yml.image.tag = "${env.TAG}"
-              writeYaml(file: ymlFile, data: yml, overwrite: true)
-              setEnvVar('DOCKER_IMAGE', yml.image.repository)
-            }
-            sh(label: 'Git config', script: """
-              git config --global user.name observability-robots
-              git config --global user.email observability-robots@users.noreply.github.com
-            """)
-            sh(label: 'Commit local changes', script: "git commit -a -m '[package-registry]: Release ${env.TAG} to ${env.BRANCH_NAME}'")
-            sh(label: 'Push changes', script: "git push origin package-registry-${env.REPO}-release --force")
-            sh(label: 'Check Docker image', script: "docker pull ${env.DOCKER_IMAGE}:${env.TAG}")
-            githubCreatePullRequest(
-              title: "[DO NO MERGE][package-registry]: Release ${env.TAG} to ${env.BRANCH_NAME}",
-              base: "elastic:master",
-              labels: 'area:web',
-              assign: 'elasticmachine',
-              reviewer: 'observability-robots',
-              description: """
-This is an automatic generated PR to release `docker.elastic.co/package-registry/distribution:${env.TAG}` to ${env.BRANCH_NAME}.
-  * [ ] Check the TAG ${env.TAG} and the enviroment ${env.BRANCH_NAME} is correct.
-  * [ ] Review that the changes are correct.
-  * [ ] Launch the infra test `jenkins test this please`
-  * [ ] Merge the changes.
-  """       )
-            
+        withPackageRegistryEnv(secret: 'secret/observability-team/ci/package-registry-deployment'){
+          withGCPCredentials(secret: "secret/gce/${GOOGLE_PROJECT}/service-account/package-registry-rollout"){
+            installKubectl()
+            sh(label: "Rollout ${PACKAGE_REGISTRY_DEPLOYMENT_NAME} deployment", script: '''
+              kubectl -n package-registry rollout restart deployment ${PACKAGE_REGISTRY_DEPLOYMENT_NAME}
+            ''')
           }
         }
       }
     }
   }
+}
+
+def getVaultSecretRetry(Map args){
+  def secret = arg.hasKey('') ? args.secret : error('Secret not valid')
+  def jsonValue = [:]
+  retryWithSleep(retries: 3, seconds: 5, backoff: true) {
+    jsonValue = getVaultSecret(secret: secret)
+  }
+  return jsonValue
+}
+
+def withPackageRegistryEnv(Map args, Closure body){
+  def jsonValue = getVaultSecretRetry(args)
+  withEnvMask(vars: [
+    [var: "GOOGLE_PROJECT", password: jsonValue.google_project],
+    [var: "REGION", password: jsonValue.region],
+    [var: "CLUSTER_CREDENTIALS_NAME", password: jsonValue.cluster_credentials_name],
+    [var: "KUBECONFIG", password: "${HOME}/.kubeconfig"],
+  ]){
+    body()
+  }
+}
+
+def withGCPCredentials(Map args, Closure body){
+  def jsonValue = getVaultSecretRetry(args)
+  writeFile(file: "${CREDENTIALS_FILE}", text: jsonValue.credentials)
+  sh(label: 'Activate GCP credentials', script: '''
+    gcloud auth activate-service-account --key-file ${CREDENTIALS_FILE}
+    gcloud --project=${GOOGLE_PROJECT} container clusters get-credentials ${CLUSTER_CREDENTIALS_NAME} --region ${REGION}
+  ''')
+  body()
+  sh(label: 'delete credentials', script: 'rm -fr ${CREDENTIALS_FILE} ${KUBECONFIG}')
+}
+
+def installKubectl(){
+  sh(label: 'Install Kubectl', script: '''
+  curl -Lo $HOME/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl
+  chmod +x $HOME/bin/kubectl
+  ''')
 }
