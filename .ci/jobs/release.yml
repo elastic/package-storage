@@ -1,9 +1,9 @@
 ---
 - job:
-    name: Ingest-management/release-distribution
+    name: Ingest-manager/release-distribution
     display-name: Release Package Distribution
     description: Jenkins pipeline to release Docker images to an environment.
-    view: Ingest-management
+    view: Ingest-manager
     project-type: pipeline
     pipeline-scm:
       script-path: .ci/release.groovy
@@ -16,4 +16,3 @@
             credentials-id: f6c7695a-671e-4f4f-a331-acdce44ff9ba
             branches:
               - "master"
-

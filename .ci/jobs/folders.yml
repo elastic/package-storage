@@ -1,10 +1,10 @@
 ---
 #https://docs.openstack.org/infra/jenkins-job-builder/project_folder.html
 - job:
-    name: Ingest-management
-    description: Ingest management related Jobs
+    name: Ingest-manager
+    description: Ingest manager related Jobs
     project-type: folder
 
 - view:
-    name: Ingest-management
+    name: Ingest-manager
     view-type: list
