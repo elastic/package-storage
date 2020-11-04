@@ -26,7 +26,7 @@ pipeline {
     LANG = "C.UTF-8"
     LC_ALL = "C.UTF-8"
     HOME = "${env.WORKSPACE}"
-    PATH = "${env.HOME}/bin:${env.PATH}"
+    KUBECTL = "${env.HOME}/bin/kubectl"
     JOB_GIT_CREDENTIALS = "f6c7695a-671e-4f4f-a331-acdce44ff9ba"
     CREDENTIALS_FILE = 'credentials.json'
   }
@@ -57,7 +57,7 @@ pipeline {
           withGCPCredentials(secret: "secret/gce/${GOOGLE_PROJECT}/service-account/package-registry-rollout"){
             installKubectl()
             sh(label: "Rollout ${PACKAGE_REGISTRY_DEPLOYMENT_NAME} deployment", script: '''
-              kubectl -n package-registry rollout restart deployment ${PACKAGE_REGISTRY_DEPLOYMENT_NAME}
+              ${KUBECTL} -n package-registry rollout restart deployment ${PACKAGE_REGISTRY_DEPLOYMENT_NAME}
             ''')
           }
         }
@@ -100,7 +100,7 @@ def withGCPCredentials(Map args, Closure body){
 
 def installKubectl(){
   sh(label: 'Install Kubectl', script: '''
-  curl -Lo $HOME/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl
-  chmod +x $HOME/bin/kubectl
+  curl -Lo ${KUBECTL} https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl
+  chmod +x ${KUBECTL}
   ''')
 }
