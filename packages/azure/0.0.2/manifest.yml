@@ -1,7 +1,7 @@
 name: azure
 title: Azure
-version: 0.0.1
-release: experimental
+version: 0.0.2
+release: beta
 description: Azure Integration
 type: integration
 icons:
