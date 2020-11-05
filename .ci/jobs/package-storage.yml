@@ -1,6 +1,6 @@
 ---
 - job:
-    name:  Ingest-manager/package-storage
+    name: Ingest-manager/package-storage
     display-name: Package Storage
     description: Jenkins pipeline for the Package Storage project
     view: Beats
