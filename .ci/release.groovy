@@ -69,9 +69,7 @@ pipeline {
 def getVaultSecretRetry(Map args){
   def secret = arg.containsKey('secret') ? args.secret : error('Secret not valid')
   def jsonValue = [:]
-  retryWithSleep(retries: 3, seconds: 5, backoff: true) {
-    jsonValue = getVaultSecret(secret: secret)
-  }
+  jsonValue = getVaultSecret(secret: secret)
   return jsonValue
 }
 
