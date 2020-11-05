@@ -69,8 +69,7 @@ pipeline {
 def getVaultSecretRetry(Map args){
   def secret = arg.containsKey('secret') ? args.secret : error('Secret not valid')
   def jsonValue = [:]
-  jsonValue = getVaultSecret(secret: secret)
-  return jsonValue
+  return getVaultSecret(secret: secret)
 }
 
 def withPackageRegistryEnv(Map args, Closure body){
