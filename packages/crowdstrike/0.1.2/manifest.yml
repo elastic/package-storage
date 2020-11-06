@@ -1,6 +1,6 @@
 name: crowdstrike
 title: CrowdStrike
-version: 0.2.3
+version: 0.1.2
 description: CrowdStrike Integration
 type: integration
 format_version: 1.0.0
@@ -23,7 +23,7 @@ screenshots:
     title: CrowdStrike SIEM Events
     size: 3360x1776
     type: image/jpg
-policy_templates:
+config_templates:
   - name: crowdstrike
     title: CrowdStrike Falcon logs
     description: Collect logs from CrowdStrike Falcon
@@ -41,4 +41,5 @@ policy_templates:
         title: "Collect CrowdStrike Falcon logs (input: logfile)"
         description: "Collecting logs from CrowdStrike Falcon (input: logfile)"
 owner:
-  github: elastic/security-external-integrations
+  github: elastic/security-ingest
+requirement: {}
