@@ -1,8 +1,0 @@
-type: logs
-title: Azure signinlogs logs
-release: beta
-streams:
-  - input: "azure-eventhub"
-    template_path: "azure-eventhub.yml.hbs"
-    title: "Azure signinlogs logs"
-    description: "Collect Azure signinlogs logs using azure-eventhub input"
