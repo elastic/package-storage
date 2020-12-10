@@ -31,12 +31,15 @@ const (
 var validTypes = map[string]string{
 	"logs":    "Logs",
 	"metrics": "Metrics",
+	"traces":  "Traces",
 }
 
 type DataStream struct {
 	// Name and type of the data stream. This is linked to data_stream.dataset and data_stream.type fields.
-	Type    string `config:"type" json:"type" validate:"required"`
-	Dataset string `config:"dataset" json:"dataset,omitempty" yaml:"dataset,omitempty"`
+	Type      string `config:"type" json:"type" validate:"required"`
+	Dataset   string `config:"dataset" json:"dataset,omitempty" yaml:"dataset,omitempty"`
+	Hidden    bool   `config:"hidden" json:"hidden,omitempty" yaml:"hidden,omitempty"`
+	IlmPolicy string `config:"ilm_policy" json:"ilm_policy,omitempty" yaml:"ilm_policy,omitempty"`
 
 	Title   string `config:"title" json:"title" validate:"required"`
 	Release string `config:"release" json:"release"`
@@ -55,11 +58,12 @@ type DataStream struct {
 }
 
 type Input struct {
-	Type        string     `config:"type" json:"type" validate:"required"`
-	Vars        []Variable `config:"vars" json:"vars,omitempty" yaml:"vars,omitempty"`
-	Title       string     `config:"title" json:"title,omitempty" yaml:"title,omitempty"`
-	Description string     `config:"description" json:"description,omitempty" yaml:"description,omitempty"`
-	Streams     []Stream   `config:"streams" json:"streams,omitempty" yaml:"streams,omitempty"`
+	Type         string     `config:"type" json:"type" validate:"required"`
+	Vars         []Variable `config:"vars" json:"vars,omitempty" yaml:"vars,omitempty"`
+	Title        string     `config:"title" json:"title,omitempty" yaml:"title,omitempty"`
+	Description  string     `config:"description" json:"description,omitempty" yaml:"description,omitempty"`
+	Streams      []Stream   `config:"streams" json:"streams,omitempty" yaml:"streams,omitempty"`
+	TemplatePath string     `config:"template_path" json:"template_path,omitempty" yaml:"template_path,omitempty"`
 }
 
 type Stream struct {
