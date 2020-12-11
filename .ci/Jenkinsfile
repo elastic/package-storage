@@ -49,7 +49,7 @@ pipeline {
         cleanup()
         withMageEnv(){
           dir("${BASE_DIR}"){
-            sh(label: 'Checks formatting / linting',script: 'mage -debug -t 30m check')
+            sh(label: 'Checks formatting / linting',script: 'mage -debug check')
           }
         }
       }

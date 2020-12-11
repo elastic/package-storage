@@ -177,5 +177,5 @@ func TestIntegration() error {
 	if err != nil {
 		return err
 	}
-	return sh.RunV("go", "test", "testing/main_integration_test.go", "-v", "-tags=integration", "2>&1", "|", "go-junit-report", ">", "junit-report.xml")
+	return sh.RunV("go", "test", "testing/main_integration_test.go", "-v", "-tags=integration", "-t", "30m", "2>&1", "|", "go-junit-report", ">", "junit-report.xml")
 }
