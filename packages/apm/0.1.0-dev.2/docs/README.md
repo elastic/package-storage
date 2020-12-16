@@ -26,7 +26,7 @@ inputs:
     meta:
       package:
         name: apm
-        version: 0.1.0
+        version: 0.1.0-dev.2
     data_stream:
       namespace: default
     apm-server:
