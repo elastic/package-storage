@@ -1,6 +1,6 @@
 name: checkpoint
 title: Check Point
-version: 0.2.4
+version: 0.1.0
 release: experimental
 description: Check Point Integration
 type: integration
@@ -14,7 +14,7 @@ icons:
     title: Check Point
     size: 216x216
     type: image/svg+xml
-policy_templates:
+config_templates:
   - name: checkpoint
     title: Check Point logs
     description: Collect logs from Check Point instances
@@ -36,9 +36,9 @@ policy_templates:
             type: text
             title: Paths
             multi: true
-            required: true
+            required: false
             show_user: true
-      - type: udp
+      - type: syslog
         vars:
           - name: syslog_host
             type: text
@@ -63,7 +63,8 @@ policy_templates:
             required: true
             show_user: true
             default: 9001
-        title: "Collect Check Point firewall logs (input: udp)"
-        description: "Collecting firewall logs from Check Point instances (input: udp)"
+        title: "Collect Check Point firewall logs (input: syslog)"
+        description: "Collecting firewall logs from Check Point instances (input: syslog)"
 owner:
-  github: elastic/security-external-integrations
+  github: elastic/security-ingest
+requirement: {}
