@@ -26,7 +26,10 @@ pipeline {
     LANG = "C.UTF-8"
     LC_ALL = "C.UTF-8"
     HOME = "${env.WORKSPACE}"
-    KUBECTL = "${env.HOME}/bin/kubectl"
+    BIN_DIR = "${env.HOME}/bin"
+    KUBECTL = "${env.BIN_DIR}/kubectl"
+    CLOUDSDK_ROOT_DIR = "${env.BIN_DIR}"
+    GCLOUD_VERSION = "320.0.0"
     JOB_GIT_CREDENTIALS = "f6c7695a-671e-4f4f-a331-acdce44ff9ba"
     CREDENTIALS_FILE = 'credentials.json'
   }
@@ -54,8 +57,9 @@ pipeline {
       }
       steps {
         withPackageRegistryEnv(secret: 'secret/observability-team/ci/package-registry-deployment'){
+          installGcloud()
+          installKubectl()
           withGCPCredentials(secret: "secret/gce/${GOOGLE_PROJECT}/service-account/package-registry-rollout"){
-            installKubectl()
             sh(label: "Rollout ${PACKAGE_REGISTRY_DEPLOYMENT_NAME} deployment", script: '''
               ${KUBECTL} -n package-registry rollout restart deployment ${PACKAGE_REGISTRY_DEPLOYMENT_NAME}
             ''')
@@ -79,7 +83,11 @@ def withPackageRegistryEnv(Map args, Closure body){
     [var: "CLUSTER_CREDENTIALS_NAME", password: jsonValue.cluster_credentials_name],
     [var: "KUBECONFIG", password: "${HOME}/.kubeconfig"],
   ]){
-    body()
+    withEnv([
+      "PATH+GCLOUD=${CLOUDSDK_ROOT_DIR}/google-cloud-sdk/bin",
+    ]){
+      body()
+    }
   }
 }
 
@@ -98,5 +106,19 @@ def installKubectl(){
   sh(label: 'Install Kubectl', script: '''
   curl -Lo ${KUBECTL} https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl
   chmod +x ${KUBECTL}
+  ''')
+}
+
+def installGcloud(){
+  sh(lable: 'Install gcloud', script: '''
+    set -eo pipefail
+    ARCH=$(uname|tr '[:upper:]' '[:lower:]')
+
+    mkdir -p "${CLOUDSDK_ROOT_DIR}"
+    cd "${CLOUDSDK_ROOT_DIR}"
+    curl -sSLo google-cloud-sdk.tar.gz \
+      https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-${ARCH}-x86_64.tar.gz
+    tar zxf google-cloud-sdk.tar.gz google-cloud-sdk
+    "${CLOUDSDK_ROOT_DIR}/google-cloud-sdk/install.sh" -q
   ''')
 }
