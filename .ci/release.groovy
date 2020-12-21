@@ -67,12 +67,12 @@ pipeline {
 }
 
 def getVaultSecretRetry(Map args){
-  def secret = arg.containsKey('secret') ? args.secret : error('Secret not valid')
+  def secret = args.containsKey('secret') ? args.secret : error('Secret not valid')
   return getVaultSecret(secret: secret)
 }
 
 def withPackageRegistryEnv(Map args, Closure body){
-  def jsonValue = getVaultSecretRetry(args)
+  def jsonValue = getVaultSecretRetry(args)?.data
   withEnvMask(vars: [
     [var: "GOOGLE_PROJECT", password: jsonValue.google_project],
     [var: "REGION", password: jsonValue.region],
@@ -84,7 +84,7 @@ def withPackageRegistryEnv(Map args, Closure body){
 }
 
 def withGCPCredentials(Map args, Closure body){
-  def jsonValue = getVaultSecretRetry(args)
+  def jsonValue = getVaultSecretRetry(args)?.data
   writeFile(file: "${CREDENTIALS_FILE}", text: jsonValue.credentials)
   sh(label: 'Activate GCP credentials', script: '''
     gcloud auth activate-service-account --key-file ${CREDENTIALS_FILE}
