@@ -110,7 +110,7 @@ def installKubectl(){
 }
 
 def installGcloud(){
-  sh(lable: 'Install gcloud', script: '''
+  sh(label: 'Install gcloud', script: '''#!/bin/bash
     set -eo pipefail
     ARCH=$(uname|tr '[:upper:]' '[:lower:]')
 
