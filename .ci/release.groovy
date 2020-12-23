@@ -43,7 +43,7 @@ pipeline {
     disableConcurrentBuilds()
   }
   parameters {
-    choice(choices: ['none', 'snapshot', 'staging', 'prod', 'experimental', '7-9'], description: 'Environment to Rollout.', name: 'environment')
+    choice(choices: ['none', 'snapshot', 'staging', 'prod'], description: 'Environment to Rollout.', name: 'environment')
   }
   stages {
     stage('Rollout') {
@@ -56,6 +56,7 @@ pipeline {
         PACKAGE_REGISTRY_DEPLOYMENT_NAME = "package-registry-${params.environment}-vanilla"
       }
       steps {
+        changeDescription()
         withPackageRegistryEnv(secret: 'secret/observability-team/ci/package-registry-deployment'){
           installGcloud()
           installKubectl()
@@ -68,6 +69,11 @@ pipeline {
       }
     }
   }
+}
+
+def changeDescription(){
+  currentBuild.description = "Rollout the environment ${params.environment}"
+  currentBuild.displayName = "#${BUILD_NUMBER}-(${params.environment})"
 }
 
 def getVaultSecretRetry(Map args){
