@@ -101,6 +101,7 @@ def withGCPCredentials(Map args, Closure body){
   def jsonValue = getVaultSecretRetry(args)?.data
   writeFile(file: "${CREDENTIALS_FILE}", text: jsonValue.credentials)
   sh(label: 'Activate GCP credentials', script: '''
+    set +x
     gcloud auth activate-service-account --key-file ${CREDENTIALS_FILE}
     gcloud --project=${GOOGLE_PROJECT} container clusters get-credentials ${CLUSTER_CREDENTIALS_NAME} --region ${REGION}
   ''')
