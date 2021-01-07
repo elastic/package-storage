@@ -17,37 +17,27 @@ import (
 	"time"
 
 	"github.com/magefile/mage/sh"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 // TestSetup tests if Kibana can be run against the current registry
 // and the setup command works as expected.
 func TestSetup(t *testing.T) {
-
 	err := os.Chdir("environments")
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
 
 	// Make sure services are shut down again at the end of the test
 	defer func() {
 		err = sh.Run("docker-compose", "-f", "snapshot.yml", "-f", "local.yml", "down", "-v")
-		if err != nil {
-			t.Error(err)
-		}
-
+		require.NoError(err)
 	}()
 	// Spin up services
 	go func() {
 		err = sh.Run("docker-compose", "-f", "snapshot.yml", "pull")
-		if err != nil {
-			t.Error(err)
-		}
+		require.NoError(err)
 
 		err = sh.Run("docker-compose", "-f", "snapshot.yml", "-f", "local.yml", "up", "--force-recreate", "--remove-orphans", "--build")
-		if err != nil {
-			t.Error(err)
-		}
+		require.NoError(err)
 	}()
 
 	// Check for 5 minutes if service is available
@@ -69,28 +59,20 @@ func TestSetup(t *testing.T) {
 
 	// Run setup in fleet against registry to see if no errors are returned
 	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/fleet/setup", nil)
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
+
 	req.Header.Add("kbn-xsrf", "ingest_manager")
 	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
+
 	defer resp.Body.Close()
-
-	assert.Equal(t, 200, resp.StatusCode)
-
 	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		t.Error(err)
-	}
-	log.Println(string(body))
+	require.NoError(err, string(body))
+
+	require.Equal(t, 200, resp.StatusCode, string(body))
 
 	packageStrings, err := getPackages(t)
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
 
 	t.Run("install-packages", func(t *testing.T) {
 		// Go through all packages and check if they can be installed
@@ -106,22 +88,17 @@ func TestSetup(t *testing.T) {
 
 func installPackage(t *testing.T, p string) {
 	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/fleet/epm/packages/"+p, nil)
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
+
 	req.Header.Add("kbn-xsrf", "ingest_manager")
 	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		t.Error(err)
-	}
+	require.NoError(err)
+
 	defer resp.Body.Close()
-
-	assert.Equal(t, 200, resp.StatusCode)
-
 	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		t.Error(err, string(body))
-	}
+	require.NoError(err, string(body))
+
+	require.Equal(t, 200, resp.StatusCode, string(body))
 	log.Println(p)
 }
 
@@ -133,17 +110,13 @@ type Package struct {
 func getPackages(t *testing.T) ([]string, error) {
 	// The kibana.version must be in sync with the stack version used in snapshot.yml
 	resp, err := http.Get("http://localhost:8080/search?experimental=true&kibana.version=7.11.0")
-	if err != nil {
-		return nil, err
-	}
+	require.NoError(err)
 	defer resp.Body.Close()
 
-	assert.Equal(t, 200, resp.StatusCode)
+	require.Equal(t, 200, resp.StatusCode)
 
 	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+	require.NoError(err)
 	return getPackageStrings(body)
 }
 
