@@ -84,6 +84,7 @@ pipeline {
       }
       post {
         always {
+          archiveArtifacts(allowEmptyArchive: true, artifacts: "${BASE_DIR}/build/elastic-stack-logs/*.log")
           convertGoTestResults(
             input: "${BASE_DIR}/tests-report.txt",
             output: "${BASE_DIR}/junit-report.xml"
