@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"event.code\",\"negate\":false,\"params\":[\"4723\",\"4724\"],\"type\":\"phrases\",\"value\":\"4723, 4724\"},\"query\":{\"bool\":{\"minimum_should_match\":1,\"should\":[{\"match_phrase\":{\"event.code\":\"4723\"}},{\"match_phrase\":{\"event.code\":\"4724\"}}]}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security\"}}"
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"event.code\",\"negate\":false,\"params\":[\"4723\",\"4724\"],\"type\":\"phrases\",\"value\":\"4723, 4724\"},\"query\":{\"bool\":{\"minimum_should_match\":1,\"should\":[{\"match_phrase\":{\"event.code\":\"4723\"}},{\"match_phrase\":{\"event.code\":\"4724\"}}]}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "title": "Users Password Changes - Table [Windows Security]",
     "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",

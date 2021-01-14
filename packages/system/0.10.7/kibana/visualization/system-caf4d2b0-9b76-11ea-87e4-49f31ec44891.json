@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "savedSearchRefName": "search_0",
     "title": "Event Distribution in time [Windows Security]",

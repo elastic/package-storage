@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"winlog.provider_name\",\"negate\":false,\"params\":{\"query\":\"Microsoft-Windows-Security-Auditing\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"winlog.provider_name\":\"Microsoft-Windows-Security-Auditing\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security\"}}"
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"winlog.provider_name\",\"negate\":false,\"params\":{\"query\":\"Microsoft-Windows-Security-Auditing\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"winlog.provider_name\":\"Microsoft-Windows-Security-Auditing\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "title": "Logon Successful vs Failed [Windows Security]",
     "uiStateJSON": "{\"vis\":{\"colors\":{\"Failed Logins\":\"#EF843C\",\"Failed Logons\":\"#EA6460\",\"Successful Login\":\"#B7DBAB\",\"Successful Logon\":\"#B7DBAB\"}}}",

@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"winlog.provider_name\",\"negate\":false,\"params\":{\"query\":\"Microsoft-Windows-Security-Auditing\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"winlog.provider_name\":\"Microsoft-Windows-Security-Auditing\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security\"}}"
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"winlog.provider_name\",\"negate\":false,\"params\":{\"query\":\"Microsoft-Windows-Security-Auditing\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"winlog.provider_name\":\"Microsoft-Windows-Security-Auditing\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "title": "Logon Successful - Logon Failed Timeline [Windows Security]",
     "uiStateJSON": "{\"vis\":{\"colors\":{\"Login Failed\":\"#F9934E\",\"Login OK\":\"#9AC48A\",\"Logon Failed\":\"#EF843C\",\"Logon Successful\":\"#9AC48A\"}}}",
