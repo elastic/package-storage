@@ -13,7 +13,7 @@
   },
   "id": "apache-Logs-Apache-Dashboard",
   "migrationVersion": {
-    "dashboard": "7.11.0"
+    "dashboard": "7.9.3"
   },
   "references": [
     {
