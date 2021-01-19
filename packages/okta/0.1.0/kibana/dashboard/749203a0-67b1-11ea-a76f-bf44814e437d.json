@@ -11,7 +11,7 @@
     "title": "[Logs Okta] Overview",
     "version": 1
   },
-  "id": "okta-749203a0-67b1-11ea-a76f-bf44814e437d",
+  "id": "749203a0-67b1-11ea-a76f-bf44814e437d",
   "migrationVersion": {
     "dashboard": "7.3.0"
   },
@@ -20,32 +20,32 @@
   ],
   "references": [
     {
-      "id": "okta-281ca660-67b1-11ea-a76f-bf44814e437d",
+      "id": "281ca660-67b1-11ea-a76f-bf44814e437d",
       "name": "panel_0",
       "type": "map"
     },
     {
-      "id": "okta-545d6a00-67ae-11ea-a76f-bf44814e437d",
+      "id": "545d6a00-67ae-11ea-a76f-bf44814e437d",
       "name": "panel_1",
       "type": "visualization"
     },
     {
-      "id": "okta-7c6ec080-67c6-11ea-a76f-bf44814e437d",
+      "id": "7c6ec080-67c6-11ea-a76f-bf44814e437d",
       "name": "panel_2",
       "type": "visualization"
     },
     {
-      "id": "okta-cda883a0-67c6-11ea-a76f-bf44814e437d",
+      "id": "cda883a0-67c6-11ea-a76f-bf44814e437d",
       "name": "panel_3",
       "type": "visualization"
     },
     {
-      "id": "okta-0a784b30-67c7-11ea-a76f-bf44814e437d",
+      "id": "0a784b30-67c7-11ea-a76f-bf44814e437d",
       "name": "panel_4",
       "type": "visualization"
     },
     {
-      "id": "okta-21028750-67ca-11ea-a76f-bf44814e437d",
+      "id": "21028750-67ca-11ea-a76f-bf44814e437d",
       "name": "panel_5",
       "type": "search"
     }
