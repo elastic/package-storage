@@ -17,7 +17,7 @@
     "title": "Audit Events [Logs O365]",
     "version": 1
   },
-  "id": "o365-fdc14020-6859-11ea-8d6a-292ef5d68366",
+  "id": "fdc14020-6859-11ea-8d6a-292ef5d68366",
   "migrationVersion": {
     "search": "7.4.0"
   },
