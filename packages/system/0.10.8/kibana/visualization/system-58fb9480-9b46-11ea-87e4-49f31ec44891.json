@@ -5,10 +5,10 @@
       "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "savedSearchRefName": "search_0",
-    "title": "Group Management Events - Target Groups - Tag Cloud  [Windows Security]",
+    "title": "Group Management Events - Target Groups - Tag Cloud  [Windows System Security]",
     "uiStateJSON": "{}",
     "version": 1,
-    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"group.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"maxFontSize\":58,\"minFontSize\":18,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Group Management Events - Target Groups - Tag Cloud  [Windows Security]\",\"type\":\"tagcloud\"}"
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"group.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"maxFontSize\":58,\"minFontSize\":18,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Group Management Events - Target Groups - Tag Cloud  [Windows System Security]\",\"type\":\"tagcloud\"}"
   },
   "id": "windows-58fb9480-9b46-11ea-87e4-49f31ec44891",
   "migrationVersion": {

@@ -5,10 +5,10 @@
       "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:windows.security OR data_stream.dataset:system.security\"}}"
     },
     "savedSearchRefName": "search_0",
-    "title": "Target Users [Windows Security]",
+    "title": "Target Users [Windows System Security]",
     "uiStateJSON": "{}",
     "version": 1,
-    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"winlog.event_data.TargetUserName\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"maxFontSize\":72,\"minFontSize\":18,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Target Users [Windows Security]\",\"type\":\"tagcloud\"}"
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"winlog.event_data.TargetUserName\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"maxFontSize\":72,\"minFontSize\":18,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Target Users [Windows System Security]\",\"type\":\"tagcloud\"}"
   },
   "id": "windows-117f5a30-9b71-11ea-87e4-49f31ec44891",
   "migrationVersion": {
