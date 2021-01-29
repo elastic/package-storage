@@ -10,8 +10,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/Masterminds/semver/v3"
 	"github.com/pkg/errors"
 )
+
+// PackageValidationDisabled is a flag which can disable package content validation (package, data streams, assets, etc.).
+var PackageValidationDisabled bool
 
 var packageList Packages
 
@@ -69,10 +73,21 @@ func getPackagePaths(allPaths []string) ([]string, error) {
 			}
 
 			if info.IsDir() {
-				log.Printf("%-20s\t%10s\t%s", dirs[0], dirs[1], path)
-				foundPaths = append(foundPaths, path)
+				versionDir := dirs[1]
+				_, err := semver.StrictNewVersion(versionDir)
+				if err != nil {
+					log.Printf("warning: unexpected directory: %s, ignoring", path)
+				} else {
+					log.Printf("%-20s\t%10s\t%s", dirs[0], versionDir, path)
+					foundPaths = append(foundPaths, path)
+				}
+				return filepath.SkipDir
 			}
-			return filepath.SkipDir // don't need to go deeper
+			// Unexpected file, return nil in order to continue processing sibling directories
+			// Fixes an annoying problem when the .DS_Store file is left behind and the package
+			// is not loading without any error information
+			log.Printf("warning: unexpected file: %s, ignoring", path)
+			return nil
 		})
 		if err != nil {
 			return nil, errors.Wrapf(err, "listing packages failed (path: %s)", packagesPath)
