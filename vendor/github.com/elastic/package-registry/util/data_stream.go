@@ -36,10 +36,11 @@ var validTypes = map[string]string{
 
 type DataStream struct {
 	// Name and type of the data stream. This is linked to data_stream.dataset and data_stream.type fields.
-	Type      string `config:"type" json:"type" validate:"required"`
-	Dataset   string `config:"dataset" json:"dataset,omitempty" yaml:"dataset,omitempty"`
-	Hidden    bool   `config:"hidden" json:"hidden,omitempty" yaml:"hidden,omitempty"`
-	IlmPolicy string `config:"ilm_policy" json:"ilm_policy,omitempty" yaml:"ilm_policy,omitempty"`
+	Type            string `config:"type" json:"type" validate:"required"`
+	Dataset         string `config:"dataset" json:"dataset,omitempty" yaml:"dataset,omitempty"`
+	Hidden          bool   `config:"hidden" json:"hidden,omitempty" yaml:"hidden,omitempty"`
+	IlmPolicy       string `config:"ilm_policy" json:"ilm_policy,omitempty" yaml:"ilm_policy,omitempty"`
+	DatasetIsPrefix bool   `config:"dataset_is_prefix" json:"dataset_is_prefix,omitempty" yaml:"dataset_is_prefix,omitempty"`
 
 	Title   string `config:"title" json:"title" validate:"required"`
 	Release string `config:"release" json:"release"`
@@ -151,22 +152,11 @@ func NewDataStream(basePath string, p *Package) (*DataStream, error) {
 	if !IsValidRelease(d.Release) {
 		return nil, fmt.Errorf("invalid release: %s", d.Release)
 	}
-	return d, nil
-}
 
-func (d *DataStream) Validate() error {
 	pipelineDir := filepath.Join(d.BasePath, "elasticsearch", DirIngestPipeline)
 	paths, err := filepath.Glob(filepath.Join(pipelineDir, "*"))
 	if err != nil {
-		return err
-	}
-
-	if strings.Contains(d.Dataset, "-") {
-		return fmt.Errorf("data stream name is not allowed to contain `-`: %s", d.Dataset)
-	}
-
-	if !d.validType() {
-		return fmt.Errorf("type is not valid: %s", d.Type)
+		return nil, err
 	}
 
 	if d.Elasticsearch != nil && d.Elasticsearch.IngestPipelineName == "" {
@@ -189,9 +179,25 @@ func (d *DataStream) Validate() error {
 			}
 		}
 	}
-
 	if d.IngestPipeline == "" && len(paths) > 0 {
-		return fmt.Errorf("unused pipelines in the package (dataset: %s): %s", d.Dataset, strings.Join(paths, ","))
+		return nil, fmt.Errorf("unused pipelines in the package (dataset: %s): %s", d.Dataset, strings.Join(paths, ","))
+	}
+	return d, nil
+}
+
+func (d *DataStream) Validate() error {
+	if PackageValidationDisabled {
+		return nil
+	}
+
+	pipelineDir := filepath.Join(d.BasePath, "elasticsearch", DirIngestPipeline)
+
+	if strings.Contains(d.Dataset, "-") {
+		return fmt.Errorf("data stream name is not allowed to contain `-`: %s", d.Dataset)
+	}
+
+	if !d.validType() {
+		return fmt.Errorf("type is not valid: %s", d.Type)
 	}
 
 	// In case an ingest pipeline is set, check if it is around
@@ -204,7 +210,7 @@ func (d *DataStream) Validate() error {
 			return errors.Wrapf(errJSON, "stat ingest pipeline JSON file failed (path: %s)", jsonPipelinePath)
 		}
 		if !os.IsNotExist(errJSON) {
-			err = validateIngestPipelineFile(jsonPipelinePath)
+			err := validateIngestPipelineFile(jsonPipelinePath)
 			if err != nil {
 				return errors.Wrapf(err, "validating ingest pipeline JSON file failed (path: %s)", jsonPipelinePath)
 			}
@@ -217,7 +223,7 @@ func (d *DataStream) Validate() error {
 			return errors.Wrapf(errYAML, "stat ingest pipeline YAML file failed (path: %s)", jsonPipelinePath)
 		}
 		if !os.IsNotExist(errYAML) {
-			err = validateIngestPipelineFile(yamlPipelinePath)
+			err := validateIngestPipelineFile(yamlPipelinePath)
 			if err != nil {
 				return errors.Wrapf(err, "validating ingest pipeline YAML file failed (path: %s)", jsonPipelinePath)
 			}
@@ -229,7 +235,7 @@ func (d *DataStream) Validate() error {
 		}
 	}
 
-	err = d.validateRequiredFields()
+	err := d.validateRequiredFields()
 	if err != nil {
 		return errors.Wrap(err, "validating required fields failed")
 	}
