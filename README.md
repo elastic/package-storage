@@ -1,7 +1,7 @@
 # Package Storage
-This is a storage repository for the packages served through the [package registry](https://github.com/elastic/package-registry) service.
+This is a storage repository for the packages served through the [package registry](https://github.com/elastic/package-registry) service.  See the package-registry repo for basic registry api usage and examples.
 
-It contains 3 branches with the packages for the different environments:
+Package storage repo contains 3 branches with the packages for the different environments:
 
 * snapshot
 * staging
@@ -9,17 +9,25 @@ It contains 3 branches with the packages for the different environments:
 
 Here's how these branches relate to repositories and other aspects of packages.
 
-|                       | Snapshot                    | Staging                    | Production                |
-|-------------------    |-------------------------    |------------------------    |-----------------------    |
-| URL                   | epr-snapshot.elastic.co     | epr-staging.elastic.co     | epr.elastic.co            |
-| Add package           | Commit                      | Commit                     | PR                        |
-| Version overwrite     | yes                         | if needed                  | no                        |
-| Stack Version         | *-SNAPSHOT                  | *-SNAPSHOT                 | Released (candidates)     |
-| Registry Version      | fixed version                | Stable release             | Stable release            |
-| Branch                | snapshot                    | staging                    | production                |
-| Packages              | snapshot+staging+prod       | staging+production         | production                |
-| Release               | Manual                      | Manual                  | Manual                 |
-| Docker image          | snapshot                    | staging                    | production                |
+|                         | Snapshot                    | Staging                    | Production                |
+|-------------------      |-------------------------    |------------------------    |-----------------------    |
+| URL                     |  [epr-snapshot.elastic.co](https://epr-snapshot.elastic.co/search) | [epr-staging.elastic.co](https://epr-staging.elastic.co/search) | [epr.elastic.co](https://epr.elastic.co/search) |
+| How to Add package      | Commit to elastic/integrations* | PR with elastic-package tool | PR with elastic-package tool |
+| Allow Version overwrite?| yes**                        | if needed                  | no                        |
+| Allow Version removal?  | yes                         | special exceptions only    | only version increments   |
+| Stack Ver vs Storage Ver| [master branch](https://github.com/elastic/kibana/blob/master/x-pack/plugins/fleet/server/services/epm/registry/registry_url.ts#L25) | none set to staging | all non-master branches*** |
+| Registry Version        | fixed dev or latest stable release | Stable release      | Stable release            |
+| Branch                  | snapshot                    | staging                    | production                |
+| Packages                | snapshot+staging+prod       | staging+production         | production                |
+| Release                 | Manual                      | Manual                     | Manual                    |
+| Docker image            | snapshot                    | staging                    | production                |
+
+* https://github.com/elastic/integrations is the development home of most Integrations source, tho not all, promotion process to storage repos is discussed below
+
+** removing packages can cause short-term dev problems when a package is in use and then is deleted, some manual maintenance is expected and this does not reflect user experience in production.
+
+*** for example, during the development of 8.0 as master, all 7.x branches (including both snapshot + formal build candidates) will use the production registry by default.  To update this in self managed Kibana usage you can set the below, for example, in the kibana/config/kibana.yml file as a start up option: 
+xpack.fleet.registryUrl: "htttp://epr-staging.elastic.co/"
 
 # Update Package Registry for a distribution
 
@@ -55,7 +63,9 @@ To easily differentiate PRs against snapshot, staging and production, each PR to
 
 # Package promotion
 
-A package can go through different stages from snapshot to staging to production. To promote a package from one distribution to another, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. If the same package version exists in both branches, the first one is taken. In the above case this is `staging`.
+A package will usually go through different stages from snapshot to staging to production.  It is recommended to use the [elastic/elastic-package](https://github.com/elastic/elastic-package) repo to achieve package promotion, and it is the developer's burden to fulfill tests on snapshot stage and to coordinate any desired tests on staging prior to promoting to production storage.  Note that production is in use by all 7.10+ released versions of Elastic and testing should reflect this to avoid problems. 
+
+So, briefly, to promote a package from one distribution to another, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. If the same package version exists in both branches, the first one is taken. In the above case this is `staging`.
 
 As the staging distribution consists of `production + staging` packages and `snapshot` of `production + staging + snapshot` packages, a package that was promoted to the next stage, is always also available in the previous stage.
 
