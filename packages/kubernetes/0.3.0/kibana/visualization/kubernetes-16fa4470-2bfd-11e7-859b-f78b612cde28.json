@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset: kubernetes.pod\"}}"
     },
     "title": "Network in by node  [Metrics Kubernetes]",
     "uiStateJSON": "{}",
