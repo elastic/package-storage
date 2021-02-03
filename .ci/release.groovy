@@ -68,7 +68,25 @@ pipeline {
         }
       }
     }
+    post {
+      post {
+        success {
+          slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed success", color: 'good')
+        }
+        failure {
+          slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed failure", color: 'warning')
+        }
+      }
+    }
   }
+}
+
+def slackMessage(Map args = [:]) {
+  def statusMessage = args.statusMessage
+  def color = args.color
+  slackSend(channel: '#integrations', color: "${color}",
+            message: "${statusMessage}",
+            tokenCredentialId: 'jenkins-slack-integration-token')
 }
 
 def changeDescription(){
