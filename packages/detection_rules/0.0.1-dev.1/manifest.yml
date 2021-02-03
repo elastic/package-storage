@@ -1,0 +1,17 @@
+format_version: 1.0.0
+name: detection_rules
+title: Detection rules
+version: 0.0.1-dev.1
+license: basic
+description: Rules for the detection engine in the Security application.
+type: rules
+categories:
+  - security
+release: experimental
+conditions:
+  kibana.version: '^7.12.0'
+screenshots: []
+icons: []
+policy_templates: []
+owner:
+  github: elastic/protections

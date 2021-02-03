@@ -1,0 +1,12 @@
+{
+  "ce64d965-6cb0-466d-b74f-8d2c76f47f05": {
+    "1": ["Created \"New ActiveSyncAllowedDeviceID Added via PowerShell\" rule to detect new ActiveSync devices registered via PowerShell."],
+  },
+  "a9cb3641-ff4b-4cdc-a063-b4b8d02a67c7": {
+    "1": ["Created \"IPSEC NAT Traversal Port Activity\" rule to detect IPSEC activity that traverses a NAT"],
+    "2": ["Added dataset to network rules"],
+    "3": ["Remove rule timelines"],
+    "4": ["Add Threat Detection Category"],
+    "5": ["Remove deprecated ATT&CK technique"]
+  }
+}
