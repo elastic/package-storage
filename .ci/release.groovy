@@ -69,13 +69,11 @@ pipeline {
       }
     }
     post {
-      post {
-        success {
-          slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed success", color: 'good')
-        }
-        failure {
-          slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed failure", color: 'warning')
-        }
+      success {
+        slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed success", color: 'good')
+      }
+      failure {
+        slackMessage(statusMessage: "${PACKAGE_REGISTRY_DEPLOYMENT_NAME} Deployed failure", color: 'warning')
       }
     }
   }
