@@ -71,10 +71,10 @@ pipeline {
   }
   post {
     success {
-      slackMessage(statusMessage: "${params.environment} Deployed success", color: 'good')
+      slackMessage(statusMessage: "${params.environment} package storage cluster deployed successfully", color: 'good')
     }
     failure {
-      slackMessage(statusMessage: "${params.environment} Deployed failure", color: 'warning')
+      slackMessage(statusMessage: "${params.environment} package storage cluster deployment failed!", color: 'warning')
     }
   }
 }
