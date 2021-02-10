@@ -12,7 +12,7 @@ Here's how these branches relate to repositories and other aspects of packages.
 |                         | Snapshot                    | Staging                    | Production                |
 |-------------------      |-------------------------    |------------------------    |-----------------------    |
 | URL                     |  [epr-snapshot.elastic.co](https://epr-snapshot.elastic.co/search) | [epr-staging.elastic.co](https://epr-staging.elastic.co/search) | [epr.elastic.co](https://epr.elastic.co/search) |
-| How to Add package      | Commit to elastic/integrations* | PR with elastic-package tool | PR with elastic-package tool |
+| How to add a package      | Commit to elastic/integrations* | [`elastic-package promote`](https://github.com/elastic/elastic-package#elastic-package-promote) | [`elastic-package promote`](https://github.com/elastic/elastic-package#elastic-package-promote) |
 | Allow version overwrite?| yes**                        | if needed                  | no                        |
 | Allow version removal?  | yes                         | special exceptions only    | only version increments   |
 | Stack Ver vs Storage Ver| [master branch](https://github.com/elastic/kibana/blob/master/x-pack/plugins/fleet/server/services/epm/registry/registry_url.ts#L25) | none set to staging | all non-master branches*** |
