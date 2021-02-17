@@ -85,7 +85,19 @@ Contains endpoint data and CrowdStrike Falcon platform audit data forwarded from
 | crowdstrike.event.ParentImageFileName | Path to the parent process. | keyword |
 | crowdstrike.event.ParentProcessId | Parent process ID related to the detection. | integer |
 | crowdstrike.event.PatternDispositionDescription | Action taken by Falcon. | keyword |
-| crowdstrike.event.PatternDispositionFlags | Flags indicating actions taken. | object |
+| crowdstrike.event.PatternDispositionFlags.Detect |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.InddetMask |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.Indicator |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.KillParent |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.KillProcess |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.KillSubProcess |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.OperationBlocked |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.PolicyDisabled |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.ProcessBlocked |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.QuarantineFile |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.QuarantineMachine |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.Rooting |  | boolean |
+| crowdstrike.event.PatternDispositionFlags.SensorOnly |  | boolean |
 | crowdstrike.event.PatternDispositionValue | Unique ID associated with action taken. | integer |
 | crowdstrike.event.PolicyID | CrowdStrike policy id. | keyword |
 | crowdstrike.event.PolicyName | CrowdStrike policy name. | keyword |
@@ -152,7 +164,7 @@ Contains endpoint data and CrowdStrike Falcon platform audit data forwarded from
 | host.id | Unique host id. As hostname is not always unique, use values that are meaningful in your environment. Example: The current usage of `beat.name`. | keyword |
 | host.ip | Host ip addresses. | ip |
 | host.mac | Host mac addresses. | keyword |
-| host.name | Name of the host. It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use. | keyword |
+| host.name | Name of the host. | keyword |
 | host.os.build | OS build information. | keyword |
 | host.os.codename | OS codename, if any. | keyword |
 | host.os.family | OS family (such as redhat, debian, freebsd, windows). | keyword |
@@ -175,6 +187,8 @@ Contains endpoint data and CrowdStrike Falcon platform audit data forwarded from
 | process.parent.command_line | Full command line that started the process. | keyword |
 | process.parent.executable | Absolute path to the process executable. | keyword |
 | process.pid | Process id. | long |
+| related.hash | All the hashes seen on your event. | keyword |
+| related.hosts | All the host names seen on your event. | keyword |
 | related.ip | All of the IPs seen on your event. | ip |
 | related.user | All the user names seen on your event. | keyword |
 | rule.category | Rule category | keyword |
