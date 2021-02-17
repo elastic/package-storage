@@ -1,0 +1,64 @@
+type: logs
+title: Palo Alto Networks PAN-OS firewall logs
+release: experimental
+streams:
+  - input: syslog
+    vars:
+      - name: tags
+        type: text
+        title: Tags
+        multi: true
+        required: true
+        show_user: true
+        default:
+          - pan-os
+          - forwarded
+      - name: internal_zones
+        type: text
+        title: Internal Zones
+        multi: true
+        required: false
+        show_user: false
+        default:
+          - trust
+      - name: external_zones
+        type: text
+        title: External Zones
+        multi: true
+        required: false
+        show_user: false
+        default:
+          - untrust
+    template_path: syslog.yml.hbs
+    title: Syslog logs
+    description: Collect logs via syslog
+  - input: logfile
+    vars:
+      - name: tags
+        type: text
+        title: Tags
+        multi: true
+        required: true
+        show_user: true
+        default:
+          - pan-os
+          - forwarded
+      - name: internal_zones
+        type: text
+        title: Internal Zones
+        multi: true
+        required: false
+        show_user: false
+        default:
+          - trust
+      - name: external_zones
+        type: text
+        title: External Zones
+        multi: true
+        required: false
+        show_user: false
+        default:
+          - untrust
+    template_path: logfile.yml.hbs
+    title: Log files
+    description: Collect logs via log file
