@@ -1,5 +1,5 @@
 ---
-description: Pipeline for Windows forewarded Event Logs
+description: Pipeline for Windows Security events
 processors:
   - set:
       field: event.ingested
