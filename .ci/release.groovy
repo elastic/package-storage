@@ -18,7 +18,7 @@
 @Library('apm@current') _
 
 pipeline {
-  agent { label 'linux && immutable' }
+  agent { label 'ubuntu-20 && immutable' }
   environment {
     REPO = "package-storage"
     NOTIFY_TO = credentials('notify-to')
