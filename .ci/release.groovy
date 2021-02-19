@@ -68,10 +68,34 @@ pipeline {
         }
       }
     }
+    stage('Version details') {
+      when {
+        expression {
+          return params.environment != 'none'
+        }
+      }
+      environment {
+        DOCKER_TAG = "${params.environment}"
+        DOCKER_NAME = "epr_deploy"
+        IS_USER_TRIGGER = isUserTrigger()
+      }
+      steps {
+        sh(label: 'Grab version details', script: '''
+          docker run -d --rm --name ${DOCKER_NAME} docker.elastic.co/package-registry/distribution:${DOCKER_TAG}
+          docker exec -it ${DOCKER_NAME} sh -c 'find /packages -mindepth 3 -maxdepth 3 | awk -F\\/ "{print \\$4\\"-\\"\\$5\\"\\t\\"\\$3}" | sort' | tee packages.txt
+          docker stop ${DOCKER_NAME}
+          docker inspect docker.elastic.co/package-registry/distribution:snapshot | jq '.[]|{id: .Id,RepoTags: .RepoTags, RepoDigests: .RepoDigests, labels: .ContainerConfig.Labels}' | tee distribution_version.json
+        ''')
+        archiveArtifacts(allowEmptyArchive: true, artifacts: 'packages.txt,distribution_version.json', onlyIfSuccessful: true)
+      }
+    }
   }
   post {
     success {
-      slackMessage(statusMessage: "${params.environment} package storage cluster deployed successfully", color: 'good')
+      slackMessage(statusMessage: "${params.environment} package storage cluster deployed successfully\n"
+        + "User: ${env?.BUILD_CAUSE_USER ? env.BUILD_CAUSE_USER : 'Unknown'}\n" 
+        + "Packages: ${BUILD_URL}/artifact/packages.txt\n" 
+        + "Version: ${BUILD_URL}/artifact/distribution_version.json", color: 'good')
     }
     failure {
       slackMessage(statusMessage: "${params.environment} package storage cluster deployment failed!", color: 'warning')
