@@ -82,7 +82,7 @@ pipeline {
       steps {
         sh(label: 'Grab version details', script: '''
           docker run -d --rm --name ${DOCKER_NAME} docker.elastic.co/package-registry/distribution:${DOCKER_TAG}
-          docker exec -it ${DOCKER_NAME} sh -c 'find /packages -mindepth 3 -maxdepth 3 | awk -F\\/ "{print \\$4\\"-\\"\\$5\\"\\t\\"\\$3}" | sort' | tee packages.txt
+          docker exec -t ${DOCKER_NAME} sh -c 'find /packages -mindepth 3 -maxdepth 3 | awk -F\\/ "{print \\$4\\"-\\"\\$5\\"\\t\\"\\$3}" | sort' | tee packages.txt
           docker stop ${DOCKER_NAME}
           docker inspect docker.elastic.co/package-registry/distribution:snapshot | jq '.[]|{id: .Id,RepoTags: .RepoTags, RepoDigests: .RepoDigests, labels: .ContainerConfig.Labels}' | tee distribution_version.json
         ''')
