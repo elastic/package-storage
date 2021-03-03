@@ -32,6 +32,7 @@ pipeline {
     GCLOUD_VERSION = "320.0.0"
     JOB_GIT_CREDENTIALS = "f6c7695a-671e-4f4f-a331-acdce44ff9ba"
     CREDENTIALS_FILE = 'credentials.json'
+    IS_USER_TRIGGER = isUserTrigger()
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20', daysToKeepStr: '30'))
@@ -46,11 +47,6 @@ pipeline {
     choice(choices: ['none', 'snapshot', 'staging', 'prod'], description: 'Environment to Rollout.', name: 'environment')
   }
   stages {
-    stage('Init'){
-      steps{
-        echo "User: ${env?.BUILD_CAUSE_USER ? env.BUILD_CAUSE_USER : 'Unknown'}"
-      }
-    }
     stage('Rollout') {
       when {
         expression {
@@ -82,7 +78,6 @@ pipeline {
       environment {
         DOCKER_TAG = "${params.environment}"
         DOCKER_NAME = "epr_deploy"
-        IS_USER_TRIGGER = isUserTrigger()
       }
       steps {
         sh(label: 'Grab version details', script: '''
