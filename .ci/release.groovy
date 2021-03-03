@@ -46,6 +46,11 @@ pipeline {
     choice(choices: ['none', 'snapshot', 'staging', 'prod'], description: 'Environment to Rollout.', name: 'environment')
   }
   stages {
+    stage('Init'){
+      steps{
+        echo "User: ${env?.BUILD_CAUSE_USER ? env.BUILD_CAUSE_USER : 'Unknown'}"
+      }
+    }
     stage('Rollout') {
       when {
         expression {
