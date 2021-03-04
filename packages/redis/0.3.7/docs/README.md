@@ -119,197 +119,187 @@ An example event for `info` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-06-25T10:16:10.138Z",
-  "dataset": {
-    "name": "redis.info",
-    "namespace": "default",
-    "type": "metrics"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "redis.info",
-    "duration": 374411,
-    "module": "redis"
-  },
-  "metricset": {
-    "name": "info",
-    "period": 10000
-  },
-  "redis": {
-    "info": {
-      "clients": {
-        "biggest_input_buf": 0,
-        "blocked": 0,
-        "connected": 5,
-        "longest_output_list": 0,
-        "max_input_buffer": 0,
-        "max_output_buffer": 0
-      },
-      "cluster": {
-        "enabled": false
-      },
-      "cpu": {
-        "used": {
-          "sys": 1.66,
-          "sys_children": 0,
-          "user": 0.39,
-          "user_children": 0.01
-        }
-      },
-      "memory": {
-        "active_defrag": {},
-        "allocator": "jemalloc-4.0.3",
-        "allocator_stats": {
-          "fragmentation": {},
-          "rss": {}
-        },
-        "fragmentation": {
-          "ratio": 2.71
-        },
-        "max": {
-          "policy": "noeviction",
-          "value": 0
-        },
-        "used": {
-          "lua": 37888,
-          "peak": 945016,
-          "rss": 2453504,
-          "value": 904992
-        }
-      },
-      "persistence": {
-        "aof": {
-          "bgrewrite": {
-            "last_status": "ok"
-          },
-          "buffer": {},
-          "copy_on_write": {},
-          "enabled": false,
-          "fsync": {},
-          "rewrite": {
-            "buffer": {},
-            "current_time": {
-              "sec": -1
+    "@timestamp": "2020-06-25T10:16:10.138Z",
+    "redis": {
+        "info": {
+            "clients": {
+                "biggest_input_buf": 0,
+                "blocked": 0,
+                "connected": 5,
+                "longest_output_list": 0,
+                "max_input_buffer": 0,
+                "max_output_buffer": 0
             },
-            "in_progress": false,
-            "last_time": {
-              "sec": -1
+            "cluster": {
+                "enabled": false
             },
-            "scheduled": false
-          },
-          "size": {},
-          "write": {
-            "last_status": "ok"
-          }
-        },
-        "loading": false,
-        "rdb": {
-          "bgsave": {
-            "current_time": {
-              "sec": -1
+            "cpu": {
+                "used": {
+                    "sys": 1.66,
+                    "sys_children": 0,
+                    "user": 0.39,
+                    "user_children": 0.01
+                }
             },
-            "in_progress": false,
-            "last_status": "ok",
-            "last_time": {
-              "sec": -1
+            "memory": {
+                "active_defrag": {},
+                "allocator": "jemalloc-4.0.3",
+                "allocator_stats": {
+                    "fragmentation": {},
+                    "rss": {}
+                },
+                "fragmentation": {
+                    "ratio": 2.71
+                },
+                "max": {
+                    "policy": "noeviction",
+                    "value": 0
+                },
+                "used": {
+                    "lua": 37888,
+                    "peak": 945016,
+                    "rss": 2453504,
+                    "value": 904992
+                }
+            },
+            "persistence": {
+                "aof": {
+                    "bgrewrite": {
+                        "last_status": "ok"
+                    },
+                    "buffer": {},
+                    "copy_on_write": {},
+                    "enabled": false,
+                    "fsync": {},
+                    "rewrite": {
+                        "buffer": {},
+                        "current_time": {
+                            "sec": -1
+                        },
+                        "in_progress": false,
+                        "last_time": {
+                            "sec": -1
+                        },
+                        "scheduled": false
+                    },
+                    "size": {},
+                    "write": {
+                        "last_status": "ok"
+                    }
+                },
+                "loading": false,
+                "rdb": {
+                    "bgsave": {
+                        "current_time": {
+                            "sec": -1
+                        },
+                        "in_progress": false,
+                        "last_status": "ok",
+                        "last_time": {
+                            "sec": -1
+                        }
+                    },
+                    "copy_on_write": {},
+                    "last_save": {
+                        "changes_since": 35,
+                        "time": 1548663522
+                    }
+                }
+            },
+            "replication": {
+                "backlog": {
+                    "active": 0,
+                    "first_byte_offset": 0,
+                    "histlen": 0,
+                    "size": 1048576
+                },
+                "connected_slaves": 0,
+                "master": {
+                    "offset": 0,
+                    "sync": {}
+                },
+                "master_offset": 0,
+                "role": "master",
+                "slave": {}
+            },
+            "server": {
+                "arch_bits": "64",
+                "build_id": "b9a4cd86ce8027d3",
+                "config_file": "",
+                "gcc_version": "6.4.0",
+                "git_dirty": "0",
+                "git_sha1": "00000000",
+                "hz": 10,
+                "lru_clock": 5159690,
+                "mode": "standalone",
+                "multiplexing_api": "epoll",
+                "run_id": "0f681cb959aa47413ec40ff383715c923f9cbefd",
+                "tcp_port": 6379,
+                "uptime": 707
+            },
+            "slowlog": {
+                "count": 0
+            },
+            "stats": {
+                "active_defrag": {},
+                "commands_processed": 265,
+                "connections": {
+                    "received": 848,
+                    "rejected": 0
+                },
+                "instantaneous": {
+                    "input_kbps": 0.18,
+                    "ops_per_sec": 6,
+                    "output_kbps": 1.39
+                },
+                "keys": {
+                    "evicted": 0,
+                    "expired": 0
+                },
+                "keyspace": {
+                    "hits": 15,
+                    "misses": 0
+                },
+                "latest_fork_usec": 0,
+                "migrate_cached_sockets": 0,
+                "net": {
+                    "input": {
+                        "bytes": 7300
+                    },
+                    "output": {
+                        "bytes": 219632
+                    }
+                },
+                "pubsub": {
+                    "channels": 0,
+                    "patterns": 0
+                },
+                "sync": {
+                    "full": 0,
+                    "partial": {
+                        "err": 0,
+                        "ok": 0
+                    }
+                }
             }
-          },
-          "copy_on_write": {},
-          "last_save": {
-            "changes_since": 35,
-            "time": 1548663522
-          }
         }
-      },
-      "replication": {
-        "backlog": {
-          "active": 0,
-          "first_byte_offset": 0,
-          "histlen": 0,
-          "size": 1048576
-        },
-        "connected_slaves": 0,
-        "master": {
-          "offset": 0,
-          "sync": {}
-        },
-        "master_offset": 0,
-        "role": "master",
-        "slave": {}
-      },
-      "server": {
-        "arch_bits": "64",
-        "build_id": "b9a4cd86ce8027d3",
-        "config_file": "",
-        "gcc_version": "6.4.0",
-        "git_dirty": "0",
-        "git_sha1": "00000000",
-        "hz": 10,
-        "lru_clock": 5159690,
-        "mode": "standalone",
-        "multiplexing_api": "epoll",
-        "run_id": "0f681cb959aa47413ec40ff383715c923f9cbefd",
-        "tcp_port": 6379,
-        "uptime": 707
-      },
-      "slowlog": {
-        "count": 0
-      },
-      "stats": {
-        "active_defrag": {},
-        "commands_processed": 265,
-        "connections": {
-          "received": 848,
-          "rejected": 0
-        },
-        "instantaneous": {
-          "input_kbps": 0.18,
-          "ops_per_sec": 6,
-          "output_kbps": 1.39
-        },
-        "keys": {
-          "evicted": 0,
-          "expired": 0
-        },
-        "keyspace": {
-          "hits": 15,
-          "misses": 0
-        },
-        "latest_fork_usec": 0,
-        "migrate_cached_sockets": 0,
-        "net": {
-          "input": {
-            "bytes": 7300
-          },
-          "output": {
-            "bytes": 219632
-          }
-        },
-        "pubsub": {
-          "channels": 0,
-          "patterns": 0
-        },
-        "sync": {
-          "full": 0,
-          "partial": {
-            "err": 0,
-            "ok": 0
-          }
-        }
-      }
+    },
+    "event": {
+        "duration": 374411,
+        "dataset": "redis.info",
+        "module": "redis"
+    },
+    "metricset": {
+        "name": "info",
+        "period": 10000
+    },
+    "service": {
+        "address": "localhost:6379",
+        "type": "redis"
+    },
+    "ecs": {
+        "version": "1.5.0"
     }
-  },
-  "service": {
-    "address": "localhost:6379",
-    "type": "redis"
-  },
-  "stream": {
-    "dataset": "redis.info",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -334,6 +324,7 @@ An example event for `info` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -458,8 +449,9 @@ An example event for `info` looks as following:
 | redis.info.stats.sync.full | The number of full resyncs with slaves | long |
 | redis.info.stats.sync.partial.err | The number of denied partial resync requests | long |
 | redis.info.stats.sync.partial.ok | The number of accepted partial resync requests | long |
-| service.address | Client address | keyword |
-| service.version | Version of the service the data was collected from. This allows to look at a data set only for a specific version of a service. | keyword |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
+| service.version | Service version | keyword |
 
 
 ### key
@@ -479,47 +471,34 @@ An example event for `key` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-06-25T10:16:10.138Z",
-  "dataset": {
-    "name": "redis.key",
-    "namespace": "default",
-    "type": "metrics"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "redis.key",
-    "duration": 374411,
-    "module": "redis"
-  },
-  "metricset": {
-    "name": "key",
-    "period": 10000
-  },
-  "redis": {
-    "key": {
-      "expire": {
-        "ttl": 360
-      },
-      "id": "0:foo",
-      "length": 3,
-      "name": "foo",
-      "type": "string"
+    "@timestamp": "2020-06-25T10:16:10.138Z",
+    "redis": {
+        "key": {
+            "expire": {
+                "ttl": 360
+            },
+            "id": "0:foo",
+            "length": 3,
+            "name": "foo",
+            "type": "string"
+        }
     },
-    "keyspace": {
-      "id": "db0"
+    "event": {
+        "duration": 374411,
+        "dataset": "redis.key",
+        "module": "redis"
+    },
+    "metricset": {
+        "name": "key",
+        "period": 10000
+    },
+    "service": {
+        "address": "localhost:6379",
+        "type": "redis"
+    },
+    "ecs": {
+        "version": "1.5.0"
     }
-  },
-  "service": {
-    "address": "localhost:6379",
-    "type": "redis"
-  },
-  "stream": {
-    "dataset": "redis.key",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -544,6 +523,7 @@ An example event for `key` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -565,6 +545,8 @@ An example event for `key` looks as following:
 | redis.key.length | Length of the key (Number of elements for lists, length for strings, cardinality for sets). | long |
 | redis.key.name | Key name. | keyword |
 | redis.key.type | Key type as shown by `TYPE` command. | keyword |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
 
 
 ### keyspace
@@ -576,41 +558,31 @@ An example event for `keyspace` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-06-25T10:16:10.138Z",
-  "dataset": {
-    "name": "redis.keyspace",
-    "namespace": "default",
-    "type": "metrics"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "redis.keyspace",
-    "duration": 374411,
-    "module": "redis"
-  },
-  "metricset": {
-    "name": "keyspace",
-    "period": 10000
-  },
-  "redis": {
-    "keyspace": {
-      "avg_ttl": 359459,
-      "expires": 0,
-      "id": "db0",
-      "keys": 1
+    "@timestamp": "2020-06-25T10:16:10.138Z",
+    "redis": {
+        "keyspace": {
+            "avg_ttl": 359459,
+            "expires": 0,
+            "id": "db0",
+            "keys": 1
+        }
+    },
+    "event": {
+        "duration": 374411,
+        "dataset": "redis.keyspace",
+        "module": "redis"
+    },
+    "metricset": {
+        "name": "keyspace",
+        "period": 10000
+    },
+    "service": {
+        "address": "localhost:6379",
+        "type": "redis"
+    },
+    "ecs": {
+        "version": "1.5.0"
     }
-  },
-  "service": {
-    "address": "localhost:6379",
-    "type": "redis"
-  },
-  "stream": {
-    "dataset": "redis.keyspace",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -635,6 +607,7 @@ An example event for `keyspace` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -655,3 +628,5 @@ An example event for `keyspace` looks as following:
 | redis.keyspace.expires |  | long |
 | redis.keyspace.id | Keyspace identifier. | keyword |
 | redis.keyspace.keys | Number of keys in the keyspace. | long |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
