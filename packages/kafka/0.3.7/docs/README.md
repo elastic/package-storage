@@ -71,47 +71,42 @@ An example event for `broker` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-05-15T15:12:12.270Z",
-  "agent": {
-    "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef",
-    "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c",
-    "name": "kafka-01",
-    "type": "metricbeat",
-    "version": "8.0.0"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "kafka.broker",
-    "duration": 4572918,
-    "module": "kafka"
-  },
-  "kafka": {
-    "broker": {
-      "mbean": "kafka.server:name=BytesOutPerSec,topic=messages,type=BrokerTopicMetrics",
-      "topic": {
-        "net": {
-          "out": {
-            "bytes_per_sec": 0.6089809926927563
-          }
+    "@timestamp": "2020-05-15T15:12:12.270Z",
+    "service": {
+        "address": "localhost:8778",
+        "type": "kafka"
+    },
+    "kafka": {
+        "broker": {
+            "mbean": "kafka.server:name=BytesOutPerSec,topic=messages,type=BrokerTopicMetrics",
+            "topic": {
+                "net": {
+                    "out": {
+                        "bytes_per_sec": 0.6089809926927563
+                    }
+                }
+            }
         }
-      }
+    },
+    "event": {
+        "dataset": "kafka.broker",
+        "module": "kafka",
+        "duration": 4572918
+    },
+    "metricset": {
+        "period": 10000,
+        "name": "broker"
+    },
+    "ecs": {
+        "version": "1.5.0"
+    },
+    "agent": {
+        "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c",
+        "name": "kafka-01",
+        "type": "metricbeat",
+        "version": "8.0.0",
+        "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef"
     }
-  },
-  "metricset": {
-    "name": "broker",
-    "period": 10000
-  },
-  "service": {
-    "address": "localhost:8778",
-    "type": "kafka"
-  },
-  "stream": {
-    "dataset": "kafka.broker",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -136,6 +131,7 @@ An example event for `broker` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -180,6 +176,8 @@ An example event for `broker` looks as following:
 | kafka.partition.topic_id | Unique id of the partition in the topic. | keyword |
 | kafka.topic.error.code | Topic error code. | long |
 | kafka.topic.name | Topic name | keyword |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
 
 
 ### consumergroup
@@ -188,68 +186,63 @@ An example event for `consumergroup` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-05-15T15:18:13.919Z",
-  "agent": {
-    "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef",
-    "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c",
-    "name": "kafka-01",
-    "type": "metricbeat",
-    "version": "8.0.0"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "kafka.consumergroup",
-    "duration": 8821045,
-    "module": "kafka"
-  },
-  "kafka": {
-    "broker": {
-      "address": "kafka-01:9092",
-      "id": 0
+    "@timestamp": "2020-05-15T15:18:13.919Z",
+    "agent": {
+        "name": "kafka-01",
+        "type": "metricbeat",
+        "version": "8.0.0",
+        "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef",
+        "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c"
     },
-    "consumergroup": {
-      "broker": {
-        "address": "kafka-01:9092",
-        "id": 0
-      },
-      "client": {
-        "host": "127.0.0.1",
-        "id": "consumer-console-consumer-99447-1",
-        "member_id": "consumer-console-consumer-99447-1-208fdf91-2f28-4336-a2ff-5e5f4b8b71e4"
-      },
-      "consumer_lag": 112,
-      "error": {
-        "code": 0
-      },
-      "id": "console-consumer-99447",
-      "meta": "",
-      "offset": -1,
-      "partition": 0,
-      "topic": "messages"
+    "ecs": {
+        "version": "1.5.0"
     },
-    "partition": {
-      "id": 0,
-      "topic_id": "0-messages"
+    "kafka": {
+        "consumergroup": {
+            "topic": "messages",
+            "error": {
+                "code": 0
+            },
+            "broker": {
+                "id": 0,
+                "address": "kafka-01:9092"
+            },
+            "id": "console-consumer-99447",
+            "offset": -1,
+            "consumer_lag": 112,
+            "client": {
+                "member_id": "consumer-console-consumer-99447-1-208fdf91-2f28-4336-a2ff-5e5f4b8b71e4",
+                "id": "consumer-console-consumer-99447-1",
+                "host": "127.0.0.1"
+            },
+            "partition": 0,
+            "meta": ""
+        },
+        "broker": {
+            "id": 0,
+            "address": "kafka-01:9092"
+        },
+        "topic": {
+            "name": "messages"
+        },
+        "partition": {
+            "id": 0,
+            "topic_id": "0-messages"
+        }
     },
-    "topic": {
-      "name": "messages"
+    "event": {
+        "dataset": "kafka.consumergroup",
+        "module": "kafka",
+        "duration": 8821045
+    },
+    "metricset": {
+        "period": 10000,
+        "name": "consumergroup"
+    },
+    "service": {
+        "address": "localhost:9092",
+        "type": "kafka"
     }
-  },
-  "metricset": {
-    "name": "consumergroup",
-    "period": 10000
-  },
-  "service": {
-    "address": "localhost:9092",
-    "type": "kafka"
-  },
-  "stream": {
-    "dataset": "kafka.consumergroup",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -274,6 +267,7 @@ An example event for `consumergroup` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -309,6 +303,8 @@ An example event for `consumergroup` looks as following:
 | kafka.partition.topic_id | Unique id of the partition in the topic. | keyword |
 | kafka.topic.error.code | Topic error code. | long |
 | kafka.topic.name | Topic name | keyword |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
 
 
 ### partition
@@ -317,67 +313,62 @@ An example event for `partition` looks as following:
 
 ```$json
 {
-  "@timestamp": "2020-05-15T15:19:44.240Z",
-  "agent": {
-    "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef",
-    "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c",
-    "name": "kafka-01",
-    "type": "metricbeat",
-    "version": "8.0.0"
-  },
-  "ecs": {
-    "version": "1.5.0"
-  },
-  "event": {
-    "dataset": "kafka.partition",
-    "duration": 11263377,
-    "module": "kafka"
-  },
-  "kafka": {
-    "broker": {
-      "address": "kafka-01:9092",
-      "id": 0
+    "@timestamp": "2020-05-15T15:19:44.240Z",
+    "metricset": {
+        "name": "partition",
+        "period": 10000
     },
-    "partition": {
-      "broker": {
-        "address": "kafka-01:9092",
-        "id": 0
-      },
-      "id": 0,
-      "offset": {
-        "newest": 111,
-        "oldest": 0
-      },
-      "partition": {
-        "id": 0,
-        "insync_replica": true,
-        "is_leader": true,
-        "leader": 0,
-        "replica": 0
-      },
-      "topic": {
-        "name": "messages"
-      },
-      "topic_broker_id": "0-messages-0",
-      "topic_id": "0-messages"
+    "service": {
+        "address": "localhost:9092",
+        "type": "kafka"
     },
-    "topic": {
-      "name": "messages"
+    "kafka": {
+        "partition": {
+            "offset": {
+                "oldest": 0,
+                "newest": 111
+            },
+            "id": 0,
+            "topic_id": "0-messages",
+            "topic_broker_id": "0-messages-0",
+            "topic": {
+                "name": "messages"
+            },
+            "broker": {
+                "id": 0,
+                "address": "kafka-01:9092"
+            },
+            "partition": {
+                "is_leader": true,
+                "insync_replica": true,
+                "id": 0,
+                "leader": 0,
+                "replica": 0
+            }
+        },
+        "broker": {
+            "address": "kafka-01:9092",
+            "id": 0
+        },
+        "topic": {
+            "name": "messages"
+        }
+    },
+    "ecs": {
+        "version": "1.5.0"
+    },
+    "agent": {
+        "ephemeral_id": "178ff0e9-e3dd-4bdf-8e3d-8f67a6bd72ef",
+        "id": "5aba67f2-2050-4d19-8953-ba20f0a5483c",
+        "name": "kafka-01",
+        "type": "metricbeat",
+        "version": "8.0.0"
+    },
+    "event": {
+        "dataset": "kafka.partition",
+        "module": "kafka",
+        "duration": 11263377
     }
-  },
-  "metricset": {
-    "name": "partition",
-    "period": 10000
-  },
-  "service": {
-    "address": "localhost:9092",
-    "type": "kafka"
-  },
-  "stream": {
-    "dataset": "kafka.partition",
-    "namespace": "default",
-    "type": "metrics"
-  }
 }
 ```
 
@@ -402,6 +393,7 @@ An example event for `partition` looks as following:
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| ecs.version | ECS version | keyword |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -438,3 +430,5 @@ An example event for `partition` looks as following:
 | kafka.partition.topic_id | Unique id of the partition in the topic. | keyword |
 | kafka.topic.error.code | Topic error code. | long |
 | kafka.topic.name | Topic name | keyword |
+| service.address | Service address | keyword |
+| service.type | Service type | keyword |
