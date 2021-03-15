@@ -44,7 +44,7 @@ pipeline {
     disableConcurrentBuilds()
   }
   parameters {
-    choice(choices: ['none', 'snapshot', 'staging', 'prod'], description: 'Environment to Rollout.', name: 'environment')
+    choice(choices: ['none', 'snapshot', 'staging', 'production'], description: 'Environment to Rollout.', name: 'environment')
   }
   stages {
     stage('Rollout') {
@@ -54,7 +54,7 @@ pipeline {
         }
       }
       environment{
-        PACKAGE_REGISTRY_DEPLOYMENT_NAME = "package-registry-${params.environment}-vanilla"
+        PACKAGE_REGISTRY_DEPLOYMENT_NAME = params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${params.environment}-vanilla"
       }
       steps {
         changeDescription()
@@ -84,7 +84,7 @@ pipeline {
           docker run -d --rm --name ${DOCKER_NAME} docker.elastic.co/package-registry/distribution:${DOCKER_TAG}
           docker exec -t ${DOCKER_NAME} sh -c 'find /packages -mindepth 3 -maxdepth 3 | awk -F\\/ "{print \\$4\\"-\\"\\$5\\"\\t\\"\\$3}" | sort' | tee packages.txt
           docker stop ${DOCKER_NAME}
-          docker inspect docker.elastic.co/package-registry/distribution:snapshot | jq '.[]|{id: .Id,RepoTags: .RepoTags, RepoDigests: .RepoDigests, labels: .ContainerConfig.Labels}' | tee distribution_version.json
+          docker inspect docker.elastic.co/package-registry/distribution:${DOCKER_TAG} | jq '.[]|{id: .Id,RepoTags: .RepoTags, RepoDigests: .RepoDigests, labels: .ContainerConfig.Labels}' | tee distribution_version.json
         ''')
         archiveArtifacts(allowEmptyArchive: true, artifacts: 'packages.txt,distribution_version.json', onlyIfSuccessful: true)
       }
