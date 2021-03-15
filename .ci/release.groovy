@@ -104,7 +104,7 @@ pipeline {
 }
 
 def packageRegistryDeploymentName(String environmentName) {
-  return params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${environmentName}-vanilla"
+  return params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${params.environment}-vanilla"
 }
 
 def slackMessage(Map args = [:]) {
