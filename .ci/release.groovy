@@ -103,7 +103,7 @@ pipeline {
   }
 }
 
-def packageRegistryDeploymentName(String environmentName) {
+def packageRegistryDeploymentName() {
   return params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${params.environment}-vanilla"
 }
 
