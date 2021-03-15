@@ -53,8 +53,8 @@ pipeline {
           return params.environment != 'none'
         }
       }
-      environment{
-        PACKAGE_REGISTRY_DEPLOYMENT_NAME = params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${params.environment}-vanilla"
+      environment {
+        PACKAGE_REGISTRY_DEPLOYMENT_NAME = packageRegistryDeploymentName()
       }
       steps {
         changeDescription()
@@ -101,6 +101,10 @@ pipeline {
       slackMessage(statusMessage: "${params.environment} package storage cluster deployment failed!", color: 'warning')
     }
   }
+}
+
+def packageRegistryDeploymentName() {
+  return params.environment == 'production' ? 'package-registry-prod-vanilla' : "package-registry-${params.environment}-vanilla"
 }
 
 def slackMessage(Map args = [:]) {
