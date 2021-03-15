@@ -54,7 +54,7 @@ pipeline {
         }
       }
       environment {
-        PACKAGE_REGISTRY_DEPLOYMENT_NAME = packageRegistryDeploymentName(params.environment)
+        PACKAGE_REGISTRY_DEPLOYMENT_NAME = packageRegistryDeploymentName()
       }
       steps {
         changeDescription()
