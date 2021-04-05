@@ -47,8 +47,10 @@ pipeline {
     stage('Lint') {
       steps {
         cleanup()
-        whenTrue(isGitRegionMatch(patterns: ["^_.*"])) {
-          error('_dev in packages are intended to exist only for development purposes.')
+        dir("${BASE_DIR}"){
+          whenTrue(isGitRegionMatch(patterns: ["^_.*"])) {
+            error('_dev in packages are intended to exist only for development purposes.')
+          }
         }
         withMageEnv(){
           dir("${BASE_DIR}"){
