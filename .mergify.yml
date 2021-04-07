@@ -6,4 +6,4 @@ pull_request_rules:
       - author=elasticmachine
     actions:
       merge:
-        method: merge
+        method: squash
