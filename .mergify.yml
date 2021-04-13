@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: Automatic merge for snapshot branch when CI passes and author is elasticmachine
+    conditions:
+      - check-success=package-storage/pr-merge
+      - base=snapshot
+      - author=elasticmachine
+    actions:
+      merge:
+        method: squash
