@@ -2,3 +2,6 @@
 
 build
 .idea
+
+## Exclude generated backup files when running the bump automation
+*.bck
