@@ -15,6 +15,10 @@ services:
     ports:
       - "127.0.0.1:9200:9200"
 
+  fleet-server:
+    ports:
+      - "127.0.0.1:8220:8220"
+
   package-registry:
     ports:
       - "127.0.0.1:8080:8080"
