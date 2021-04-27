@@ -90,7 +90,7 @@ func TestSetup(t *testing.T) {
 }
 
 func installPackage(t *testing.T, p string) {
-	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:8220/api/fleet/epm/packages/"+p, nil)
+	req, err := http.NewRequest("POST", "http://elastic:changeme@localhost:5601/api/fleet/epm/packages/"+p, nil)
 	require.NoError(t, err)
 
 	req.Header.Add("kbn-xsrf", "ingest_manager")
