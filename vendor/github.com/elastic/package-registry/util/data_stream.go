@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	handlebars "github.com/aymerick/raymond"
 	"github.com/pkg/errors"
 	yamlv2 "gopkg.in/yaml.v2"
 
@@ -66,6 +65,7 @@ type Input struct {
 	Description  string     `config:"description" json:"description,omitempty" yaml:"description,omitempty"`
 	Streams      []Stream   `config:"streams" json:"streams,omitempty" yaml:"streams,omitempty"`
 	TemplatePath string     `config:"template_path" json:"template_path,omitempty" yaml:"template_path,omitempty"`
+	InputGroup   string     `config:"input_group" json:"input_group,omitempty" yaml:"input_group,omitempty"`
 }
 
 type Stream struct {
@@ -252,11 +252,6 @@ func validateIngestPipelineFile(pipelinePath string) error {
 	f, err := ioutil.ReadFile(pipelinePath)
 	if err != nil {
 		return errors.Wrapf(err, "reading ingest pipeline file failed (path: %s)", pipelinePath)
-	}
-
-	_, err = handlebars.Parse(string(f))
-	if err != nil {
-		return errors.Wrapf(err, "parsing handlebars syntax failed (path: %s)", pipelinePath)
 	}
 
 	ext := filepath.Ext(pipelinePath)
