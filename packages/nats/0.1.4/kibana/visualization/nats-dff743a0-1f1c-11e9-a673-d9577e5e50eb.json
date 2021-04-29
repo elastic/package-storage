@@ -2,7 +2,7 @@
   "attributes": {
     "description": "",
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset: nats.subscription\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset: nats.subscriptions\"}}"
     },
     "title": "Cache Hit Rate Timeline [Metrics NATS]",
     "uiStateJSON": "{}",
