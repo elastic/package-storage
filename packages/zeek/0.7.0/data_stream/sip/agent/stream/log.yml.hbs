@@ -1,0 +1,14 @@
+paths:
+{{#each base_paths}}
+  {{#each ../filenames}}
+ - {{../this}}/{{this}}
+  {{/each}}
+{{/each}}
+exclude_files: [".gz$"]
+tags:
+{{#each tags as |tag i|}}
+ - {{tag}}
+{{/each}}
+{{#contains tags "forwarded"}}
+publisher_pipeline.disable_host: true
+{{/contains}}
