@@ -9,7 +9,7 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"user.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"bucket\":{\"accessor\":0,\"format\":{\"id\":\"terms\",\"params\":{\"id\":\"string\",\"missingBucketLabel\":\"Missing\",\"otherBucketLabel\":\"Other\",\"parsedUrl\":{\"basePath\":\"/s/siem\",\"origin\":\"https://192.168.1.72:5601\",\"pathname\":\"/s/siem/app/kibana\"}}},\"type\":\"vis_dimension\"},\"maxFontSize\":37,\"metric\":{\"accessor\":1,\"format\":{\"id\":\"string\",\"params\":{}},\"type\":\"vis_dimension\"},\"minFontSize\":15,\"orientation\":\"single\",\"scale\":\"linear\",\"showLabel\":false},\"title\":\"Logon Failed Acconts [Windows System Security]\",\"type\":\"tagcloud\"}"
   },
-  "id": "windows-729443b0-a7d6-11e9-a422-d144027429da",
+  "id": "system-729443b0-a7d6-11e9-a422-d144027429da",
   "migrationVersion": {
     "visualization": "7.10.0"
   },

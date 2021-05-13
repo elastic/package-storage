@@ -9,7 +9,7 @@
     "version": 1,
     "visState": "{\"aggs\":[],\"params\":{\"fontSize\":10,\"markdown\":\"## **Logon Information Dashboard**\",\"openLinksInNewTab\":false},\"title\":\"User Logon Dashboard [Windows System Security]\",\"type\":\"markdown\"}"
   },
-  "id": "windows-18348f30-a24d-11e9-a422-d144027429da",
+  "id": "system-18348f30-a24d-11e9-a422-d144027429da",
   "migrationVersion": {
     "visualization": "7.10.0"
   },

@@ -9,7 +9,7 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"filters\":[{\"input\":{\"language\":\"lucene\",\"query\":\"event.code: 4624\"},\"label\":\"Successful Logon\"},{\"input\":{\"language\":\"lucene\",\"query\":\"event.code: 4625\"},\"label\":\"Failed Logons\"}]},\"schema\":\"segment\",\"type\":\"filters\"}],\"params\":{\"addLegend\":true,\"addTooltip\":true,\"dimensions\":{\"buckets\":[{\"accessor\":0,\"aggType\":\"filters\",\"format\":{},\"params\":{}}],\"metric\":{\"accessor\":1,\"aggType\":\"count\",\"format\":{\"id\":\"number\"},\"params\":{}}},\"isDonut\":false,\"labels\":{\"last_level\":true,\"show\":false,\"truncate\":100,\"values\":true},\"legendPosition\":\"bottom\",\"type\":\"pie\"},\"title\":\"Logon Successful vs Failed [Windows System Security]\",\"type\":\"pie\"}"
   },
-  "id": "windows-175a5760-a7d5-11e9-a422-d144027429da",
+  "id": "system-175a5760-a7d5-11e9-a422-d144027429da",
   "migrationVersion": {
     "visualization": "7.10.0"
   },
