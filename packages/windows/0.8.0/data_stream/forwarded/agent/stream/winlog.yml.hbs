@@ -1,8 +1,0 @@
-name: ForwardedEvents
-condition: ${host.platform} == 'windows'
-{{#each tags as |tag i|}}
-  - {{tag}}
-{{/each}}
-{{#contains tags "forwarded"}}
-publisher_pipeline.disable_host: true
-{{/contains}}
