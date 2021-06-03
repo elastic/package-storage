@@ -1,0 +1,14 @@
+paths:
+{{#each paths as |path i|}}
+  - {{path}}
+{{/each}}
+exclude_files: [".gz$"]
+tags:
+{{#each tags as |tag i|}}
+ - {{tag}}
+{{/each}}
+{{#if preserve_original_event}}
+ - preserve_original_event
+{{/if}}
+processors:
+  - add_locale: ~
