@@ -112,8 +112,8 @@ The tag does not contain a `v` prefix like most other version tags do. The reaso
 
 # Air-gapped environments
 
-There are certain environments in which restricted network traffic is mandatory. In such setup the Kibana instance
-isn't able to reach out to public EPR endpoints (for example: [epr.elastic.co](https://epr.elastic.co/)) and download
+There are certain environments in which network traffic restrictions are mandatory. In such setup the Kibana instance
+isn't able to reach out to public EPR endpoints (for example: [epr.elastic.co](https://epr.elastic.co/)), and download
 packages metadata and content.
 
 There are two workarounds in this situation - use proxy server as network gateway to reach out to public endpoints or
