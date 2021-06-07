@@ -109,3 +109,79 @@ docker.elastic.co/package-registry/distribution:7.9.0
 ```
 
 The tag does not contain a `v` prefix like most other version tags do. The reason is that this tag is used for the docker image name where the v prefix is not used.
+
+# Air-gapped environments
+
+There are certain environments in which restricted network traffic is mandatory. In such setup the Kibana instance
+isn't able to reach out to public EPR endpoints (for example: [epr.elastic.co](https://epr.elastic.co/)) and download
+packages metadata and content.
+
+There are two workarounds in this situation - use proxy server as network gateway to reach out to public endpoints or
+deploy own instance of the Elastic Package Registry.
+
+## Use proxy server
+
+If you can route traffic to the public endpoint of EPR through a network gateway, there is a property in Kibana that
+can orchestrate it to use a proxy server:
+
+```yaml
+xpack.ingestManager.registryProxyUrl: your-nat-gateway.corp.net
+```
+
+Source: [Fleet overview](https://www.elastic.co/guide/en/fleet/7.13/fleet-overview.html#package-registry-intro)
+
+## Host own Elastic Package Registry
+
+If routing traffic through a proxy server is not an option, you need to try the following approach - Package Storage instance must be deployed and hosted on-site as
+Docker container. Package Storage is a special distribution of the Package Registry which already includes packages.
+There are different distributions available:
+
+* production (recommended): `docker.elastic.co/package-registry/distribution:production` - stable, tested package revisions
+* staging: `docker.elastic.co/package-registry/distribution:staging` - package revisions ready for testing before release
+* snapshot: `docker.elastic.co/package-registry/distribution:snapshot` - package revisions updated on daily basis
+
+If you want to update the Package Storage image, you need to re-pull the image and restart docker container.
+
+_Notice: these steps use the standard Docker CLI, but it shouldn't be hard to transform them into Kubernetes descriptor file.
+Here is the k8s descriptor used by the e2e-testing project: [yaml files](https://github.com/elastic/e2e-testing/blob/k8s-deployment/cli/config/kubernetes/base/package-registry/)._
+
+1. Pull the Docker image from the public Docker registry:
+
+```bash
+docker pull docker.elastic.co/package-registry/distribution:production
+```
+
+2. Save the Docker image locally:
+
+```bash
+docker save -o epr.tar docker.elastic.co/package-registry/distribution:production
+```
+
+_Hint: please mind the image size, so you won't hit any capacity limit._
+
+3. Transfer the image to the air-gapped environment and load:
+
+```bash
+docker load -i epr.tar
+```
+
+4. Run the Package Registry:
+
+```bash
+docker run -it docker.elastic.co/package-registry/distribution:production
+```
+
+5. (Optional) Define the internal healthcheck for the service as:
+
+```bash
+curl -f http://127.0.0.1:8080
+```
+
+## Connect Kibana to the hosted Package Registry
+
+There is a dedicated property in Kibana config to change the URL of the Package Registry's endpoint to a custom one,
+for example an internally hosted instance:
+
+```yaml
+xpack.fleet.registryUrl: "http://package-registry.corp.net:8080"
+```
