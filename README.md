@@ -144,6 +144,10 @@ There are different distributions available:
 
 If you want to update the Package Storage image, you need to re-pull the image and restart docker container.
 
+Every distribution contains packages that can be used by different versions of Elastic stack. As we adopted a continuous delivery pipeline for packages,
+we haven't introduced the box release approach so far (7.13.0, 7.14.0, etc.). Package Registry API exposes a Kibana version constraint
+that allows for filtering packages that are compatible with particular stack version.
+
 _Notice: these steps use the standard Docker CLI, but it shouldn't be hard to transform them into Kubernetes descriptor file.
 Here is the k8s descriptor used by the e2e-testing project: [yaml files](https://github.com/elastic/e2e-testing/blob/k8s-deployment/cli/config/kubernetes/base/package-registry/)._
 
