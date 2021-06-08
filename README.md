@@ -132,6 +132,8 @@ Source: [Fleet overview](https://www.elastic.co/guide/en/fleet/7.13/fleet-overvi
 
 ## Host own Elastic Package Registry
 
+_This procedure is not officially supported._
+
 If routing traffic through a proxy server is not an option, you need to try the following approach - Package Storage instance must be deployed and hosted on-site as
 Docker container. Package Storage is a special distribution of the Package Registry which already includes packages.
 There are different distributions available:
