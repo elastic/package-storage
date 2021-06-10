@@ -185,6 +185,9 @@ curl -f http://127.0.0.1:8080
 
 ## Connect Kibana to the hosted Package Registry
 
+_Notice: Using fleet and agents require at least Basic license. Please check the [subscriptions](https://www.elastic.co/subscriptions) page to
+review available options._
+
 There is a dedicated property in Kibana config to change the URL of the Package Registry's endpoint to a custom one,
 for example an internally hosted instance:
 
