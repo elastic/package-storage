@@ -112,7 +112,7 @@ type Package struct {
 
 func getPackages(t *testing.T) ([]string, error) {
 	// The kibana.version must be in sync with the stack version used in snapshot.yml
-	resp, err := http.Get("http://localhost:8080/search?experimental=true&kibana.version=7.11.0")
+	resp, err := http.Get("http://localhost:8080/search?experimental=true&kibana.version=7.13.0")
 	require.NoError(t, err)
 	defer resp.Body.Close()
 
