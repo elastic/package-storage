@@ -19,8 +19,8 @@ $ docker-compose -f snapshot.yml -f local.yml up --force-recreate
 
 There is an automation in place to bump the Elastic stack versions to a pinned version.
 
-In case you need to manually bump the existing version in `testing/environments/snapshot.yml` then please run the script
-`.ci/bump-stack-version.sh <VERSION> "true"`.
+In case you need to manually bump the existing version in `testing/environments/snapshot.yml` and
+`testing/main_integration_test.go` then please run the script `.ci/bump-stack-version.sh <VERSION> "true"`.
 
 Where `<VERSION>` is the docker image tag without the `-SNAPSHOT`, and `"true"` means to create a git branch.
 
