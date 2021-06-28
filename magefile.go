@@ -7,7 +7,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -140,7 +139,7 @@ func Check() error {
 		return err
 	}
 
-	err = Vendor()
+	err = ModTidy()
 	if err != nil {
 		return err
 	}
@@ -157,19 +156,8 @@ func Clean() error {
 	return os.RemoveAll(buildDir)
 }
 
-func Vendor() error {
-	fmt.Println(">> mod - updating vendor directory")
-
-	err := sh.RunV("go", "mod", "vendor")
-	if err != nil {
-		return err
-	}
-
-	err = sh.RunV("go", "mod", "verify")
-	if err != nil {
-		return err
-	}
-	return nil
+func ModTidy() error {
+	return sh.RunV("go", "mod", "tidy")
 }
 
 func TestIntegration() error {
