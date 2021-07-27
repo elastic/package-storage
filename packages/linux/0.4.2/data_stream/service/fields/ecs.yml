@@ -1,133 +1,152 @@
-- name: process
-  title: Process
-  group: 2
-  type: group
-  fields:
-    - name: name
-      level: extended
-      type: keyword
-      description: |-
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
+- description: Service address
+  name: service.address
+  type: keyword
+- description: |-
+    The type of the service data is collected from.
+    The type can be used to group and correlate logs and metrics from one service type.
+    Example: If logs or metrics are collected from Elasticsearch, `service.type` would be `elasticsearch`.
+  name: service.type
+  type: keyword
+- fields:
+    - description: |-
         Process name.
         Sometimes called program name or similar.
       ignore_above: 1024
+      level: extended
       multi_fields:
-        - name: text
-          type: text
+        - default_field: false
+          name: text
           norms: false
-          default_field: false
-    - name: pgid
-      level: extended
-      type: long
-      format: string
-      description: Identifier of the group of processes the process belongs to.
-    - name: exit_code
-      level: extended
-      type: long
-      format: string
-      description: Identifier of the group of processes the process belongs to.
-    - name: pid
-      level: core
-      type: long
-      format: string
-      description: Process id.
-    - name: ppid
-      level: extended
-      type: long
-      format: string
-      description: Parent process' pid.
-    - name: working_directory
-      level: extended
+          type: text
+      name: name
       type: keyword
-      description: The working directory of the process.
+    - description: Identifier of the group of processes the process belongs to.
+      format: string
+      level: extended
+      name: pgid
+      type: long
+    - description: Identifier of the group of processes the process belongs to.
+      format: string
+      level: extended
+      name: exit_code
+      type: long
+    - description: Process id.
+      format: string
+      level: core
+      name: pid
+      type: long
+    - description: Parent process' pid.
+      format: string
+      level: extended
+      name: ppid
+      type: long
+    - description: The working directory of the process.
       ignore_above: 1024
+      level: extended
       multi_fields:
-        - name: text
-          type: text
+        - default_field: false
+          name: text
           norms: false
-          default_field: false
-- name: user
+          type: text
+      name: working_directory
+      type: keyword
+  group: 2
+  name: process
+  title: Process
+  type: group
+- fields:
+    - description: Short name or login of the user.
+      ignore_above: 1024
+      level: core
+      multi_fields:
+        - default_field: false
+          name: text
+          norms: false
+          type: text
+      name: name
+      type: keyword
+  group: 2
+  name: user
   title: User
-  group: 2
   type: group
+- description: |-
+    A host is defined as a general computing instance.
+    ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes.
   fields:
-    - name: name
-      level: core
-      type: keyword
-      description: Short name or login of the user.
-      ignore_above: 1024
-      multi_fields:
-        - name: text
-          type: text
-          norms: false
-          default_field: false
-- name: host
-  title: Host
-  group: 2
-  description: 'A host is defined as a general computing instance.
-
-    ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes.'
-  type: group
-  fields:
-    - name: architecture
-      level: core
-      type: keyword
-      ignore_above: 1024
-      description: Operating system architecture.
+    - description: Operating system architecture.
       example: x86_64
-    - name: ip
+      ignore_above: 1024
       level: core
+      name: architecture
+      type: keyword
+    - description: Host ip address.
+      level: core
+      name: ip
       type: ip
-      description: Host ip address.
-    - name: mac
+    - description: Host mac address.
+      ignore_above: 1024
       level: core
+      name: mac
       type: keyword
+    - description: |-
+        Name of the host.
+        It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
       ignore_above: 1024
-      description: Host mac address.
-    - name: name
       level: core
+      name: name
       type: keyword
-      ignore_above: 1024
-      description: 'Name of the host.
-
-        It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.'
-    - name: os.family
-      level: extended
-      type: keyword
-      ignore_above: 1024
-      description: OS family (such as redhat, debian, freebsd, windows).
+    - description: OS family (such as redhat, debian, freebsd, windows).
       example: debian
-    - name: os.full
-      level: extended
-      type: keyword
       ignore_above: 1024
-      description: Operating system name, including the version or code name.
+      level: extended
+      name: os.family
+      type: keyword
+    - description: Operating system name, including the version or code name.
       example: Mac OS Mojave
-    - name: os.kernel
-      level: extended
-      type: keyword
       ignore_above: 1024
-      description: Operating system kernel version as a raw string.
+      level: extended
+      name: os.full
+      type: keyword
+    - description: Operating system kernel version as a raw string.
       example: 4.4.0-112-generic
-    - name: os.name
-      level: extended
-      type: keyword
       ignore_above: 1024
-      description: Operating system name, without the version.
+      level: extended
+      name: os.kernel
+      type: keyword
+    - description: Operating system name, without the version.
       example: Mac OS X
-    - name: os.platform
-      level: extended
-      type: keyword
       ignore_above: 1024
-      description: Operating system platform (such centos, ubuntu, windows).
+      level: extended
+      name: os.name
+      type: keyword
+    - description: Operating system platform (such centos, ubuntu, windows).
       example: darwin
-    - name: os.version
+      ignore_above: 1024
       level: extended
+      name: os.platform
       type: keyword
-      ignore_above: 1024
-      description: Operating system version as a raw string.
+    - description: Operating system version as a raw string.
       example: 10.14.1
-    - name: type
-      level: core
-      type: keyword
       ignore_above: 1024
-      description: Type of host.
+      level: extended
+      name: os.version
+      type: keyword
+    - description: Type of host.
+      ignore_above: 1024
+      level: core
+      name: type
+      type: keyword
+  group: 2
+  name: host
+  title: Host
+  type: group
