@@ -1,0 +1,43 @@
+config_version: "2"
+interval: {{interval}}
+auth.oauth2.provider: google
+auth.oauth2.google.jwt_file: {{jwt_file}}
+auth.oauth2.google.delegated_account: {{delegated_account}}
+auth.oauth2.scopes:
+  - https://www.googleapis.com/auth/admin.reports.audit.readonly
+request.url: {{api_host}}/admin/reports/v1/activity/users/{{user_key}}/applications/saml
+{{#if http_client_timeout}}
+request.timeout: {{http_client_timeout}}
+{{/if}}
+request.transforms:
+  - set:
+      target: url.params.startTime
+      value: "[[.cursor.last_execution_datetime]]"
+      default: '[[formatDate (now (parseDuration "-{{initial_interval}}"))]]'
+response.split:
+  target: body.items
+  split:
+    target: body.events
+    keep_parent: true
+response.pagination:
+  - set:
+      target: url.params.pageToken
+      value: "[[.last_response.body.nextPageToken]]"
+      fail_on_template_error: true
+cursor:
+  last_execution_datetime:
+    value: "[[formatDate now]]"
+tags:
+{{#if preserve_original_event}}
+  - preserve_original_event
+{{/if}}
+{{#each tags as |tag i|}}
+  - {{tag}}
+{{/each}}
+{{#contains tags "forwarded"}}
+publisher_pipeline.disable_host: true
+{{/contains}}
+{{#if processors}}
+processors:
+{{processors}}
+{{/if}}
