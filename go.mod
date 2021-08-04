@@ -1,6 +1,6 @@
 module github.com/elastic/package-storage
 
-go 1.12
+go 1.16
 
 require (
 	github.com/elastic/package-registry v0.21.0
