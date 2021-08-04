@@ -13,6 +13,9 @@ import (
 	"github.com/elastic/package-registry/util"
 	"github.com/magefile/mage/sh"
 	"github.com/pkg/errors"
+
+	// Ensure that all its dependencies are tracked by go mod, so it can be run with go run.
+	_ "github.com/elastic/package-registry"
 )
 
 var (
