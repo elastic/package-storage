@@ -1,12 +1,12 @@
 # Here the version of the registry is specified this storage branch uses.
 # It should always be a specific version to make sure builds are reproducible.
-ARG PACKAGE_REGISTRY_VERSION=v1.0.0
+ARG PACKAGE_REGISTRY=v1.0.0
 
 FROM docker.elastic.co/package-registry/distribution:production AS production
 FROM docker.elastic.co/package-registry/distribution:staging AS staging
 
-FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY_VERSION}
-LABEL package-registry=${PACKAGE_REGISTRY_VERSION}
+FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
+LABEL package-registry=${PACKAGE_REGISTRY}
 
 COPY --from=production /packages/production /packages/production
 COPY --from=staging /packages/staging /packages/staging
