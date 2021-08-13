@@ -111,7 +111,7 @@
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
-- description: All the user names or other user identifiers seen on the event.
+- description: All the user names seen on your event.
   name: related.user
   type: keyword
 - description: |-
