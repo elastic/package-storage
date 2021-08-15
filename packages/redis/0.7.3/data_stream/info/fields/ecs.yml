@@ -1,0 +1,37 @@
+- fields:
+    - description: Operating system name, including the version or code name.
+      ignore_above: 1024
+      level: extended
+      multi_fields:
+        - default_field: false
+          name: text
+          norms: false
+          type: text
+      name: full
+      type: keyword
+  group: 2
+  name: os
+  title: Operating System
+  type: group
+- fields:
+    - description: Process id.
+      format: string
+      level: core
+      name: pid
+      type: long
+  group: 2
+  name: process
+  title: Process
+  type: group
+- description: ECS version
+  name: ecs.version
+  type: keyword
+- description: Service address
+  name: service.address
+  type: keyword
+- description: Service type
+  name: service.type
+  type: keyword
+- description: Service version
+  name: service.version
+  type: keyword
