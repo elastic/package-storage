@@ -44,7 +44,7 @@
 - description: Process id.
   name: process.pid
   type: long
-- description: All the user names seen on your event.
+- description: All the user names or other user identifiers seen on the event.
   name: related.user
   type: keyword
 - description: Error code describing the error.
