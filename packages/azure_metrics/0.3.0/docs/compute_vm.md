@@ -55,14 +55,14 @@ so the `period` for `compute_vm` should be `300s` or multiples of `300s`.
 |---|---|---|
 | @timestamp | Event timestamp. | date |
 | azure.application_id | The application ID | keyword |
-| azure.compute_vm.*.* | compute_vm | object |
-| azure.dimensions.* | Azure metric dimensions. | object |
-| azure.metrics.*.* | Metrics returned. | object |
+| azure.compute_vm.\*.\* | compute_vm | object |
+| azure.dimensions.\* | Azure metric dimensions. | object |
+| azure.metrics.\*.\* | Metrics returned. | object |
 | azure.namespace | The namespace selected | keyword |
 | azure.resource.group | The resource group | keyword |
 | azure.resource.id | The id of the resource | keyword |
 | azure.resource.name | The name of the resource | keyword |
-| azure.resource.tags.* | Azure resource tags. | object |
+| azure.resource.tags.\* | Azure resource tags. | object |
 | azure.resource.type | The type of the resource | keyword |
 | azure.subscription_id | The subscription ID | keyword |
 | azure.timegrain | The Azure metric timegrain | keyword |
@@ -87,7 +87,7 @@ so the `period` for `compute_vm` should be `300s` or multiples of `300s`.
 | dataset.namespace | Dataset namespace. | constant_keyword |
 | dataset.type | Dataset type. | constant_keyword |
 | ecs.version | ECS version this event conforms to. `ecs.version` is a required field and must exist in all events. When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events. | keyword |
-| host | A host is defined as a general computing instance. ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes. | group |
+| host | A host is defined as a general computing instance. ECS host.\* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes. | group |
 | host.architecture | Operating system architecture. | keyword |
 | host.containerized | If the host is a container. | boolean |
 | host.domain | Name of the domain of which the host is a member. For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider. | keyword |
@@ -108,8 +108,13 @@ so the `period` for `compute_vm` should be `300s` or multiples of `300s`.
 | service.type | The type of the service data is collected from. The type can be used to group and correlate logs and metrics from one service type. Example: If logs or metrics are collected from Elasticsearch, `service.type` would be `elasticsearch`. | keyword |
 
 
+## Guest metrics 
+
+For more insight into the state of the virtual machines, users can collect guest-level metrics, logs and other diagnostic data using the Guest-Level Diagnostics feature. 
+Once this monitoring feature is enabled in the Diagnostic Settings area (Performance Counters tab for Windows VM's and Metrics tab for Linux VM's), a diagnostics agent is installed on the selected virtual machine and a set of extended metrics are added to collect usage data at each interval specified in the configuration. 
+
 ## Additional notes about metrics and costs
 
 Costs: Metric queries are charged based on the number of standard API calls. More information on pricing here https://azure.microsoft.com/id-id/pricing/details/monitor/.
 
-Authentication: we are handling authentication on our side (creating/renewing the authentication token), so we advise users to use dedicated credentials for metricbeat only.
+Authentication: Dedicated authentication token will be created and updated regularly, it is advised to not share the credentials entered.
