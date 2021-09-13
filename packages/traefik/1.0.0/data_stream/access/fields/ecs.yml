@@ -1,0 +1,171 @@
+- description: |-
+    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: destination.address
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: destination.as.number
+  type: long
+- description: Organization name.
+  name: destination.as.organization.name
+  type: keyword
+- description: Destination domain.
+  name: destination.domain
+  type: keyword
+- description: City name.
+  name: destination.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: destination.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: destination.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: destination.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: destination.geo.location
+  type: geo_point
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: destination.geo.name
+  type: keyword
+- description: Region ISO code.
+  name: destination.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: destination.geo.region_name
+  type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: Port of the destination.
+  name: destination.port
+  type: long
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    HTTP request method.
+    Prior to ECS 1.6.0 the following guidance was provided:
+    "The field value must be normalized to lowercase for querying."
+    As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
+  name: http.request.method
+  type: keyword
+- description: Referrer for this HTTP request.
+  name: http.request.referrer
+  type: keyword
+- description: Size in bytes of the response body.
+  name: http.response.body.bytes
+  type: long
+- description: HTTP response status code.
+  name: http.response.status_code
+  type: long
+- description: HTTP version.
+  name: http.version
+  type: keyword
+- description: |-
+    Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
+    If the event wasn't read from a log file, do not populate this field.
+  name: log.file.path
+  type: keyword
+- description: |-
+    A hash of source and destination IPs and ports, as well as the protocol used in a communication. This is a tool-agnostic standard to identify flows.
+    Learn more at https://github.com/corelight/community-id-spec.
+  name: network.community_id
+  type: keyword
+- description: |-
+    Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
+    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+  name: network.transport
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: |-
+    Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: source.address
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: source.geo.location
+  type: geo_point
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Port of the source.
+  name: source.port
+  type: long
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+  name: url.domain
+  type: keyword
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  name: url.original
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
+- description: Name of the device.
+  name: user_agent.device.name
+  type: keyword
+- description: Name of the user agent.
+  name: user_agent.name
+  type: keyword
+- description: Unparsed user_agent string.
+  name: user_agent.original
+  type: keyword
+- description: Operating system name, including the version or code name.
+  name: user_agent.os.full
+  type: keyword
+- description: Operating system name, without the version.
+  name: user_agent.os.name
+  type: keyword
+- description: Operating system version as a raw string.
+  name: user_agent.os.version
+  type: keyword
+- description: Version of the user agent.
+  name: user_agent.version
+  type: keyword
