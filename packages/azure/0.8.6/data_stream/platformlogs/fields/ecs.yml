@@ -199,3 +199,6 @@
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
