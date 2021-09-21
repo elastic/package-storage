@@ -392,10 +392,10 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: The stack trace of this error in plain text.
   name: error.stack_trace
-  type: keyword
+  type: wildcard
 - description: The type of the error, for example the class name of the exception.
   name: error.type
   type: keyword
@@ -588,7 +588,6 @@
   name: geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: geo.location
   type: geo_point
 - description: |-
@@ -745,7 +744,7 @@
   type: long
 - description: The full HTTP request body.
   name: http.request.body.content
-  type: keyword
+  type: wildcard
 - description: Total size in bytes of the request (body and headers).
   name: http.request.bytes
   type: long
@@ -764,7 +763,7 @@
   type: long
 - description: The full HTTP response body.
   name: http.response.body.content
-  type: keyword
+  type: wildcard
 - description: Total size in bytes of the response (body and headers).
   name: http.response.bytes
   type: long
@@ -838,7 +837,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: |-
     A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
     The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
@@ -1409,19 +1408,19 @@
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
   name: url.full
-  type: keyword
+  type: wildcard
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: keyword
+  type: wildcard
 - description: Password of the request.
   name: url.password
   type: keyword
 - description: Path of the request, such as "/search".
   name: url.path
-  type: keyword
+  type: wildcard
 - description: Port of the request, such as 443.
   name: url.port
   type: long
