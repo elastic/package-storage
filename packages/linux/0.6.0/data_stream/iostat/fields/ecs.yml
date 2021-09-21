@@ -8,7 +8,9 @@
     If event.start and event.end are known this value should be the difference between the end and start time.
   name: event.duration
   type: long
-- description: Service address
+- description: |-
+    Address where data about this service was collected from.
+    This should be a URI, network address (ipv4:port or [ipv6]:port) or a resource path (sockets).
   name: service.address
   type: keyword
 - description: |-
