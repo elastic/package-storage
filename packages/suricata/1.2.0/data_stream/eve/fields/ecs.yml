@@ -123,7 +123,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: |-
     Total bytes transferred in both directions.
     If `source.bytes` and `destination.bytes` are known, `network.bytes` is their sum.
@@ -315,10 +315,10 @@
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: keyword
+  type: wildcard
 - description: Path of the request, such as "/search".
   name: url.path
-  type: keyword
+  type: wildcard
 - description: |-
     The query field describes the query string of the request, such as "q=elasticsearch".
     The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
