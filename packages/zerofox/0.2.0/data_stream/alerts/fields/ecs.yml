@@ -64,4 +64,4 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
