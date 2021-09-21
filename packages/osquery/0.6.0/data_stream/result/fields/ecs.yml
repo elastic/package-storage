@@ -85,7 +85,7 @@
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
   name: url.full
-  type: keyword
+  type: wildcard
 - description: Short name or login of the user.
   name: user.name
   type: keyword
