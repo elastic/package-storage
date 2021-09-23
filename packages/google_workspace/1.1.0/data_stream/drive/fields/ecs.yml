@@ -102,7 +102,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: Unique identifier for the organization.
   name: organization.id
   type: keyword
@@ -145,7 +145,9 @@
   level: core
   name: source.geo.location
   type: geo_point
-- name: source.geo.region_iso_code
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
 - description: Region name.
   name: source.geo.region_name
   type: keyword

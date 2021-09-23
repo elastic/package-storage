@@ -85,7 +85,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: Unique identifier for the organization.
   name: organization.id
   type: keyword
