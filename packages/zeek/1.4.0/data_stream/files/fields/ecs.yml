@@ -8,7 +8,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.

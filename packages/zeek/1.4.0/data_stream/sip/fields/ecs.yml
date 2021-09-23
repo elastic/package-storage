@@ -50,7 +50,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: |-
     The action captured by the event.
     This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
@@ -166,4 +166,4 @@
   type: long
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
   name: url.full
-  type: keyword
+  type: wildcard

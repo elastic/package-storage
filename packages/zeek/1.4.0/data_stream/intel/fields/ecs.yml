@@ -50,7 +50,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
     This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
