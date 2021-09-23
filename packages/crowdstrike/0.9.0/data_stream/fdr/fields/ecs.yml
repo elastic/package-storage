@@ -1,5 +1,8 @@
-- externa: ecs
+- description: |-
+    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
+  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: destination.as.number
   type: long
@@ -19,7 +22,7 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
+  level: core
   name: destination.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -134,8 +137,6 @@
     The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
   name: network.transport
   type: keyword
-- externa: ecs
-  name: observer.address
 - description: City name.
   name: observer.geo.city_name
   type: keyword
@@ -149,7 +150,7 @@
   name: observer.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
+  level: core
   name: observer.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -193,7 +194,7 @@
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
   name: process.command_line
-  type: keyword
+  type: wildcard
 - description: |-
     Unique identifier for the process.
     The implementation of this is specified by the data source, but some examples of what could be used here are a process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process.
@@ -254,8 +255,11 @@
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
   type: keyword
-- externa: ecs
+- description: |-
+    Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: source.address
+  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: source.as.number
   type: long
@@ -275,7 +279,7 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
+  level: core
   name: source.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -363,10 +367,10 @@
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: keyword
+  type: wildcard
 - description: Path of the request, such as "/search".
   name: url.path
-  type: keyword
+  type: wildcard
 - description: |-
     The highest registered url domain, stripped of the subdomain.
     For example, the registered domain for "foo.example.com" is "example.com".
