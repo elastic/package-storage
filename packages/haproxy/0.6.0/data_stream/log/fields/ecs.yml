@@ -19,7 +19,7 @@
   type: long
 - description: The full HTTP request body.
   name: http.request.body.content
-  type: keyword
+  type: wildcard
 - description: Total size in bytes of the request (body and headers).
   name: http.request.bytes
   type: long
@@ -38,7 +38,7 @@
   type: long
 - description: The full HTTP response body.
   name: http.response.body.content
-  type: keyword
+  type: wildcard
 - description: Total size in bytes of the response (body and headers).
   name: http.response.bytes
   type: long
@@ -120,19 +120,19 @@
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
   name: url.full
-  type: keyword
+  type: wildcard
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: keyword
+  type: wildcard
 - description: Password of the request.
   name: url.password
   type: keyword
 - description: Path of the request, such as "/search".
   name: url.path
-  type: keyword
+  type: wildcard
 - description: Port of the request, such as 443.
   name: url.port
   type: long
