@@ -1,6 +1,6 @@
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: |-
     Identification code for this event, if one exists.
     Some event sources use event codes to identify messages unambiguously, regardless of message language or wording adjustments over time. An example of this is the Windows Event ID.
