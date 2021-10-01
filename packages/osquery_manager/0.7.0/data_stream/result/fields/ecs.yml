@@ -1,4 +1,3 @@
-- name: host.ip
+- description: Host ip addresses.
+  name: host.ip
   type: ip
-  description: |-
-    IP of the host.
