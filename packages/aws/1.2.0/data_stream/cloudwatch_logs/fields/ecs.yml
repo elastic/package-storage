@@ -5,7 +5,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword

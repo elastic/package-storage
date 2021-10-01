@@ -5,7 +5,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
@@ -20,10 +20,10 @@
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: keyword
+  type: wildcard
 - description: Path of the request, such as "/search".
   name: url.path
-  type: keyword
+  type: wildcard
 - description: Port of the request, such as 443.
   name: url.port
   type: long
