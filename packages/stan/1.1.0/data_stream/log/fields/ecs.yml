@@ -11,7 +11,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: text
+  type: match_only_text
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
     This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
@@ -42,7 +42,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: |-
     Direction of the network traffic.
     Recommended values are:
