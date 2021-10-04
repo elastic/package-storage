@@ -122,7 +122,7 @@
   type: keyword
 - description: Error message.
   name: error.message
-  type: match_only_text
+  type: text
 - description: |-
     The action captured by the event.
     This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
@@ -266,7 +266,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: match_only_text
+  type: text
 - description: |-
     A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
     The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
@@ -467,10 +467,10 @@
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
   name: url.original
-  type: wildcard
+  type: keyword
 - description: Path of the request, such as "/search".
   name: url.path
-  type: wildcard
+  type: keyword
 - description: |-
     The query field describes the query string of the request, such as "q=elasticsearch".
     The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
