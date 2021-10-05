@@ -1,0 +1,77 @@
+{
+    "@timestamp": "2021-09-28T09:32:13.675Z",
+    "agent": {
+        "ephemeral_id": "2490e5ec-aee9-400e-ad82-de9bdcae3622",
+        "hostname": "docker-fleet-agent",
+        "id": "f8ab7ac1-8eac-4234-9e2c-f3eab39628a8",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "7.15.0"
+    },
+    "data_stream": {
+        "dataset": "stan.stats",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "1.12.0"
+    },
+    "elastic_agent": {
+        "id": "f8ab7ac1-8eac-4234-9e2c-f3eab39628a8",
+        "snapshot": true,
+        "version": "7.15.0"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "stan.stats",
+        "duration": 1994100,
+        "ingested": "2021-09-28T09:32:17Z",
+        "module": "stan"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "id": "6505f7ca36739e7eb909bdb52bf3ec18",
+        "ip": [
+            "172.31.0.7"
+        ],
+        "mac": [
+            "02:42:ac:1f:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "Core",
+            "family": "redhat",
+            "kernel": "5.10.47-linuxkit",
+            "name": "CentOS Linux",
+            "platform": "centos",
+            "type": "linux",
+            "version": "7 (Core)"
+        }
+    },
+    "metricset": {
+        "name": "stats",
+        "period": 60000
+    },
+    "service": {
+        "address": "http://elastic-package-service_stan_1:8222/streaming/serverz",
+        "type": "stan"
+    },
+    "stan": {
+        "cluster": {
+            "id": "test-cluster"
+        },
+        "server": {
+            "id": "1VnC3EII15lWBPr6DHJdg8"
+        },
+        "stats": {
+            "bytes": 0,
+            "channels": 1,
+            "clients": 100,
+            "messages": 0,
+            "state": "STANDALONE",
+            "subscriptions": 100
+        }
+    }
+}
