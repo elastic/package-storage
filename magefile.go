@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/elastic/package-registry/util"
+	"github.com/elastic/package-registry/packages"
 	"github.com/magefile/mage/sh"
 	"github.com/pkg/errors"
 )
@@ -51,11 +51,15 @@ func buildPackages() error {
 		return err
 	}
 
+	fsBuilder := func(p *packages.Package) (packages.PackageFileSystem, error) {
+		return packages.NewExtractedPackageFileSystem(p)
+	}
+
 	for _, packagePath := range packagePaths {
 		srcDir := packagePath + "/"
-		p, err := util.NewPackage(srcDir)
+		p, err := packages.NewPackage(srcDir, fsBuilder)
 		if err != nil {
-			return err
+			return errors.Wrapf(err, "new package from %s", srcDir)
 		}
 		dstDir := filepath.Join(publicDir, "package", p.Name, p.Version)
 
