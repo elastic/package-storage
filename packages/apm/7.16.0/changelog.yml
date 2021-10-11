@@ -1,0 +1,43 @@
+# newer versions go on top
+#
+# change type can be one of: enhancement, bugfix, breaking-change
+- version: "0.5.0"
+  changes:
+    - description: define index sorting for internal metrics
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/6116
+    - description: add histogram dynamic_template to app metrics data stream
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/6043
+    - description: remove warm phase from ILM policies
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/6229
+- version: "0.4.0"
+  changes:
+    - description: add anonymous auth config, replace some RUM config
+      type: breaking-change
+      link: https://github.com/elastic/apm-server/pull/5623
+    - description: use new apm-server.auth config
+      type: breaking-change
+      link: https://github.com/elastic/apm-server/pull/5691
+- version: "0.3.0"
+  changes:
+    - description: added apm-server.url config
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/5332
+    - description: removed apm-server.kibana.api_key config
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/5380
+- version: "0.2.0"
+  changes:
+    - description: added support for apm-server.rum.allow_service_names
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/5030
+    - description: introduce a configurable default service environment
+      type: enhancement
+      link: https://github.com/elastic/apm-server/pull/4861
+- version: "0.1.0"
+  changes:
+    - description: initial release
+      type: enhancement
+      link: https://github.com/elastic/apm-server/
