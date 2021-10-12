@@ -9,7 +9,6 @@ pipeline {
     DOCKER_REGISTRY = 'docker.elastic.co'
     DOCKER_REGISTRY_SECRET = 'secret/observability-team/ci/docker-registry/prod'
     PIPELINE_LOG_LEVEL='INFO'
-    GO_VERSION = '1.13.12'
     DOCKER_IMG = "${env.DOCKER_REGISTRY}/package-registry/distribution"
     DOCKER_IMG_PR = "${env.DOCKER_REGISTRY}/observability-ci/package-registry/distribution"
   }
