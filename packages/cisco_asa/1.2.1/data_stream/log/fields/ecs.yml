@@ -334,6 +334,9 @@
 - description: Short name or login of the user.
   name: source.user.name
   type: keyword
+- description: Name of the group.
+  name: source.user.group.name
+  type: keyword
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
