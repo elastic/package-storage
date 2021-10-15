@@ -10,9 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/elastic/package-registry/packages"
 	"github.com/magefile/mage/sh"
 	"github.com/pkg/errors"
+
+	"github.com/elastic/package-registry/packages"
 )
 
 var (
