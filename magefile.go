@@ -2,6 +2,7 @@
 // or more contributor license agreements. Licensed under the Elastic License;
 // you may not use this file except in compliance with the Elastic License.
 
+//go:build mage
 // +build mage
 
 package main
@@ -13,7 +14,7 @@ import (
 	"github.com/magefile/mage/sh"
 	"github.com/pkg/errors"
 
-	"github.com/elastic/package-registry/util"
+	"github.com/elastic/package-registry/packages"
 )
 
 var (
@@ -52,11 +53,15 @@ func buildPackages() error {
 		return err
 	}
 
+	fsBuilder := func(p *packages.Package) (packages.PackageFileSystem, error) {
+		return packages.NewExtractedPackageFileSystem(p)
+	}
+
 	for _, packagePath := range packagePaths {
 		srcDir := packagePath + "/"
-		p, err := util.NewPackage(srcDir)
+		p, err := packages.NewPackage(srcDir, fsBuilder)
 		if err != nil {
-			return err
+			return errors.Wrapf(err, "new package from %s", srcDir)
 		}
 		dstDir := filepath.Join(publicDir, "package", p.Name, p.Version)
 
