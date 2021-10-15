@@ -2,7 +2,7 @@
 // or more contributor license agreements. Licensed under the Elastic License;
 // you may not use this file except in compliance with the Elastic License.
 
-// +build mage
+//go:build mage
 
 package main
 
@@ -10,9 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/elastic/package-registry/packages"
 	"github.com/magefile/mage/sh"
 	"github.com/pkg/errors"
+
+	"github.com/elastic/package-registry/packages"
 )
 
 var (
