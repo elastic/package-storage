@@ -184,6 +184,17 @@
   name: user.name
   type: keyword
 - description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.effective.domain
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.effective.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.effective.name
+  type: keyword
+- description: |-
     Name of the directory the group is a member of.
     For example, an LDAP or Active Directory domain name.
   name: user.target.group.domain
@@ -196,4 +207,15 @@
   type: keyword
 - description: Short name or login of the user.
   name: user.target.name
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.target.domain
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.target.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.changes.name
   type: keyword
