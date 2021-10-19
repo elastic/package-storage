@@ -1,3 +1,260 @@
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    Translated IP of source based NAT sessions (e.g. internal client to internet).
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: client.nat.ip
+  type: ip
+- description: Date and time when the code signature was generated and signed.
+  name: code_signature.timestamp
+  type: date
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: destination.nat.ip
+  type: ip
+- description: Date and time when the code signature was generated and signed.
+  name: dll.code_signature.timestamp
+  type: date
+- description: |-
+    Array containing all IPs seen in `answers.data`.
+    The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
+  name: dns.resolved_ip
+  type: ip
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: elf.creation_date
+  type: date
+- description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
+  type: date
+- description: event.end contains the date when the event ended or when the activity was last observed.
+  name: event.end
+  type: date
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
+- description: event.start contains the date when the event started or when the activity was first observed.
+  name: event.start
+  type: date
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: file.accessed
+  type: date
+- description: Date and time when the code signature was generated and signed.
+  name: file.code_signature.timestamp
+  type: date
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: file.elf.creation_date
+  type: date
+- description: Last time the file content was modified.
+  name: file.mtime
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: file.x509.not_before
+  type: date
 - description: Host ip addresses.
   name: host.ip
   type: ip
+- description: Host IP address when the source IP address is the proxy.
+  name: network.forwarded_ip
+  type: ip
+- description: IP addresses of the observer.
+  name: observer.ip
+  type: ip
+- description: Time when package was installed.
+  name: package.installed
+  type: date
+- description: Date and time when the code signature was generated and signed.
+  name: process.code_signature.timestamp
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: process.elf.creation_date
+  type: date
+- description: The time the process ended.
+  name: process.end
+  type: date
+- description: Date and time when the code signature was generated and signed.
+  name: process.parent.code_signature.timestamp
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: process.parent.elf.creation_date
+  type: date
+- description: The time the process ended.
+  name: process.parent.end
+  type: date
+- description: The time the process started.
+  name: process.parent.start
+  type: date
+- description: The time the process started.
+  name: process.start
+  type: date
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: IP address of the server (IPv4 or IPv6).
+  name: server.ip
+  type: ip
+- description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: server.nat.ip
+  type: ip
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: |-
+    Translated ip of source based NAT sessions (e.g. internal client to internet)
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: source.nat.ip
+  type: ip
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: threat.enrichments.indicator.file.accessed
+  type: date
+- description: Date and time when the code signature was generated and signed.
+  name: threat.enrichments.indicator.file.code_signature.timestamp
+  type: date
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: threat.enrichments.indicator.file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: threat.enrichments.indicator.file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: threat.enrichments.indicator.file.elf.creation_date
+  type: date
+- description: Last time the file content was modified.
+  name: threat.enrichments.indicator.file.mtime
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.enrichments.indicator.file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.enrichments.indicator.file.x509.not_before
+  type: date
+- description: The date and time when intelligence source first reported sighting this indicator.
+  name: threat.enrichments.indicator.first_seen
+  type: date
+- description: Identifies a threat indicator as an IP address (irrespective of direction).
+  name: threat.enrichments.indicator.ip
+  type: ip
+- description: The date and time when intelligence source last reported sighting this indicator.
+  name: threat.enrichments.indicator.last_seen
+  type: date
+- description: The date and time when intelligence source last modified information for this indicator.
+  name: threat.enrichments.indicator.modified_at
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.enrichments.indicator.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.enrichments.indicator.x509.not_before
+  type: date
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: threat.indicator.file.accessed
+  type: date
+- description: Date and time when the code signature was generated and signed.
+  name: threat.indicator.file.code_signature.timestamp
+  type: date
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: threat.indicator.file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: threat.indicator.file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: threat.indicator.file.elf.creation_date
+  type: date
+- description: Last time the file content was modified.
+  name: threat.indicator.file.mtime
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.indicator.file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.indicator.file.x509.not_before
+  type: date
+- description: The date and time when intelligence source first reported sighting this indicator.
+  name: threat.indicator.first_seen
+  type: date
+- description: Identifies a threat indicator as an IP address (irrespective of direction).
+  name: threat.indicator.ip
+  type: ip
+- description: The date and time when intelligence source last reported sighting this indicator.
+  name: threat.indicator.last_seen
+  type: date
+- description: The date and time when intelligence source last modified information for this indicator.
+  name: threat.indicator.modified_at
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.indicator.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.indicator.x509.not_before
+  type: date
+- description: Date/Time indicating when client certificate is no longer considered valid.
+  name: tls.client.not_after
+  type: date
+- description: Date/Time indicating when client certificate is first considered valid.
+  name: tls.client.not_before
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: tls.client.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: tls.client.x509.not_before
+  type: date
+- description: Timestamp indicating when server certificate is no longer considered valid.
+  name: tls.server.not_after
+  type: date
+- description: Timestamp indicating when server certificate is first considered valid.
+  name: tls.server.not_before
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: tls.server.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: tls.server.x509.not_before
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: x509.not_before
+  type: date
