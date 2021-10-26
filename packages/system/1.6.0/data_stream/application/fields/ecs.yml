@@ -24,3 +24,9 @@
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
   name: event.original
   type: keyword
+- description: |-
+    For log events the message field contains the log message, optimized for viewing in a log viewer.
+    For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
+    If multiple messages exist, they can be combined into one message.
+  name: message
+  type: match_only_text
