@@ -1,6 +1,0 @@
-metricsets: ["users"]
-condition: ${host.platform} == 'linux'
-period: {{period}}
-processors:
-  - drop_fields:
-      fields: event.module
