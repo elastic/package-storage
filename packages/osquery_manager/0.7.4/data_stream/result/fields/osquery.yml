@@ -1,0 +1,4975 @@
+- name: osquery
+  title: Osquery result
+  description: Fields related to the Osquery result
+  type: group
+  fields:
+    - name: abi_version
+      description: elf_info.abi_version - Section virtual address in memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: accessed_directories_count
+      description: prefetch.accessed_directories_count - Number of directories accessed.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: accessed_files_count
+      description: prefetch.accessed_files_count - Number of files accessed.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: accessed_time
+      description: shellbags.accessed_time - Directory Accessed time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: activated
+      description: tpm_info.activated - TPM is activated
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: active
+      description: |-
+        firefox_addons.active - 1 If the addon is active else 0
+        memory_info.active - The total amount of buffer or page cache memory, in bytes, that is in active use
+        osquery_events.active - 1 if the publisher or subscriber is active else 0
+        osquery_packs.active - Whether this pack is active (the version, platform and discovery queries match) yes=1, no=0.
+        osquery_registry.active - 1 If this plugin is active else 0
+        virtual_memory_info.active - Total number of active pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: active_disks
+      description: md_devices.active_disks - Number of active disks in array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: actual
+      description: fan_speed_sensors.actual - Actual speed
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: addr
+      description: elf_symbols.addr - Symbol address (value)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: align
+      description: |-
+        elf_sections.align - Segment alignment
+        elf_segments.align - Segment alignment
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: allow_maximum
+      description: shared_resources.allow_maximum - Number of concurrent users for this resource has been limited. If True, the value in the MaximumAllowed property is ignored.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: allow_signed_enabled
+      description: alf.allow_signed_enabled - 1 If allow signed mode is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: amperage
+      description: battery.amperage - The battery's current amperage in mA
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: anonymous
+      description: virtual_memory_info.anonymous - Total number of anonymous pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: assessments_enabled
+      description: gatekeeper.assessments_enabled - 1 If a Gatekeeper is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: atime
+      description: |-
+        device_file.atime - Last access time
+        file.atime - Last access time
+        file_events.atime - Last access time
+        process_events.atime - File last access in UNIX time
+        shared_memory.atime - Attached time
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: attached
+      description: shared_memory.attached - Number of attached processes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: auid
+      description: |-
+        process_events.auid - Audit User ID at process start
+        process_file_events.auid - Audit user ID of the process using the file
+        seccomp_events.auid - Audit user ID (loginuid) of the user who started the analyzed process
+        socket_events.auid - Audit User ID
+        user_events.auid - Audit User ID
+      type: keyword
+      ignore_above: 1024
+    - name: auto_login
+      description: wifi_networks.auto_login - 1 if auto login is enabled, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: auto_update
+      description: lxd_images.auto_update - Whether the image auto-updates (1) or not (0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: autoupdate
+      description: |-
+        firefox_addons.autoupdate - 1 If the addon applies background updates else 0
+        windows_security_center.autoupdate - The health of the Windows Autoupdate feature
+      type: keyword
+      ignore_above: 1024
+    - name: average_memory
+      description: osquery_schedule.average_memory - Average private memory left after executing
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_bytes_per_read
+      description: physical_disk_performance.avg_disk_bytes_per_read - Average number of bytes transferred from the disk during read operations
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_bytes_per_write
+      description: physical_disk_performance.avg_disk_bytes_per_write - Average number of bytes transferred to the disk during write operations
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_read_queue_length
+      description: physical_disk_performance.avg_disk_read_queue_length - Average number of read requests that were queued for the selected disk during the sample interval
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_sec_per_read
+      description: physical_disk_performance.avg_disk_sec_per_read - Average time, in seconds, of a read operation of data from the disk
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_sec_per_write
+      description: physical_disk_performance.avg_disk_sec_per_write - Average time, in seconds, of a write operation of data to the disk
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: avg_disk_write_queue_length
+      description: physical_disk_performance.avg_disk_write_queue_length - Average number of write requests that were queued for the selected disk during the sample interval
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: backup_date
+      description: time_machine_backups.backup_date - Backup Date
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: base64
+      description: extended_attributes.base64 - 1 if the value is base64 encoded else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: binary_queue
+      description: carbon_black_info.binary_queue - Size in bytes of binaries waiting to be sent to Carbon Black server
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: block_size
+      description: |-
+        block_devices.block_size - Block size in bytes
+        device_file.block_size - Block size of filesystem
+        file.block_size - Block size of filesystem
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: blocks
+      description: |-
+        device_partitions.blocks - Number of blocks
+        mounts.blocks - Mounted device used blocks
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: blocks_available
+      description: mounts.blocks_available - Mounted device available blocks
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: blocks_free
+      description: mounts.blocks_free - Mounted device free blocks
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: blocks_size
+      description: |-
+        device_partitions.blocks_size - Byte size of each block
+        mounts.blocks_size - Block size in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bluetooth_sharing
+      description: sharing_preferences.bluetooth_sharing - 1 If bluetooth sharing is enabled for any user else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: boot_partition
+      description: logical_drives.boot_partition - True if Windows booted from this drive.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bp_microcode_disabled
+      description: kva_speculative_info.bp_microcode_disabled - Branch Predictions are disabled due to lack of microcode update.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bp_mitigations
+      description: kva_speculative_info.bp_mitigations - Branch Prediction mitigations are enabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bp_system_pol_disabled
+      description: kva_speculative_info.bp_system_pol_disabled - Branch Predictions are disabled via system policy.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bridge_nf_ip6tables
+      description: docker_info.bridge_nf_ip6tables - 1 if bridge netfilter ip6tables is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bridge_nf_iptables
+      description: docker_info.bridge_nf_iptables - 1 if bridge netfilter iptables is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: btime
+      description: |-
+        file.btime - (B)irth or (cr)eate time
+        process_events.btime - File creation in UNIX time
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: buffers
+      description: memory_info.buffers - The amount of physical RAM, in bytes, used for file buffers
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: build_number
+      description: windows_crashes.build_number - Windows build number of the crashing machine
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: busy_state
+      description: |-
+        iokit_devicetree.busy_state - 1 if the device is in a busy state else 0
+        iokit_registry.busy_state - 1 if the node is in a busy state else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bytes
+      description: |-
+        curl.bytes - Number of bytes in the response
+        iptables.bytes - Number of matching bytes for this rule.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bytes_available
+      description: time_machine_destinations.bytes_available - Bytes available on volume
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bytes_received
+      description: lxd_networks.bytes_received - Number of bytes received on this network
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bytes_sent
+      description: lxd_networks.bytes_sent - Number of bytes sent on this network
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: bytes_used
+      description: time_machine_destinations.bytes_used - Bytes used on volume
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ca
+      description: "certificates.ca - 1 if CA: true (certificate is an authority) else 0"
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cached
+      description: |-
+        lxd_images.cached - Whether image is cached (1) or not (0)
+        memory_info.cached - The amount of physical RAM, in bytes, used as cache memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: capability
+      description: apparmor_events.capability - Capability number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: captive_portal
+      description: wifi_networks.captive_portal - 1 if this network has a captive portal, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: carve
+      description: carves.carve - Set this value to '1' to start a file carve
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: celsius
+      description: temperature_sensors.celsius - Temperature in Celsius
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: channel
+      description: |-
+        wifi_status.channel - Channel number
+        wifi_survey.channel - Channel number
+        windows_eventlog.channel - Source or channel of the event
+      type: keyword
+      ignore_above: 1024
+    - name: channel_band
+      description: |-
+        wifi_status.channel_band - Channel band
+        wifi_survey.channel_band - Channel band
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: channel_width
+      description: |-
+        wifi_status.channel_width - Channel width
+        wifi_survey.channel_width - Channel width
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: charged
+      description: battery.charged - 1 if the battery is currently completely charged. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: charging
+      description: battery.charging - 1 if the battery is currently being charged by a power source. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_bridge_capability_available
+      description: lldp_neighbors.chassis_bridge_capability_available - Chassis bridge capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_bridge_capability_enabled
+      description: lldp_neighbors.chassis_bridge_capability_enabled - Is chassis bridge capability enabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_docsis_capability_available
+      description: lldp_neighbors.chassis_docsis_capability_available - Chassis DOCSIS capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_docsis_capability_enabled
+      description: lldp_neighbors.chassis_docsis_capability_enabled - Chassis DOCSIS capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_other_capability_available
+      description: lldp_neighbors.chassis_other_capability_available - Chassis other capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_other_capability_enabled
+      description: lldp_neighbors.chassis_other_capability_enabled - Chassis other capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_repeater_capability_available
+      description: lldp_neighbors.chassis_repeater_capability_available - Chassis repeater capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_repeater_capability_enabled
+      description: lldp_neighbors.chassis_repeater_capability_enabled - Chassis repeater capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_router_capability_available
+      description: lldp_neighbors.chassis_router_capability_available - Chassis router capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_router_capability_enabled
+      description: lldp_neighbors.chassis_router_capability_enabled - Chassis router capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_station_capability_available
+      description: lldp_neighbors.chassis_station_capability_available - Chassis station capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_station_capability_enabled
+      description: lldp_neighbors.chassis_station_capability_enabled - Chassis station capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_sys_description
+      description: lldp_neighbors.chassis_sys_description - Max number of CPU physical cores
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_tel_capability_available
+      description: lldp_neighbors.chassis_tel_capability_available - Chassis telephone capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_tel_capability_enabled
+      description: lldp_neighbors.chassis_tel_capability_enabled - Chassis telephone capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_wlan_capability_available
+      description: lldp_neighbors.chassis_wlan_capability_available - Chassis wlan capability availability
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chassis_wlan_capability_enabled
+      description: lldp_neighbors.chassis_wlan_capability_enabled - Chassis wlan capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: child_pid
+      description: es_process_events.child_pid - Process ID of a child process in case of a fork event
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: chunk_size
+      description: md_devices.chunk_size - chunk size in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cid
+      description: |-
+        bpf_process_events.cid - Cgroup ID
+        bpf_socket_events.cid - Cgroup ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cmdline_count
+      description: es_process_events.cmdline_count - Number of command line arguments
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cmdline_size
+      description: process_events.cmdline_size - Actual size (bytes) of command line arguments
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_cross_processes
+      description: carbon_black_info.collect_cross_processes - If the sensor is configured to cross process events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_data_file_writes
+      description: carbon_black_info.collect_data_file_writes - If the sensor is configured to collect non binary file writes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_emet_events
+      description: carbon_black_info.collect_emet_events - If the sensor is configured to EMET events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_file_mods
+      description: carbon_black_info.collect_file_mods - If the sensor is configured to collect file modification events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_module_info
+      description: carbon_black_info.collect_module_info - If the sensor is configured to collect metadata of binaries
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_module_loads
+      description: carbon_black_info.collect_module_loads - If the sensor is configured to capture module loads
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_net_conns
+      description: carbon_black_info.collect_net_conns - If the sensor is configured to collect network connections
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_process_user_context
+      description: carbon_black_info.collect_process_user_context - If the sensor is configured to collect the user running a process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_processes
+      description: carbon_black_info.collect_processes - If the sensor is configured to process events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_reg_mods
+      description: carbon_black_info.collect_reg_mods - If the sensor is configured to collect registry modification events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_sensor_operations
+      description: carbon_black_info.collect_sensor_operations - Unknown
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collect_store_files
+      description: carbon_black_info.collect_store_files - If the sensor is configured to send back binaries to the Carbon Black server
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: collisions
+      description: interface_details.collisions - Packet Collisions detected
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: color_depth
+      description: video_info.color_depth - The amount of bits per pixel to represent color.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: compat
+      description: seccomp_events.compat - Is system call in compatibility mode
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: completed_time
+      description: cups_jobs.completed_time - When the job completed printing
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: compressed
+      description: virtual_memory_info.compressed - The total number of pages that have been compressed by the VM compressor.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: compressor
+      description: virtual_memory_info.compressor - The number of pages used to store compressed VM pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: config_valid
+      description: osquery_info.config_valid - 1 if the config was loaded and considered valid, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: configured_clock_speed
+      description: memory_devices.configured_clock_speed - Configured speed of memory device in megatransfers per second (MT/s)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: configured_voltage
+      description: memory_devices.configured_voltage - Configured operating voltage of device in millivolts
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: consistency_scan_date
+      description: time_machine_destinations.consistency_scan_date - Consistency scan date
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: containers
+      description: docker_info.containers - Total number of containers
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: containers_paused
+      description: docker_info.containers_paused - Number of containers in paused state
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: containers_running
+      description: docker_info.containers_running - Number of containers currently running
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: containers_stopped
+      description: docker_info.containers_stopped - Number of containers in stopped state
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: content_caching
+      description: sharing_preferences.content_caching - 1 If content caching is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: conversion_status
+      description: bitlocker_info.conversion_status - The bitlocker conversion status of the drive.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: copy
+      description: virtual_memory_info.copy - Total number of copy-on-write pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: core
+      description: cpu_time.core - Name of the cpu (core)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cosine_similarity
+      description: powershell_events.cosine_similarity - How similar the Powershell script is to a provided 'normal' character frequency
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: count
+      description: |-
+        userassist.count - Number of times the application has been executed.
+        yara.count - Number of YARA matches
+        yara_events.count - Number of YARA matches
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu
+      description: docker_container_processes.cpu - CPU utilization as percentage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: cpu_cfs_period
+      description: docker_info.cpu_cfs_period - 1 if CPU Completely Fair Scheduler (CFS) period support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_cfs_quota
+      description: docker_info.cpu_cfs_quota - 1 if CPU Completely Fair Scheduler (CFS) quota support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_kernelmode_usage
+      description: docker_container_stats.cpu_kernelmode_usage - CPU kernel mode usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_logical_cores
+      description: system_info.cpu_logical_cores - Number of logical CPU cores available to the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_physical_cores
+      description: system_info.cpu_physical_cores - Number of physical CPU cores in to the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_pred_cmd_supported
+      description: kva_speculative_info.cpu_pred_cmd_supported - PRED_CMD MSR supported by CPU Microcode.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_set
+      description: docker_info.cpu_set - 1 if CPU set selection support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_shares
+      description: docker_info.cpu_shares - 1 if CPU share weighting support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_spec_ctrl_supported
+      description: kva_speculative_info.cpu_spec_ctrl_supported - SPEC_CTRL MSR supported by CPU Microcode.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_status
+      description: cpu_info.cpu_status - The current operating status of the CPU.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_subtype
+      description: |-
+        processes.cpu_subtype - Indicates the specific processor on which an entry may be used.
+        system_info.cpu_subtype - CPU subtype
+      type: keyword
+      ignore_above: 1024
+    - name: cpu_total_usage
+      description: docker_container_stats.cpu_total_usage - Total CPU usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpu_type
+      description: |-
+        processes.cpu_type - Indicates the specific processor designed for installation.
+        system_info.cpu_type - CPU type
+      type: keyword
+      ignore_above: 1024
+    - name: cpu_usermode_usage
+      description: docker_container_stats.cpu_usermode_usage - CPU user mode usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cpus
+      description: docker_info.cpus - Number of CPUs
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: crashed_thread
+      description: crashes.crashed_thread - Thread ID which crashed
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: created_time
+      description: shellbags.created_time - Directory Created time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: creation_time
+      description: |-
+        account_policy_data.creation_time - When the account was first created
+        cups_jobs.creation_time - When the print request was initiated
+      type: keyword
+      ignore_above: 1024
+    - name: creator_pid
+      description: shared_memory.creator_pid - Process ID that created the segment
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: creator_uid
+      description: shared_memory.creator_uid - User ID of creator process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ctime
+      description: |-
+        device_file.ctime - Creation time
+        file.ctime - Last status change time
+        file_events.ctime - Last status change time
+        gatekeeper_approved_apps.ctime - Last change time
+        process_events.ctime - File last metadata change in UNIX time
+        shared_memory.ctime - Changed time
+      type: keyword
+      ignore_above: 1024
+    - name: current_capacity
+      description: battery.current_capacity - The battery's current charged capacity in mAh
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: current_clock_speed
+      description: cpu_info.current_clock_speed - The current frequency of the CPU.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: current_disk_queue_length
+      description: physical_disk_performance.current_disk_queue_length - Number of requests outstanding on the disk at the time the performance data is collected
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: cycle_count
+      description: battery.cycle_count - The number of charge/discharge cycles
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: data_width
+      description: memory_devices.data_width - Data width, in bits, of this memory device
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: database
+      description: lxd_cluster_members.database - Whether the server is a database node (1) or not (0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: date
+      description: |-
+        drivers.date - Driver date
+        platform_info.date - Self-reported platform code update date
+      type: keyword
+      ignore_above: 1024
+    - name: day
+      description: time.day - Current day in the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: days
+      description: uptime.days - Days of uptime
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: decompressed
+      description: virtual_memory_info.decompressed - The total number of pages that have been decompressed by the VM compressor.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: denylisted
+      description: osquery_schedule.denylisted - 1 if the query is denylisted else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: depth
+      description: |-
+        iokit_devicetree.depth - Device nested depth
+        iokit_registry.depth - Node nested depth
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: designed_capacity
+      description: battery.designed_capacity - The battery's designed capacity in mAh
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: dev_id_enabled
+      description: gatekeeper.dev_id_enabled - 1 If a Gatekeeper allows execution from identified developers else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: dhcp_enabled
+      description: interface_details.dhcp_enabled - If TRUE, the dynamic host configuration protocol (DHCP) server automatically assigns an IP address to the computer system when establishing a network connection.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disabled
+      description: |-
+        browser_plugins.disabled - Is the plugin disabled. 1 = Disabled
+        firefox_addons.disabled - 1 If the addon is application-disabled else 0
+        launchd.disabled - Skip loading this daemon or agent on boot
+        wifi_networks.disabled - 1 if this network is disabled, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+    - name: disc_sharing
+      description: sharing_preferences.disc_sharing - 1 If CD or DVD sharing is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disconnected
+      description: connectivity.disconnected - True if the all interfaces are not connected to any network
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: discovery_cache_hits
+      description: osquery_packs.discovery_cache_hits - The number of times that the discovery query used cached values since the last time the config was reloaded
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: discovery_executions
+      description: osquery_packs.discovery_executions - The number of times that the discovery queries have been executed since the last time the config was reloaded
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_bytes_read
+      description: processes.disk_bytes_read - Bytes read from disk
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_bytes_written
+      description: processes.disk_bytes_written - Bytes written to disk
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_id
+      description: smart_drive_info.disk_id - Physical slot number of device, only exists when hardware storage controller exists
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_index
+      description: disk_info.disk_index - Physical drive number of the disk.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_read
+      description: docker_container_stats.disk_read - Total disk read bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_size
+      description: disk_info.disk_size - Size of the disk.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: disk_write
+      description: docker_container_stats.disk_write - Total disk write bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: driver_date
+      description: video_info.driver_date - The date listed on the installed driver.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: dtime
+      description: shared_memory.dtime - Detached time
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: dump_certificate
+      description: curl_certificate.dump_certificate - Set this value to '1' to dump certificate
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: duration
+      description: |-
+        bpf_process_events.duration - How much time was spent inside the syscall (nsecs)
+        bpf_socket_events.duration - How much time was spent inside the syscall (nsecs)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: eapi
+      description: portage_packages.eapi - The eapi for the ebuild
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: egid
+      description: |-
+        docker_container_processes.egid - Effective group ID
+        es_process_events.egid - Effective Group ID of the process
+        process_events.egid - Effective group ID at process start
+        process_file_events.egid - Effective group ID of the process using the file
+        processes.egid - Unsigned effective group ID
+      type: keyword
+      ignore_above: 1024
+    - name: ejectable
+      description: disk_events.ejectable - 1 if ejectable, 0 if not
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: elapsed_time
+      description: processes.elapsed_time - Elapsed time in seconds this process has been running.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: elevated_token
+      description: processes.elevated_token - Process uses elevated token yes=1, no=0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: enable_ipv6
+      description: docker_networks.enable_ipv6 - 1 if IPv6 is enabled on this network. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: enabled
+      description: |-
+        app_schemes.enabled - 1 if this handler is the OS default, else 0
+        event_taps.enabled - Is the Event Tap enabled
+        interface_details.enabled - Indicates whether the adapter is enabled or not.
+        location_services.enabled - 1 if Location Services are enabled, else 0
+        lxd_cluster.enabled - Whether clustering enabled (1) or not (0) on this node
+        sandboxes.enabled - Application sandboxings enabled on container
+        scheduled_tasks.enabled - Whether or not the scheduled task is enabled
+        screenlock.enabled - 1 If a password is required after sleep or the screensaver begins; else 0
+        sip_config.enabled - 1 if this configuration is enabled, otherwise 0
+        tpm_info.enabled - TPM is enabled
+        yum_sources.enabled - Whether the repository is used
+      type: keyword
+      ignore_above: 1024
+    - name: enabled_nvram
+      description: sip_config.enabled_nvram - 1 if this configuration is enabled, otherwise 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: encrypted
+      description: |-
+        disk_encryption.encrypted - 1 If encrypted: true (disk is encrypted), else 0
+        user_ssh_keys.encrypted - 1 if key is encrypted, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: env_count
+      description: |-
+        es_process_events.env_count - Number of environment variables
+        process_events.env_count - Number of environment variables
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: env_size
+      description: process_events.env_size - Actual size (bytes) of environment list
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ephemeral
+      description: lxd_instances.ephemeral - Whether the instance is ephemeral(1) or not(0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: epoch
+      description: rpm_packages.epoch - Package epoch value
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: euid
+      description: |-
+        docker_container_processes.euid - Effective user ID
+        es_process_events.euid - Effective User ID of the process
+        process_events.euid - Effective user ID at process start
+        process_file_events.euid - Effective user ID of the process using the file
+        processes.euid - Unsigned effective user ID
+      type: keyword
+      ignore_above: 1024
+    - name: event_queue
+      description: carbon_black_info.event_queue - Size in bytes of Carbon Black event files on disk
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: event_tap_id
+      description: event_taps.event_tap_id - Unique ID for the Tap
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: eventid
+      description: |-
+        windows_eventlog.eventid - Event ID of the event
+        windows_events.eventid - Event ID of the event
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: events
+      description: osquery_events.events - Number of events emitted or received since osquery started
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: execution_flag
+      description: shimcache.execution_flag - Boolean Execution flag, 1 for execution, 0 for no execution, -1 for missing (this flag does not exist on Windows 10 and higher).
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: executions
+      description: osquery_schedule.executions - Number of times the query was executed
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: expand
+      description: default_environment.expand - 1 if the variable needs expanding, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: expire
+      description: shadow.expire - Number of days since UNIX epoch date until account is disabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: external
+      description: app_schemes.external - 1 if this handler does NOT exist on OS X by default, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: fahrenheit
+      description: temperature_sensors.fahrenheit - Temperature in Fahrenheit
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: failed_disks
+      description: md_devices.failed_disks - Number of failed disks in array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: failed_login_count
+      description: account_policy_data.failed_login_count - The number of failed login attempts using an incorrect password. Count resets after a correct password is entered.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: failed_login_timestamp
+      description: account_policy_data.failed_login_timestamp - The time of the last failed login attempt. Resets after a correct password is entered
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: family
+      description: |-
+        bpf_socket_events.family - The Internet protocol family ID
+        listening_ports.family - Network protocol (IPv4, IPv6)
+        process_open_sockets.family - Network protocol (IPv4, IPv6)
+        socket_events.family - The Internet protocol family ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: faults
+      description: virtual_memory_info.faults - Total number of calls to vm_faults.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: feature_control
+      description: msr.feature_control - Bitfield controlling enabled features.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: file_backed
+      description: virtual_memory_info.file_backed - Total number of file backed pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: file_sharing
+      description: sharing_preferences.file_sharing - 1 If file sharing is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: firewall_unload
+      description: alf.firewall_unload - 1 If firewall unloading enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: flag
+      description: shadow.flag - Reserved
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: flags
+      description: "device_partitions.flags - \ndns_cache.flags - DNS record flags\nelf_info.flags - ELF header flags\nelf_sections.flags - Section attributes\nelf_segments.flags - Segment attributes\ninterface_details.flags - Flags (netdevice) for the device\nmounts.flags - Mounted device flags\npipes.flags - The flags indicating whether this pipe connection is a server or client end, and if the pipe for sending messages or bytes\nroutes.flags - Flags to describe route"
+      type: keyword
+      ignore_above: 1024
+    - name: flatsize
+      description: pkg_packages.flatsize - Package size in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: forced
+      description: preferences.forced - 1 if the value is forced/managed, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: forwarding_enabled
+      description: interface_ipv6.forwarding_enabled - Enable IP forwarding
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: free
+      description: virtual_memory_info.free - Total number of free pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: free_space
+      description: logical_drives.free_space - The amount of free space, in bytes, of the drive (-1 on failure).
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: fsgid
+      description: |-
+        process_events.fsgid - Filesystem group ID at process start
+        process_file_events.fsgid - Filesystem group ID of the process using the file
+      type: keyword
+      ignore_above: 1024
+    - name: fsuid
+      description: |-
+        apparmor_events.fsuid - Filesystem user ID
+        process_events.fsuid - Filesystem user ID at process start
+        process_file_events.fsuid - Filesystem user ID of the process using the file
+      type: keyword
+      ignore_above: 1024
+    - name: gid
+      description: |-
+        asl.gid - GID that sent the log message (set by the server).
+        bpf_process_events.gid - Group ID
+        bpf_socket_events.gid - Group ID
+        device_file.gid - Owning group ID
+        docker_container_processes.gid - Group ID
+        es_process_events.gid - Group ID of the process
+        file.gid - Owning group ID
+        file_events.gid - Owning group ID
+        groups.gid - Unsigned int64 group ID
+        package_bom.gid - Expected group of file or directory
+        process_events.gid - Group ID at process start
+        process_file_events.gid - The gid of the process performing the action
+        processes.gid - Unsigned group ID
+        seccomp_events.gid - Group ID of the user who started the analyzed process
+        user_groups.gid - Group ID
+        users.gid - Group ID (unsigned)
+      type: keyword
+      ignore_above: 1024
+    - name: gid_signed
+      description: |-
+        groups.gid_signed - A signed int64 version of gid
+        users.gid_signed - Default group ID as int64 signed (Apple)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: global_seq_num
+      description: es_process_events.global_seq_num - Global sequence number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: global_state
+      description: alf.global_state - 1 If the firewall is enabled with exceptions, 2 if the firewall is configured to block all incoming connections, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: grace_period
+      description: screenlock.grace_period - The amount of time in seconds the screen must be asleep or the screensaver on before a password is required on-wake. 0 = immediately; -1 = no password is required on-wake
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: guest
+      description: cpu_time.guest - Time spent running a virtual CPU for a guest OS under the control of the Linux kernel
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: guest_nice
+      description: "cpu_time.guest_nice - Time spent running a niced guest "
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: handle_count
+      description: processes.handle_count - Total number of handles that the process has open. This number is the sum of the handles currently opened by each thread in the process.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hard_links
+      description: |-
+        device_file.hard_links - Number of hard links
+        file.hard_links - Number of hard links
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: has_expired
+      description: curl_certificate.has_expired - 1 if the certificate has expired, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hash_resources
+      description: signature.hash_resources - Set to 1 to also hash resources, or 0 otherwise. Default is 1
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hashed
+      description: file_events.hashed - 1 if the file was hashed, 0 if not, -1 if hashing failed
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: header_size
+      description: smbios_tables.header_size - Header size in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hidden
+      description: |-
+        scheduled_tasks.hidden - Whether or not the task is visible in the UI
+        smc_keys.hidden - 1 if this key is normally hidden, otherwise 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hop_limit
+      description: interface_ipv6.hop_limit - Current Hop Limit
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hopcount
+      description: routes.hopcount - Max hops expected
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: host_port
+      description: docker_container_ports.host_port - Host port
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: hours
+      description: uptime.hours - Hours of uptime
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ibrs_support_enabled
+      description: kva_speculative_info.ibrs_support_enabled - Windows uses IBRS.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ibytes
+      description: interface_details.ibytes - Input bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: icon_mode
+      description: quicklook_cache.icon_mode - Thumbnail icon mode
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: idle
+      description: cpu_time.idle - Time spent in the idle task
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: idrops
+      description: interface_details.idrops - Input drops
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: idx
+      description: kernel_extensions.idx - Extension load tag or index
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ierrors
+      description: interface_details.ierrors - Input errors
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: images
+      description: docker_info.images - Number of images
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: in_smartctl_db
+      description: smart_drive_info.in_smartctl_db - Boolean value for if drive is recognized
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inactive
+      description: |-
+        memory_info.inactive - The total amount of buffer or page cache memory, in bytes, that are free and available
+        shadow.inactive - Number of days after password expires until account is blocked
+        virtual_memory_info.inactive - Total number of inactive pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inode
+      description: |-
+        device_file.inode - Filesystem inode number
+        device_hash.inode - Filesystem inode number
+        file.inode - Filesystem inode number
+        file_events.inode - Filesystem inode number
+        process_memory_map.inode - Mapped path inode, 0 means uninitialized (BSS)
+        process_open_pipes.inode - Pipe inode number
+        quicklook_cache.inode - Parsed file ID (inode) from fs_id
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inodes
+      description: |-
+        device_partitions.inodes - Number of meta nodes
+        mounts.inodes - Mounted device used inodes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inodes_free
+      description: mounts.inodes_free - Mounted device free inodes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inodes_total
+      description: lxd_storage_pools.inodes_total - Total number of inodes available in this storage pool
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: inodes_used
+      description: lxd_storage_pools.inodes_used - Number of inodes used
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: install_date
+      description: "os_version.install_date - The install date of the OS.\npatches.install_date - Indicates when the patch was installed. Lack of a value does not indicate that the patch was not installed.\nprograms.install_date - Date that this product was installed on the system. \nshared_resources.install_date - Indicates when the object was installed. Lack of a value does not indicate that the object is not installed."
+      type: keyword
+      ignore_above: 1024
+    - name: install_time
+      description: |-
+        appcompat_shims.install_time - Install time of the SDB
+        chrome_extensions.install_time - Extension install time, in its original Webkit format
+        package_receipts.install_time - Timestamp of install time
+        rpm_packages.install_time - When the package was installed
+      type: keyword
+      ignore_above: 1024
+    - name: install_timestamp
+      description: chrome_extensions.install_timestamp - Extension install time, converted to unix time
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: instances
+      description: pipes.instances - Number of instances of the named pipe
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: interleave_data_depth
+      description: memory_device_mapped_addresses.interleave_data_depth - The max number of consecutive rows from memory device that are accessed in a single interleave transfer; 0 indicates device is non-interleave
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: interleave_position
+      description: memory_device_mapped_addresses.interleave_position - The position of the device in a interleave, i.e. 0 indicates non-interleave, 1 indicates 1st interleave, 2 indicates 2nd interleave, etc.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: internal
+      description: osquery_registry.internal - 1 If the plugin is internal else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: internet_sharing
+      description: sharing_preferences.internet_sharing - 1 If internet sharing is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: interval
+      description: |-
+        docker_container_stats.interval - Difference between read and preread in nano-seconds
+        osquery_schedule.interval - The interval in seconds to run this query, not an exact interval
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: iowait
+      description: cpu_time.iowait - Time spent waiting for I/O to complete
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ip_prefix_len
+      description: docker_container_networks.ip_prefix_len - IP subnet prefix length
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipackets
+      description: interface_details.ipackets - Input packets
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv4_forwarding
+      description: docker_info.ipv4_forwarding - 1 if IPv4 forwarding is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv4_internet
+      description: connectivity.ipv4_internet - True if any interface is connected to the Internet via IPv4
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv4_local_network
+      description: connectivity.ipv4_local_network - True if any interface is connected to a routed network via IPv4
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv4_no_traffic
+      description: connectivity.ipv4_no_traffic - True if any interface is connected via IPv4, but has seen no traffic
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv4_subnet
+      description: connectivity.ipv4_subnet - True if any interface is connected to the local subnet via IPv4
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv6_internet
+      description: connectivity.ipv6_internet - True if any interface is connected to the Internet via IPv6
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv6_local_network
+      description: connectivity.ipv6_local_network - True if any interface is connected to a routed network via IPv6
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv6_no_traffic
+      description: connectivity.ipv6_no_traffic - True if any interface is connected via IPv6, but has seen no traffic
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv6_prefix_len
+      description: docker_container_networks.ipv6_prefix_len - IPv6 subnet prefix length
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ipv6_subnet
+      description: connectivity.ipv6_subnet - True if any interface is connected to the local subnet via IPv6
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: irq
+      description: cpu_time.irq - Time spent servicing interrupts
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: is_active
+      description: running_apps.is_active - 1 if the application is in focus, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: is_hidden
+      description: |-
+        groups.is_hidden - IsHidden attribute set in OpenDirectory
+        users.is_hidden - IsHidden attribute set in OpenDirectory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: job_id
+      description: systemd_units.job_id - Next queued job id
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: kernel_memory
+      description: docker_info.kernel_memory - 1 if kernel memory limit support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: kva_shadow_enabled
+      description: kva_speculative_info.kva_shadow_enabled - Kernel Virtual Address shadowing is enabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: kva_shadow_inv_pcid
+      description: kva_speculative_info.kva_shadow_inv_pcid - Kernel VA INVPCID is enabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: kva_shadow_pcid
+      description: kva_speculative_info.kva_shadow_pcid - Kernel VA PCID flushing optimization is enabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: kva_shadow_user_global
+      description: kva_speculative_info.kva_shadow_user_global - User pages are marked as global.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_change
+      description: |-
+        interface_details.last_change - Time of last device modification (optional)
+        shadow.last_change - Date of last password change (starting from UNIX epoch date)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_connected
+      description: wifi_networks.last_connected - Last time this netword was connected to as a unix_time
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_executed
+      description: osquery_schedule.last_executed - UNIX time stamp in seconds of the last completed execution
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_execution_time
+      description: |-
+        background_activities_moderator.last_execution_time - Most recent time application was executed.
+        userassist.last_execution_time - Most recent time application was executed.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_hit_date
+      description: quicklook_cache.last_hit_date - Apple date format for last thumbnail cache hit
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: last_opened_time
+      description: |-
+        apps.last_opened_time - The time that the app was last used
+        office_mru.last_opened_time - Most recent opened time file was opened
+      type: keyword
+      ignore_above: 1024
+    - name: last_run_time
+      description: |-
+        prefetch.last_run_time - Most recent time application was run.
+        scheduled_tasks.last_run_time - Timestamp the task last ran
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: layer_order
+      description: docker_image_layers.layer_order - Layer Order (1 = base layer)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: level
+      description: |-
+        asl.level - Log level number.  See levels in asl.h.
+        windows_eventlog.level - Severity level associated with the event
+        windows_events.level - The severity level associated with the event
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: link_speed
+      description: interface_details.link_speed - Interface speed in Mb/s
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: local_port
+      description: |-
+        bpf_socket_events.local_port - Local network protocol port number
+        process_open_sockets.local_port - Socket local port
+        socket_events.local_port - Local network protocol port number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: local_time
+      description: time.local_time - Current local UNIX time in the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: lock_status
+      description: bitlocker_info.lock_status - The accessibility status of the drive from Windows.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: locked
+      description: shared_memory.locked - 1 if segment is locked else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: log_file_disk_quota_mb
+      description: carbon_black_info.log_file_disk_quota_mb - Event file disk quota in MB
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: log_file_disk_quota_percentage
+      description: carbon_black_info.log_file_disk_quota_percentage - Event file disk quota in a percentage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: logging_enabled
+      description: alf.logging_enabled - 1 If logging mode is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: logging_option
+      description: alf.logging_option - Firewall logging option
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: logical_processors
+      description: cpu_info.logical_processors - The number of logical processors of the CPU.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: logon_id
+      description: logon_sessions.logon_id - A locally unique identifier (LUID) that identifies a logon session.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: logon_time
+      description: logon_sessions.logon_time - The time the session owner logged on.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: machine
+      description: elf_info.machine - Machine type
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: major
+      description: os_version.major - Major release version
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: major_version
+      description: windows_crashes.major_version - Windows major version of the machine
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: managed
+      description: lxd_networks.managed - 1 if network created by LXD, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: manual
+      description: managed_policies.manual - 1 if policy was loaded manually, otherwise 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: manufacture_date
+      description: battery.manufacture_date - The date the battery was manufactured UNIX Epoch
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: manufacturer_id
+      description: tpm_info.manufacturer_id - TPM manufacturers ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max
+      description: |-
+        fan_speed_sensors.max - Maximum speed
+        shadow.max - Maximum number of days between password changes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max_capacity
+      description: |-
+        battery.max_capacity - The battery's actual capacity when it is fully charged in mAh
+        memory_arrays.max_capacity - Maximum capacity of array in gigabytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max_clock_speed
+      description: cpu_info.max_clock_speed - The maximum possible frequency of the CPU.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max_instances
+      description: pipes.max_instances - The maximum number of instances creatable for this pipe
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max_speed
+      description: memory_devices.max_speed - Max speed of memory device in megatransfers per second (MT/s)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: max_voltage
+      description: memory_devices.max_voltage - Maximum operating voltage of device in millivolts
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: maximum_allowed
+      description: shared_resources.maximum_allowed - Limit on the maximum number of users allowed to use this resource concurrently. The value is only valid if the AllowMaximum property is set to FALSE.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: mdm_managed
+      description: system_extensions.mdm_managed - 1 if managed by MDM system extension payload configuration, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_capabilities
+      description: lldp_neighbors.med_capability_capabilities - Is MED capabilities enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_inventory
+      description: lldp_neighbors.med_capability_inventory - Is MED inventory capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_location
+      description: lldp_neighbors.med_capability_location - Is MED location capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_mdi_pd
+      description: lldp_neighbors.med_capability_mdi_pd - Is MED MDI PD capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_mdi_pse
+      description: lldp_neighbors.med_capability_mdi_pse - Is MED MDI PSE capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: med_capability_policy
+      description: lldp_neighbors.med_capability_policy - Is MED policy capability enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: mem
+      description: docker_container_processes.mem - Memory utilization as percentage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: memory
+      description: docker_info.memory - Total memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: memory_free
+      description: memory_info.memory_free - The amount of physical RAM, in bytes, left unused by the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: memory_limit
+      description: |-
+        docker_container_stats.memory_limit - Memory limit
+        docker_info.memory_limit - 1 if memory limit support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: memory_max_usage
+      description: docker_container_stats.memory_max_usage - Memory maximum usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: memory_total
+      description: memory_info.memory_total - Total amount of physical RAM, in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: memory_usage
+      description: docker_container_stats.memory_usage - Memory usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: metric
+      description: |-
+        interface_details.metric - Metric based on the speed of the interface
+        routes.metric - Cost of route. Lowest is preferred
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: metric_value
+      description: prometheus_metrics.metric_value - Value of collected Prometheus metric
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: mft_entry
+      description: |-
+        shellbags.mft_entry - Directory master file table entry.
+        shortcut_files.mft_entry - Target mft entry.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: mft_sequence
+      description: |-
+        shellbags.mft_sequence - Directory master file table sequence.
+        shortcut_files.mft_sequence - Target mft sequence.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: min
+      description: |-
+        fan_speed_sensors.min - Minimum speed
+        shadow.min - Minimal number of days between password changes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: min_voltage
+      description: memory_devices.min_voltage - Minimum operating voltage of device in millivolts
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: minor
+      description: os_version.minor - Minor release version
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: minor_version
+      description: windows_crashes.minor_version - Windows minor version of the machine
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: minutes
+      description: |-
+        time.minutes - Current minutes in the system
+        uptime.minutes - Minutes of uptime
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: minutes_to_full_charge
+      description: battery.minutes_to_full_charge - The number of minutes until the battery is fully charged. This value is -1 if this time is still being calculated
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: minutes_until_empty
+      description: battery.minutes_until_empty - The number of minutes until the battery is fully depleted. This value is -1 if this time is still being calculated
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: modified_time
+      description: |-
+        package_bom.modified_time - Timestamp the file was installed
+        shellbags.modified_time - Directory Modified time.
+        shimcache.modified_time - File Modified time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: mountable
+      description: disk_events.mountable - 1 if mountable, 0 if not
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: msize
+      description: elf_segments.msize - Segment offset in memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: mtime
+      description: |-
+        device_file.mtime - Last modification time
+        file.mtime - Last modification time
+        file_events.mtime - Last modification time
+        gatekeeper_approved_apps.mtime - Last modification time
+        process_events.mtime - File modification in UNIX time
+        quicklook_cache.mtime - Parsed version date field
+        registry.mtime - timestamp of the most recent registry write
+      type: keyword
+      ignore_above: 1024
+    - name: mtu
+      description: |-
+        interface_details.mtu - Network MTU
+        lxd_networks.mtu - MTU size
+        routes.mtu - Maximum Transmission Unit for the route
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: native
+      description: |-
+        browser_plugins.native - Plugin requires native execution
+        firefox_addons.native - 1 If the addon includes binary components else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: network_rx_bytes
+      description: docker_container_stats.network_rx_bytes - Total network bytes read
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: network_tx_bytes
+      description: docker_container_stats.network_tx_bytes - Total network bytes transmitted
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: next_run_time
+      description: scheduled_tasks.next_run_time - Timestamp the task is scheduled to run next
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: nice
+      description: |-
+        cpu_time.nice - Time spent in user mode with low priority (nice)
+        docker_container_processes.nice - Process nice level (-20 to 20, default 0)
+        processes.nice - Process nice level (-20 to 20, default 0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: noise
+      description: |-
+        wifi_status.noise - The current noise measurement (dBm)
+        wifi_survey.noise - The current noise measurement (dBm)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: nr_raid_disks
+      description: md_devices.nr_raid_disks - Number of partitions or disk devices to comprise the array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: num_procs
+      description: docker_container_stats.num_procs - Number of processors
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: number
+      description: |-
+        etc_protocols.number - Protocol number
+        oem_strings.number - The string index of the structure
+        smbios_tables.number - Table entry number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: number_memory_devices
+      description: memory_arrays.number_memory_devices - Number of memory devices on array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: obytes
+      description: interface_details.obytes - Output bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: odrops
+      description: interface_details.odrops - Output drops
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: oerrors
+      description: interface_details.oerrors - Output errors
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: offset
+      description: "device_partitions.offset - \nelf_sections.offset - Offset of section in file\nelf_segments.offset - Segment offset in file\nelf_symbols.offset - Section table index\nprocess_memory_map.offset - Offset into mapped path"
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: on_disk
+      description: processes.on_disk - The process path exists yes=1, no=0, unknown=-1
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: online_cpus
+      description: docker_container_stats.online_cpus - Online CPUs
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: oom_kill_disable
+      description: docker_info.oom_kill_disable - 1 if Out-of-memory kill is disabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: opackets
+      description: interface_details.opackets - Output packets
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: optional
+      description: xprotect_entries.optional - Match any of the identities/patterns for this XProtect name
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: options
+      description: |-
+        dns_resolvers.options - Resolver options
+        nfs_shares.options - Options string set on the export share
+      type: keyword
+      ignore_above: 1024
+    - name: original_parent
+      description: es_process_events.original_parent - Original parent process ID in case of reparenting
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ouid
+      description: apparmor_events.ouid - Object owner's user ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: output_bit
+      description: cpuid.output_bit - Bit in register value for feature value
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: output_size
+      description: osquery_schedule.output_size - Total number of bytes generated by the query
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: owned
+      description: tpm_info.owned - TPM is ownned
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: owner_gid
+      description: process_events.owner_gid - File owner group ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: owner_uid
+      description: |-
+        process_events.owner_uid - File owner user ID
+        shared_memory.owner_uid - User ID of owning process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: owner_uuid
+      description: osquery_registry.owner_uuid - Extension route UUID (0 for core)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: packets
+      description: iptables.packets - Number of matching packets for this rule.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: packets_received
+      description: lxd_networks.packets_received - Number of packets received on this network
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: packets_sent
+      description: lxd_networks.packets_sent - Number of packets sent on this network
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: page_ins
+      description: virtual_memory_info.page_ins - The total number of requests for pages from a pager.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: page_outs
+      description: virtual_memory_info.page_outs - Total number of pages paged out.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: parent
+      description: |-
+        apparmor_events.parent - Parent process PID
+        block_devices.parent - Block device parent name
+        bpf_process_events.parent - Parent process ID
+        bpf_socket_events.parent - Parent process ID
+        crashes.parent - Parent PID of the crashed process
+        docker_container_processes.parent - Process parent's PID
+        es_process_events.parent - Parent process ID
+        iokit_devicetree.parent - Parent device registry ID
+        iokit_registry.parent - Parent registry ID
+        process_events.parent - Process parent's PID, or -1 if cannot be determined.
+        processes.parent - Process parent's PID
+      type: keyword
+      ignore_above: 1024
+    - name: partial
+      description: |-
+        ntfs_journal_events.partial - Set to 1 if either path or old_path only contains the file or folder name
+        process_file_events.partial - True if this is a partial event (i.e.: this process existed before we started osquery)
+      type: keyword
+      ignore_above: 1024
+    - name: partition_row_position
+      description: memory_device_mapped_addresses.partition_row_position - Identifies the position of the referenced memory device in a row of the address partition
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: partition_width
+      description: memory_array_mapped_addresses.partition_width - Number of memory devices that form a single row of memory for the address partition of this structure
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: partitions
+      description: disk_info.partitions - Number of detected partitions on disk.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: partner_fd
+      description: process_open_pipes.partner_fd - File descriptor of shared pipe at partner's end
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: partner_pid
+      description: process_open_pipes.partner_pid - Process ID of partner process sharing a particular pipe
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: passpoint
+      description: wifi_networks.passpoint - 1 if Passpoint is supported, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: password_last_set_time
+      description: account_policy_data.password_last_set_time - The time the password was last changed
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: double
+          default_field: false
+    - name: patch
+      description: os_version.patch - Optional patch release
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_disk_read_time
+      description: physical_disk_performance.percent_disk_read_time - Percentage of elapsed time that the selected disk drive is busy servicing read requests
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_disk_time
+      description: physical_disk_performance.percent_disk_time - Percentage of elapsed time that the selected disk drive is busy servicing read or write requests
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_disk_write_time
+      description: physical_disk_performance.percent_disk_write_time - Percentage of elapsed time that the selected disk drive is busy servicing write requests
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_idle_time
+      description: physical_disk_performance.percent_idle_time - Percentage of time during the sample interval that the disk was idle
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_processor_time
+      description: processes.percent_processor_time - Returns elapsed time that all of the threads of this process used the processor to execute instructions in 100 nanoseconds ticks.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percent_remaining
+      description: battery.percent_remaining - The percentage of battery remaining before it is drained
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: percentage_encrypted
+      description: bitlocker_info.percentage_encrypted - The percentage of the drive that is encrypted.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: perf_ctl
+      description: msr.perf_ctl - Performance setting for the processor.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: perf_status
+      description: msr.perf_status - Performance status for the processor.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: persistent
+      description: chrome_extensions.persistent - 1 If extension is persistent across all tabs else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pgroup
+      description: |-
+        docker_container_processes.pgroup - Process group
+        processes.pgroup - Process group
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: physical_adapter
+      description: interface_details.physical_adapter - Indicates whether the adapter is a physical or a logical adapter.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: physical_memory
+      description: system_info.physical_memory - Total physical memory in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pid
+      description: |-
+        apparmor_events.pid - Process ID
+        asl.pid - Sending process ID encoded as a string.  Set automatically.
+        bpf_process_events.pid - Process ID
+        bpf_socket_events.pid - Process ID
+        crashes.pid - Process (or thread) ID of the crashed process
+        docker_container_processes.pid - Process ID
+        docker_containers.pid - Identifier of the initial process
+        es_process_events.pid - Process (or thread) ID
+        last.pid - Process (or thread) ID
+        listening_ports.pid - Process (or thread) ID
+        logged_in_users.pid - Process (or thread) ID
+        lxd_instances.pid - Instance's process ID
+        osquery_info.pid - Process (or thread/handle) ID
+        pipes.pid - Process ID of the process to which the pipe belongs
+        process_envs.pid - Process (or thread) ID
+        process_events.pid - Process (or thread) ID
+        process_file_events.pid - Process ID
+        process_memory_map.pid - Process (or thread) ID
+        process_namespaces.pid - Process (or thread) ID
+        process_open_files.pid - Process (or thread) ID
+        process_open_pipes.pid - Process ID
+        process_open_sockets.pid - Process (or thread) ID
+        processes.pid - Process (or thread) ID
+        running_apps.pid - The pid of the application
+        seccomp_events.pid - Process ID
+        services.pid - the Process ID of the service
+        shared_memory.pid - Process ID to last use the segment
+        socket_events.pid - Process (or thread) ID
+        user_events.pid - Process (or thread) ID
+        windows_crashes.pid - Process ID of the crashed process
+        windows_eventlog.pid - Process ID which emitted the event record
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pid_with_namespace
+      description: |-
+        apt_sources.pid_with_namespace - Pids that contain a namespace
+        authorized_keys.pid_with_namespace - Pids that contain a namespace
+        crontab.pid_with_namespace - Pids that contain a namespace
+        deb_packages.pid_with_namespace - Pids that contain a namespace
+        dns_resolvers.pid_with_namespace - Pids that contain a namespace
+        etc_hosts.pid_with_namespace - Pids that contain a namespace
+        file.pid_with_namespace - Pids that contain a namespace
+        groups.pid_with_namespace - Pids that contain a namespace
+        hash.pid_with_namespace - Pids that contain a namespace
+        npm_packages.pid_with_namespace - Pids that contain a namespace
+        os_version.pid_with_namespace - Pids that contain a namespace
+        python_packages.pid_with_namespace - Pids that contain a namespace
+        rpm_packages.pid_with_namespace - Pids that contain a namespace
+        suid_bin.pid_with_namespace - Pids that contain a namespace
+        user_ssh_keys.pid_with_namespace - Pids that contain a namespace
+        users.pid_with_namespace - Pids that contain a namespace
+        yum_sources.pid_with_namespace - Pids that contain a namespace
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pids
+      description: |-
+        docker_container_stats.pids - Number of processes
+        lldp_neighbors.pids - Comma delimited list of PIDs
+      type: keyword
+      ignore_above: 1024
+    - name: platform_binary
+      description: es_process_events.platform_binary - Indicates if the binary is Apple signed binary (1) or not (0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: platform_info
+      description: msr.platform_info - Platform information.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: platform_mask
+      description: osquery_info.platform_mask - The osquery platform bitmask
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: points
+      description: example.points - This is a signed SQLite int column
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port
+      description: |-
+        docker_container_ports.port - Port inside the container
+        etc_services.port - Service port number
+        listening_ports.port - Transport layer port
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_1000baset_fd_enabled
+      description: lldp_neighbors.port_autoneg_1000baset_fd_enabled - 1000Base-T FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_1000baset_hd_enabled
+      description: lldp_neighbors.port_autoneg_1000baset_hd_enabled - 1000Base-T HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_1000basex_fd_enabled
+      description: lldp_neighbors.port_autoneg_1000basex_fd_enabled - 1000Base-X FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_1000basex_hd_enabled
+      description: lldp_neighbors.port_autoneg_1000basex_hd_enabled - 1000Base-X HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100baset2_fd_enabled
+      description: lldp_neighbors.port_autoneg_100baset2_fd_enabled - 100Base-T2 FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100baset2_hd_enabled
+      description: lldp_neighbors.port_autoneg_100baset2_hd_enabled - 100Base-T2 HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100baset4_fd_enabled
+      description: lldp_neighbors.port_autoneg_100baset4_fd_enabled - 100Base-T4 FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100baset4_hd_enabled
+      description: lldp_neighbors.port_autoneg_100baset4_hd_enabled - 100Base-T4 HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100basetx_fd_enabled
+      description: lldp_neighbors.port_autoneg_100basetx_fd_enabled - 100Base-TX FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_100basetx_hd_enabled
+      description: lldp_neighbors.port_autoneg_100basetx_hd_enabled - 100Base-TX HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_10baset_fd_enabled
+      description: lldp_neighbors.port_autoneg_10baset_fd_enabled - 10Base-T FD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_10baset_hd_enabled
+      description: lldp_neighbors.port_autoneg_10baset_hd_enabled - 10Base-T HD auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_enabled
+      description: lldp_neighbors.port_autoneg_enabled - Is auto negotiation enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_autoneg_supported
+      description: lldp_neighbors.port_autoneg_supported - Auto negotiation supported
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_mfs
+      description: lldp_neighbors.port_mfs - Port max frame size
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: port_ttl
+      description: lldp_neighbors.port_ttl - Age of neighbor port
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: possibly_hidden
+      description: wifi_networks.possibly_hidden - 1 if network is possibly a hidden network, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: power_8023at_enabled
+      description: lldp_neighbors.power_8023at_enabled - Is 802.3at enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: power_mdi_enabled
+      description: lldp_neighbors.power_mdi_enabled - Is MDI power enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: power_mdi_supported
+      description: lldp_neighbors.power_mdi_supported - MDI power supported
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: power_paircontrol_enabled
+      description: lldp_neighbors.power_paircontrol_enabled - Is power pair control enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ppid
+      description: process_file_events.ppid - Parent process ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pre_cpu_kernelmode_usage
+      description: docker_container_stats.pre_cpu_kernelmode_usage - Last read CPU kernel mode usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pre_cpu_total_usage
+      description: docker_container_stats.pre_cpu_total_usage - Last read total CPU usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pre_cpu_usermode_usage
+      description: docker_container_stats.pre_cpu_usermode_usage - Last read CPU user mode usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pre_online_cpus
+      description: docker_container_stats.pre_online_cpus - Last read online CPUs
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: pre_system_cpu_usage
+      description: docker_container_stats.pre_system_cpu_usage - Last read CPU system usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: preread
+      description: docker_container_stats.preread - UNIX time when stats were last read
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: printer_sharing
+      description: sharing_preferences.printer_sharing - 1 If printer sharing is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: probe_error
+      description: |-
+        bpf_process_events.probe_error - Set to 1 if one or more buffers could not be captured
+        bpf_socket_events.probe_error - Set to 1 if one or more buffers could not be captured
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: process_being_tapped
+      description: event_taps.process_being_tapped - The process ID of the target application
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: process_uptime
+      description: windows_crashes.process_uptime - Uptime of the process in seconds
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: processes
+      description: lxd_instances.processes - Number of processes running inside this instance
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: processing_time
+      description: cups_jobs.processing_time - How long the job took to process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: processor_number
+      description: msr.processor_number - The processor number as reported in /proc/cpuinfo
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: protected
+      description: app_schemes.protected - 1 if this handler is protected (reserved) by OS X, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: protection_disabled
+      description: carbon_black_info.protection_disabled - If the sensor is configured to report tamper events
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: protection_status
+      description: bitlocker_info.protection_status - The bitlocker protection status of the drive.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: protocol
+      description: |-
+        bpf_socket_events.protocol - The network protocol ID
+        etc_services.protocol - Transport protocol (TCP/UDP)
+        iptables.protocol - Protocol number identification.
+        listening_ports.protocol - Transport protocol (TCP/UDP)
+        process_open_sockets.protocol - Transport protocol (TCP/UDP)
+        socket_events.protocol - The network protocol ID
+        usb_devices.protocol - USB Device protocol
+      type: keyword
+      ignore_above: 1024
+    - name: pseudo
+      description: process_memory_map.pseudo - 1 If path is a pseudo path, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: psize
+      description: elf_segments.psize - Size of segment in file
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: public
+      description: lxd_images.public - Whether image is public (1) or not (0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: purgeable
+      description: virtual_memory_info.purgeable - Total number of purgeable pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: purged
+      description: virtual_memory_info.purged - Total number of purged pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: raid_disks
+      description: md_devices.raid_disks - Number of configured RAID disks in array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: raid_level
+      description: md_devices.raid_level - Current raid level of the array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rapl_energy_status
+      description: msr.rapl_energy_status - Run Time Average Power Limiting energy status.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rapl_power_limit
+      description: msr.rapl_power_limit - Run Time Average Power Limiting power limit.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rapl_power_units
+      description: msr.rapl_power_units - Run Time Average Power Limiting power units.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: reactivated
+      description: virtual_memory_info.reactivated - Total number of reactivated pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: read
+      description: docker_container_stats.read - UNIX time when stats were read
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: readonly
+      description: nfs_shares.readonly - 1 if the share is exported readonly else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: readonly_rootfs
+      description: docker_containers.readonly_rootfs - Is the root filesystem mounted as read only
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: redirect_accept
+      description: interface_ipv6.redirect_accept - Accept ICMP redirect messages
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ref_pid
+      description: asl.ref_pid - Reference PID for messages proxied by launchd
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: referenced
+      description: |-
+        chrome_extension_content_scripts.referenced - 1 if this extension is referenced by the Preferences file of the profile
+        chrome_extensions.referenced - 1 if this extension is referenced by the Preferences file of the profile
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: refreshes
+      description: "osquery_events.refreshes - Publisher only: number of runloop restarts"
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: refs
+      description: |-
+        fbsd_kmods.refs - Module reverse dependencies
+        kernel_extensions.refs - Reference count
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: remote_apple_events
+      description: sharing_preferences.remote_apple_events - 1 If remote apple events are enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: remote_login
+      description: sharing_preferences.remote_login - 1 If remote login is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: remote_management
+      description: sharing_preferences.remote_management - 1 If remote management is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: remote_port
+      description: |-
+        bpf_socket_events.remote_port - Remote network protocol port number
+        process_open_sockets.remote_port - Socket remote port
+        socket_events.remote_port - Remote network protocol port number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: removable
+      description: usb_devices.removable - 1 If USB device is removable else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: resident_size
+      description: |-
+        docker_container_processes.resident_size - Bytes of private memory used by process
+        processes.resident_size - Bytes of private memory used by process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: response_code
+      description: curl.response_code - The HTTP status code for the response
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: retain_count
+      description: |-
+        iokit_devicetree.retain_count - The device reference count
+        iokit_registry.retain_count - The node reference count
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rid
+      description: lldp_neighbors.rid - Neighbor chassis index
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: roaming
+      description: wifi_networks.roaming - 1 if roaming is supported, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: round_trip_time
+      description: curl.round_trip_time - Time taken to complete the request
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rowid
+      description: quicklook_cache.rowid - Quicklook file rowid key
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rssi
+      description: |-
+        wifi_status.rssi - The current received signal strength indication (dbm)
+        wifi_survey.rssi - The current received signal strength indication (dbm)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rtadv_accept
+      description: interface_ipv6.rtadv_accept - Accept ICMP Router Advertisement
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: run_count
+      description: prefetch.run_count - Number of times the application has been run.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: rw
+      description: docker_container_mounts.rw - 1 if read/write. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: screen_sharing
+      description: sharing_preferences.screen_sharing - 1 If screen sharing is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: script_block_count
+      description: powershell_events.script_block_count - The total number of script blocks for this script
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: seconds
+      description: |-
+        time.seconds - Current seconds in the system
+        uptime.seconds - Seconds of uptime
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: secure_boot
+      description: secureboot.secure_boot - Whether secure boot is enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: secure_process
+      description: processes.secure_process - Process is secure (IUM) yes=1, no=0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: self_signed
+      description: certificates.self_signed - 1 if self-signed, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: sensor_id
+      description: carbon_black_info.sensor_id - Sensor ID of the Carbon Black sensor
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: seq_num
+      description: es_process_events.seq_num - Per event sequence number
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: service_exit_code
+      description: services.service_exit_code - The service-specific error code that the service returns when an error occurs while the service is starting or stopping
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: ses
+      description: seccomp_events.ses - Session ID of the session from which the analyzed process was invoked
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: session_id
+      description: |-
+        logon_sessions.session_id - The Terminal Services session identifier.
+        winbaseobj.session_id - Terminal Services Session Id
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: set
+      description: memory_devices.set - Identifies if memory device is one of a set of devices.  A value of 0 indicates no set affiliation.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: setup_mode
+      description: secureboot.setup_mode - Whether setup mode is enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: severity
+      description: syslog_events.severity - Syslog severity
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: sgid
+      description: |-
+        docker_container_processes.sgid - Saved group ID
+        process_events.sgid - Saved group ID at process start
+        process_file_events.sgid - Saved group ID of the process using the file
+        processes.sgid - Unsigned saved group ID
+      type: keyword
+      ignore_above: 1024
+    - name: shard
+      description: osquery_packs.shard - Shard restriction limit, 1-100, 0 meaning no restriction
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: shell_only
+      description: osquery_flags.shell_only - Is the flag shell only?
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: shmid
+      description: shared_memory.shmid - Shared memory segment ID
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: sig
+      description: seccomp_events.sig - Signal value sent to process by seccomp
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: signatures_up_to_date
+      description: windows_security_products.signatures_up_to_date - 1 if product signatures are up to date, else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: signed
+      description: |-
+        drivers.signed - Whether the driver is signed or not
+        signature.signed - 1 If the file is signed else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: size
+      description: |-
+        acpi_tables.size - Size of compiled table data
+        block_devices.size - Block device size in blocks
+        carves.size - Size of the carved archive
+        cups_jobs.size - The size of the print job
+        deb_packages.size - Package size in bytes
+        device_file.size - Size of file in bytes
+        disk_events.size - Size of partition in bytes
+        docker_image_history.size - Size of instruction in bytes
+        elf_sections.size - Size of section
+        elf_symbols.size - Size of object
+        example.size - This is a signed SQLite bigint column
+        fbsd_kmods.size - Size of module content
+        file.size - Size of file in bytes
+        file_events.size - Size of file in bytes
+        kernel_extensions.size - Bytes of wired memory used by extension
+        kernel_modules.size - Size of module content
+        logical_drives.size - The total amount of space, in bytes, of the drive (-1 on failure).
+        lxd_images.size - Size of image in bytes
+        lxd_storage_pools.size - Size of the storage pool
+        md_devices.size - size of the array in blocks
+        memory_devices.size - Size of memory device in Megabyte
+        package_bom.size - Expected file size
+        platform_info.size - Size in bytes of firmware
+        portage_packages.size - The size of the package
+        prefetch.size - Application file size.
+        quicklook_cache.size - Parsed version size field
+        rpm_package_files.size - Expected file size in bytes from RPM info DB
+        rpm_packages.size - Package size in bytes
+        shared_memory.size - Size in bytes
+        smbios_tables.size - Table entry size in bytes
+        smc_keys.size - Reported size of data in bytes
+      type: keyword
+      ignore_above: 1024
+    - name: size_bytes
+      description: docker_images.size_bytes - Size of image in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: slot
+      description: |-
+        md_drives.slot - Slot position of disk
+        portage_packages.slot - The slot used by package
+      type: keyword
+      ignore_above: 1024
+    - name: socket
+      description: |-
+        listening_ports.socket - Socket handle or inode number
+        process_open_sockets.socket - Socket handle or inode number
+        socket_events.socket - The local path (UNIX domain socket only)
+      type: keyword
+      ignore_above: 1024
+    - name: softirq
+      description: cpu_time.softirq - Time spent servicing softirqs
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: space_total
+      description: lxd_storage_pools.space_total - Total available storage space in bytes for this storage pool
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: space_used
+      description: lxd_storage_pools.space_used - Storage space used in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: spare_disks
+      description: md_devices.spare_disks - Number of idle disks in array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: speculative
+      description: virtual_memory_info.speculative - Total number of speculative pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: speed
+      description: interface_details.speed - Estimate of the current bandwidth in bits per second.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: start_time
+      description: |-
+        docker_container_processes.start_time - Process start in seconds since boot (non-sleeping)
+        osquery_info.start_time - UNIX time in seconds when the process started
+        processes.start_time - Process start time in seconds since Epoch, in case of error -1
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: state
+      description: |-
+        alf_exceptions.state - Firewall exception state
+        battery.state - One of the following: "AC Power" indicates the battery is connected to an external power source, "Battery Power" indicates that the battery is drawing internal power, "Off Line" indicates the battery is off-line or no longer connected
+        chrome_extensions.state - 1 if this extension is enabled
+        docker_container_processes.state - Process state
+        docker_containers.state - Container state (created, restarting, running, removing, paused, exited, dead)
+        lxd_networks.state - Network status
+        md_drives.state - State of the drive
+        process_open_sockets.state - TCP socket state
+        processes.state - Process state
+        scheduled_tasks.state - State of the scheduled task
+        system_extensions.state - System extension state
+        windows_optional_features.state - Installation state value. 1 == Enabled, 2 == Disabled, 3 == Absent
+        windows_security_products.state - State of protection
+      type: keyword
+      ignore_above: 1024
+    - name: stateful
+      description: lxd_instances.stateful - Whether the instance is stateful(1) or not(0)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: steal
+      description: cpu_time.steal - Time spent in other operating systems when running in a virtualized environment
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: stealth_enabled
+      description: alf.stealth_enabled - 1 If stealth mode is enabled else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: stibp_support_enabled
+      description: kva_speculative_info.stibp_support_enabled - Windows uses STIBP.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: subscriptions
+      description: osquery_events.subscriptions - Number of subscriptions the publisher received or subscriber used
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: success
+      description: socket_events.success - Deprecated. Use the 'status' column instead
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: suid
+      description: |-
+        docker_container_processes.suid - Saved user ID
+        process_events.suid - Saved user ID at process start
+        process_file_events.suid - Saved user ID of the process using the file
+        processes.suid - Unsigned saved user ID
+      type: keyword
+      ignore_above: 1024
+    - name: superblock_update_time
+      description: md_devices.superblock_update_time - Unix timestamp of last update
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_cached
+      description: memory_info.swap_cached - The amount of swap, in bytes, used as cache memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_free
+      description: memory_info.swap_free - The total amount of swap free, in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_ins
+      description: virtual_memory_info.swap_ins - The total number of compressed pages that have been swapped out to disk.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_limit
+      description: docker_info.swap_limit - 1 if swap limit support is enabled. 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_outs
+      description: virtual_memory_info.swap_outs - The total number of compressed pages that have been swapped back in from disk.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: swap_total
+      description: memory_info.swap_total - The total amount of swap available, in bytes
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: symlink
+      description: file.symlink - 1 if the path is a symlink, otherwise 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: system
+      description: cpu_time.system - Time spent in system mode
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: system_cpu_usage
+      description: docker_container_stats.system_cpu_usage - CPU system usage
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: system_time
+      description: |-
+        osquery_schedule.system_time - Total system time spent executing
+        processes.system_time - CPU time in milliseconds spent in kernel space
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: tag
+      description: |-
+        elf_dynamic.tag - Tag ID
+        syslog_events.tag - The syslog tag
+      type: keyword
+      ignore_above: 1024
+    - name: tapping_process
+      description: event_taps.tapping_process - The process ID of the application that created the event tap.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: target
+      description: |-
+        fan_speed_sensors.target - Target speed
+        iptables.target - Target that applies for this rule.
+      type: keyword
+      ignore_above: 1024
+    - name: target_accessed
+      description: shortcut_files.target_accessed - Target Accessed time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: target_created
+      description: shortcut_files.target_created - Target Created time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: target_modified
+      description: shortcut_files.target_modified - Target Modified time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: target_size
+      description: shortcut_files.target_size - Size of target file.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: task
+      description: |-
+        windows_eventlog.task - Task value associated with the event
+        windows_events.task - Task value associated with the event
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: temporarily_disabled
+      description: wifi_networks.temporarily_disabled - 1 if this network is temporarily disabled, 0 otherwise
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: threads
+      description: |-
+        docker_container_processes.threads - Number of threads used by process
+        processes.threads - Number of threads used by process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: throttled
+      description: virtual_memory_info.throttled - Total number of throttled pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: tid
+      description: |-
+        bpf_process_events.tid - Thread ID
+        bpf_socket_events.tid - Thread ID
+        windows_crashes.tid - Thread ID of the crashed thread
+        windows_eventlog.tid - Thread ID which emitted the event record
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: time
+      description: |-
+        apparmor_events.time - Time of execution in UNIX time
+        asl.time - Unix timestamp.  Set automatically
+        bpf_process_events.time - Time of execution in UNIX time
+        bpf_socket_events.time - Time of execution in UNIX time
+        carves.time - Time at which the carve was kicked off
+        disk_events.time - Time of appearance/disappearance in UNIX time
+        docker_container_processes.time - Cumulative CPU time. [DD-]HH:MM:SS format
+        es_process_events.time - Time of execution in UNIX time
+        file_events.time - Time of file event
+        hardware_events.time - Time of hardware event
+        kernel_panics.time - Formatted time of the event
+        last.time - Entry timestamp
+        logged_in_users.time - Time entry was made
+        ntfs_journal_events.time - Time of file event
+        package_install_history.time - Label date as UNIX timestamp
+        powershell_events.time - Timestamp the event was received by the osquery event publisher
+        process_events.time - Time of execution in UNIX time
+        process_file_events.time - Time of execution in UNIX time
+        seccomp_events.time - Time of execution in UNIX time
+        selinux_events.time - Time of execution in UNIX time
+        shell_history.time - Entry timestamp. It could be absent, default value is 0.
+        socket_events.time - Time of execution in UNIX time
+        syslog_events.time - Current unix epoch time
+        user_events.time - Time of execution in UNIX time
+        user_interaction_events.time - Time
+        windows_events.time - Timestamp the event was received
+        xprotect_reports.time - Quarantine alert time
+        yara_events.time - Time of the scan
+      type: keyword
+      ignore_above: 1024
+    - name: time_nano_sec
+      description: asl.time_nano_sec - Nanosecond time.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: timestamp_ms
+      description: prometheus_metrics.timestamp_ms - Unix timestamp of collected data in MS
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: total_seconds
+      description: uptime.total_seconds - Total uptime seconds
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: total_size
+      description: |-
+        docker_container_processes.total_size - Total virtual memory size
+        processes.total_size - Total virtual memory size
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: total_width
+      description: memory_devices.total_width - Total width, in bits, of this memory device, including any check or error-correction bits
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: transaction_id
+      description: |-
+        file_events.transaction_id - ID used during bulk update
+        yara_events.transaction_id - ID used during bulk update
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: turbo_disabled
+      description: msr.turbo_disabled - Whether the turbo feature is disabled.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: turbo_ratio_limit
+      description: msr.turbo_ratio_limit - The turbo feature ratio limit.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: uid
+      description: |-
+        account_policy_data.uid - User ID
+        asl.uid - UID that sent the log message (set by the server).
+        atom_packages.uid - The local user that owns the plugin
+        authorized_keys.uid - The local owner of authorized_keys file
+        bpf_process_events.uid - User ID
+        bpf_socket_events.uid - User ID
+        browser_plugins.uid - The local user that owns the plugin
+        chrome_extension_content_scripts.uid - The local user that owns the extension
+        chrome_extensions.uid - The local user that owns the extension
+        crashes.uid - User ID of the crashed process
+        device_file.uid - Owning user ID
+        disk_encryption.uid - Currently authenticated user if available
+        docker_container_processes.uid - User ID
+        es_process_events.uid - User ID of the process
+        file.uid - Owning user ID
+        file_events.uid - Owning user ID
+        firefox_addons.uid - The local user that owns the addon
+        known_hosts.uid - The local user that owns the known_hosts file
+        launchd_overrides.uid - User ID applied to the override, 0 applies to all
+        package_bom.uid - Expected user of file or directory
+        process_events.uid - User ID at process start
+        process_file_events.uid - The uid of the process performing the action
+        processes.uid - Unsigned user ID
+        safari_extensions.uid - The local user that owns the extension
+        seccomp_events.uid - User ID of the user who started the analyzed process
+        shell_history.uid - Shell history owner
+        ssh_configs.uid - The local owner of the ssh_config file
+        user_events.uid - User ID
+        user_groups.uid - User ID
+        user_ssh_keys.uid - The local user that owns the key file
+        users.uid - User ID
+      type: keyword
+      ignore_above: 1024
+    - name: uid_signed
+      description: users.uid_signed - User ID as int64 signed (Apple)
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: uncompressed
+      description: virtual_memory_info.uncompressed - Total number of uncompressed pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: unix_time
+      description: time.unix_time - Current UNIX time in the system, converted to UTC if --utc enabled
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: unmask
+      description: portage_keywords.unmask - If the package is unmasked
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: upid
+      description: processes.upid - A 64bit pid that is never reused. Returns -1 if we couldn't gather them from the system.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: uppid
+      description: processes.uppid - The 64bit parent pid that is never reused. Returns -1 if we couldn't gather them from the system.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: uptime
+      description: |-
+        apparmor_events.uptime - Time of execution in system uptime
+        kernel_panics.uptime - System uptime at kernel panic in nanoseconds
+        process_events.uptime - Time of execution in system uptime
+        process_file_events.uptime - Time of execution in system uptime
+        seccomp_events.uptime - Time of execution in system uptime
+        selinux_events.uptime - Time of execution in system uptime
+        socket_events.uptime - Time of execution in system uptime
+        user_events.uptime - Time of execution in system uptime
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: usb_address
+      description: usb_devices.usb_address - USB Device used address
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: usb_port
+      description: usb_devices.usb_port - USB Device used port
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: user
+      description: |-
+        cpu_time.user - Time spent in user mode
+        cups_jobs.user - The user who printed the job
+        docker_container_processes.user - User name
+        logged_in_users.user - User login name
+        logon_sessions.user - The account name of the security principal that owns the logon session.
+        sandboxes.user - Sandbox owner
+        systemd_units.user - The configured user, if any
+      type: keyword
+      ignore_above: 1024
+    - name: user_time
+      description: |-
+        osquery_schedule.user_time - Total user time spent executing
+        processes.user_time - CPU time in milliseconds spent in user space
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: uses_pattern
+      description: xprotect_entries.uses_pattern - Uses a match pattern instead of identity
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: vaddr
+      description: |-
+        elf_sections.vaddr - Section virtual address in memory
+        elf_segments.vaddr - Segment virtual address in memory
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: virtual_process
+      description: processes.virtual_process - Process is virtual (e.g. System, Registry, vmmem) yes=1, no=0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: visible
+      description: firefox_addons.visible - 1 If the addon is shown in browser else 0
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: voltage
+      description: battery.voltage - The battery's current voltage in mV
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: volume_id
+      description: quicklook_cache.volume_id - Parsed volume ID from fs_id
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: volume_size
+      description: platform_info.volume_size - (Optional) size of firmware volume
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: wall_time
+      description: osquery_schedule.wall_time - Total wall time spent executing
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: warning
+      description: shadow.warning - Number of days before password expires to warn user about it
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: watcher
+      description: osquery_info.watcher - Process (or thread/handle) ID of optional watcher process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: win32_exit_code
+      description: services.win32_exit_code - The error code that the service uses to report an error that occurs when it is starting or stopping
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: win_timestamp
+      description: time.win_timestamp - Timestamp value in 100 nanosecond units.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: wired
+      description: virtual_memory_info.wired - Total number of wired down pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: wired_size
+      description: |-
+        docker_container_processes.wired_size - Bytes of unpageable memory used by process
+        processes.wired_size - Bytes of unpageable memory used by process
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: working_disks
+      description: md_devices.working_disks - Number of working disks in array
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: world
+      description: portage_packages.world - If package is in the world file
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: writable
+      description: disk_events.writable - 1 if writable, 0 if not
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: year
+      description: time.year - Current year in the system
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
+    - name: zero_fill
+      description: virtual_memory_info.zero_fill - Total number of zero filled pages.
+      type: keyword
+      ignore_above: 1024
+      multi_fields:
+        - name: number
+          type: long
+          default_field: false
