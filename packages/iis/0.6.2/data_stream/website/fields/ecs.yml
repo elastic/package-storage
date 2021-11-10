@@ -1,6 +1,0 @@
-- description: ECS version
-  name: ecs.version
-  type: keyword
-- description: Service type
-  name: service.type
-  type: keyword
