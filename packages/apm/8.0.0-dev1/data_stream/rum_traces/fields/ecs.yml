@@ -1,162 +1,307 @@
-- external: ecs
+- description: |-
+    Ephemeral identifier of this agent (if one exists).
+    This id normally changes across restarts, but `agent.id` does not.
   name: agent.ephemeral_id
-- external: ecs
+  type: keyword
+- description: |-
+    Custom name of the agent.
+    This is a name that can be given to an agent. This can be helpful if for example two Filebeat instances are running on the same host but a human readable separation is needed on which Filebeat instance data is coming from.
+    If no name is given, the name is often left empty.
   name: agent.name
-- external: ecs
+  type: keyword
+- description: Version of the agent.
   name: agent.version
-- external: ecs
+  type: keyword
+- description: Client domain.
   name: client.domain
-- external: ecs
+  type: keyword
+- description: IP address of the client (IPv4 or IPv6).
   name: client.ip
-- external: ecs
+  type: ip
+- description: Port of the client.
   name: client.port
-- external: ecs
+  type: long
+- description: City name.
   name: client.geo.city_name
-- external: ecs
+  type: keyword
+- description: Name of the continent.
   name: client.geo.continent_name
-- external: ecs
+  type: keyword
+- description: Country ISO code.
   name: client.geo.country_iso_code
-- external: ecs
+  type: keyword
+- description: Country name.
   name: client.geo.country_name
-- external: ecs
+  type: keyword
+- description: Longitude and latitude.
   name: client.geo.location
-- external: ecs
+  type: geo_point
+- description: Region ISO code.
   name: client.geo.region_iso_code
-- external: ecs
+  type: keyword
+- description: Region name.
   name: client.geo.region_name
-- external: ecs
+  type: keyword
+- description: |-
+    The cloud account or organization id used to identify different entities in a multi-tenant environment.
+    Examples: AWS account id, Google Cloud ORG Id, or other unique identifier.
   name: cloud.account.id
-- external: ecs
+  type: keyword
+- description: |-
+    The cloud account name or alias used to identify different entities in a multi-tenant environment.
+    Examples: AWS account name, Google Cloud ORG display name.
   name: cloud.account.name
-- external: ecs
+  type: keyword
+- description: Availability zone in which this host, resource, or service is located.
   name: cloud.availability_zone
-- external: ecs
+  type: keyword
+- description: Instance ID of the host machine.
   name: cloud.instance.id
-- external: ecs
+  type: keyword
+- description: Instance name of the host machine.
   name: cloud.instance.name
-- external: ecs
+  type: keyword
+- description: Machine type of the host machine.
   name: cloud.machine.type
-- external: ecs
+  type: keyword
+- description: |-
+    The cloud project identifier.
+    Examples: Google Cloud Project id, Azure Project id.
   name: cloud.project.id
-- external: ecs
+  type: keyword
+- description: |-
+    The cloud project name.
+    Examples: Google Cloud Project name, Azure Project name.
   name: cloud.project.name
-- external: ecs
+  type: keyword
+- description: Name of the cloud provider. Example values are aws, azure, gcp, or digitalocean.
   name: cloud.provider
-- external: ecs
+  type: keyword
+- description: Region in which this host, resource, or service is located.
   name: cloud.region
-- external: ecs
+  type: keyword
+- description: |-
+    The cloud service name is intended to distinguish services running on different platforms within a provider, eg AWS EC2 vs Lambda, GCP GCE vs App Engine, Azure VM vs App Server.
+    Examples: app engine, app service, cloud run, fargate, lambda.
   name: cloud.service.name
-- external: ecs
+  type: keyword
+- description: Unique container id.
   name: container.id
-- external: ecs
+  type: keyword
+- description: |-
+    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
-- external: ecs
+  type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
   name: destination.ip
-- external: ecs
+  type: ip
+- description: Port of the destination.
   name: destination.port
-- external: ecs
+  type: long
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
-- external: ecs
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
   name: event.outcome
-- external: ecs
+  type: keyword
+- description: Operating system architecture.
   name: host.architecture
-- external: ecs
+  type: keyword
+- description: |-
+    Hostname of the host.
+    It normally contains what the `hostname` command returns on the host machine.
   name: host.hostname
-- external: ecs
+  type: keyword
+- description: Host ip addresses.
   name: host.ip
-- external: ecs
+  type: ip
+- description: |-
+    Name of the host.
+    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
   name: host.name
-- external: ecs
+  type: keyword
+- description: Operating system platform (such centos, ubuntu, windows).
   name: host.os.platform
-- external: ecs
+  type: keyword
+- description: |-
+    HTTP request method.
+    Prior to ECS 1.6.0 the following guidance was provided:
+    "The field value must be normalized to lowercase for querying."
+    As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
   name: http.request.method
-- external: ecs
+  type: keyword
+- description: Referrer for this HTTP request.
   name: http.request.referrer
-- external: ecs
+  type: keyword
+- description: HTTP response status code.
   name: http.response.status_code
-- external: ecs
+  type: long
+- description: HTTP version.
   name: http.version
-# TODO: change labels to be ECS compliant in 8.0 (https://github.com/elastic/apm-server/issues/3873)
-- name: labels
-  type: object
-  description: |
+  type: keyword
+- description: |
     A flat mapping of user-defined labels with string, boolean or number values.
   dynamic: true
-- external: ecs
+  name: labels
+  type: object
+- description: Hostname of the observer.
   name: observer.hostname
-- external: ecs
+  type: keyword
+- description: |-
+    Custom name of the observer.
+    This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization.
+    If no custom name is needed, the field can be left empty.
   name: observer.name
-- external: ecs
+  type: keyword
+- description: |-
+    The type of the observer the data is coming from.
+    There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`.
   name: observer.type
-- external: ecs
+  type: keyword
+- description: Observer version.
   name: observer.version
-- external: ecs
+  type: keyword
+- description: |-
+    Array of process arguments, starting with the absolute path to the executable.
+    May be filtered to protect sensitive information.
   name: process.args
-- external: ecs
+  type: keyword
+- description: Process id.
   name: process.pid
-- external: ecs
+  type: long
+- description: Parent process' pid.
   name: process.ppid
-- external: ecs
+  type: long
+- description: |-
+    Process title.
+    The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
   name: process.title
-- external: ecs
+  type: keyword
+- description: |-
+    Identifies the environment where the service is running.
+    If the same service runs in different environments (production, staging, QA, development, etc.), the environment can identify other instances of the same service. Can also group services and applications from the same environment.
   name: service.environment
-- external: ecs
+  type: keyword
+- description: |-
+    Name of the service data is collected from.
+    The name of the service is normally user given. This allows for distributed services that run on multiple hosts to correlate the related instances based on the name.
+    In the case of Elasticsearch the `service.name` could contain the cluster name. For Beats the `service.name` is by default a copy of the `service.type` field if no name is specified.
   name: service.name
-- external: ecs
+  type: keyword
+- description: |-
+    Name of a service node.
+    This allows for two nodes of the same service running on the same host to be differentiated. Therefore, `service.node.name` should typically be unique across nodes of a given service.
+    In the case of Elasticsearch, the `service.node.name` could contain the unique node name within the Elasticsearch cluster. In cases where the service doesn't have the concept of a node name, the host name or container name can be used to distinguish running instances that make up this service. If those do not provide uniqueness (e.g. multiple instances of the service running on the same host) - the node name can be manually set.
   name: service.node.name
-- external: ecs
+  type: keyword
+- description: |-
+    Version of the service the data was collected from.
+    This allows to look at a data set only for a specific version of a service.
   name: service.version
-- external: ecs
+  type: keyword
+- description: Source domain.
   name: source.domain
-- external: ecs
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
   name: source.ip
-- external: ecs
+  type: ip
+- description: Port of the source.
   name: source.port
-- external: ecs
+  type: long
+- description: |-
+    Unique identifier of the span within the scope of its trace.
+    A span represents an operation within a transaction, such as a request to another service, or a database query.
   name: span.id
-- external: ecs
+  type: keyword
+- description: |-
+    Unique identifier of the trace.
+    A trace groups multiple events like transactions that belong together. For example, a user request handled by multiple inter-connected services.
   name: trace.id
-- external: ecs
+  type: keyword
+- description: |-
+    Unique identifier of the transaction within the scope of its trace.
+    A transaction is the highest level of work measured within a service, such as a request to a server.
   name: transaction.id
-- external: ecs
+  type: keyword
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
   name: url.domain
-- external: ecs
+  type: keyword
+- description: |-
+    Portion of the url after the `#`, such as "top".
+    The `#` is not part of the fragment.
   name: url.fragment
-- external: ecs
+  type: keyword
+- description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
   name: url.full
-- external: ecs
+  type: wildcard
+- description: Path of the request, such as "/search".
   name: url.path
-- external: ecs
+  type: wildcard
+- description: Port of the request, such as 443.
   name: url.port
-- external: ecs
+  type: long
+- description: |-
+    The query field describes the query string of the request, such as "q=elasticsearch".
+    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
   name: url.query
-- external: ecs
+  type: keyword
+- description: |-
+    Scheme of the request, such as "https".
+    Note: The `:` is not part of the scheme.
   name: url.scheme
-- external: ecs
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
   name: user.domain
-- external: ecs
+  type: keyword
+- description: User email address.
   name: user.email
-- external: ecs
+  type: keyword
+- description: Unique identifier of the user.
   name: user.id
-- external: ecs
+  type: keyword
+- description: Short name or login of the user.
   name: user.name
-- external: ecs
+  type: keyword
+- description: Name of the device.
   name: user_agent.device.name
-- external: ecs
+  type: keyword
+- description: Name of the user agent.
   name: user_agent.name
-- external: ecs
+  type: keyword
+- description: Unparsed user_agent string.
   name: user_agent.original
-- external: ecs
+  type: keyword
+- description: OS family (such as redhat, debian, freebsd, windows).
   name: user_agent.os.family
-- external: ecs
+  type: keyword
+- description: Operating system name, including the version or code name.
   name: user_agent.os.full
-- external: ecs
+  type: keyword
+- description: Operating system kernel version as a raw string.
   name: user_agent.os.kernel
-- external: ecs
+  type: keyword
+- description: Operating system name, without the version.
   name: user_agent.os.name
-- external: ecs
+  type: keyword
+- description: Operating system platform (such centos, ubuntu, windows).
   name: user_agent.os.platform
-- external: ecs
+  type: keyword
+- description: Operating system version as a raw string.
   name: user_agent.os.version
-- external: ecs
+  type: keyword
+- description: Version of the user agent.
   name: user_agent.version
+  type: keyword
