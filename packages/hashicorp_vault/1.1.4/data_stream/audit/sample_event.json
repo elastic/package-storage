@@ -1,0 +1,91 @@
+{
+    "@timestamp": "2021-10-13T03:27:26.362Z",
+    "agent": {
+        "ephemeral_id": "fb2d978e-e42d-49f5-8ca1-4fac9f7d9b52",
+        "hostname": "docker-fleet-agent",
+        "id": "348f4f6e-829a-463d-aed0-37c853e7ce84",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "7.15.0"
+    },
+    "data_stream": {
+        "dataset": "hashicorp_vault.audit",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "1.12.0"
+    },
+    "elastic_agent": {
+        "id": "348f4f6e-829a-463d-aed0-37c853e7ce84",
+        "snapshot": true,
+        "version": "7.15.0"
+    },
+    "event": {
+        "action": "update",
+        "agent_id_status": "verified",
+        "category": [
+            "authentication"
+        ],
+        "dataset": "hashicorp_vault.audit",
+        "id": "ce68275e-dce8-42b4-4a79-6b366a3b702e",
+        "ingested": "2021-10-13T03:27:54Z",
+        "kind": "event",
+        "original": "{\"time\":\"2021-10-13T03:27:26.362354182Z\",\"type\":\"request\",\"auth\":{\"token_type\":\"default\"},\"request\":{\"id\":\"ce68275e-dce8-42b4-4a79-6b366a3b702e\",\"operation\":\"update\",\"namespace\":{\"id\":\"root\"},\"path\":\"sys/audit/test\"}}",
+        "outcome": "success",
+        "type": [
+            "change"
+        ]
+    },
+    "hashicorp_vault": {
+        "audit": {
+            "auth": {
+                "token_type": "default"
+            },
+            "request": {
+                "id": "ce68275e-dce8-42b4-4a79-6b366a3b702e",
+                "namespace": {
+                    "id": "root"
+                },
+                "operation": "update",
+                "path": "sys/audit/test"
+            },
+            "type": "request"
+        }
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "id": "6505f7ca36739e7eb909bdb52bf3ec18",
+        "ip": [
+            "192.168.176.4"
+        ],
+        "mac": [
+            "02:42:c0:a8:b0:04"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "Core",
+            "family": "redhat",
+            "kernel": "5.11.0-37-generic",
+            "name": "CentOS Linux",
+            "platform": "centos",
+            "type": "linux",
+            "version": "7 (Core)"
+        }
+    },
+    "input": {
+        "type": "log"
+    },
+    "log": {
+        "file": {
+            "path": "/tmp/service_logs/vault/audit.json"
+        },
+        "offset": 0
+    },
+    "tags": [
+        "preserve_original_event",
+        "hashicorp-vault-audit"
+    ]
+}
