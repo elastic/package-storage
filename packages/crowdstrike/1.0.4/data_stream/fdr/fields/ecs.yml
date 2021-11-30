@@ -172,6 +172,11 @@
   name: observer.version
   type: keyword
 - description: |-
+    The type of the observer the data is coming from.
+    There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`.
+  name: observer.type
+  type: keyword
+- description: |-
     Use the `os.type` field to categorize the operating system into one of the broad commercial families.
     One of these following values should be used (lowercase): linux, macos, unix, windows.
     If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
