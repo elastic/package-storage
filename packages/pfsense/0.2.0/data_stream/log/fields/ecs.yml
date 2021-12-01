@@ -24,6 +24,7 @@
   name: client.geo.country_iso_code
   type: keyword
 - description: Name of the continent.
+  ignore_above: 1024
   name: client.geo.continent_name
   type: keyword
 - description: Country ISO code.
