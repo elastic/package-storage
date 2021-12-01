@@ -1,0 +1,263 @@
+- description: Container name.
+  name: container.name
+  type: keyword
+- description: Runtime managing this container.
+  name: container.runtime
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
+    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
+    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
+  name: event.category
+  type: keyword
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
+- description: event.end contains the date when the event ended or when the activity was last observed.
+  name: event.end
+  type: date
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  name: event.original
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
+  name: event.outcome
+  type: keyword
+- description: |-
+    Source of the event.
+    Event transports such as Syslog or the Windows Event Log typically mention the source of an event. It can be the name of the software that generated the event (e.g. Sysmon, httpd), or of a subsystem of the operating system (kernel, Microsoft-Windows-Security-Auditing).
+  name: event.provider
+  type: keyword
+- description: event.start contains the date when the event started or when the activity was first observed.
+  name: event.start
+  type: date
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
+    `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
+    This field is an array. This will allow proper categorization of some events that fall in multiple event types.
+  name: event.type
+  type: keyword
+- description: |-
+    Name of the directory the group is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: group.domain
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
+  type: keyword
+- description: Name of the group.
+  name: group.name
+  type: keyword
+- description: |-
+    Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
+    If the event wasn't read from a log file, do not populate this field.
+  name: log.file.path
+  type: keyword
+- description: |-
+    For log events the message field contains the log message, optimized for viewing in a log viewer.
+    For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
+    If multiple messages exist, they can be combined into one message.
+  name: message
+  type: match_only_text
+- description: Name given by operators to sections of their network.
+  name: network.name
+  type: keyword
+- description: Unique identifier for the organization.
+  name: organization.id
+  type: keyword
+- description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
+  name: related.hash
+  type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: |-
+    Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: source.address
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: source.geo.location
+  type: geo_point
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: source.user.domain
+  type: keyword
+- description: User email address.
+  name: source.user.email
+  type: keyword
+- description: Unique identifier of the user.
+  name: source.user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: source.user.name
+  type: keyword
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+  name: url.domain
+  type: keyword
+- description: |-
+    The field contains the file extension from the original request url, excluding the leading dot.
+    The file extension is only set if it exists, as not every url has a file extension.
+    The leading period must not be included. For example, the value must be "png", not ".png".
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: url.extension
+  type: keyword
+- description: |-
+    Portion of the url after the `#`, such as "top".
+    The `#` is not part of the fragment.
+  name: url.fragment
+  type: keyword
+- description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  name: url.full
+  type: wildcard
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  name: url.original
+  type: wildcard
+- description: Password of the request.
+  name: url.password
+  type: keyword
+- description: Path of the request, such as "/search".
+  name: url.path
+  type: wildcard
+- description: Port of the request, such as 443.
+  name: url.port
+  type: long
+- description: |-
+    The query field describes the query string of the request, such as "q=elasticsearch".
+    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
+  name: url.query
+  type: keyword
+- description: |-
+    The highest registered url domain, stripped of the subdomain.
+    For example, the registered domain for "foo.example.com" is "example.com".
+    This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk".
+  name: url.registered_domain
+  type: keyword
+- description: |-
+    Scheme of the request, such as "https".
+    Note: The `:` is not part of the scheme.
+  name: url.scheme
+  type: keyword
+- description: |-
+    The subdomain portion of a fully qualified domain name includes all of the names except the host name under the registered_domain.  In a partially qualified domain, or if the the qualification level of the full name cannot be determined, subdomain contains all of the names below the registered domain.
+    For example the subdomain portion of "www.east.mydomain.co.uk" is "east". If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period.
+  name: url.subdomain
+  type: keyword
+- description: |-
+    The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com".
+    This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
+  name: url.top_level_domain
+  type: keyword
+- description: Username of the request.
+  name: url.username
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
+  type: keyword
+- description: User email address.
+  name: user.email
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.target.domain
+  type: keyword
+- description: User email address.
+  name: user.target.email
+  type: keyword
+- description: |-
+    Name of the directory the group is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.target.group.domain
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: user.target.group.id
+  type: keyword
+- description: Name of the group.
+  name: user.target.group.name
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.target.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.target.name
+  type: keyword
