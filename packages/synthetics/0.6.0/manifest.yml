@@ -1,0 +1,34 @@
+format_version: 1.0.0
+name: synthetics
+title: Elastic Synthetics
+description: Monitor the availability of your services with Elastic Synthetics.
+version: 0.6.0
+categories: ["elastic_stack", "monitoring", "web"]
+release: beta
+type: integration
+license: basic
+policy_templates:
+  - name: synthetics
+    title: Elastic Synthetics
+    description: Perform synthetic health checks on network endpoints.
+    inputs:
+      - type: synthetics/http
+        title: HTTP
+        description: Perform an HTTP check
+      - type: synthetics/tcp
+        title: TCP
+        description: Perform a TCP check
+      - type: synthetics/icmp
+        title: ICMP
+        description: Perform an ICMP check
+      - type: synthetics/browser
+        title: Browser
+        description: Perform an Browser check
+conditions:
+  kibana.version: "^8.0.0"
+icons:
+  - src: /img/uptime-logo-color-64px.svg
+    size: 16x16
+    type: image/svg+xml
+owner:
+  github: elastic/uptime
