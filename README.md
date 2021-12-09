@@ -15,7 +15,7 @@ Here's how these branches relate to repositories and other aspects of packages.
 | How to add a package      | Commit to elastic/integrations* | [`elastic-package promote`](https://github.com/elastic/elastic-package#elastic-package-promote) | [`elastic-package promote`](https://github.com/elastic/elastic-package#elastic-package-promote) |
 | Allow version overwrite?| yes**                        | if needed                  | no                        |
 | Allow version removal?  | yes                         | special exceptions only    | only version increments   |
-| Stack Ver vs Storage Ver| [master branch](https://github.com/elastic/kibana/blob/master/x-pack/plugins/fleet/server/services/epm/registry/registry_url.ts#L25) | all `-SNAPSHOT` Kibana versions | all shipped or BC versions*** |
+| Stack Ver vs Storage Ver| [main branch](https://github.com/elastic/kibana/blob/main/x-pack/plugins/fleet/server/services/epm/registry/registry_url.ts#L24) | all `-SNAPSHOT` Kibana versions | all shipped or BC versions*** |
 | Registry Version        | Fixed dev or latest stable release | Stable release      | Stable release            |
 | Branch                  | snapshot                    | staging                    | production                |
 | Packages                | snapshot+staging+prod       | staging+production         | production                |
@@ -26,7 +26,7 @@ Here's how these branches relate to repositories and other aspects of packages.
 
 ** removing packages can cause short-term dev problems when a package is in use and then is deleted, some manual maintenance is expected and this does not reflect user experience in production.
 
-*** for example, during the development of 8.0 as master, all 7.x -SNAPSHOT stack versions (including cloud deploys) will use the `staging` repo to facilitate testing prior to package release, while the formal build candidates and shipped stack versions of Kibana are coded to use the `production` registry.  To update the package storage branch used in a self managed Kibana deploy you can set the below, for example, in the kibana/config/kibana.yml file: 
+*** for example, during the development of 8.0 as main, all 7.x -SNAPSHOT stack versions (including cloud deploys) will use the `staging` repo to facilitate testing prior to package release, while the formal build candidates and shipped stack versions of Kibana are coded to use the `production` registry.  To update the package storage branch used in a self managed Kibana deploy you can set the below, for example, in the kibana/config/kibana.yml file: 
 xpack.fleet.registryUrl: "htttp://epr-snapshot.elastic.co/"
 
 # Update Package Registry for a distribution
