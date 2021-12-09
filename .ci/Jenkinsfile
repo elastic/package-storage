@@ -3,7 +3,7 @@
 @Library('apm@current') _
 
 pipeline {
-  agent { label 'ubuntu && immutable' }
+  agent { label 'ubuntu-18 && immutable' }
   environment {
     BASE_DIR="src/github.com/elastic/package-storage"
     DOCKER_REGISTRY = 'docker.elastic.co'
