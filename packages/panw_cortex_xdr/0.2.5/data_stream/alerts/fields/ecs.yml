@@ -117,6 +117,12 @@
 - description: Country name.
   name: destination.geo.country_name
   type: keyword
+- description: Region ISO code.
+  name: destination.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: destination.geo.region_name
+  type: keyword
 - description: Longitude and latitude.
   example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: destination.geo.location
