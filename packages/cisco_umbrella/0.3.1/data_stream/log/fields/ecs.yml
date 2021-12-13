@@ -50,6 +50,12 @@
 - description: Name of the continent.
   name: destination.geo.continent_name
   type: keyword
+- description: Region ISO code.
+  name: destination.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: destination.geo.region_name
+  type: keyword
 - description: Country ISO code.
   name: destination.geo.country_iso_code
   type: keyword
