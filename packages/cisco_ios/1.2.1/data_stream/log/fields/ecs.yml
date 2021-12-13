@@ -16,6 +16,15 @@
 - description: Organization name.
   name: destination.as.organization.name
   type: keyword
+- description: City name.
+  name: destination.geo.city_name
+  type: keyword
+- description: Region ISO code.
+  name: destination.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: destination.geo.region_name
+  type: keyword
 - description: Name of the continent.
   name: destination.geo.continent_name
   type: keyword
@@ -182,6 +191,34 @@
 - description: Short name or login of the user.
   name: source.user.name
   type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: source.geo.location
+  type: geo_point
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
