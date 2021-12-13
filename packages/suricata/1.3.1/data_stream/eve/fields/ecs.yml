@@ -169,6 +169,12 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: source.address
   type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
 - description: Bytes sent from the source to the destination.
   name: source.bytes
   type: long
