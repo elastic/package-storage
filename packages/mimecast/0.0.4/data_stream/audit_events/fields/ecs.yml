@@ -1,0 +1,106 @@
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  name: event.original
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: User email address.
+  name: user.email
+  type: keyword
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
+  type: keyword
+- description: |-
+    File extension, excluding the leading dot.
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: file.extension
+  type: keyword
+- description: City name.
+  name: client.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: client.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: client.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: client.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: client.geo.location
+  type: geo_point
+- description: Region ISO code.
+  name: client.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: client.geo.region_name
+  type: keyword
+- description: Client ASN number.
+  name: client.as.asn
+  type: long
+- descriiption: Client Organization name.
+  name: client.as.organization_name
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: client.as.number
+  type: long
+- description: Organization name.
+  name: client.as.organization.name
+  type: keyword
+- description: The email address(es) of the message recipient(s)
+  name: email.to.address
+  type: keyword
+- description: Stores the from email address from the RFC5322 From - header field.
+  name: email.from.address
+  type: keyword
+- description: A brief summary of the topic of the message
+  ignore_above: 1024
+  multi_fields:
+    - default_field: false
+      name: text
+      norms: false
+      type: text
+  name: email.subject
+  type: keyword
+- description: The date and time the email message was composed. Many email clients will fill this in automatically when the message is sent by a user.
+  name: email.origination_timestamp
+  type: date
+- description: |-
+    File size in bytes.
+    Only relevant when `file.type` is "file".
+  name: file.size
+  type: long
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
