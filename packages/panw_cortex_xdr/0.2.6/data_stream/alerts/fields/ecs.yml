@@ -111,6 +111,9 @@
 - description: Name of the continent.
   name: destination.geo.continent_name
   type: keyword
+- description: City name.
+  name: destination.geo.city_name
+  type: keyword
 - description: Country ISO code.
   name: destination.geo.country_iso_code
   type: keyword
