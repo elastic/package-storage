@@ -29,6 +29,15 @@
 - description: Organization name.
   name: client.as.organization.name
   type: keyword
+- description: Region ISO code.
+  name: client.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: client.geo.region_name
+  type: keyword
+- description: City name.
+  name: client.geo.city_name
+  type: keyword
 - description: Name of the continent.
   name: client.geo.continent_name
   type: keyword
@@ -41,6 +50,34 @@
 - description: Longitude and latitude.
   level: core
   name: client.geo.location
+  type: geo_point
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: source.geo.location
   type: geo_point
 - description: IP address of the client (IPv4 or IPv6).
   name: client.ip
