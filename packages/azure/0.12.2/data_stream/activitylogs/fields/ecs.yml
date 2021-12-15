@@ -146,6 +146,12 @@
 - description: Region name.
   name: geo.region_name
   type: keyword
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: geo.name
+  type: keyword
 - description: Region ISO code.
   name: geo.region_iso_code
   type: keyword
