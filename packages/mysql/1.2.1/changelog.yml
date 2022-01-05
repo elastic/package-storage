@@ -1,0 +1,68 @@
+# newer versions go on top
+- version: "1.2.1"
+  changes:
+    - description: Change test public IPs to the supported subset
+      type: bugfix
+      link: https://github.com/elastic/integrations/pull/2327
+- version: "1.2.0"
+  changes:
+    - description: Release package for v8.0.0
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/2183
+- version: "1.1.1"
+  changes:
+    - description: Uniform with guidelines
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/2055
+- version: "1.1.0"
+  changes:
+    - description: Update to ECS 1.12.0
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1699
+- version: "1.0.0"
+  changes:
+    - description: Release MySQL as GA
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1612
+- version: "0.6.0"
+  changes:
+    - description: Update integration description
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1364
+- version: "0.5.0"
+  changes:
+    - description: Fix logs overview dashboard
+      type: bugfix
+      link: https://github.com/elastic/integrations/pull/1316
+    - description: Release as beta
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1316
+- version: "0.4.0"
+  changes:
+    - description: Sync latest changes from beats
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1145
+    - description: Disable performance data stream by default in consistence with Beats
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1145
+    - description: Enable ECS dependency
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1145
+    - description: Set "event.module" and "event.dataset"
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/1145
+- version: "0.3.8"
+  changes:
+    - description: Updating package owner
+      type: enhancement
+      link: https://github.com/elastic/integrations/pull/766
+- version: "0.3.7"
+  changes:
+    - description: Correct sample event file.
+      type: bugfix # can be one of: enhancement, bugfix, breaking-change
+      link: https://github.com/elastic/integrations/pull/754
+- version: "0.1.0"
+  changes:
+    - description: initial release
+      type: enhancement # can be one of: enhancement, bugfix, breaking-change
+      link: https://github.com/elastic/integrations/pull/21
