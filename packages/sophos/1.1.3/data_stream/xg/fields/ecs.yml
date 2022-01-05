@@ -65,6 +65,11 @@
   name: destination.mac
   type: keyword
 - description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: destination.nat.ip
+  type: ip
+- description: |-
     Port the source session is translated to by NAT Device.
     Typically used with load balancers, firewalls, or routers.
   name: destination.nat.port
@@ -341,6 +346,11 @@
 - description: IP address of the server (IPv4 or IPv6).
   name: server.ip
   type: ip
+- description: |-
+    MAC address of the server.
+    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+  name: server.mac
+  type: keyword
 - description: |-
     Translated port of destination based NAT sessions (e.g. internet to private DMZ)
     Typically used with load balancers, firewalls, or routers.
