@@ -222,3 +222,8 @@
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: |-
+    Syslog numeric priority of the event, if available.
+    According to RFCs 5424 and 3164, the priority is 8 * facility + severity. This number is therefore expected to contain a value between 0 and 191.
+  name: log.syslog.priority
+  type: long
