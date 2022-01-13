@@ -57,6 +57,17 @@
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: host.mac
   type: keyword
+- description: Hostname of the observer.
+  name: observer.hostname
+  type: keyword
+- description: IP addresses of the observer.
+  name: observer.ip
+  type: ip
+- description: |-
+    MAC addresses of the observer.
+    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+  name: observer.mac
+  type: keyword
 - description: Short name or login of the user.
   name: user.name
   type: keyword
