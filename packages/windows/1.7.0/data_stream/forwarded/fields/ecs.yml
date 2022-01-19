@@ -1,0 +1,542 @@
+- description: Destination domain.
+  name: destination.domain
+  type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: Port of the destination.
+  name: destination.port
+  type: long
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: destination.user.domain
+  type: keyword
+- description: Unique identifier of the user.
+  name: destination.user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: destination.user.name
+  type: keyword
+- description: |-
+    An array containing an object for each answer section returned by the server.
+    The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
+    Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
+  name: dns.answers
+  type: object
+- description: The class of DNS data contained in this resource record.
+  name: dns.answers.class
+  type: keyword
+- description: |-
+    The data describing the resource.
+    The meaning of this data depends on the type and class of the resource record.
+  name: dns.answers.data
+  type: keyword
+- description: |-
+    The domain name to which this resource record pertains.
+    If a chain of CNAME is being resolved, each answer's `name` should be the one that corresponds with the answer's `data`. It should not simply be the original `question.name` repeated.
+  name: dns.answers.name
+  type: keyword
+- description: The time interval in seconds that this resource record may be cached before it should be discarded. Zero values mean that the data should not be cached.
+  name: dns.answers.ttl
+  type: long
+- description: The type of data contained in this resource record.
+  name: dns.answers.type
+  type: keyword
+- description: |-
+    Array of 2 letter DNS header flags.
+    Expected values are: AA, TC, RD, RA, AD, CD, DO.
+  name: dns.header_flags
+  type: keyword
+- description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
+  name: dns.id
+  type: keyword
+- description: The DNS operation code that specifies the kind of query in the message. This value is set by the originator of a query and copied into the response.
+  name: dns.op_code
+  type: keyword
+- description: The class of records being queried.
+  name: dns.question.class
+  type: keyword
+- description: |-
+    The name being queried.
+    If the name field contains non-printable characters (below 32 or above 126), those characters should be represented as escaped base 10 integers (\DDD). Back slashes and quotes should be escaped. Tabs, carriage returns, and line feeds should be converted to \t, \r, and \n respectively.
+  name: dns.question.name
+  type: keyword
+- description: |-
+    The highest registered domain, stripped of the subdomain.
+    For example, the registered domain for "foo.example.com" is "example.com".
+    This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk".
+  name: dns.question.registered_domain
+  type: keyword
+- description: |-
+    The subdomain is all of the labels under the registered_domain.
+    If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period.
+  name: dns.question.subdomain
+  type: keyword
+- description: |-
+    The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com".
+    This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
+  name: dns.question.top_level_domain
+  type: keyword
+- description: The type of record being queried.
+  name: dns.question.type
+  type: keyword
+- description: |-
+    Array containing all IPs seen in `answers.data`.
+    The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
+  name: dns.resolved_ip
+  type: ip
+- description: The DNS response code.
+  name: dns.response_code
+  type: keyword
+- description: |-
+    The type of DNS event captured, query or answer.
+    If your source of DNS events only gives you DNS queries, you should only create dns events of type `dns.type:query`.
+    If your source of DNS events gives you answers as well, you should create one event per query (optionally as soon as the query is seen). And a second event containing all query details as well as an array of answers.
+  name: dns.type
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
+    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
+    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
+  name: event.category
+  type: keyword
+- description: |-
+    Identification code for this event, if one exists.
+    Some event sources use event codes to identify messages unambiguously, regardless of message language or wording adjustments over time. An example of this is the Windows Event ID.
+  name: event.code
+  type: keyword
+- description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
+  type: date
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy.
+    `event.kind` gives high-level information about what type of information the event contains, without being specific to the contents of the event. For example, values of this field distinguish alert events from metric events.
+    The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data coming in at a regular interval or not.
+  name: event.kind
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
+  name: event.outcome
+  type: keyword
+- description: |-
+    Source of the event.
+    Event transports such as Syslog or the Windows Event Log typically mention the source of an event. It can be the name of the software that generated the event (e.g. Sysmon, httpd), or of a subsystem of the operating system (kernel, Microsoft-Windows-Security-Auditing).
+  name: event.provider
+  type: keyword
+- description: |-
+    Sequence number of the event.
+    The sequence number is a value published by some event sources, to make the exact ordering of events unambiguous, regardless of the timestamp precision.
+  name: event.sequence
+  type: long
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
+    `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
+    This field is an array. This will allow proper categorization of some events that fall in multiple event types.
+  name: event.type
+  type: keyword
+- description: Boolean to capture if a signature is present.
+  name: file.code_signature.exists
+  type: boolean
+- description: |-
+    Additional information about the certificate status.
+    This is useful for logging cryptographic errors with the certificate validity or trust status. Leave unpopulated if the validity or trust of the certificate was unchecked.
+  name: file.code_signature.status
+  type: keyword
+- description: Subject name of the code signer
+  name: file.code_signature.subject_name
+  type: keyword
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: file.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: file.code_signature.valid
+  type: boolean
+- description: Directory where the file is located. It should include the drive letter, when appropriate.
+  name: file.directory
+  type: keyword
+- description: |-
+    File extension, excluding the leading dot.
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: file.extension
+  type: keyword
+- description: MD5 hash.
+  name: file.hash.md5
+  type: keyword
+- description: SHA1 hash.
+  name: file.hash.sha1
+  type: keyword
+- description: SHA256 hash.
+  name: file.hash.sha256
+  type: keyword
+- description: SHA512 hash.
+  name: file.hash.sha512
+  type: keyword
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
+- description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  name: file.path
+  type: keyword
+- description: CPU architecture target for the file.
+  name: file.pe.architecture
+  type: keyword
+- description: Internal company name of the file, provided at compile-time.
+  name: file.pe.company
+  type: keyword
+- description: Internal description of the file, provided at compile-time.
+  name: file.pe.description
+  type: keyword
+- description: Internal version of the file, provided at compile-time.
+  name: file.pe.file_version
+  type: keyword
+- description: |-
+    A hash of the imports in a PE file. An imphash -- or import hash -- can be used to fingerprint binaries even after recompilation or other code-level transformations have occurred, which would change more traditional hash values.
+    Learn more at https://www.fireeye.com/blog/threat-research/2014/01/tracking-malware-import-hashing.html.
+  name: file.pe.imphash
+  type: keyword
+- description: Internal name of the file, provided at compile-time.
+  name: file.pe.original_file_name
+  type: keyword
+- description: Internal product name of the file, provided at compile-time.
+  name: file.pe.product
+  type: keyword
+- description: |-
+    Name of the directory the group is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: group.domain
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
+  type: keyword
+- description: Name of the group.
+  name: group.name
+  type: keyword
+- description: |-
+    Name of the host.
+    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
+  name: host.name
+  type: keyword
+- description: |-
+    Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
+    If the event wasn't read from a log file, do not populate this field.
+  name: log.file.path
+  type: keyword
+- description: |-
+    Original log level of the log event.
+    If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
+    Some examples are `warn`, `err`, `i`, `informational`.
+  name: log.level
+  type: keyword
+- description: |-
+    For log events the message field contains the log message, optimized for viewing in a log viewer.
+    For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
+    If multiple messages exist, they can be combined into one message.
+  name: message
+  type: match_only_text
+- description: |-
+    A hash of source and destination IPs and ports, as well as the protocol used in a communication. This is a tool-agnostic standard to identify flows.
+    Learn more at https://github.com/corelight/community-id-spec.
+  name: network.community_id
+  type: keyword
+- description: |-
+    Direction of the network traffic.
+    Recommended values are:
+      * ingress
+      * egress
+      * inbound
+      * outbound
+      * internal
+      * external
+      * unknown
+
+    When mapping events from a host-based monitoring context, populate this field from the host's point of view, using the values "ingress" or "egress".
+    When mapping events from a network or perimeter-based monitoring context, populate this field from the point of view of the network perimeter, using the values "inbound", "outbound", "internal" or "external".
+    Note that "internal" is not crossing perimeter boundaries, and is meant to describe communication between two hosts within the perimeter. Note also that "external" is meant to describe traffic between two hosts that are external to the perimeter. This could for example be useful for ISPs or VPN service providers.
+  name: network.direction
+  type: keyword
+- description: |-
+    L7 Network protocol name. ex. http, lumberjack, transport protocol.
+    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+  name: network.protocol
+  type: keyword
+- description: |-
+    Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
+    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+  name: network.transport
+  type: keyword
+- description: |-
+    In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
+    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+  name: network.type
+  type: keyword
+- description: |-
+    Array of process arguments, starting with the absolute path to the executable.
+    May be filtered to protect sensitive information.
+  name: process.args
+  type: keyword
+- description: |-
+    Length of the process.args array.
+    This field can be useful for querying or performing bucket analysis on how many arguments were provided to start a process. More arguments may be an indication of suspicious activity.
+  name: process.args_count
+  type: long
+- description: |-
+    Full command line that started the process, including the absolute path to the executable, and all arguments.
+    Some arguments may be filtered to protect sensitive information.
+  name: process.command_line
+  type: wildcard
+- description: |-
+    Unique identifier for the process.
+    The implementation of this is specified by the data source, but some examples of what could be used here are a process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process.
+    Constructing a globally unique identifier is a common practice to mitigate PID reuse as well as to identify a specific process over time, across multiple monitored hosts.
+  name: process.entity_id
+  type: keyword
+- description: Absolute path to the process executable.
+  name: process.executable
+  type: keyword
+- description: MD5 hash.
+  name: process.hash.md5
+  type: keyword
+- description: SHA1 hash.
+  name: process.hash.sha1
+  type: keyword
+- description: SHA256 hash.
+  name: process.hash.sha256
+  type: keyword
+- description: SHA512 hash.
+  name: process.hash.sha512
+  type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  name: process.name
+  type: keyword
+- description: |-
+    Array of process arguments, starting with the absolute path to the executable.
+    May be filtered to protect sensitive information.
+  name: process.parent.args
+  type: keyword
+- description: |-
+    Length of the process.args array.
+    This field can be useful for querying or performing bucket analysis on how many arguments were provided to start a process. More arguments may be an indication of suspicious activity.
+  name: process.parent.args_count
+  type: long
+- description: |-
+    Full command line that started the process, including the absolute path to the executable, and all arguments.
+    Some arguments may be filtered to protect sensitive information.
+  name: process.parent.command_line
+  type: wildcard
+- description: |-
+    Unique identifier for the process.
+    The implementation of this is specified by the data source, but some examples of what could be used here are a process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process.
+    Constructing a globally unique identifier is a common practice to mitigate PID reuse as well as to identify a specific process over time, across multiple monitored hosts.
+  name: process.parent.entity_id
+  type: keyword
+- description: Absolute path to the process executable.
+  name: process.parent.executable
+  type: keyword
+- description: MD5 hash.
+  name: process.parent.hash.md5
+  type: keyword
+- description: SHA1 hash.
+  name: process.parent.hash.sha1
+  type: keyword
+- description: SHA256 hash.
+  name: process.parent.hash.sha256
+  type: keyword
+- description: SHA512 hash.
+  name: process.parent.hash.sha512
+  type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  name: process.parent.name
+  type: keyword
+- description: CPU architecture target for the file.
+  name: process.parent.pe.architecture
+  type: keyword
+- description: Internal company name of the file, provided at compile-time.
+  name: process.parent.pe.company
+  type: keyword
+- description: Internal description of the file, provided at compile-time.
+  name: process.parent.pe.description
+  type: keyword
+- description: Internal version of the file, provided at compile-time.
+  name: process.parent.pe.file_version
+  type: keyword
+- description: |-
+    A hash of the imports in a PE file. An imphash -- or import hash -- can be used to fingerprint binaries even after recompilation or other code-level transformations have occurred, which would change more traditional hash values.
+    Learn more at https://www.fireeye.com/blog/threat-research/2014/01/tracking-malware-import-hashing.html.
+  name: process.parent.pe.imphash
+  type: keyword
+- description: Internal name of the file, provided at compile-time.
+  name: process.parent.pe.original_file_name
+  type: keyword
+- description: Internal product name of the file, provided at compile-time.
+  name: process.parent.pe.product
+  type: keyword
+- description: Process id.
+  name: process.parent.pid
+  type: long
+- description: The time the process started.
+  name: process.parent.start
+  type: date
+- description: |-
+    Process title.
+    The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  name: process.parent.title
+  type: keyword
+- description: CPU architecture target for the file.
+  name: process.pe.architecture
+  type: keyword
+- description: Internal company name of the file, provided at compile-time.
+  name: process.pe.company
+  type: keyword
+- description: Internal description of the file, provided at compile-time.
+  name: process.pe.description
+  type: keyword
+- description: Internal version of the file, provided at compile-time.
+  name: process.pe.file_version
+  type: keyword
+- description: |-
+    A hash of the imports in a PE file. An imphash -- or import hash -- can be used to fingerprint binaries even after recompilation or other code-level transformations have occurred, which would change more traditional hash values.
+    Learn more at https://www.fireeye.com/blog/threat-research/2014/01/tracking-malware-import-hashing.html.
+  name: process.pe.imphash
+  type: keyword
+- description: Internal name of the file, provided at compile-time.
+  name: process.pe.original_file_name
+  type: keyword
+- description: Internal product name of the file, provided at compile-time.
+  name: process.pe.product
+  type: keyword
+- description: Process id.
+  name: process.pid
+  type: long
+- description: |-
+    Process title.
+    The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  name: process.title
+  type: keyword
+- description: The working directory of the process.
+  name: process.working_directory
+  type: keyword
+- description: |-
+    Content when writing string types.
+    Populated as an array when writing string data to the registry. For single string registry types (REG_SZ, REG_EXPAND_SZ), this should be an array with one string. For sequences of string with REG_MULTI_SZ, this array will be variable length. For numeric data, such as REG_DWORD and REG_QWORD, this should be populated with the decimal representation (e.g `"1"`).
+  name: registry.data.strings
+  type: wildcard
+- description: Standard registry type for encoding contents
+  name: registry.data.type
+  type: keyword
+- description: Abbreviated name for the hive.
+  name: registry.hive
+  type: keyword
+- description: Hive-relative path of keys.
+  name: registry.key
+  type: keyword
+- description: Full path, including hive, key and value
+  name: registry.path
+  type: keyword
+- description: Name of the value written.
+  name: registry.value
+  type: keyword
+- description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
+  name: related.hash
+  type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: The name of the rule or signature generating the event.
+  name: rule.name
+  type: keyword
+- description: |-
+    Name of the service data is collected from.
+    The name of the service is normally user given. This allows for distributed services that run on multiple hosts to correlate the related instances based on the name.
+    In the case of Elasticsearch the `service.name` could contain the cluster name. For Beats the `service.name` is by default a copy of the `service.type` field if no name is specified.
+  name: service.name
+  type: keyword
+- description: |-
+    The type of the service data is collected from.
+    The type can be used to group and correlate logs and metrics from one service type.
+    Example: If logs or metrics are collected from Elasticsearch, `service.type` would be `elasticsearch`.
+  name: service.type
+  type: keyword
+- description: Source domain.
+  name: source.domain
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Port of the source.
+  name: source.port
+  type: long
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: source.user.domain
+  type: keyword
+- description: Unique identifier of the user.
+  name: source.user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: source.user.name
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
+- description: |-
+    Name of the directory the group is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.target.group.domain
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: user.target.group.id
+  type: keyword
+- description: Name of the group.
+  name: user.target.group.name
+  type: keyword
+- description: Short name or login of the user.
+  name: user.target.name
+  type: keyword
