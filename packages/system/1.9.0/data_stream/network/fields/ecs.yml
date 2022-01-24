@@ -162,42 +162,6 @@
     - description: Seconds the host has been up.
       name: uptime
       type: long
-    - description: |-
-        Name of the directory the user is a member of.
-        For example, an LDAP or Active Directory domain name.
-      name: user.domain
-      type: keyword
-    - description: User email address.
-      name: user.email
-      type: keyword
-    - description: User's full name, if available.
-      name: user.full_name
-      type: keyword
-    - description: |-
-        Name of the directory the group is a member of.
-        For example, an LDAP or Active Directory domain name.
-      name: user.group.domain
-      type: keyword
-    - description: Unique identifier for the group on the system/platform.
-      name: user.group.id
-      type: keyword
-    - description: Name of the group.
-      name: user.group.name
-      type: keyword
-    - description: |-
-        Unique user hash to correlate information for a user in anonymized form.
-        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
-      name: user.hash
-      type: keyword
-    - description: Unique identifier of the user.
-      name: user.id
-      type: keyword
-    - description: Short name or login of the user.
-      name: user.name
-      type: keyword
-    - description: Array of user roles at the time of the event.
-      name: user.roles
-      type: keyword
   name: host
   type: group
 - description: |-
@@ -602,9 +566,6 @@
     - description: Process id.
       name: parent.pid
       type: long
-    - description: Parent process' pid.
-      name: parent.ppid
-      type: long
     - description: The time the process started.
       name: parent.start
       type: date
@@ -654,9 +615,6 @@
     - description: Process id.
       name: pid
       type: long
-    - description: Parent process' pid.
-      name: ppid
-      type: long
     - description: The time the process started.
       name: start
       type: date
@@ -705,7 +663,9 @@
     - description: Bytes sent from the source to the destination.
       name: bytes
       type: long
-    - description: Source domain.
+    - description: |-
+        The domain name of the source system.
+        This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
       name: domain
       type: keyword
     - description: City name.
