@@ -13,7 +13,7 @@
           discover-pr-forks-trust: permission
           discover-pr-origin: merge-current
           discover-tags: true
-          head-filter-regex: '(master|PR-.*|snapshot|staging|production.*)'
+          head-filter-regex: '(main|PR-.*|snapshot|staging|production.*)'
           notification-context: 'package-storage'
           repo: package-storage
           repo-owner: elastic

@@ -26,7 +26,7 @@ Here's how these branches relate to repositories and other aspects of packages.
 
 ** removing packages can cause short-term dev problems when a package is in use and then is deleted, some manual maintenance is expected and this does not reflect user experience in production.
 
-*** for example, during the development of 8.0 as main, all 7.x -SNAPSHOT stack versions (including cloud deploys) will use the `staging` repo to facilitate testing prior to package release, while the formal build candidates and shipped stack versions of Kibana are coded to use the `production` registry.  To update the package storage branch used in a self managed Kibana deploy you can set the below, for example, in the kibana/config/kibana.yml file: 
+*** for example, during the development of 8.0 as main, all 7.x -SNAPSHOT stack versions (including cloud deploys) will use the `staging` repo to facilitate testing prior to package release, while the formal build candidates and shipped stack versions of Kibana are coded to use the `production` registry.  To update the package storage branch used in a self managed Kibana deploy you can set the below, for example, in the kibana/config/kibana.yml file:
 xpack.fleet.registryUrl: "htttp://epr-snapshot.elastic.co/"
 
 # Update Package Registry for a distribution
@@ -42,7 +42,7 @@ FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
 LABEL package-registry=${PACKAGE_REGISTRY}
 ```
 
-The above example uses `v0.6.0` as the registry version. Each tagged version in the registry can be used or commits made to package-registry master. A valid registry version would also be `02ca71731cdc092db213cd4c9069db43b74ac01b` as this is a commit hash from master.
+The above example uses `v0.6.0` as the registry version. Each tagged version in the registry can be used or commits made to package-registry main. A valid registry version would also be `02ca71731cdc092db213cd4c9069db43b74ac01b` as this is a commit hash from main.
 
 In addition to updating the Dockerfile, also the package-registry version on the Golang side must be updated as it is used for some testing. For this, run the following commands:
 
@@ -63,7 +63,7 @@ To easily differentiate PRs against snapshot, staging and production, each PR to
 
 # Package promotion
 
-A package will usually go through different stages from snapshot to staging to production.  It is recommended to use the [`elastic-package` tool](https://github.com/elastic/elastic-package) to achieve package promotion. It is the package developer's burden to fulfill tests on snapshot stage and to coordinate any desired tests on staging prior to promoting to production storage.  Note that production is in use by all 7.10+ released versions of Elastic and testing should reflect this to avoid problems. 
+A package will usually go through different stages from snapshot to staging to production.  It is recommended to use the [`elastic-package` tool](https://github.com/elastic/elastic-package) to achieve package promotion. It is the package developer's burden to fulfill tests on snapshot stage and to coordinate any desired tests on staging prior to promoting to production storage.  Note that production is in use by all 7.10+ released versions of Elastic and testing should reflect this to avoid problems.
 
 So, briefly, to promote a package from one distribution to another, it must first be added to the new distribution and as soon as it is added, removed from the old distribution. As an example, a package `foo-1.2.3` is in `snapshot`. Now the content is copied over to `staging` and as soon as the package is merged, the package `foo-1.2.3` should be removed from `snapshot`. For example see this PR [promoting the `system-0.10.0` package from `snapshot` to `staging`](https://github.com/elastic/package-storage/pull/824) and this corresponding PR [removing the `system-0.10.0` package from `snapshot`](https://github.com/elastic/package-storage/pull/825).
 
@@ -96,7 +96,7 @@ The current `package-storage` repository has a few branches. This is a quick sum
 * snapshot: Packages for epr-snapshot.elastic.co
 * production-7.9: Packages for epr-7-9.elastic.co. These packages are served for Kibana 7.9 versions. It is expected that all future changes to packages go into the production branch.
 * experimental: Packages for epr-experimental.elastic.co. These packages are served for Kibana 7.8 and will disappear in the future. No updates should happen to this branch.
-* master: Contains docs and comment scripts for the distribution branches.
+* main: Contains docs and comment scripts for the distribution branches.
 
 # Tags
 
