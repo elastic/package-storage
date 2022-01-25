@@ -134,7 +134,7 @@
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: City name.
@@ -335,7 +335,9 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: server.address
   type: keyword
-- description: Server domain.
+- description: |-
+    The domain name of the server system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: server.domain
   type: keyword
 - description: |-

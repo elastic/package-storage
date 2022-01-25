@@ -193,7 +193,7 @@
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: All of the IPs seen on your event.
