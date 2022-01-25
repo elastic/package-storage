@@ -131,7 +131,7 @@
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
@@ -220,3 +220,40 @@
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: |-
+    Type of indicator as represented by Cyber Observable in STIX 2.0.
+    Recommended values:
+      * autonomous-system
+      * artifact
+      * directory
+      * domain-name
+      * email-addr
+      * file
+      * ipv4-addr
+      * ipv6-addr
+      * mac-addr
+      * mutex
+      * port
+      * process
+      * software
+      * url
+      * user-account
+      * windows-registry-key
+      * x509-certificate
+  name: threat.indicator.type
+  type: keyword
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+  name: threat.indicator.url.domain
+  type: keyword
+- description: Identifies a threat indicator as an IP address (irrespective of direction).
+  name: threat.indicator.ip
+  type: ip
+- description: MD5 hash.
+  name: threat.indicator.file.hash.md5
+  type: keyword
+- description: Identifies a threat indicator as a port number (irrespective of direction).
+  name: threat.indicator.port
+  type: long
