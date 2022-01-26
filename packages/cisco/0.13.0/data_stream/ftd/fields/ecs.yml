@@ -22,7 +22,9 @@
 - description: Bytes sent from the destination to the source.
   name: destination.bytes
   type: long
-- description: Destination domain.
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: destination.domain
   type: keyword
 - description: City name.
@@ -202,8 +204,9 @@
   name: message
   type: match_only_text
 - description: |-
-    A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
+    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
+    The field value must be normalized to lowercase for querying.
   name: network.application
   type: keyword
 - description: |-
@@ -240,18 +243,18 @@
   name: network.inner.vlan.name
   type: keyword
 - description: |-
-    L7 Network protocol name. ex. http, lumberjack, transport protocol.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
   name: network.protocol
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: Interface name as reported by the system.
@@ -312,7 +315,9 @@
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
   type: keyword
-- description: Server domain.
+- description: |-
+    The domain name of the server system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: server.domain
   type: keyword
 - description: |-
@@ -335,7 +340,9 @@
 - description: Bytes sent from the source to the destination.
   name: source.bytes
   type: long
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: City name.
@@ -462,7 +469,9 @@
 - description: Unparsed user_agent string.
   name: user_agent.original
   type: keyword
-- description: Server domain.
+- description: |-
+    The domain name of the server system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: server.domain
   type: keyword
 - description: |-
@@ -476,7 +485,9 @@
 - description: IP address of the server (IPv4 or IPv6).
   name: server.ip
   type: ip
-- description: Client domain.
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: client.domain
   type: keyword
 - description: |-
