@@ -5,7 +5,9 @@
     Required field for all events.
   name: '@timestamp'
   type: date
-- description: Client domain.
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: client.domain
   type: keyword
 - description: |-
@@ -38,7 +40,9 @@
 - description: Bytes sent from the destination to the source.
   name: destination.bytes
   type: long
-- description: Destination domain.
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: destination.domain
   type: keyword
 - description: City name.
@@ -225,9 +229,7 @@
   type: keyword
 - description: |-
     HTTP request method.
-    Prior to ECS 1.6.0 the following guidance was provided:
-    "The field value must be normalized to lowercase for querying."
-    As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
+    The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
   name: http.request.method
   type: keyword
 - description: Referrer for this HTTP request.
@@ -238,13 +240,6 @@
     If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
     Some examples are `warn`, `err`, `i`, `informational`.
   name: log.level
-  type: keyword
-- description: |-
-    Deprecated for removal in next major version release. This field is superseded by  `event.original`.
-    This is the original log message and contains the full log message before splitting it up in multiple parts.
-    In contrast to the `message` field which can contain an extracted part of the log message, this field contains the original, full log message. It can have already some modifications applied like encoding or new lines removed to clean up the log message.
-    This field is not indexed and doc_values are disabled so it can't be queried but the value can be retrieved from `_source`.
-  name: log.original
   type: keyword
 - description: |-
     The Syslog numeric facility of the log event, if available.
@@ -268,8 +263,9 @@
   name: message
   type: match_only_text
 - description: |-
-    A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
+    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
+    The field value must be normalized to lowercase for querying.
   name: network.application
   type: keyword
 - description: |-
@@ -302,8 +298,8 @@
   name: network.packets
   type: long
 - description: |-
-    L7 Network protocol name. ex. http, lumberjack, transport protocol.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
   name: network.protocol
   type: keyword
 - description: Interface name as reported by the system.
@@ -344,8 +340,8 @@
 - description: Process id.
   name: process.pid
   type: long
-- description: Parent process' pid.
-  name: process.ppid
+- description: Process id.
+  name: process.parent.pid
   type: long
 - description: |-
     Process title.
@@ -364,7 +360,9 @@
 - description: The name of the rule or signature generating the event.
   name: rule.name
   type: keyword
-- description: Server domain.
+- description: |-
+    The domain name of the server system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: server.domain
   type: keyword
 - description: |-
@@ -403,7 +401,9 @@
 - description: Bytes sent from the source to the destination.
   name: source.bytes
   type: long
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: City name.
