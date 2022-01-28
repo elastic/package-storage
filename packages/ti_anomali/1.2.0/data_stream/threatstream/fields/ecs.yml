@@ -147,13 +147,13 @@
   name: threat.indicator.marking.tlp
   type: keyword
 - description: |-
-    Identifies the confidence rating assigned by the provider using STIX confidence scales.
-    Recommended values:
-      * Not Specified, None, Low, Medium, High
-      * 0-10
-      * Admirality Scale (1-6)
-      * DNI Scale (5-95)
-      * WEP Scale (Impossible - Certain)
+    Identifies the vendor-neutral confidence rating using the None/Low/Medium/High scale defined in Appendix A of the STIX 2.1 framework. Vendor-specific confidence scales may be added as custom fields.
+    Expected values are:
+      * Not Specified
+      * None
+      * Low
+      * Medium
+      * High
   name: threat.indicator.confidence
   type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
