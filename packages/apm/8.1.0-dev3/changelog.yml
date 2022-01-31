@@ -1,7 +1,7 @@
 # newer versions go on top
 #
 # change type can be one of: enhancement, bugfix, breaking-change
-- version: "8.1.0-dev2"
+- version: "8.1.0-dev3"
   changes:
     - description: Added field mapping for `faas.coldstart` and `faas.trigger.type`
       type: enhancement
@@ -9,6 +9,9 @@
     - description: Added field `tail_sampling_enabled`
       type: enhancement
       link: https://github.com/elastic/apm-server/pull/7099
+    - description: added `error.id` field to `error_logs` data stream
+      type: bugfix
+      link: https://github.com/elastic/apm-server/pull/7123
 - version: "8.0.0"
   changes:
     - description: support setting `download-agent-version`
