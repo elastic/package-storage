@@ -189,21 +189,15 @@
   name: log.level
   type: keyword
 - description: |-
-    Deprecated for removal in next major version release. This field is superseded by  `event.original`.
-    This is the original log message and contains the full log message before splitting it up in multiple parts.
-    In contrast to the `message` field which can contain an extracted part of the log message, this field contains the original, full log message. It can have already some modifications applied like encoding or new lines removed to clean up the log message.
-    This field is not indexed and doc_values are disabled so it can't be queried but the value can be retrieved from `_source`.
-  name: log.original
-  type: keyword
-- description: |-
     For log events the message field contains the log message, optimized for viewing in a log viewer.
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
   type: match_only_text
 - description: |-
-    A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
+    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
+    The field value must be normalized to lowercase for querying.
   name: network.application
   type: keyword
 - description: |-
@@ -242,12 +236,12 @@
   type: long
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: Interface name as reported by the system.
