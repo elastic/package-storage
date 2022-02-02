@@ -98,8 +98,8 @@
 - description: Process id.
   name: process.pid
   type: long
-- description: Parent process' pid.
-  name: process.ppid
+- description: Process id.
+  name: process.parent.pid
   type: long
 - description: The working directory of the process.
   name: process.working_directory
