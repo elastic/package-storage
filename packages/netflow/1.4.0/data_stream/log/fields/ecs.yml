@@ -49,7 +49,9 @@
 - description: Bytes sent from the client to the server.
   name: client.bytes
   type: long
-- description: Client domain.
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: client.domain
   type: keyword
 - description: City name.
@@ -203,7 +205,9 @@
 - description: Bytes sent from the destination to the source.
   name: destination.bytes
   type: long
-- description: Destination domain.
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: destination.domain
   type: keyword
 - description: City name.
@@ -706,39 +710,6 @@
 - description: Seconds the host has been up.
   name: host.uptime
   type: long
-- description: |-
-    Name of the directory the user is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: host.user.domain
-  type: keyword
-- description: User email address.
-  name: host.user.email
-  type: keyword
-- description: User's full name, if available.
-  name: host.user.full_name
-  type: keyword
-- description: |-
-    Name of the directory the group is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: host.user.group.domain
-  type: keyword
-- description: Unique identifier for the group on the system/platform.
-  name: host.user.group.id
-  type: keyword
-- description: Name of the group.
-  name: host.user.group.name
-  type: keyword
-- description: |-
-    Unique user hash to correlate information for a user in anonymized form.
-    Useful if `user.id` or `user.name` contain confidential information and cannot be used.
-  name: host.user.hash
-  type: keyword
-- description: Unique identifier of the user.
-  name: host.user.id
-  type: keyword
-- description: Short name or login of the user.
-  name: host.user.name
-  type: keyword
 - description: Size in bytes of the request body.
   name: http.request.body.bytes
   type: long
@@ -750,9 +721,7 @@
   type: long
 - description: |-
     HTTP request method.
-    Prior to ECS 1.6.0 the following guidance was provided:
-    "The field value must be normalized to lowercase for querying."
-    As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
+    The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
   name: http.request.method
   type: keyword
 - description: Referrer for this HTTP request.
@@ -790,7 +759,7 @@
   type: keyword
 - description: The line number of the file containing the source code which originated the log event.
   name: log.origin.file.line
-  type: integer
+  type: long
 - description: |-
     The name of the file containing the source code which originated the log event.
     Note that this field is not meant to capture the log file. The correct field to capture the log file is `log.file.path`.
@@ -798,13 +767,6 @@
   type: keyword
 - description: The name of the function or method which originated the log event.
   name: log.origin.function
-  type: keyword
-- description: |-
-    Deprecated for removal in next major version release. This field is superseded by  `event.original`.
-    This is the original log message and contains the full log message before splitting it up in multiple parts.
-    In contrast to the `message` field which can contain an extracted part of the log message, this field contains the original, full log message. It can have already some modifications applied like encoding or new lines removed to clean up the log message.
-    This field is not indexed and doc_values are disabled so it can't be queried but the value can be retrieved from `_source`.
-  name: log.original
   type: keyword
 - description: The Syslog metadata of the event, if the event was transmitted via Syslog. Please see RFCs 5424 or 3164.
   name: log.syslog
@@ -839,8 +801,9 @@
   name: message
   type: match_only_text
 - description: |-
-    A name given to an application level protocol. This can be arbitrarily assigned for things like microservices, but also apply to things like skype, icq, facebook, twitter. This would be used in situations where the vendor or service can be decoded such as from the source/dest IP owners, ports, or wire format.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
+    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
+    The field value must be normalized to lowercase for querying.
   name: network.application
   type: keyword
 - description: |-
@@ -884,18 +847,18 @@
   name: network.packets
   type: long
 - description: |-
-    L7 Network protocol name. ex. http, lumberjack, transport protocol.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
   name: network.protocol
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: City name.
@@ -1065,8 +1028,8 @@
 - description: Process id.
   name: process.pid
   type: long
-- description: Parent process' pid.
-  name: process.ppid
+- description: Process id.
+  name: process.parent.pid
   type: long
 - description: The time the process started.
   name: process.start
@@ -1105,7 +1068,9 @@
 - description: Bytes sent from the server to the client.
   name: server.bytes
   type: long
-- description: Server domain.
+- description: |-
+    The domain name of the server system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: server.domain
   type: keyword
 - description: City name.
@@ -1255,7 +1220,9 @@
 - description: Bytes sent from the source to the destination.
   name: source.bytes
   type: long
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: City name.
