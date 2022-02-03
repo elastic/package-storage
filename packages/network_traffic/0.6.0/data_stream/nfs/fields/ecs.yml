@@ -86,18 +86,18 @@
   name: network.forwarded_ip
   type: ip
 - description: |-
-    L7 Network protocol name. ex. http, lumberjack, transport protocol.
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
   name: network.protocol
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: All of the IPs seen on your event.
@@ -121,13 +121,17 @@
 - description: Port of the source.
   name: source.port
   type: long
-- description: Client domain.
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: client.domain
   type: keyword
 - description: Unique identifier for the group on the system/platform.
   name: group.id
   type: keyword
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: Unique identifier of the user.
