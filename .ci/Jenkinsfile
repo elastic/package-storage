@@ -123,8 +123,8 @@ pipeline {
         changeRequest(target: '(snapshot|staging|production)', comparator: 'REGEXP')
       }
       environment {
-        DOCKER_IMG_TAG = "${env.DOCKER_IMG_PR}:${env.GIT_BASE_COMMIT}"
-        DOCKER_IMG_TAG_BRANCH = "${env.DOCKER_IMG_PR}:${env.BRANCH_NAME}"
+        DOCKER_IMG_TAG = "${env.DOCKER_IMG}:${env.GIT_BASE_COMMIT}"
+        DOCKER_IMG_TAG_BRANCH = "${env.DOCKER_IMG}:7.17.0"
       }
       steps {
         cleanup()
