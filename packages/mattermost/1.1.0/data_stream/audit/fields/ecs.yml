@@ -1,0 +1,122 @@
+- description: Name of the device.
+  name: user_agent.device.name
+  type: keyword
+- description: Name of the user agent.
+  name: user_agent.name
+  type: keyword
+- description: Unparsed user_agent string.
+  name: user_agent.original
+  type: keyword
+- description: Operating system name, without the version.
+  name: user_agent.os.name
+  type: keyword
+- description: Operating system version as a raw string.
+  name: user_agent.os.version
+  type: keyword
+- description: Operating system name, including the version or code name.
+  name: user_agent.os.full
+  type: keyword
+- description: Version of the user agent.
+  name: user_agent.version
+  type: keyword
+- description: Path of the request, such as "/search".
+  name: url.path
+  type: wildcard
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  name: url.original
+  type: wildcard
+- description: |-
+    Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: source.address
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: Bytes sent from the source to the destination.
+  name: source.bytes
+  type: long
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  example: '{ "lon": -73.614830, "lat": 45.505918 }'
+  name: source.geo.location
+  type: geo_point
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: source.geo.name
+  type: keyword
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Error code describing the error.
+  name: error.code
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
+  type: keyword
+- description: Name of the group.
+  name: group.name
+  type: keyword
+- description: HTTP response status code.
+  name: http.response.status_code
+  type: long
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.target.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.target.name
+  type: keyword
+- description: Array of user roles at the time of the event.
+  name: user.target.roles
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: user.target.group.id
+  type: keyword
+- description: Name of the group.
+  name: user.target.group.name
+  type: keyword
+- description: Short name or login of the user.
+  name: user.changes.name
+  type: keyword
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
