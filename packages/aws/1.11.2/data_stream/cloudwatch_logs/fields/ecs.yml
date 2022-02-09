@@ -6,6 +6,18 @@
 - description: Error message.
   name: error.message
   type: match_only_text
+- description: |-
+    For log events the message field contains the log message, optimized for viewing in a log viewer.
+    For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
+    If multiple messages exist, they can be combined into one message.
+  name: message
+  type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
