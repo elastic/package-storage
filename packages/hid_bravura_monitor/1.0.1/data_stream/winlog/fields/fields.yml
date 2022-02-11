@@ -1,6 +1,0 @@
-- name: winlog.symbolic_id
-  type: keyword
-  description: Symbolic event id
-- name: message
-  type: keyword
-  description: initial raw message
