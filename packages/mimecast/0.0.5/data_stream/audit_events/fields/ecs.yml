@@ -66,7 +66,7 @@
 - description: Client ASN number.
   name: client.as.asn
   type: long
-- descriiption: Client Organization name.
+- description: Client Organization name.
   name: client.as.organization_name
   type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
