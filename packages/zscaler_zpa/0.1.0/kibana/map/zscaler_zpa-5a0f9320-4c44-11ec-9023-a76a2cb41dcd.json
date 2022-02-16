@@ -1,0 +1,24 @@
+{
+  "attributes": {
+    "description": "",
+    "layerListJSON": "[{\"alpha\":1,\"id\":\"44962ab1-9a18-493c-a7c4-4408f7df2ca7\",\"includeInFitToBounds\":true,\"label\":null,\"maxZoom\":24,\"minZoom\":0,\"sourceDescriptor\":{\"isAutoSelect\":true,\"type\":\"EMS_TMS\"},\"style\":{\"type\":\"TILE\"},\"type\":\"VECTOR_TILE\",\"visible\":true},{\"alpha\":0.75,\"id\":\"0a3d538b-2454-4860-aa46-46f706c738b1\",\"includeInFitToBounds\":true,\"label\":null,\"maxZoom\":24,\"minZoom\":0,\"sourceDescriptor\":{\"applyForceRefresh\":true,\"applyGlobalQuery\":true,\"applyGlobalTime\":true,\"geoField\":\"client.geo.location\",\"id\":\"aab6b218-afd7-47cf-825f-a39f7b57b1fe\",\"indexPatternRefName\":\"layer_1_source_index_pattern\",\"metrics\":[{\"type\":\"count\"}],\"requestType\":\"heatmap\",\"resolution\":\"COARSE\",\"type\":\"ES_GEO_GRID\"},\"style\":{\"colorRampName\":\"theclassic\",\"type\":\"HEATMAP\"},\"type\":\"HEATMAP\",\"visible\":true}]",
+    "mapStateJSON": "{\"center\":{\"lat\":-0.77104,\"lon\":35.52056},\"filters\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"zscaler_zpa.browser_access\\\"\"},\"refreshConfig\":{\"interval\":0,\"isPaused\":true},\"settings\":{\"autoFitToDataBounds\":false,\"backgroundColor\":\"#ffffff\",\"browserLocation\":{\"zoom\":2},\"disableInteractive\":false,\"disableTooltipControl\":false,\"fixedLocation\":{\"lat\":0,\"lon\":0,\"zoom\":2},\"hideLayerControl\":false,\"hideToolbarOverlay\":false,\"hideViewControl\":false,\"initialLocation\":\"LAST_SAVED_LOCATION\",\"maxZoom\":24,\"minZoom\":0,\"showScaleControl\":false,\"showSpatialFilters\":true,\"showTimesliderToggleButton\":true,\"spatialFiltersAlpa\":0.3,\"spatialFiltersFillColor\":\"#DA8B45\",\"spatialFiltersLineColor\":\"#DA8B45\"},\"timeFilters\":{\"from\":\"now-5y\",\"to\":\"now\"},\"zoom\":0.77}",
+    "title": "[Zscaler][ZPA] Browser Access Events by Region",
+    "uiStateJSON": "{\"isLayerTOCOpen\":true,\"openTOCDetails\":[]}"
+  },
+  "coreMigrationVersion": "7.16.0",
+  "id": "zscaler_zpa-5a0f9320-4c44-11ec-9023-a76a2cb41dcd",
+  "migrationVersion": {
+    "map": "7.14.0"
+  },
+  "references": [
+    {
+      "id": "logs-*",
+      "name": "layer_1_source_index_pattern",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "map",
+  "updated_at": "2021-12-07T14:31:15.512Z",
+  "version": "WzE0ODIsMV0="
+}
