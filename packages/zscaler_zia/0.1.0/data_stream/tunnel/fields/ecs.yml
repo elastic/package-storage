@@ -1,0 +1,54 @@
+- description: Bytes sent from the destination to the source.
+  name: destination.bytes
+  type: long
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: Packets sent from the destination to the source.
+  name: destination.packets
+  type: long
+- description: Port of the destination.
+  name: destination.port
+  type: long
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: Bytes sent from the source to the destination.
+  name: source.bytes
+  type: long
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Packets sent from the source to the destination.
+  name: source.packets
+  type: long
+- description: Port of the source.
+  name: source.port
+  type: long
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
