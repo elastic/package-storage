@@ -1,0 +1,41 @@
+- description: Country ISO code.
+  name: client.geo.country_iso_code
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: client.geo.location
+  type: geo_point
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
+    The field value must be normalized to lowercase for querying.
+  name: network.type
+  type: keyword
+- description: Organization name.
+  name: organization.name
+  type: keyword
+- description: IP address of the server (IPv4 or IPv6).
+  name: server.ip
+  type: ip
+- description: Port of the server.
+  name: server.port
+  type: long
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
