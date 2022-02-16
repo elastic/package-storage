@@ -20,3 +20,6 @@
 - description: URL of the API used to manage the cluster.
   name: orchestrator.cluster.url
   type: keyword
+- description: Runtime managing this container.
+  name: container.runtime
+  type: keyword
