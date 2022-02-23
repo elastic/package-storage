@@ -143,7 +143,7 @@ pipeline {
                 findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
                   def packageVersion = it
                   // Check if the package revision is published
-                  def response = httpRequest(method: "HEAD", url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip")
+                  def response = httpRequest(httpMode: "HEAD", url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip")
                   if (response.status == 200) {
                     continue // already published
                   }
