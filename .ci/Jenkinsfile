@@ -146,7 +146,7 @@ pipeline {
                     def packageVersion = it
                     // Check if the package revision is published
                     def response = httpRequest(httpMode: "HEAD", url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
-                      validResponseCodes: '200,404')
+                      validResponseCodes: '200:404')
                     if (response.status == 200) {
                       continue // already published
                     }
