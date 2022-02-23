@@ -131,6 +131,17 @@ pipeline {
         pushDockerImage()
       }
     }
+    stage('v2: Publish packages') {
+      steps {
+        cleanup()
+        // TODO iterate over packages
+        // TODO - check if published
+        // TODO - build a package
+        // TODO sign all unpublished packages
+        // TODO iterate over packages
+        // TODO - trigger publishing job
+      }
+    }
   }
   post {
     cleanup {
