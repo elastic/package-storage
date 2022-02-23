@@ -73,7 +73,8 @@ pipeline {
     /**
      Execute integration tests.
      */
-    stage('TestIntegration') {
+    // Disable it temporarily
+    /*stage('TestIntegration') {
       environment {
         HOME = "${env.WORKSPACE}"
       }
@@ -94,7 +95,7 @@ pipeline {
           )
         }
       }
-    }
+    }*/
     /**
      Publish Docker images.
      */
@@ -140,20 +141,23 @@ pipeline {
               def packageRevision = [:]
               findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
                 def packageName = it
-                findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
-                  def packageVersion = it
-                  // Check if the package revision is published
-                  def response = httpRequest(httpMode: "HEAD", url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip")
-                  if (response.status == 200) {
-                    continue // already published
-                  }
-                  sh(label: "Create package: ${packageName}-${packageVersion}.zip", script: """
-                  mkdir -p ../build
+                dir("${packageName}") {
+                  findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
+                    def packageVersion = it
+                    // Check if the package revision is published
+                    def response = httpRequest(httpMode: "HEAD", url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
+                      validResponseCodes: '200,404')
+                    if (response.status == 200) {
+                      continue // already published
+                    }
+                    sh(label: "Create package: ${packageName}-${packageVersion}.zip", script: """
+                    mkdir -p ../build
 
-                  cp -r ${packageVersion} ${packageName}-${packageVersion}
-                  zip -r ../build/${packageName}-${packageVersion}.zip ${packageName}-${packageVersion}
-                  rm -r ${packageName}-${packageVersion}
-                  """)
+                    cp -r ${packageVersion} ${packageName}-${packageVersion}
+                    zip -r ../build/${packageName}-${packageVersion}.zip ${packageName}-${packageVersion}
+                    rm -r ${packageName}-${packageVersion}
+                    """)
+                  }
                 }
               }
 
