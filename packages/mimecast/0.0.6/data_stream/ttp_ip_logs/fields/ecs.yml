@@ -53,7 +53,9 @@
       type: text
   name: email.message_id
   type: wildcard
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: All of the IPs seen on your event.

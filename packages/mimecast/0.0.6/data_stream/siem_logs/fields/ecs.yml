@@ -103,7 +103,9 @@
 - description: MIME type of the attachment file.
   name: email.attachments.file.mime_type
   type: keyword
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: SHA-1 hash of the file attachment.
