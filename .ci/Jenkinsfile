@@ -11,6 +11,12 @@ pipeline {
     PIPELINE_LOG_LEVEL='INFO'
     DOCKER_IMG = "${env.DOCKER_REGISTRY}/package-registry/distribution"
     DOCKER_IMG_PR = "${env.DOCKER_REGISTRY}/observability-ci/package-registry/distribution"
+
+    JOB_SIGNING_CREDENTIALS = 'sign-artifacts-with-gpg-job'
+    INTERNAL_CI_JOB_GCS_CREDENTIALS = 'internal-ci-gcs-plugin'
+    INFRA_SIGNING_BUCKET_ARTIFACTS_PATH = "gs://${env.INFRA_SIGNING_BUCKET_NAME}/${env.REPO_BUILD_TAG}"
+    INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_PATH = "gs://${env.INFRA_SIGNING_BUCKET_NAME}/${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER}"
+    INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER = "${env.REPO_BUILD_TAG}/signed-artifacts"
   }
   options {
     timeout(time: 1, unit: 'HOURS')
@@ -154,18 +160,17 @@ pipeline {
                     sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
                     zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
                     sh(label: "Post-compression actions", script: """
-                    mkdir -p ../build
-                    mv ${packageName}-${packageVersion}.zip ../build/
+                    mkdir -p ../build/packages
+                    mv ${packageName}-${packageVersion}.zip ../build/packages/
                     rm -r target/${packageName}-${packageVersion}
                     """)
                   }
                 }
               }
-
-              // TODO sign all unpublished packages
-              // TODO iterate over packages
-              // TODO - trigger publishing job
             }
+            signArtifactsWithElastic("build/packages", "build/packages-elastic-signatures")
+            // TODO iterate over packages
+            // TODO - trigger publishing job
           }
         }
       }
@@ -208,4 +213,26 @@ def pushDockerImage(){
         script: "docker push ${env.DOCKER_IMG_TAG_BRANCH}")
     }
   }
+}
+
+def signArtifactsWithElastic(artifactsSourcePath, signaturesDestinationPath) {
+  googleStorageUpload(bucket: env.INFRA_SIGNING_BUCKET_ARTIFACTS_PATH,
+    credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
+    pathPrefix: artifactsSourcePath + '/',
+    pattern: artifactsSourcePath + '/*.zip',
+    sharedPublicly: false,
+    showInline: true)
+  withCredentials([string(credentialsId: env.JOB_SIGNING_CREDENTIALS, variable: 'TOKEN')]) {
+    triggerRemoteJob(auth: CredentialsAuth(credentials: 'local-readonly-api-token'),
+      job: 'https://internal-ci.elastic.co/job/elastic+unified-release+master+sign-artifacts-with-gpg',
+      token: TOKEN,
+      parameters: "gcs_input_path=${env.INFRA_SIGNING_BUCKET_ARTIFACTS_PATH}",
+      useCrumbCache: true,
+      useJobInfoCache: true)
+  }
+  googleStorageDownload(bucketUri: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_PATH}/*",
+    credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
+    localDirectory: signaturesDestinationPath + '/',
+    pathPrefix: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER}")
+    sh(label: 'Rename .asc to .sig', script: 'for f in ' + signaturesDestinationPath + '/*.asc; do mv "$f" "${f%.asc}.sig"; done')
 }
