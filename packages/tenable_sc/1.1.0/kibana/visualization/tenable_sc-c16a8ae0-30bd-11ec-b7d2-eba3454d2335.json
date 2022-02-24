@@ -7,7 +7,7 @@
     "title": "[Tenable SC] Top 10 DNS Names",
     "uiStateJSON": "{}",
     "version": 1,
-    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Count\",\"field\":\"tenable_sc.asset.ip\"},\"schema\":\"metric\",\"type\":\"cardinality\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"DNS Name\",\"field\":\"tenable_sc.asset.dns.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":false,\"showTotal\":false,\"totalFunc\":\"sum\"},\"title\":\"[Tenable SC] Top 10 DNS Names\",\"type\":\"table\"}"
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Count\",\"field\":\"tenable_sc.asset.custom_hash\"},\"schema\":\"metric\",\"type\":\"cardinality\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"DNS Name\",\"field\":\"tenable_sc.asset.dns.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":false,\"showTotal\":false,\"totalFunc\":\"sum\"},\"title\":\"[Tenable SC] Top 10 DNS Names\",\"type\":\"table\"}"
   },
   "coreMigrationVersion": "7.16.0",
   "id": "tenable_sc-c16a8ae0-30bd-11ec-b7d2-eba3454d2335",
