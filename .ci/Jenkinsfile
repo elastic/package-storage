@@ -151,13 +151,13 @@ pipeline {
                     if (responseCode == 200) {
                       continue // already published
                     }
-                    sh(label: "Create package: ${packageName}-${packageVersion}.zip", script: """
+                    sh(label: "Prepare for compressing", script: """
                     mkdir -p ../build
-
-                    cp -r ${packageVersion} ${packageName}-${packageVersion}
-                    zip -r ../build/${packageName}-${packageVersion}.zip ${packageName}-${packageVersion}
-                    rm -r ${packageName}-${packageVersion}
+                    mkdir -p target
+                    cp -r ${packageVersion} target/${packageName}-${packageVersion}
                     """)
+                    zip(zipFile: "../build/${packageName}-${packageVersion}.zip", dir: "target", archive: true)
+                    sh(label: "Post-compression cleanup", script: "rm -r target/${packageName}-${packageVersion}")
                   }
                 }
               }
