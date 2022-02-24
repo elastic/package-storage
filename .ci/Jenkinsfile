@@ -20,9 +20,12 @@ pipeline {
     INFRA_SIGNING_BUCKET_ARTIFACTS_PATH = "gs://${env.INFRA_SIGNING_BUCKET_NAME}/${env.REPO_BUILD_TAG}"
     INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_PATH = "gs://${env.INFRA_SIGNING_BUCKET_NAME}/${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER}"
     INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER = "${env.REPO_BUILD_TAG}/signed-artifacts"
+
+    PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT = 'secret/gce/elastic-bekitzur/service-account/package-storage-uploader'
+    PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH = "gs://elastic-bekitzur-package-storage-internal/queue-publishing/${env.REPO_BUILD_TAG}"
   }
   options {
-    timeout(time: 1, unit: 'HOURS')
+    timeout(time: 12, unit: 'HOURS')
     buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20', daysToKeepStr: '30'))
     timestamps()
     ansiColor('xterm')
@@ -141,11 +144,12 @@ pipeline {
         pushDockerImage()
       }
     }*/
-    stage('v2: Publish packages') {
+    stage('v2: Sync packages') {
       steps {
         script {
           cleanup()
           dir("${BASE_DIR}") {
+            // Comprise a list of unpublished packages
             dir("packages") {
               def packageRevision = [:]
               findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
@@ -171,9 +175,33 @@ pipeline {
                 }
               }
             }
+
+            // Sign unpublished packages
             signArtifactsWithElastic("build/packages", "build/packages-elastic-signatures")
-            // TODO iterate over packages
-            // TODO - trigger publishing job
+
+            // Push those packages to Package Storage v2
+            dir("build/packages-elastic-signatures") {
+              withGCPEnv(secret: env.PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT) {
+                withCredentials([string(credentialsId: env.PACKAGE_STORAGE_UPLOADER_CREDENTIALS, variable: 'TOKEN')]) {
+                  findFiles()?.findAll{ it.name.endsWith('.zip') }?.collect{ it.name }?.sort()?.each {
+                    def packageZip = it
+                    sh(label: 'Upload package .zip file', script: "gsutil cp ${packageZip} ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
+                    sh(label: 'Upload package .sig file', script: "gsutil cp ${packageZip}.sig ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
+
+                    triggerRemoteJob(auth: CredentialsAuth(credentials: 'local-readonly-api-token'),
+                      job: 'https://internal-ci.elastic.co/job/package_storage/job/publishing-job-remote',
+                      token: TOKEN,
+                      parameters: """
+                        dry_run=true
+                        gs_package_build_zip_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/package_storage_candidate-0.0.1.zip
+                        gs_package_signature_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/package_storage_candidate-0.0.1.zip.sig
+                        """,
+                      useCrumbCache: true,
+                      useJobInfoCache: true)
+                  }
+                }
+              }
+            }
           }
         }
       }
