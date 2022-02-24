@@ -1,0 +1,133 @@
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  name: event.original
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: User email address.
+  name: user.email
+  type: keyword
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Unique identifier given to the email by the source (MTA, gateway, etc.) that created the event and is not persistent across hops (for example, the X-MS-Exchange-Organization-Network-Message-Id id).
+  name: email.local_id
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: String indicating the cipher used during the current connection.
+  name: tls.cipher
+  type: keyword
+- description: Direction of the message based on the sending and receiving domains.
+  name: email.direction
+  type: keyword
+- description: Error message.
+  name: error.message
+  type: match_only_text
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Identifier from the RFC5322 Message-ID - header field that refers to a particular version of a particular message.
+  multi_fields:
+    - default_field: false
+      name: text
+      norms: false
+      type: text
+  name: email.message_id
+  type: wildcard
+- description: The email address(es) of the message recipient(s).
+  name: email.to.address
+  type: keyword
+- description: The sender address found in the from header of the email.
+  name: email.header_from
+  type: keyword
+- description: Error code describing the error.
+  name: error.code
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
+  type: keyword
+- description: The type of the error, for example the class name of the exception.
+  name: error.type
+  type: keyword
+- description: Stores the from email address from the RFC5322 From - header field.
+  name: email.from.address
+  type: keyword
+- description: A brief summary of the topic of the message
+  ignore_above: 1024
+  multi_fields:
+    - default_field: false
+      name: text
+      norms: false
+      type: text
+  name: email.subject
+  type: keyword
+- description: Numeric part of the version parsed from the original string.
+  name: tls.version
+  type: keyword
+- description: Attachment file size in bytes.
+  name: email.attachments.file.size
+  type: long
+- description: Name of the attachment file including the extension.
+  name: email.attachments.file.name
+  type: keyword
+- description: The total size of the email.The total size of the email.
+  name: email.message_size
+  type: long
+- description: Boolean flag indicating if the TLS negotiation was successful and transitioned to an encrypted tunnel.
+  name: tls.established
+  type: boolean
+- description: The name of the rule or signature generating the event.
+  name: rule.name
+  type: keyword
+- description: Attachment file extension, excluding the leading dot.
+  name: email.attachments.file.extension
+  type: keyword
+- description: MIME type of the attachment file.
+  name: email.attachments.file.mime_type
+  type: keyword
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: source.domain
+  type: keyword
+- description: SHA-1 hash of the file attachment.
+  name: email.attachments.hash.sha1
+  type: keyword
+- description: SHA-256 hash of the file attachment.
+  name: email.attachments.hash.sha256
+  type: keyword
+- description: MD5 hash of the file attachment.
+  name: email.attachments.hash.md5
+  type: keyword
+- description: Name of the attachment file including the extension.
+  name: email.attachments.file.name
+  type: keyword
+- description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  name: url.full
+  type: wildcard
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
+  name: event.outcome
+  type: keyword
