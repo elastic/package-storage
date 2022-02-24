@@ -152,7 +152,7 @@ pipeline {
                       continue // already published
                     }
                     sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
-                    zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target", archive: true)
+                    zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
                     sh(label: "Post-compression actions", script: """
                     mkdir -p ../build
                     mv ${packageName}-${packageVersion}.zip ../build/
