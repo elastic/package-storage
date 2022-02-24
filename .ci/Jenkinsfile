@@ -95,11 +95,11 @@ pipeline {
           )
         }
       }
-    }*/
+    }
     /**
      Publish Docker images.
      */
-    stage('Publish Docker image'){
+    /*stage('Publish Docker image'){
       when {
         anyOf {
           branch 'snapshot'
@@ -119,7 +119,7 @@ pipeline {
     /**
      Publish PR Docker images.
      */
-    stage('Publish PR Docker image'){
+    /*stage('Publish PR Docker image'){
       when {
         changeRequest(target: '(snapshot|staging|production)', comparator: 'REGEXP')
       }
@@ -131,7 +131,7 @@ pipeline {
         cleanup()
         pushDockerImage()
       }
-    }
+    }*/
     stage('v2: Publish packages') {
       steps {
         script {
