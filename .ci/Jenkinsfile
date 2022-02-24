@@ -151,13 +151,13 @@ pipeline {
                     if (responseCode == 200) {
                       continue // already published
                     }
-                    sh(label: "Prepare for compressing", script: """
+                    sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
+                    zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target", archive: true)
+                    sh(label: "Post-compression actions", script: """
                     mkdir -p ../build
-                    mkdir -p target
-                    cp -r ${packageVersion} target/${packageName}-${packageVersion}
+                    mv ${packageName}-${packageVersion}.zip ../build/
+                    rm -r target/${packageName}-${packageVersion}
                     """)
-                    zip(zipFile: "../build/${packageName}-${packageVersion}.zip", dir: "target", archive: true)
-                    sh(label: "Post-compression cleanup", script: "rm -r target/${packageName}-${packageVersion}")
                   }
                 }
               }
