@@ -24,6 +24,7 @@ pipeline {
     PACKAGE_STORAGE_UPLOADER_CREDENTIALS = 'upload-package-to-package-storage'
     PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT = 'secret/gce/elastic-bekitzur/service-account/package-storage-uploader'
     PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH = "gs://elastic-bekitzur-package-storage-internal/queue-publishing/${env.REPO_BUILD_TAG}"
+    BUILD_ARTIFACTS_PATH = 'build/packages'
   }
   options {
     timeout(time: 12, unit: 'HOURS')
@@ -150,59 +151,9 @@ pipeline {
         script {
           cleanup()
           dir("${BASE_DIR}") {
-            // Comprise a list of unpublished packages
-            dir("packages") {
-              def packageRevision = [:]
-              findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
-                def packageName = it
-                dir("${packageName}") {
-                  findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
-                    def packageVersion = it
-                    // Check if the package revision is published
-                    def responseCode = httpRequest(method: "HEAD",
-                      url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
-                      response_code_only: true)
-                    if (responseCode == 200) {
-                      continue // already published
-                    }
-                    sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
-                    zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
-                    sh(label: "Post-compression actions", script: """
-                    mkdir -p ../../build/packages
-                    mv ${packageName}-${packageVersion}.zip ../../build/packages/
-                    rm -r target
-                    """)
-                  }
-                }
-              }
-            }
-
-            // Sign unpublished packages
-            signArtifactsWithElastic("build/packages")
-
-            // Push those packages to Package Storage v2
-            dir("build/packages-elastic-signatures") {
-              withGCPEnv(secret: env.PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT) {
-                withCredentials([string(credentialsId: env.PACKAGE_STORAGE_UPLOADER_CREDENTIALS, variable: 'TOKEN')]) {
-                  findFiles()?.findAll{ it.name.endsWith('.zip') }?.collect{ it.name }?.sort()?.each {
-                    def packageZip = it
-                    sh(label: 'Upload package .zip file', script: "gsutil cp ${packageZip} ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
-                    sh(label: 'Upload package .sig file', script: "gsutil cp ${packageZip}.sig ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
-
-                    triggerRemoteJob(auth: CredentialsAuth(credentials: 'local-readonly-api-token'),
-                      job: 'https://internal-ci.elastic.co/job/package_storage/job/publishing-job-remote',
-                      token: TOKEN,
-                      parameters: """
-                        dry_run=true
-                        gs_package_build_zip_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}
-                        gs_package_signature_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}.sig
-                        """,
-                      useCrumbCache: true,
-                      useJobInfoCache: true)
-                  }
-                }
-              }
-            }
+            buildUnpublishedPackages()
+            signArtifactsWithElastic()
+            publishToPackageStorage()
           }
         }
       }
@@ -247,11 +198,39 @@ def pushDockerImage(){
   }
 }
 
-def signArtifactsWithElastic(artifactsPath) {
+def buildUnpublishedPackages() {
+  dir("packages") {
+    def packageRevision = [:]
+    findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
+      def packageName = it
+      dir("${packageName}") {
+        findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
+          def packageVersion = it
+          // Check if the package revision is published
+          def responseCode = httpRequest(method: "HEAD",
+            url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
+            response_code_only: true)
+          if (responseCode == 200) {
+            continue // already published
+          }
+          sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
+          zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
+          sh(label: "Post-compression actions", script: """
+            mkdir -p ../../build/packages
+            mv ${packageName}-${packageVersion}.zip ../../build/packages/
+            rm -r target
+            """)
+        }
+      }
+    }
+  }
+}
+
+def signArtifactsWithElastic() {
   googleStorageUpload(bucket: env.INFRA_SIGNING_BUCKET_ARTIFACTS_PATH,
     credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
-    pathPrefix: artifactsPath + '/',
-    pattern: artifactsPath + '/*.zip',
+    pathPrefix: env.BUILD_ARTIFACTS_PATH + '/',
+    pattern: env.BUILD_ARTIFACTS_PATH + '/*.zip',
     sharedPublicly: false,
     showInline: true)
   withCredentials([string(credentialsId: env.JOB_SIGNING_CREDENTIALS, variable: 'TOKEN')]) {
@@ -264,7 +243,32 @@ def signArtifactsWithElastic(artifactsPath) {
   }
   googleStorageDownload(bucketUri: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_PATH}/*",
     credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
-    localDirectory: artifactsPath + '/',
+    localDirectory: env.BUILD_ARTIFACTS_PATH + '/',
     pathPrefix: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER}")
-    sh(label: 'Rename .asc to .sig', script: 'for f in ' + artifactsPath + '/*.asc; do mv "$f" "${f%.asc}.sig"; done')
+    sh(label: 'Rename .asc to .sig', script: 'for f in ' + env.BUILD_ARTIFACTS_PATH + '/*.asc; do mv "$f" "${f%.asc}.sig"; done')
+}
+
+def publishToPackageStorage() {
+  dir(env.BUILD_ARTIFACTS_PATH) {
+    withGCPEnv(secret: env.PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT) {
+      withCredentials([string(credentialsId: env.PACKAGE_STORAGE_UPLOADER_CREDENTIALS, variable: 'TOKEN')]) {
+        findFiles()?.findAll{ it.name.endsWith('.zip') }?.collect{ it.name }?.sort()?.each {
+          def packageZip = it
+          sh(label: 'Upload package .zip file', script: "gsutil cp ${packageZip} ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
+          sh(label: 'Upload package .sig file', script: "gsutil cp ${packageZip}.sig ${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/")
+
+          triggerRemoteJob(auth: CredentialsAuth(credentials: 'local-readonly-api-token'),
+            job: 'https://internal-ci.elastic.co/job/package_storage/job/publishing-job-remote',
+            token: TOKEN,
+            parameters: """
+              dry_run=true
+              gs_package_build_zip_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}
+              gs_package_signature_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}.sig
+              """,
+              useCrumbCache: true,
+              useJobInfoCache: true)
+        }
+      }
+    }
+  }
 }
