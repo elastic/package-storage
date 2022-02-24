@@ -178,7 +178,7 @@ pipeline {
             }
 
             // Sign unpublished packages
-            signArtifactsWithElastic("build/packages", "build/packages-elastic-signatures")
+            signArtifactsWithElastic("build/packages")
 
             // Push those packages to Package Storage v2
             dir("build/packages-elastic-signatures") {
@@ -247,11 +247,11 @@ def pushDockerImage(){
   }
 }
 
-def signArtifactsWithElastic(artifactsSourcePath, signaturesDestinationPath) {
+def signArtifactsWithElastic(artifactsPath) {
   googleStorageUpload(bucket: env.INFRA_SIGNING_BUCKET_ARTIFACTS_PATH,
     credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
-    pathPrefix: artifactsSourcePath + '/',
-    pattern: artifactsSourcePath + '/*.zip',
+    pathPrefix: artifactsPath + '/',
+    pattern: artifactsPath + '/*.zip',
     sharedPublicly: false,
     showInline: true)
   withCredentials([string(credentialsId: env.JOB_SIGNING_CREDENTIALS, variable: 'TOKEN')]) {
@@ -264,7 +264,7 @@ def signArtifactsWithElastic(artifactsSourcePath, signaturesDestinationPath) {
   }
   googleStorageDownload(bucketUri: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_PATH}/*",
     credentialsId: env.INTERNAL_CI_JOB_GCS_CREDENTIALS,
-    localDirectory: signaturesDestinationPath + '/',
+    localDirectory: artifactsPath + '/',
     pathPrefix: "${env.INFRA_SIGNING_BUCKET_SIGNED_ARTIFACTS_SUBFOLDER}")
-    sh(label: 'Rename .asc to .sig', script: 'for f in ' + signaturesDestinationPath + '/*.asc; do mv "$f" "${f%.asc}.sig"; done')
+    sh(label: 'Rename .asc to .sig', script: 'for f in ' + artifactsPath + '/*.asc; do mv "$f" "${f%.asc}.sig"; done')
 }
