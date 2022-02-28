@@ -87,8 +87,7 @@ pipeline {
     /**
      Execute integration tests.
      */
-    // Disable it temporarily
-    /*stage('TestIntegration') {
+    stage('TestIntegration') {
       environment {
         HOME = "${env.WORKSPACE}"
       }
@@ -113,7 +112,7 @@ pipeline {
     /**
      Publish Docker images.
      */
-    /*stage('Publish Docker image'){
+    stage('Publish Docker image'){
       when {
         anyOf {
           branch 'snapshot'
@@ -133,7 +132,7 @@ pipeline {
     /**
      Publish PR Docker images.
      */
-    /*stage('Publish PR Docker image'){
+    stage('Publish PR Docker image'){
       when {
         changeRequest(target: '(snapshot|staging|production)', comparator: 'REGEXP')
       }
@@ -145,7 +144,7 @@ pipeline {
         cleanup()
         pushDockerImage()
       }
-    }*/
+    }
     stage('v2: Sync packages') {
       steps {
         script {
@@ -264,6 +263,7 @@ def publishToPackageStorage() {
               dry_run=true
               gs_package_build_zip_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}
               gs_package_signature_path=${env.PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH}/${packageZip}.sig
+              legacy_package=true
               """,
               useCrumbCache: true,
               useJobInfoCache: true)
