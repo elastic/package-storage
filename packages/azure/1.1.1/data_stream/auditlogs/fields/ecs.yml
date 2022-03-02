@@ -179,6 +179,9 @@
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
   type: ip
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
 - description: Port of the source.
   name: source.port
   type: long
