@@ -210,7 +210,7 @@ def buildUnpublishedPackages() {
             url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
             response_code_only: true)
           if (responseCode == 200) {
-            continue // already published
+            return // already published
           }
           sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
           zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
