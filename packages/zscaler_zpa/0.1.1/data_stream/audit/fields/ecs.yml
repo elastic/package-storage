@@ -1,0 +1,79 @@
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
+  type: keyword
+- description: Name of the group.
+  name: group.name
+  type: keyword
+- description: |-
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
+  name: network.protocol
+  type: keyword
+- description: City name.
+  name: observer.geo.city_name
+  type: keyword
+- description: Country name.
+  name: observer.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: observer.geo.location
+  type: geo_point
+- description: Unique identifier for the organization.
+  name: organization.id
+  type: keyword
+- description: |-
+    Some event server addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: server.address
+  type: keyword
+- description: IP address of the server (IPv4 or IPv6).
+  name: server.ip
+  type: ip
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
+- description: User email address.
+  name: user.target.email
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.target.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.target.name
+  type: keyword
+- description: Array of user roles at the time of the event.
+  name: user.target.roles
+  type: keyword
+- description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
+  name: x509.alternative_names
+  type: keyword
+- description: List of common name (CN) of issuing certificate authority.
+  name: x509.issuer.common_name
+  type: keyword
+- description: Distinguished name (DN) of issuing certificate authority.
+  name: x509.issuer.distinguished_name
+  type: keyword
+- description: Time at which the certificate is no longer considered valid.
+  name: x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: x509.not_before
+  type: date
