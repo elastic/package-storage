@@ -27,7 +27,7 @@ pipeline {
     BUILD_ARTIFACTS_PATH = 'build/packages'
   }
   options {
-    timeout(time: 12, unit: 'HOURS')
+    timeout(time: 1, unit: 'HOURS')
     buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20', daysToKeepStr: '30'))
     timestamps()
     ansiColor('xterm')
@@ -146,11 +146,16 @@ pipeline {
       }
     }
     stage('v2: Sync packages') {
+      // TODO: when branch == production
       steps {
         script {
           cleanup()
           dir("${BASE_DIR}") {
-            buildUnpublishedPackages()
+            def unpublishedPresent = buildUnpublishedPackages()
+            if (!unpublishedPresent) {
+              echo 'All packages are in sync'
+              return
+            }
             signArtifactsWithElastic()
             publishToPackageStorage()
           }
@@ -198,6 +203,7 @@ def pushDockerImage(){
 }
 
 def buildUnpublishedPackages() {
+  def unpublishedPresent = false
   dir("packages") {
     def packageRevision = [:]
     findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
@@ -215,14 +221,16 @@ def buildUnpublishedPackages() {
           sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
           zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
           sh(label: "Post-compression actions", script: """
-            mkdir -p ../../build/packages
-            mv ${packageName}-${packageVersion}.zip ../../build/packages/
+            mkdir -p ../../${env.BUILD_ARTIFACTS_PATH}
+            mv ${packageName}-${packageVersion}.zip ../../${env.BUILD_ARTIFACTS_PATH}/
             rm -r target
             """)
+          unpublishedPresent = true
         }
       }
     }
   }
+  return unpublishedPresent
 }
 
 def signArtifactsWithElastic() {
