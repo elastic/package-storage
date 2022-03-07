@@ -8,6 +8,5 @@ package tools
 
 import (
 	// Ensure that all its dependencies are tracked by go mod, so it can be run with go run.
-	_ "github.com/elastic/elastic-package"
 	_ "github.com/elastic/package-registry"
 )
