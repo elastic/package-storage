@@ -146,7 +146,9 @@ pipeline {
       }
     }
     stage('v2: Sync packages') {
-      // TODO: when branch == production
+      when {
+        branch 'production'
+      }
       steps {
         script {
           cleanup()
