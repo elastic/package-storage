@@ -14,3 +14,8 @@
     Example: If logs or metrics are collected from Elasticsearch, `service.type` would be `elasticsearch`.
   name: service.type
   type: keyword
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
