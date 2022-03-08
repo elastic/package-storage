@@ -34,6 +34,11 @@
     In case the two timestamps are identical, @timestamp should be used.
   name: event.created
   type: date
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
 - description: Unique identifier of the user.
   name: user.id
   type: keyword
