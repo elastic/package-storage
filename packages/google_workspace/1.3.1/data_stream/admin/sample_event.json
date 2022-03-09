@@ -1,0 +1,116 @@
+{
+    "@timestamp": "2022-02-02T12:23:57.000Z",
+    "agent": {
+        "ephemeral_id": "68cf8bd1-0ff1-4c77-a4e7-64ab24882a9c",
+        "id": "584f3aea-648c-4e58-aba4-32b8f88d4396",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.0.0-beta1"
+    },
+    "data_stream": {
+        "dataset": "google_workspace.admin",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "584f3aea-648c-4e58-aba4-32b8f88d4396",
+        "snapshot": false,
+        "version": "8.0.0-beta1"
+    },
+    "event": {
+        "action": "CHANGE_APPLICATION_SETTING",
+        "agent_id_status": "verified",
+        "category": [
+            "iam",
+            "configuration"
+        ],
+        "created": "2022-02-03T12:23:57.797Z",
+        "dataset": "google_workspace.admin",
+        "id": "1",
+        "ingested": "2022-02-03T12:23:58Z",
+        "provider": "admin",
+        "type": [
+            "change"
+        ]
+    },
+    "google_workspace": {
+        "actor": {
+            "type": "USER"
+        },
+        "admin": {
+            "application": {
+                "edition": "basic",
+                "name": "drive"
+            },
+            "group": {
+                "email": "group@example.com"
+            },
+            "new_value": "new",
+            "old_value": "old",
+            "org_unit": {
+                "name": "org"
+            },
+            "setting": {
+                "name": "setting"
+            }
+        },
+        "event": {
+            "type": "APPLICATION_SETTINGS"
+        },
+        "kind": "admin#reports#activity",
+        "organization": {
+            "domain": "elastic.com"
+        }
+    },
+    "group": {
+        "domain": "example.com",
+        "name": "group"
+    },
+    "input": {
+        "type": "httpjson"
+    },
+    "organization": {
+        "id": "1"
+    },
+    "related": {
+        "ip": [
+            "98.235.162.24"
+        ],
+        "user": [
+            "foo"
+        ]
+    },
+    "source": {
+        "as": {
+            "number": 7922,
+            "organization": {
+                "name": "Comcast Cable Communications, Inc."
+            }
+        },
+        "ip": "98.235.162.24",
+        "user": {
+            "domain": "bar.com",
+            "email": "foo@bar.com",
+            "id": "1",
+            "name": "foo"
+        }
+    },
+    "tags": [
+        "forwarded",
+        "google-workspace-admin"
+    ],
+    "user": {
+        "domain": "bar.com",
+        "id": "1",
+        "name": "foo",
+        "target": {
+            "group": {
+                "domain": "example.com",
+                "name": "group"
+            }
+        }
+    }
+}
