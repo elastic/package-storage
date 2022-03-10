@@ -89,6 +89,11 @@
     Note: The `:` is not part of the scheme.
   name: threat.indicator.url.scheme
   type: keyword
+- description: |-
+    Portion of the url after the `#`, such as "top".
+    The `#` is not part of the fragment.
+  name: threat.indicator.url.fragment
+  type: keyword
 - description: Identifies a threat indicator as an IP address (irrespective of direction).
   name: threat.indicator.ip
   type: ip
