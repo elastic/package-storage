@@ -65,6 +65,11 @@
 - description: Port of the destination.
   name: destination.port
   type: long
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: destination.user.domain
+  type: keyword
 - description: Short name or login of the user.
   name: destination.user.name
   type: keyword
@@ -177,6 +182,11 @@
     If `source.bytes` and `destination.bytes` are known, `network.bytes` is their sum.
   name: network.bytes
   type: long
+- description: |-
+    A hash of source and destination IPs and ports, as well as the protocol used in a communication. This is a tool-agnostic standard to identify flows.
+    Learn more at https://github.com/corelight/community-id-spec.
+  name: network.community_id
+  type: keyword
 - description: |-
     Direction of the network traffic.
     Recommended values are:
@@ -337,6 +347,11 @@
 - description: Port of the source.
   name: source.port
   type: long
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: source.user.domain
+  type: keyword
 - description: Short name or login of the user.
   name: source.user.name
   type: keyword
