@@ -76,6 +76,14 @@
 - description: Short name or login of the user.
   name: user.name
   type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
+  type: keyword
+- description: User email address.
+  name: user.email
+  type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
   type: keyword
