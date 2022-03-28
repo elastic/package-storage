@@ -211,6 +211,9 @@
     Learn more at https://github.com/corelight/community-id-spec.
   name: network.community_id
   type: keyword
+- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
+  name: network.iana_number
+  type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
@@ -239,6 +242,9 @@
     If your source of DNS events only gives you DNS queries, you should only create dns events of type `dns.type:query`.
     If your source of DNS events gives you answers as well, you should create one event per query (optionally as soon as the query is seen). And a second event containing all query details as well as an array of answers.
   name: dns.type
+  type: keyword
+- description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
+  name: dns.id
   type: keyword
 - description: Distinguished name of subject of the issuer of the x.509 certificate presented by the client.
   name: tls.client.issuer
