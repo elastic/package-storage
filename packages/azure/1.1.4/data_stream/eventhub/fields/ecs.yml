@@ -71,6 +71,11 @@
     In case the two timestamps are identical, @timestamp should be used.
   name: event.created
   type: date
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
 - description: Unique ID to describe the event.
   name: event.id
   type: keyword
