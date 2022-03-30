@@ -1,0 +1,251 @@
+- name: kubernetes
+  title: Kubernetes
+  type: group
+  description: |
+    Kubernetes metadata reported by agents
+  fields:
+    - name: namespace
+      type: keyword
+      description: |
+        Kubernetes namespace
+    - name: node
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          description: |
+            Kubernetes node name
+    - name: pod
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          description: |
+            Kubernetes pod name
+        - name: uid
+          type: keyword
+          description: |
+            Kubernetes Pod UID
+- name: metricset
+  type: group
+  fields:
+    - name: name
+      type: keyword
+      description: |
+        Name of the set of metrics.
+- name: network
+  type: group
+  description: |
+    Optional network fields
+  fields:
+    - name: connection
+      type: group
+      description: |
+        Network connection details
+      fields:
+        - name: type
+          type: keyword
+          description: |
+            Network connection type, eg. "wifi", "cell"
+- name: observer
+  type: group
+  fields:
+    - name: ephemeral_id
+      type: keyword
+      description: |
+        Ephemeral identifier of the APM Server.
+    - name: id
+      type: keyword
+      description: |
+        Unique identifier of the APM Server.
+- name: processor.event
+  type: constant_keyword
+  description: Processor event.
+- name: processor.name
+  type: constant_keyword
+  description: Processor name.
+- name: service
+  type: group
+  description: |
+    Service fields.
+  fields:
+    - name: framework
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          description: |
+            Name of the framework used.
+        - name: version
+          type: keyword
+          description: |
+            Version of the framework used.
+    - name: language
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          description: |
+            Name of the programming language used.
+        - name: version
+          type: keyword
+          description: |
+            Version of the programming language used.
+    - name: runtime
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          description: |
+            Name of the runtime used.
+        - name: version
+          type: keyword
+          description: |
+            Version of the runtime used.
+- name: system
+  type: group
+  description: |
+    `system` contains local system metrics.
+  fields:
+    - name: cpu
+      type: group
+      description: |
+        `cpu` contains local CPU stats.
+      fields:
+        - name: total.norm.pct
+          type: scaled_float
+          format: percent
+          description: |
+            The percentage of CPU time spent by the process since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%.
+          metric_type: gauge
+          unit: percent
+    - name: memory
+      type: group
+      description: |
+        `memory` contains local memory stats.
+      fields:
+        - name: actual
+          type: group
+          description: |
+            Actual memory used and free.
+          fields:
+            - name: free
+              type: long
+              format: bytes
+              description: |
+                Actual free memory in bytes. It is calculated based on the OS. On Linux it consists of the free memory plus caches and buffers. On OSX it is a sum of free memory and the inactive memory. On Windows, it is equal to `system.memory.free`.
+              metric_type: gauge
+              unit: byte
+        - name: total
+          type: long
+          format: bytes
+          description: |
+            Total memory.
+          metric_type: gauge
+          unit: byte
+    - name: process
+      type: group
+      description: |
+        `process` contains process metadata, CPU metrics, and memory metrics.
+      fields:
+        - name: cgroup
+          type: group
+          description: Metrics and limits for the cgroup, collected by APM agents on Linux.
+          fields:
+            - name: cpu
+              type: group
+              description: CPU-specific cgroup metrics and limits.
+              fields:
+                - name: cfs
+                  type: group
+                  description: Completely Fair Scheduler (CFS) cgroup metrics.
+                  fields:
+                    - name: period.us
+                      type: long
+                      description: CFS period in microseconds.
+                      metric_type: gauge
+                      unit: micros
+                    - name: quota.us
+                      type: long
+                      description: CFS quota in microseconds.
+                      metric_type: gauge
+                      unit: micros
+                - name: id
+                  type: keyword
+                  description: ID for the current cgroup CPU.
+                - name: stats.periods
+                  type: long
+                  description: Number of periods seen by the CPU.
+                  metric_type: counter
+                - name: stats.throttled.ns
+                  type: long
+                  description: Nanoseconds spent throttled seen by the CPU.
+                  metric_type: counter
+                  unit: nanos
+                - name: stats.throttled.periods
+                  type: long
+                  description: Number of throttled periods seen by the CPU.
+                  metric_type: counter
+            - name: cpuacct
+              type: group
+              description: CPU Accounting-specific cgroup metrics and limits.
+              fields:
+                - name: id
+                  type: keyword
+                  description: ID for the current cgroup CPU.
+                - name: total.ns
+                  type: long
+                  description: Total CPU time for the current cgroup CPU in nanoseconds.
+                  metric_type: counter
+                  unit: nanos
+            - name: memory
+              type: group
+              description: Memory-specific cgroup metrics and limits.
+              fields:
+                - name: mem.limit.bytes
+                  type: long
+                  format: bytes
+                  description: Memory limit for the current cgroup slice.
+                  metric_type: gauge
+                  unit: byte
+                - name: mem.usage.bytes
+                  type: long
+                  format: bytes
+                  description: Memory usage by the current cgroup slice.
+                  metric_type: gauge
+                  unit: byte
+        - name: cpu
+          type: group
+          description: |
+            `cpu` contains local CPU stats.
+          fields:
+            - name: total.norm.pct
+              type: scaled_float
+              format: percent
+              description: |
+                The percentage of CPU time spent by the process since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%.
+              metric_type: gauge
+              unit: percent
+        - name: memory
+          type: group
+          description: Memory-specific statistics per process.
+          fields:
+            - name: rss.bytes
+              type: long
+              format: bytes
+              description: |
+                The Resident Set Size. The amount of memory the process occupied in main memory (RAM).
+              metric_type: gauge
+              unit: byte
+            - name: size
+              type: long
+              format: bytes
+              description: |
+                The total virtual memory the process has.
+              metric_type: gauge
+              unit: byte
+- name: numeric_labels
+  type: object
+  dynamic: true
+  description: |
+    Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as scaled_float.
