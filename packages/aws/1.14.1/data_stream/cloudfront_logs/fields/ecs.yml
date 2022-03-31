@@ -83,6 +83,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -133,6 +136,9 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Path of the request, such as "/search".
@@ -149,6 +155,9 @@
   name: url.scheme
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
@@ -174,12 +183,21 @@
   name: user_agent.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.full
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.name
   type: keyword
 - description: Operating system version as a raw string.
