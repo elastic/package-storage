@@ -10,6 +10,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -71,6 +74,9 @@
   name: destination.user.email
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
@@ -304,6 +310,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.
@@ -368,6 +377,9 @@
   name: source.user.group.name
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.name
   type: keyword
 - description: List of keywords used to tag each event.
@@ -401,6 +413,9 @@
   name: url.path
   type: wildcard
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: |-
