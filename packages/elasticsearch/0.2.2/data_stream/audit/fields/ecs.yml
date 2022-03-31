@@ -4,6 +4,9 @@
       name: request.body.bytes
       type: long
     - description: The full HTTP request body.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: request.body.content
       type: wildcard
     - description: Total size in bytes of the request (body and headers).
@@ -33,6 +36,9 @@
       name: response.body.bytes
       type: long
     - description: The full HTTP response body.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: response.body.content
       type: wildcard
     - description: Total size in bytes of the response (body and headers).
@@ -52,6 +58,9 @@
   name: http
   type: group
 - description: The full HTTP request body.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: http.request.body.content
   type: wildcard
 - description: |-
@@ -67,6 +76,9 @@
       name: as.number
       type: long
     - description: Organization name.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: as.organization.name
       type: keyword
     - description: Bytes sent from the source to the destination.
@@ -162,6 +174,9 @@
       name: user.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.full_name
       type: keyword
     - description: |-
@@ -184,6 +199,9 @@
       name: user.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -215,12 +233,18 @@
       name: fragment
       type: keyword
     - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: full
       type: wildcard
     - description: |-
         Unmodified original url as seen in the event source.
         Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
         This field is meant to represent the URL as it was observed, complete or not.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: original
       type: wildcard
     - description: Password of the request.
@@ -267,6 +291,9 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: |-
@@ -282,6 +309,9 @@
       name: changes.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.full_name
       type: keyword
     - description: |-
@@ -304,6 +334,9 @@
       name: changes.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -323,6 +356,9 @@
       name: effective.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.full_name
       type: keyword
     - description: |-
@@ -345,6 +381,9 @@
       name: effective.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -354,6 +393,9 @@
       name: email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: full_name
       type: keyword
     - description: |-
@@ -376,6 +418,9 @@
       name: id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -390,6 +435,9 @@
       name: target.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.full_name
       type: keyword
     - description: |-
@@ -412,6 +460,9 @@
       name: target.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -420,5 +471,8 @@
   name: user
   type: group
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
