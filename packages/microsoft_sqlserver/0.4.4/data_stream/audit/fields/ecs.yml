@@ -7,6 +7,9 @@
   name: destination.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: |-
@@ -60,6 +63,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
@@ -95,6 +100,9 @@
   name: file.name
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: |-
@@ -121,6 +129,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: |-
@@ -130,11 +141,17 @@
   name: process.entity_id
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Process id.
@@ -143,6 +160,9 @@
 - description: |-
     Process title.
     The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.title
   type: keyword
 - description: Thread ID.
@@ -169,9 +189,15 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
 - description: Unique identifier of the user.
