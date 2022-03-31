@@ -43,12 +43,18 @@
   name: user.id
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.full_name
   type: keyword
 - description: User email address.
   name: user.email
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: os.name
   type: keyword
 - description: Operating system version as a raw string.
@@ -58,6 +64,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
