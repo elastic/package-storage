@@ -35,6 +35,9 @@
   name: process.args
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: SHA256 hash.
@@ -62,5 +65,8 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
