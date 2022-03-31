@@ -38,6 +38,9 @@
   name: file.name
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: |-
@@ -65,6 +68,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
@@ -77,8 +83,14 @@
   name: rule.name
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
