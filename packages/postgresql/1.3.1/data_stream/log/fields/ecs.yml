@@ -39,6 +39,9 @@
   name: log.level
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Process id.
