@@ -128,12 +128,18 @@
       name: os.family
       type: keyword
     - description: Operating system name, including the version or code name.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.full
       type: keyword
     - description: Operating system kernel version as a raw string.
       name: os.kernel
       type: keyword
     - description: Operating system name, without the version.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.name
       type: keyword
     - description: Operating system platform (such centos, ubuntu, windows).
@@ -165,6 +171,9 @@
       name: user.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.full_name
       type: keyword
     - description: |-
@@ -187,6 +196,9 @@
       name: user.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -214,12 +226,18 @@
   name: host.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: host.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
