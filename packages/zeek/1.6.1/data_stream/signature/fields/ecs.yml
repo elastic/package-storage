@@ -7,6 +7,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -161,6 +164,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.

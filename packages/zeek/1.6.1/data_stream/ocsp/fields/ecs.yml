@@ -26,6 +26,9 @@
   name: event.kind
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: Host ip addresses.

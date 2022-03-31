@@ -12,6 +12,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: City name.
@@ -120,6 +123,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.

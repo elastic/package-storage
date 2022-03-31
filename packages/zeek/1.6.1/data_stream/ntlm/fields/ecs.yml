@@ -7,6 +7,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: City name.
@@ -94,6 +97,9 @@
   name: event.type
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: Host ip addresses.
@@ -129,6 +135,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -171,5 +180,8 @@
   name: user.domain
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword

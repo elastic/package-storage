@@ -7,6 +7,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: City name.
@@ -128,6 +131,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -165,5 +171,8 @@
   name: source.port
   type: long
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard

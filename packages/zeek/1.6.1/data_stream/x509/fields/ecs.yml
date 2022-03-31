@@ -71,6 +71,8 @@
   name: file.x509.public_key_curve
   type: keyword
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: file.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
