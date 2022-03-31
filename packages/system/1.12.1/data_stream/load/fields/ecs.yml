@@ -100,12 +100,18 @@
       name: os.family
       type: keyword
     - description: Operating system name, including the version or code name.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.full
       type: keyword
     - description: Operating system kernel version as a raw string.
       name: os.kernel
       type: keyword
     - description: Operating system name, without the version.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.name
       type: keyword
     - description: Operating system platform (such centos, ubuntu, windows).
@@ -150,12 +156,18 @@
   name: host.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: host.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).

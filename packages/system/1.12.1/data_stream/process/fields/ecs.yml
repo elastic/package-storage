@@ -54,6 +54,9 @@
     - description: |-
         Full command line that started the process, including the absolute path to the executable, and all arguments.
         Some arguments may be filtered to protect sensitive information.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: command_line
       type: wildcard
     - description: Machine architecture of the ELF file.
@@ -157,6 +160,9 @@
       name: entity_id
       type: keyword
     - description: Absolute path to the process executable.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: executable
       type: keyword
     - description: |-
@@ -182,6 +188,9 @@
     - description: |-
         Process name.
         Sometimes called program name or similar.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: name
       type: keyword
     - description: |-
@@ -236,6 +245,9 @@
     - description: |-
         Full command line that started the process, including the absolute path to the executable, and all arguments.
         Some arguments may be filtered to protect sensitive information.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: parent.command_line
       type: wildcard
     - description: Machine architecture of the ELF file.
@@ -339,6 +351,9 @@
       name: parent.entity_id
       type: keyword
     - description: Absolute path to the process executable.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: parent.executable
       type: keyword
     - description: |-
@@ -364,6 +379,9 @@
     - description: |-
         Process name.
         Sometimes called program name or similar.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: parent.name
       type: keyword
     - description: CPU architecture target for the file.
@@ -407,12 +425,18 @@
     - description: |-
         Process title.
         The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: parent.title
       type: keyword
     - description: Seconds the process has been up.
       name: parent.uptime
       type: long
     - description: The working directory of the process.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: parent.working_directory
       type: keyword
     - description: CPU architecture target for the file.
@@ -456,12 +480,18 @@
     - description: |-
         Process title.
         The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: title
       type: keyword
     - description: Seconds the process has been up.
       name: uptime
       type: long
     - description: The working directory of the process.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: working_directory
       type: keyword
   name: process
@@ -469,6 +499,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Identifier of the group of processes the process belongs to.
@@ -481,6 +514,9 @@
   name: process.parent.pid
   type: long
 - description: The working directory of the process.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.working_directory
   type: keyword
 - description: |-
@@ -496,6 +532,9 @@
       name: changes.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.full_name
       type: keyword
     - description: |-
@@ -518,6 +557,9 @@
       name: changes.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -537,6 +579,9 @@
       name: effective.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.full_name
       type: keyword
     - description: |-
@@ -559,6 +604,9 @@
       name: effective.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -568,6 +616,9 @@
       name: email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: full_name
       type: keyword
     - description: |-
@@ -590,6 +641,9 @@
       name: id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -604,6 +658,9 @@
       name: target.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.full_name
       type: keyword
     - description: |-
@@ -626,6 +683,9 @@
       name: target.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -634,6 +694,9 @@
   name: user
   type: group
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
@@ -738,12 +801,18 @@
       name: os.family
       type: keyword
     - description: Operating system name, including the version or code name.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.full
       type: keyword
     - description: Operating system kernel version as a raw string.
       name: os.kernel
       type: keyword
     - description: Operating system name, without the version.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: os.name
       type: keyword
     - description: Operating system platform (such centos, ubuntu, windows).
@@ -788,12 +857,18 @@
   name: host.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: host.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
@@ -820,9 +895,15 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: |-

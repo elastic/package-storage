@@ -113,6 +113,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: |-
@@ -122,19 +125,31 @@
   name: process.entity_id
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.executable
   type: keyword
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.name
   type: keyword
 - description: Process id.
@@ -143,6 +158,9 @@
 - description: |-
     Process title.
     The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.title
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
@@ -189,6 +207,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
@@ -200,6 +221,9 @@
   name: user.effective.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.effective.name
   type: keyword
 - description: |-
@@ -214,6 +238,9 @@
   name: user.target.group.name
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
 - description: |-
@@ -225,5 +252,8 @@
   name: user.target.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.changes.name
   type: keyword
