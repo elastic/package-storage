@@ -60,6 +60,9 @@
   name: threat.framework
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: threat.technique.name
   type: keyword
 - description: The description of the rule generating the event.
@@ -75,6 +78,9 @@
   name: file.hash.sha1
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: Process id.
@@ -83,6 +89,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: The time the process started.
@@ -107,6 +116,9 @@
   name: observer.name
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
@@ -116,6 +128,9 @@
   name: url.domain
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
@@ -129,6 +144,9 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Path of the request, such as "/search".
@@ -148,6 +166,9 @@
   name: url.query
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
