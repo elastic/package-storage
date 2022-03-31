@@ -1,0 +1,140 @@
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Error message.
+  name: error.message
+  type: match_only_text
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+  name: url.domain
+  type: keyword
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  name: url.original
+  type: wildcard
+- description: Path of the request, such as "/search".
+  name: url.path
+  type: wildcard
+- description: Port of the request, such as 443.
+  name: url.port
+  type: long
+- description: |-
+    Scheme of the request, such as "https".
+    Note: The `:` is not part of the scheme.
+  name: url.scheme
+  type: keyword
+- description: Name of the device.
+  name: user_agent.device.name
+  type: keyword
+- description: Name of the user agent.
+  name: user_agent.name
+  type: keyword
+- description: Version of the user agent.
+  name: user_agent.version
+  type: keyword
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: destination.domain
+  type: keyword
+- description: event.start contains the date when the event started or when the activity was first observed.
+  name: event.start
+  type: date
+- description: Bytes sent from the destination to the source.
+  name: destination.bytes
+  type: long
+- description: HTTP response status code.
+  name: http.response.status_code
+  type: long
+- description: Size in bytes of the request body.
+  name: http.request.body.bytes
+  type: long
+- description: Size in bytes of the response body.
+  name: http.response.body.bytes
+  type: long
+- description: |-
+    HTTP request method.
+    The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
+  name: http.request.method
+  type: keyword
+- description: Referrer for this HTTP request.
+  name: http.request.referrer
+  type: keyword
+- description: HTTP version.
+  name: http.version
+  type: keyword
+- description: Unparsed user_agent string.
+  name: user_agent.original
+  type: keyword
+- description: Name of the cloud provider. Example values are aws, azure, gcp, or digitalocean.
+  name: cloud.provider
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy.
+    `event.kind` gives high-level information about what type of information the event contains, without being specific to the contents of the event. For example, values of this field distinguish alert events from metric events.
+    The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data coming in at a regular interval or not.
+  name: event.kind
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
+    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
+    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
+  name: event.category
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
+  name: event.outcome
+  type: keyword
+- description: |-
+    Unique identifier of the trace.
+    A trace groups multiple events like transactions that belong together. For example, a user request handled by multiple inter-connected services.
+  name: trace.id
+  type: keyword
+- description: event.end contains the date when the event ended or when the activity was last observed.
+  name: event.end
+  type: date
+- description: |-
+    Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: source.address
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  name: source.as.organization.name
+  type: keyword
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Longitude and latitude.
+  name: source.geo.location
+  type: geo_point
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: Port of the source.
+  name: source.port
+  type: long
