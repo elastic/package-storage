@@ -80,6 +80,9 @@
   name: host.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
