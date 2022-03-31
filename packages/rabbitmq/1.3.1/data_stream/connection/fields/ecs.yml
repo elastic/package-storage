@@ -11,6 +11,9 @@
       name: changes.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.full_name
       type: keyword
     - description: |-
@@ -33,6 +36,9 @@
       name: changes.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: changes.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -52,6 +58,9 @@
       name: effective.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.full_name
       type: keyword
     - description: |-
@@ -74,6 +83,9 @@
       name: effective.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: effective.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -83,6 +95,9 @@
       name: email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: full_name
       type: keyword
     - description: |-
@@ -105,6 +120,9 @@
       name: id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -119,6 +137,9 @@
       name: target.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.full_name
       type: keyword
     - description: |-
@@ -141,6 +162,9 @@
       name: target.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: target.name
       type: keyword
     - description: Array of user roles at the time of the event.
@@ -149,6 +173,9 @@
   name: user
   type: group
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
