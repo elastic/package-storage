@@ -19,6 +19,9 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Path of the request, such as "/search".
@@ -73,6 +76,9 @@
   name: http.version
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: Name of the cloud provider. Example values are aws, azure, gcp, or digitalocean.
@@ -118,6 +124,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
