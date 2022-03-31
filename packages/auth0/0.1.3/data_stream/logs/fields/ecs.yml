@@ -7,6 +7,9 @@
   name: destination.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: |-
@@ -60,6 +63,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
@@ -93,6 +98,9 @@
   name: file.name
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: |-
@@ -119,6 +127,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: |-
@@ -128,11 +139,17 @@
   name: process.entity_id
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Process id.
@@ -141,6 +158,9 @@
 - description: |-
     Process title.
     The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.title
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
@@ -164,6 +184,9 @@
   name: source.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.name
   type: keyword
 - description: |-
@@ -175,6 +198,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: IP address of the source (IPv4 or IPv6).
@@ -189,6 +215,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -226,6 +255,9 @@
   name: user_agent.device.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: Version of the user agent.
@@ -235,12 +267,18 @@
   name: user_agent.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: user_agent.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
