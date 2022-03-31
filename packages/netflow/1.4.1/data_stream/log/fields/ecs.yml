@@ -33,6 +33,9 @@
   name: as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: as.organization.name
   type: keyword
 - description: |-
@@ -44,6 +47,9 @@
   name: client.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: client.as.organization.name
   type: keyword
 - description: Bytes sent from the client to the server.
@@ -126,6 +132,9 @@
   name: client.user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: client.user.full_name
   type: keyword
 - description: |-
@@ -148,6 +157,9 @@
   name: client.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: client.user.name
   type: keyword
 - description: |-
@@ -200,6 +212,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -282,6 +297,9 @@
   name: destination.user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.full_name
   type: keyword
 - description: |-
@@ -304,6 +322,9 @@
   name: destination.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: |-
@@ -398,6 +419,9 @@
   name: error.message
   type: match_only_text
 - description: The stack trace of this error in plain text.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: error.stack_trace
   type: wildcard
 - description: The type of the error, for example the class name of the exception.
@@ -455,6 +479,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
@@ -563,6 +589,9 @@
   name: file.owner
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: |-
@@ -571,6 +600,9 @@
   name: file.size
   type: long
 - description: Target path for symlinks.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.target_path
   type: keyword
 - description: File type (file, dir, or symlink).
@@ -688,12 +720,18 @@
   name: host.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: host.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
@@ -714,6 +752,9 @@
   name: http.request.body.bytes
   type: long
 - description: The full HTTP request body.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: http.request.body.content
   type: wildcard
 - description: Total size in bytes of the request (body and headers).
@@ -731,6 +772,9 @@
   name: http.response.body.bytes
   type: long
 - description: The full HTTP response body.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: http.response.body.content
   type: wildcard
 - description: Total size in bytes of the response (body and headers).
@@ -910,12 +954,18 @@
   name: observer.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: observer.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: observer.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: observer.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
@@ -945,18 +995,27 @@
   name: organization.id
   type: keyword
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: organization.name
   type: keyword
 - description: OS family (such as redhat, debian, freebsd, windows).
   name: os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
@@ -1003,6 +1062,9 @@
   name: process.args
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: MD5 hash.
@@ -1020,6 +1082,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Identifier of the group of processes the process belongs to.
@@ -1043,12 +1108,18 @@
 - description: |-
     Process title.
     The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.title
   type: keyword
 - description: Seconds the process has been up.
   name: process.uptime
   type: long
 - description: The working directory of the process.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.working_directory
   type: keyword
 - description: All of the IPs seen on your event.
@@ -1063,6 +1134,9 @@
   name: server.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: server.as.organization.name
   type: keyword
 - description: Bytes sent from the server to the client.
@@ -1145,6 +1219,9 @@
   name: server.user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: server.user.full_name
   type: keyword
 - description: |-
@@ -1167,6 +1244,9 @@
   name: server.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: server.user.name
   type: keyword
 - description: |-
@@ -1215,6 +1295,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.
@@ -1297,6 +1380,9 @@
   name: source.user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.full_name
   type: keyword
 - description: |-
@@ -1319,6 +1405,9 @@
   name: source.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.name
   type: keyword
 - description: List of keywords used to tag each event.
@@ -1340,6 +1429,9 @@
   name: threat.technique.id
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: threat.technique.name
   type: keyword
 - description: The reference url of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
@@ -1374,12 +1466,18 @@
   name: url.fragment
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Password of the request.
@@ -1424,6 +1522,9 @@
   name: user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.full_name
   type: keyword
 - description: |-
@@ -1446,6 +1547,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Name of the device.
@@ -1455,18 +1559,27 @@
   name: user_agent.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: OS family (such as redhat, debian, freebsd, windows).
   name: user_agent.os.family
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.full
   type: keyword
 - description: Operating system kernel version as a raw string.
   name: user_agent.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.name
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
