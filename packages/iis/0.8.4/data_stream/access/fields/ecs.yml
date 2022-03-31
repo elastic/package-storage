@@ -71,6 +71,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -118,6 +121,9 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Path of the request, such as "/search".
@@ -129,6 +135,9 @@
   name: url.query
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Name of the device.
@@ -144,18 +153,33 @@
   name: user_agent.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.full
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.name
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.os.name
   type: keyword
 - description: Operating system version as a raw string.
@@ -167,6 +191,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
