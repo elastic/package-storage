@@ -1,0 +1,424 @@
+- description: Fields related to HTTP activity. Use the `url` field set to store the url of the request.
+  fields:
+    - description: Size in bytes of the request body.
+      name: request.body.bytes
+      type: long
+    - description: The full HTTP request body.
+      name: request.body.content
+      type: wildcard
+    - description: Total size in bytes of the request (body and headers).
+      name: request.bytes
+      type: long
+    - description: |-
+        A unique identifier for each HTTP request to correlate logs between clients and servers in transactions.
+        The id may be contained in a non-standard HTTP header, such as `X-Request-ID` or `X-Correlation-ID`.
+      name: request.id
+      type: keyword
+    - description: |-
+        HTTP request method.
+        Prior to ECS 1.6.0 the following guidance was provided:
+        "The field value must be normalized to lowercase for querying."
+        As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
+      name: request.method
+      type: keyword
+    - description: |-
+        Mime type of the body of the request.
+        This value must only be populated based on the content of the request body, not on the `Content-Type` header. Comparing the mime type of a request with the request's Content-Type header can be helpful in detecting threats or misconfigured clients.
+      name: request.mime_type
+      type: keyword
+    - description: Referrer for this HTTP request.
+      name: request.referrer
+      type: keyword
+    - description: Size in bytes of the response body.
+      name: response.body.bytes
+      type: long
+    - description: The full HTTP response body.
+      name: response.body.content
+      type: wildcard
+    - description: Total size in bytes of the response (body and headers).
+      name: response.bytes
+      type: long
+    - description: |-
+        Mime type of the body of the response.
+        This value must only be populated based on the content of the response body, not on the `Content-Type` header. Comparing the mime type of a response with the response's Content-Type header can be helpful in detecting misconfigured servers.
+      name: response.mime_type
+      type: keyword
+    - description: HTTP response status code.
+      name: response.status_code
+      type: long
+    - description: HTTP version.
+      name: version
+      type: keyword
+  name: http
+  type: group
+- description: The full HTTP request body.
+  name: http.request.body.content
+  type: wildcard
+- description: |-
+    Source fields capture details about the sender of a network exchange/packet. These fields are populated from a network event, packet, or other event containing details of a network transaction.
+    Source fields are usually populated in conjunction with destination fields. The source and destination fields are considered the baseline and should always be filled if an event contains source and destination details from a network transaction. If the event also contains identification of the client and server roles, then the client and server fields should also be populated.
+  fields:
+    - description: |-
+        Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+        Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+      name: address
+      type: keyword
+    - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+      name: as.number
+      type: long
+    - description: Organization name.
+      name: as.organization.name
+      type: keyword
+    - description: Bytes sent from the source to the destination.
+      name: bytes
+      type: long
+    - description: Source domain.
+      name: domain
+      type: keyword
+    - description: City name.
+      name: geo.city_name
+      type: keyword
+    - description: Two-letter code representing continent's name.
+      name: geo.continent_code
+      type: keyword
+    - description: Name of the continent.
+      name: geo.continent_name
+      type: keyword
+    - description: Country ISO code.
+      name: geo.country_iso_code
+      type: keyword
+    - description: Country name.
+      name: geo.country_name
+      type: keyword
+    - description: Longitude and latitude.
+      name: geo.location
+      type: geo_point
+    - description: |-
+        User-defined description of a location, at the level of granularity they care about.
+        Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+        Not typically used in automated geolocation.
+      name: geo.name
+      type: keyword
+    - description: |-
+        Postal code associated with the location.
+        Values appropriate for this field may also be known as a postcode or ZIP code and will vary widely from country to country.
+      name: geo.postal_code
+      type: keyword
+    - description: Region ISO code.
+      name: geo.region_iso_code
+      type: keyword
+    - description: Region name.
+      name: geo.region_name
+      type: keyword
+    - description: The time zone of the location, such as IANA time zone name.
+      name: geo.timezone
+      type: keyword
+    - description: IP address of the source (IPv4 or IPv6).
+      name: ip
+      type: ip
+    - description: |-
+        MAC address of the source.
+        The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+      name: mac
+      type: keyword
+    - description: |-
+        Translated ip of source based NAT sessions (e.g. internal client to internet)
+        Typically connections traversing load balancers, firewalls, or routers.
+      name: nat.ip
+      type: ip
+    - description: |-
+        Translated port of source based NAT sessions. (e.g. internal client to internet)
+        Typically used with load balancers, firewalls, or routers.
+      name: nat.port
+      type: long
+    - description: Packets sent from the source to the destination.
+      name: packets
+      type: long
+    - description: Port of the source.
+      name: port
+      type: long
+    - description: |-
+        The highest registered source domain, stripped of the subdomain.
+        For example, the registered domain for "foo.example.com" is "example.com".
+        This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk".
+      name: registered_domain
+      type: keyword
+    - description: |-
+        The subdomain portion of a fully qualified domain name includes all of the names except the host name under the registered_domain.  In a partially qualified domain, or if the the qualification level of the full name cannot be determined, subdomain contains all of the names below the registered domain.
+        For example the subdomain portion of "www.east.mydomain.co.uk" is "east". If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period.
+      name: subdomain
+      type: keyword
+    - description: |-
+        The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com".
+        This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
+      name: top_level_domain
+      type: keyword
+    - description: |-
+        Name of the directory the user is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: user.domain
+      type: keyword
+    - description: User email address.
+      name: user.email
+      type: keyword
+    - description: User's full name, if available.
+      name: user.full_name
+      type: keyword
+    - description: |-
+        Name of the directory the group is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: user.group.domain
+      type: keyword
+    - description: Unique identifier for the group on the system/platform.
+      name: user.group.id
+      type: keyword
+    - description: Name of the group.
+      name: user.group.name
+      type: keyword
+    - description: |-
+        Unique user hash to correlate information for a user in anonymized form.
+        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
+      name: user.hash
+      type: keyword
+    - description: Unique identifier of the user.
+      name: user.id
+      type: keyword
+    - description: Short name or login of the user.
+      name: user.name
+      type: keyword
+    - description: Array of user roles at the time of the event.
+      name: user.roles
+      type: keyword
+  name: source
+  type: group
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: URL fields provide support for complete or partial URLs, and supports the breaking down into scheme, domain, path, and so on.
+  fields:
+    - description: |-
+        Domain of the url, such as "www.elastic.co".
+        In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+        If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+      name: domain
+      type: keyword
+    - description: |-
+        The field contains the file extension from the original request url, excluding the leading dot.
+        The file extension is only set if it exists, as not every url has a file extension.
+        The leading period must not be included. For example, the value must be "png", not ".png".
+        Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+      name: extension
+      type: keyword
+    - description: |-
+        Portion of the url after the `#`, such as "top".
+        The `#` is not part of the fragment.
+      name: fragment
+      type: keyword
+    - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+      name: full
+      type: wildcard
+    - description: |-
+        Unmodified original url as seen in the event source.
+        Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+        This field is meant to represent the URL as it was observed, complete or not.
+      name: original
+      type: wildcard
+    - description: Password of the request.
+      name: password
+      type: keyword
+    - description: Path of the request, such as "/search".
+      name: path
+      type: wildcard
+    - description: Port of the request, such as 443.
+      name: port
+      type: long
+    - description: |-
+        The query field describes the query string of the request, such as "q=elasticsearch".
+        The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
+      name: query
+      type: keyword
+    - description: |-
+        The highest registered url domain, stripped of the subdomain.
+        For example, the registered domain for "foo.example.com" is "example.com".
+        This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk".
+      name: registered_domain
+      type: keyword
+    - description: |-
+        Scheme of the request, such as "https".
+        Note: The `:` is not part of the scheme.
+      name: scheme
+      type: keyword
+    - description: |-
+        The subdomain portion of a fully qualified domain name includes all of the names except the host name under the registered_domain.  In a partially qualified domain, or if the the qualification level of the full name cannot be determined, subdomain contains all of the names below the registered domain.
+        For example the subdomain portion of "www.east.mydomain.co.uk" is "east". If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period.
+      name: subdomain
+      type: keyword
+    - description: |-
+        The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com".
+        This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
+      name: top_level_domain
+      type: keyword
+    - description: Username of the request.
+      name: username
+      type: keyword
+  name: url
+  type: group
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  name: url.original
+  type: wildcard
+- description: |-
+    The user fields describe information about the user that is relevant to the event.
+    Fields can have one entry or multiple entries. If a user has more than one id, provide an array that includes all of them.
+  fields:
+    - description: |-
+        Name of the directory the user is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: changes.domain
+      type: keyword
+    - description: User email address.
+      name: changes.email
+      type: keyword
+    - description: User's full name, if available.
+      name: changes.full_name
+      type: keyword
+    - description: |-
+        Name of the directory the group is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: changes.group.domain
+      type: keyword
+    - description: Unique identifier for the group on the system/platform.
+      name: changes.group.id
+      type: keyword
+    - description: Name of the group.
+      name: changes.group.name
+      type: keyword
+    - description: |-
+        Unique user hash to correlate information for a user in anonymized form.
+        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
+      name: changes.hash
+      type: keyword
+    - description: Unique identifier of the user.
+      name: changes.id
+      type: keyword
+    - description: Short name or login of the user.
+      name: changes.name
+      type: keyword
+    - description: Array of user roles at the time of the event.
+      name: changes.roles
+      type: keyword
+    - description: |-
+        Name of the directory the user is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: domain
+      type: keyword
+    - description: |-
+        Name of the directory the user is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: effective.domain
+      type: keyword
+    - description: User email address.
+      name: effective.email
+      type: keyword
+    - description: User's full name, if available.
+      name: effective.full_name
+      type: keyword
+    - description: |-
+        Name of the directory the group is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: effective.group.domain
+      type: keyword
+    - description: Unique identifier for the group on the system/platform.
+      name: effective.group.id
+      type: keyword
+    - description: Name of the group.
+      name: effective.group.name
+      type: keyword
+    - description: |-
+        Unique user hash to correlate information for a user in anonymized form.
+        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
+      name: effective.hash
+      type: keyword
+    - description: Unique identifier of the user.
+      name: effective.id
+      type: keyword
+    - description: Short name or login of the user.
+      name: effective.name
+      type: keyword
+    - description: Array of user roles at the time of the event.
+      name: effective.roles
+      type: keyword
+    - description: User email address.
+      name: email
+      type: keyword
+    - description: User's full name, if available.
+      name: full_name
+      type: keyword
+    - description: |-
+        Name of the directory the group is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: group.domain
+      type: keyword
+    - description: Unique identifier for the group on the system/platform.
+      name: group.id
+      type: keyword
+    - description: Name of the group.
+      name: group.name
+      type: keyword
+    - description: |-
+        Unique user hash to correlate information for a user in anonymized form.
+        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
+      name: hash
+      type: keyword
+    - description: Unique identifier of the user.
+      name: id
+      type: keyword
+    - description: Short name or login of the user.
+      name: name
+      type: keyword
+    - description: Array of user roles at the time of the event.
+      name: roles
+      type: keyword
+    - description: |-
+        Name of the directory the user is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: target.domain
+      type: keyword
+    - description: User email address.
+      name: target.email
+      type: keyword
+    - description: User's full name, if available.
+      name: target.full_name
+      type: keyword
+    - description: |-
+        Name of the directory the group is a member of.
+        For example, an LDAP or Active Directory domain name.
+      name: target.group.domain
+      type: keyword
+    - description: Unique identifier for the group on the system/platform.
+      name: target.group.id
+      type: keyword
+    - description: Name of the group.
+      name: target.group.name
+      type: keyword
+    - description: |-
+        Unique user hash to correlate information for a user in anonymized form.
+        Useful if `user.id` or `user.name` contain confidential information and cannot be used.
+      name: target.hash
+      type: keyword
+    - description: Unique identifier of the user.
+      name: target.id
+      type: keyword
+    - description: Short name or login of the user.
+      name: target.name
+      type: keyword
+    - description: Array of user roles at the time of the event.
+      name: target.roles
+      type: keyword
+  name: user
+  type: group
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
