@@ -6,6 +6,9 @@
   name: '@timestamp'
   type: date
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: client.user.name
   type: keyword
 - description: |-
@@ -17,6 +20,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -69,6 +75,9 @@
   name: destination.port
   type: long
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: |-
@@ -167,6 +176,9 @@
   name: file.name
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: |-
@@ -298,6 +310,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Process id.
@@ -335,6 +350,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.
@@ -387,6 +405,9 @@
   name: source.port
   type: long
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.name
   type: keyword
 - description: List of keywords used to tag each event.
@@ -411,12 +432,18 @@
   name: url.fragment
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Password of the request.
@@ -464,9 +491,15 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: |-
@@ -486,6 +519,9 @@
   name: server.ip
   type: ip
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: server.user.name
   type: keyword
 - description: |-
