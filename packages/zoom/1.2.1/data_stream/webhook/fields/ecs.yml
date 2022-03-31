@@ -38,6 +38,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
@@ -76,6 +78,9 @@
   name: tags
   type: keyword
 - description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.full
   type: wildcard
 - description: |-
@@ -87,6 +92,9 @@
   name: user.changes.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.changes.full_name
   type: keyword
 - description: |-
@@ -104,6 +112,9 @@
   name: user.changes.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.changes.name
   type: keyword
 - description: |-
@@ -115,12 +126,18 @@
   name: user.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.full_name
   type: keyword
 - description: Unique identifier of the user.
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
@@ -132,6 +149,9 @@
   name: user.target.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.full_name
   type: keyword
 - description: |-
@@ -149,5 +169,8 @@
   name: user.target.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
