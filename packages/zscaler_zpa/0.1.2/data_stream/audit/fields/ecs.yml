@@ -48,6 +48,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: User email address.
@@ -57,6 +60,9 @@
   name: user.target.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
 - description: Array of user roles at the time of the event.

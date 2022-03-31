@@ -59,6 +59,9 @@
   name: observer.type
   type: keyword
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: organization.name
   type: keyword
 - description: All of the IPs seen on your event.
