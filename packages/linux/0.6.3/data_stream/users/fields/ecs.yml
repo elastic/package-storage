@@ -32,6 +32,9 @@
       name: as.number
       type: long
     - description: Organization name.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: as.organization.name
       type: keyword
     - description: Bytes sent from the source to the destination.
@@ -127,6 +130,9 @@
       name: user.email
       type: keyword
     - description: User's full name, if available.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.full_name
       type: keyword
     - description: |-
@@ -149,6 +155,9 @@
       name: user.id
       type: keyword
     - description: Short name or login of the user.
+      multi_fields:
+        - name: text
+          type: match_only_text
       name: user.name
       type: keyword
     - description: Array of user roles at the time of the event.
