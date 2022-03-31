@@ -40,6 +40,8 @@
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
   name: event.original
   type: keyword
 - description: |-
@@ -68,6 +70,9 @@
   name: event.severity
   type: long
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
@@ -79,6 +84,9 @@
   name: user.email
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: threat.technique.name
   type: keyword
 - description: Name of the type of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/)
@@ -90,11 +98,17 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: |-
@@ -103,14 +117,23 @@
   name: process.args
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.executable
   type: keyword
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.command_line
   type: wildcard
 - description: |-
