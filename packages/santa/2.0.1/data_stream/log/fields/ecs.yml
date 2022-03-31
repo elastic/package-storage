@@ -1,0 +1,66 @@
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
+- description: List of common name (CN) of issuing certificate authority.
+  name: file.x509.issuer.common_name
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
+  type: keyword
+- description: Name of the group.
+  name: group.name
+  type: keyword
+- description: |-
+    Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
+    If the event wasn't read from a log file, do not populate this field.
+  name: log.file.path
+  type: keyword
+- description: |-
+    Original log level of the log event.
+    If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
+    Some examples are `warn`, `err`, `i`, `informational`.
+  name: log.level
+  type: keyword
+- description: |-
+    Array of process arguments, starting with the absolute path to the executable.
+    May be filtered to protect sensitive information.
+  name: process.args
+  type: keyword
+- description: Absolute path to the process executable.
+  name: process.executable
+  type: keyword
+- description: SHA256 hash.
+  name: process.hash.sha256
+  type: keyword
+- description: Process id.
+  name: process.pid
+  type: long
+- description: Process id.
+  name: process.parent.pid
+  type: long
+- description: The time the process started.
+  name: process.start
+  type: date
+- description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
+  name: related.hash
+  type: keyword
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Short name or login of the user.
+  name: user.name
+  type: keyword
