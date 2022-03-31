@@ -14,6 +14,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -190,6 +193,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: List of keywords used to tag each event.
@@ -218,6 +224,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Process id.
