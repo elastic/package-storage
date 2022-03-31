@@ -201,6 +201,9 @@
   name: file.name
   type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: file.path
   type: keyword
 - description: CPU architecture target for the file.
@@ -303,6 +306,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.command_line
   type: wildcard
 - description: |-
@@ -312,6 +318,9 @@
   name: process.entity_id
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: MD5 hash.
@@ -329,6 +338,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: |-
@@ -344,6 +356,9 @@
 - description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.command_line
   type: wildcard
 - description: |-
@@ -353,11 +368,17 @@
   name: process.parent.entity_id
   type: keyword
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.executable
   type: keyword
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.name
   type: keyword
 - description: Process id.
@@ -392,9 +413,15 @@
 - description: |-
     Process title.
     The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.title
   type: keyword
 - description: The working directory of the process.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.working_directory
   type: keyword
 - description: |-
@@ -464,6 +491,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: |-
@@ -478,5 +508,8 @@
   name: user.target.group.name
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
