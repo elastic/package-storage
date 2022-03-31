@@ -5,6 +5,9 @@
   name: destination.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.as.organization.name
   type: keyword
 - description: Bytes sent from the destination to the source.
@@ -74,6 +77,9 @@
   name: destination.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: destination.user.name
   type: keyword
 - description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
@@ -210,6 +216,9 @@
   name: host.name
   type: keyword
 - description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: host.os.name
   type: keyword
 - description: Operating system version as a raw string.
@@ -313,6 +322,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: MD5 hash.
@@ -321,6 +333,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.parent.name
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
@@ -354,6 +369,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.
@@ -426,6 +444,9 @@
   name: source.user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.user.name
   type: keyword
 - description: List of keywords used to tag each event.
@@ -441,12 +462,18 @@
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: url.original
   type: wildcard
 - description: Name of the user agent.
   name: user_agent.name
   type: keyword
 - description: Unparsed user_agent string.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user_agent.original
   type: keyword
 - description: The identification (ID) is the number portion of a vulnerability entry. It includes a unique identification number for the vulnerability. For example (https://cve.mitre.org/about/faqs.html#what_is_cve_id)[Common Vulnerabilities and Exposure CVE ID]
