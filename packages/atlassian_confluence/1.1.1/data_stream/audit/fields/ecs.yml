@@ -13,12 +13,21 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.full_name
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.full_name
   type: keyword
 - description: Unique identifier for the group on the system/platform.
@@ -31,15 +40,24 @@
   name: user.target.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.changes.name
   type: keyword
 - description: User email address.
   name: user.changes.email
   type: keyword
 - description: User's full name, if available.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.changes.full_name
   type: keyword
 - description: Name of the group.
@@ -57,6 +75,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: Bytes sent from the source to the destination.
