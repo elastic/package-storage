@@ -83,6 +83,9 @@
   name: process.args_count
   type: long
 - description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.executable
   type: keyword
 - description: |-
@@ -93,6 +96,9 @@
 - description: |-
     Process name.
     Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.name
   type: keyword
 - description: Process id.
@@ -102,6 +108,9 @@
   name: process.parent.pid
   type: long
 - description: The working directory of the process.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: process.working_directory
   type: keyword
 - description: |-
@@ -113,6 +122,9 @@
   name: source.as.number
   type: long
 - description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: source.as.organization.name
   type: keyword
 - description: City name.
@@ -150,6 +162,9 @@
   name: user.effective.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.effective.name
   type: keyword
 - description: Unique identifier for the group on the system/platform.
@@ -159,6 +174,9 @@
   name: user.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.name
   type: keyword
 - description: Unique identifier for the group on the system/platform.
@@ -171,5 +189,8 @@
   name: user.target.id
   type: keyword
 - description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
   name: user.target.name
   type: keyword
