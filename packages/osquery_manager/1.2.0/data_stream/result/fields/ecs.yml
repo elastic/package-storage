@@ -1,0 +1,788 @@
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: as.number
+  type: long
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: client.as.number
+  type: long
+- description: Bytes sent from the client to the server.
+  name: client.bytes
+  type: long
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    Translated IP of source based NAT sessions (e.g. internal client to internet).
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: client.nat.ip
+  type: ip
+- description: |-
+    Translated port of source based NAT sessions (e.g. internal client to internet).
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: client.nat.port
+  type: long
+- description: Packets sent from the client to the server.
+  name: client.packets
+  type: long
+- description: Port of the client.
+  name: client.port
+  type: long
+- description: Boolean to capture if a signature is present.
+  name: code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: code_signature.valid
+  type: boolean
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: destination.as.number
+  type: long
+- description: Bytes sent from the destination to the source.
+  name: destination.bytes
+  type: long
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: destination.nat.ip
+  type: ip
+- description: |-
+    Port the source session is translated to by NAT Device.
+    Typically used with load balancers, firewalls, or routers.
+  name: destination.nat.port
+  type: long
+- description: Packets sent from the destination to the source.
+  name: destination.packets
+  type: long
+- description: Port of the destination.
+  name: destination.port
+  type: long
+- description: Boolean to capture if a signature is present.
+  name: dll.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: dll.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: dll.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: dll.code_signature.valid
+  type: boolean
+- description: The time interval in seconds that this resource record may be cached before it should be discarded. Zero values mean that the data should not be cached.
+  name: dns.answers.ttl
+  type: long
+- description: |-
+    Array containing all IPs seen in `answers.data`.
+    The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
+  name: dns.resolved_ip
+  type: ip
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: elf.sections.virtual_size
+  type: long
+- description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
+  type: date
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
+- description: event.end contains the date when the event ended or when the activity was last observed.
+  name: event.end
+  type: date
+- description: |-
+    Timestamp when an event arrived in the central data store.
+    This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
+    In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
+  name: event.ingested
+  type: date
+- description: Risk score or priority of the event (e.g. security solutions). Use your system's original value here.
+  name: event.risk_score
+  type: float
+- description: |-
+    Normalized risk score or priority of the event, on a scale of 0 to 100.
+    This is mainly useful if you use more than one system that assigns risk scores, and you want to see a normalized value across all systems.
+  name: event.risk_score_norm
+  type: float
+- description: |-
+    Sequence number of the event.
+    The sequence number is a value published by some event sources, to make the exact ordering of events unambiguous, regardless of the timestamp precision.
+  name: event.sequence
+  type: long
+- description: |-
+    The numeric severity of the event according to your event source.
+    What the different severity values mean can be different between sources and use cases. It's up to the implementer to make sure severities are consistent across events from the same source.
+    The Syslog severity belongs in `log.syslog.severity.code`. `event.severity` is meant to represent the severity according to the event source (e.g. firewall, IDS). If the event source does not publish its own severity, you may optionally copy the `log.syslog.severity.code` to `event.severity`.
+  name: event.severity
+  type: long
+- description: event.start contains the date when the event started or when the activity was first observed.
+  name: event.start
+  type: date
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: file.accessed
+  type: date
+- description: Boolean to capture if a signature is present.
+  name: file.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: file.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: file.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: file.code_signature.valid
+  type: boolean
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: file.elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: file.elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: file.elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: file.elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: file.elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: file.elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: file.elf.sections.virtual_size
+  type: long
+- description: Last time the file content was modified.
+  name: file.mtime
+  type: date
+- description: |-
+    File size in bytes.
+    Only relevant when `file.type` is "file".
+  name: file.size
+  type: long
+- description: Time at which the certificate is no longer considered valid.
+  name: file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: file.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: file.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: file.x509.public_key_size
+  type: long
+- description: The total number of bytes (gauge) read successfully (aggregated from all disks) since the last metric collection.
+  name: host.disk.read.bytes
+  type: long
+- description: The total number of bytes (gauge) written successfully (aggregated from all disks) since the last metric collection.
+  name: host.disk.write.bytes
+  type: long
+- description: Host ip addresses.
+  name: host.ip
+  type: ip
+- description: The number of bytes (gauge) sent out on all network interfaces by the host since the last metric collection.
+  name: host.network.egress.bytes
+  type: long
+- description: The number of packets (gauge) sent out on all network interfaces by the host since the last metric collection.
+  name: host.network.egress.packets
+  type: long
+- description: The number of bytes received (gauge) on all network interfaces by the host since the last metric collection.
+  name: host.network.ingress.bytes
+  type: long
+- description: The number of packets (gauge) received on all network interfaces by the host since the last metric collection.
+  name: host.network.ingress.packets
+  type: long
+- description: Seconds the host has been up.
+  name: host.uptime
+  type: long
+- description: Size in bytes of the request body.
+  name: http.request.body.bytes
+  type: long
+- description: Total size in bytes of the request (body and headers).
+  name: http.request.bytes
+  type: long
+- description: Size in bytes of the response body.
+  name: http.response.body.bytes
+  type: long
+- description: Total size in bytes of the response (body and headers).
+  name: http.response.bytes
+  type: long
+- description: HTTP response status code.
+  name: http.response.status_code
+  type: long
+- description: |-
+    The Syslog numeric facility of the log event, if available.
+    According to RFCs 5424 and 3164, this value should be an integer between 0 and 23.
+  name: log.syslog.facility.code
+  type: long
+- description: |-
+    Syslog numeric priority of the event, if available.
+    According to RFCs 5424 and 3164, the priority is 8 * facility + severity. This number is therefore expected to contain a value between 0 and 191.
+  name: log.syslog.priority
+  type: long
+- description: |-
+    The Syslog numeric severity of the log event, if available.
+    If the event source publishing via Syslog provides a different numeric severity value (e.g. firewall, IDS), your source's numeric severity should go to `event.severity`. If the event source does not specify a distinct severity, you can optionally copy the Syslog severity to `event.severity`.
+  name: log.syslog.severity.code
+  type: long
+- description: |-
+    Total bytes transferred in both directions.
+    If `source.bytes` and `destination.bytes` are known, `network.bytes` is their sum.
+  name: network.bytes
+  type: long
+- description: Host IP address when the source IP address is the proxy.
+  name: network.forwarded_ip
+  type: ip
+- description: |-
+    Total packets transferred in both directions.
+    If `source.packets` and `destination.packets` are known, `network.packets` is their sum.
+  name: network.packets
+  type: long
+- description: IP addresses of the observer.
+  name: observer.ip
+  type: ip
+- description: Time when package was installed.
+  name: package.installed
+  type: date
+- description: Package size in bytes.
+  name: package.size
+  type: long
+- description: |-
+    Length of the process.args array.
+    This field can be useful for querying or performing bucket analysis on how many arguments were provided to start a process. More arguments may be an indication of suspicious activity.
+  name: process.args_count
+  type: long
+- description: Boolean to capture if a signature is present.
+  name: process.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: process.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: process.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: process.code_signature.valid
+  type: boolean
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: process.elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: process.elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: process.elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: process.elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: process.elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: process.elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: process.elf.sections.virtual_size
+  type: long
+- description: The time the process ended.
+  name: process.end
+  type: date
+- description: |-
+    The exit code of the process, if this is a termination event.
+    The field should be absent if there is no exit code for the event (e.g. process start).
+  name: process.exit_code
+  type: long
+- description: |-
+    Length of the process.args array.
+    This field can be useful for querying or performing bucket analysis on how many arguments were provided to start a process. More arguments may be an indication of suspicious activity.
+  name: process.parent.args_count
+  type: long
+- description: Boolean to capture if a signature is present.
+  name: process.parent.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: process.parent.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: process.parent.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: process.parent.code_signature.valid
+  type: boolean
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: process.parent.elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: process.parent.elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: process.parent.elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: process.parent.elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: process.parent.elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: process.parent.elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: process.parent.elf.sections.virtual_size
+  type: long
+- description: The time the process ended.
+  name: process.parent.end
+  type: date
+- description: |-
+    The exit code of the process, if this is a termination event.
+    The field should be absent if there is no exit code for the event (e.g. process start).
+  name: process.parent.exit_code
+  type: long
+- description: Identifier of the group of processes the process belongs to.
+  name: process.parent.pgid
+  type: long
+- description: Process id.
+  name: process.parent.pid
+  type: long
+- description: Parent process' pid.
+  name: process.parent.ppid
+  type: long
+- description: The time the process started.
+  name: process.parent.start
+  type: date
+- description: Thread ID.
+  name: process.parent.thread.id
+  type: long
+- description: Seconds the process has been up.
+  name: process.parent.uptime
+  type: long
+- description: Identifier of the group of processes the process belongs to.
+  name: process.pgid
+  type: long
+- description: Process id.
+  name: process.pid
+  type: long
+- description: Parent process' pid.
+  name: process.ppid
+  type: long
+- description: The time the process started.
+  name: process.start
+  type: date
+- description: Thread ID.
+  name: process.thread.id
+  type: long
+- description: Seconds the process has been up.
+  name: process.uptime
+  type: long
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: server.as.number
+  type: long
+- description: Bytes sent from the server to the client.
+  name: server.bytes
+  type: long
+- description: IP address of the server (IPv4 or IPv6).
+  name: server.ip
+  type: ip
+- description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: server.nat.ip
+  type: ip
+- description: |-
+    Translated port of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: server.nat.port
+  type: long
+- description: Packets sent from the server to the client.
+  name: server.packets
+  type: long
+- description: Port of the server.
+  name: server.port
+  type: long
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Bytes sent from the source to the destination.
+  name: source.bytes
+  type: long
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: |-
+    Translated ip of source based NAT sessions (e.g. internal client to internet)
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: source.nat.ip
+  type: ip
+- description: |-
+    Translated port of source based NAT sessions. (e.g. internal client to internet)
+    Typically used with load balancers, firewalls, or routers.
+  name: source.nat.port
+  type: long
+- description: Packets sent from the source to the destination.
+  name: source.packets
+  type: long
+- description: Port of the source.
+  name: source.port
+  type: long
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: threat.enrichments.indicator.as.number
+  type: long
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: threat.enrichments.indicator.file.accessed
+  type: date
+- description: Boolean to capture if a signature is present.
+  name: threat.enrichments.indicator.file.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: threat.enrichments.indicator.file.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: threat.enrichments.indicator.file.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: threat.enrichments.indicator.file.code_signature.valid
+  type: boolean
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: threat.enrichments.indicator.file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: threat.enrichments.indicator.file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: threat.enrichments.indicator.file.elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: threat.enrichments.indicator.file.elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: threat.enrichments.indicator.file.elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: threat.enrichments.indicator.file.elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: threat.enrichments.indicator.file.elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: threat.enrichments.indicator.file.elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: threat.enrichments.indicator.file.elf.sections.virtual_size
+  type: long
+- description: Last time the file content was modified.
+  name: threat.enrichments.indicator.file.mtime
+  type: date
+- description: |-
+    File size in bytes.
+    Only relevant when `file.type` is "file".
+  name: threat.enrichments.indicator.file.size
+  type: long
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.enrichments.indicator.file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.enrichments.indicator.file.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: threat.enrichments.indicator.file.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: threat.enrichments.indicator.file.x509.public_key_size
+  type: long
+- description: The date and time when intelligence source first reported sighting this indicator.
+  name: threat.enrichments.indicator.first_seen
+  type: date
+- description: Identifies a threat indicator as an IP address (irrespective of direction).
+  name: threat.enrichments.indicator.ip
+  type: ip
+- description: The date and time when intelligence source last reported sighting this indicator.
+  name: threat.enrichments.indicator.last_seen
+  type: date
+- description: The date and time when intelligence source last modified information for this indicator.
+  name: threat.enrichments.indicator.modified_at
+  type: date
+- description: Identifies a threat indicator as a port number (irrespective of direction).
+  name: threat.enrichments.indicator.port
+  type: long
+- description: Count of AV/EDR vendors that successfully detected malicious file or URL.
+  name: threat.enrichments.indicator.scanner_stats
+  type: long
+- description: Number of times this indicator was observed conducting threat activity.
+  name: threat.enrichments.indicator.sightings
+  type: long
+- description: Port of the request, such as 443.
+  name: threat.enrichments.indicator.url.port
+  type: long
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.enrichments.indicator.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.enrichments.indicator.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: threat.enrichments.indicator.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: threat.enrichments.indicator.x509.public_key_size
+  type: long
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: threat.indicator.as.number
+  type: long
+- description: |-
+    Last time the file was accessed.
+    Note that not all filesystems keep track of access time.
+  name: threat.indicator.file.accessed
+  type: date
+- description: Boolean to capture if a signature is present.
+  name: threat.indicator.file.code_signature.exists
+  type: boolean
+- description: Date and time when the code signature was generated and signed.
+  name: threat.indicator.file.code_signature.timestamp
+  type: date
+- description: |-
+    Stores the trust status of the certificate chain.
+    Validating the trust of the certificate chain may be complicated, and this field should only be populated by tools that actively check the status.
+  name: threat.indicator.file.code_signature.trusted
+  type: boolean
+- description: |-
+    Boolean to capture if the digital signature is verified against the binary content.
+    Leave unpopulated if a certificate was unchecked.
+  name: threat.indicator.file.code_signature.valid
+  type: boolean
+- description: |-
+    File creation time.
+    Note that not all filesystems store the creation time.
+  name: threat.indicator.file.created
+  type: date
+- description: |-
+    Last time the file attributes or metadata changed.
+    Note that changes to the file content will update `mtime`. This implies `ctime` will be adjusted at the same time, since `mtime` is an attribute of the file.
+  name: threat.indicator.file.ctime
+  type: date
+- description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
+  name: threat.indicator.file.elf.creation_date
+  type: date
+- description: Header entrypoint of the ELF file.
+  name: threat.indicator.file.elf.header.entrypoint
+  type: long
+- description: Chi-square probability distribution of the section.
+  name: threat.indicator.file.elf.sections.chi2
+  type: long
+- description: Shannon entropy calculation from the section.
+  name: threat.indicator.file.elf.sections.entropy
+  type: long
+- description: ELF Section List physical size.
+  name: threat.indicator.file.elf.sections.physical_size
+  type: long
+- description: ELF Section List virtual address.
+  name: threat.indicator.file.elf.sections.virtual_address
+  type: long
+- description: ELF Section List virtual size.
+  name: threat.indicator.file.elf.sections.virtual_size
+  type: long
+- description: Last time the file content was modified.
+  name: threat.indicator.file.mtime
+  type: date
+- description: |-
+    File size in bytes.
+    Only relevant when `file.type` is "file".
+  name: threat.indicator.file.size
+  type: long
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.indicator.file.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.indicator.file.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: threat.indicator.file.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: threat.indicator.file.x509.public_key_size
+  type: long
+- description: The date and time when intelligence source first reported sighting this indicator.
+  name: threat.indicator.first_seen
+  type: date
+- description: Identifies a threat indicator as an IP address (irrespective of direction).
+  name: threat.indicator.ip
+  type: ip
+- description: The date and time when intelligence source last reported sighting this indicator.
+  name: threat.indicator.last_seen
+  type: date
+- description: The date and time when intelligence source last modified information for this indicator.
+  name: threat.indicator.modified_at
+  type: date
+- description: Identifies a threat indicator as a port number (irrespective of direction).
+  name: threat.indicator.port
+  type: long
+- description: Count of AV/EDR vendors that successfully detected malicious file or URL.
+  name: threat.indicator.scanner_stats
+  type: long
+- description: Number of times this indicator was observed conducting threat activity.
+  name: threat.indicator.sightings
+  type: long
+- description: Port of the request, such as 443.
+  name: threat.indicator.url.port
+  type: long
+- description: Time at which the certificate is no longer considered valid.
+  name: threat.indicator.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: threat.indicator.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: threat.indicator.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: threat.indicator.x509.public_key_size
+  type: long
+- description: Date/Time indicating when client certificate is no longer considered valid.
+  name: tls.client.not_after
+  type: date
+- description: Date/Time indicating when client certificate is first considered valid.
+  name: tls.client.not_before
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: tls.client.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: tls.client.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: tls.client.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: tls.client.x509.public_key_size
+  type: long
+- description: Boolean flag indicating if the TLS negotiation was successful and transitioned to an encrypted tunnel.
+  name: tls.established
+  type: boolean
+- description: Boolean flag indicating if this TLS connection was resumed from an existing TLS negotiation.
+  name: tls.resumed
+  type: boolean
+- description: Timestamp indicating when server certificate is no longer considered valid.
+  name: tls.server.not_after
+  type: date
+- description: Timestamp indicating when server certificate is first considered valid.
+  name: tls.server.not_before
+  type: date
+- description: Time at which the certificate is no longer considered valid.
+  name: tls.server.x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: tls.server.x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: tls.server.x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: tls.server.x509.public_key_size
+  type: long
+- description: Port of the request, such as 443.
+  name: url.port
+  type: long
+- description: |-
+    Scores can range from 0.0 to 10.0, with 10.0 being the most severe.
+    Base scores cover an assessment for exploitability metrics (attack vector, complexity, privileges, and user interaction), impact metrics (confidentiality, integrity, and availability), and scope. For example (https://www.first.org/cvss/specification-document)
+  name: vulnerability.score.base
+  type: float
+- description: |-
+    Scores can range from 0.0 to 10.0, with 10.0 being the most severe.
+    Environmental scores cover an assessment for any modified Base metrics, confidentiality, integrity, and availability requirements. For example (https://www.first.org/cvss/specification-document)
+  name: vulnerability.score.environmental
+  type: float
+- description: |-
+    Scores can range from 0.0 to 10.0, with 10.0 being the most severe.
+    Temporal scores cover an assessment for code maturity, remediation level, and confidence. For example (https://www.first.org/cvss/specification-document)
+  name: vulnerability.score.temporal
+  type: float
+- description: Time at which the certificate is no longer considered valid.
+  name: x509.not_after
+  type: date
+- description: Time at which the certificate is first considered valid.
+  name: x509.not_before
+  type: date
+- description: Exponent used to derive the public key. This is algorithm specific.
+  name: x509.public_key_exponent
+  type: long
+- description: The size of the public key space in bits.
+  name: x509.public_key_size
+  type: long
