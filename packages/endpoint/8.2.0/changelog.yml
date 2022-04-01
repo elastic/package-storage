@@ -1,0 +1,90 @@
+##
+## This file documents the package changelog
+##
+
+- version: 1.3.0-dev.0
+  changes:
+    - description: TBD
+      type: enhancement
+      link: TBD
+- version: 1.2.2
+  changes:
+    - description: malware_signature.primary.matches should be keyword
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/212
+- version: 1.2.1
+  changes:
+    - description: remake security_attributes generation
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/204
+    - description: Increase alerts nested_fields limit
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/205
+- version: 1.2.0
+  changes:
+    - description: Set Minimum Kibana version to 7.16
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/179
+    - description: Remove unused exceptionable
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/180
+    - description: Added Endpoint.metrics.documents_volume to metrics stream
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/188
+    - description: Update "metadata_current" transform description
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/190
+    - description: Add metadata-united transform
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/191
+    - description: Add new data streams for endpoint actions
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/198
+    - description: Add endpoint fields for credential protection and memory scan
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/200
+    - description: Add process security_attributes
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/201
+- version: 1.1.1
+  changes:
+    - description: convert Events to be an object field
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/185
+- version: 1.1.0
+  changes:
+    - description: Changes for multi process ransomware
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/153
+    - description: Add malware_signature for Memory protection alerts
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/155
+    - description: Add memory_protection fields to policy response
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/162
+    - description: Don't index memory region strings
+      type: bugfix
+      link: https://github.com/elastic/endpoint-package/pull/167
+    - description: Add Endpoint.capabilities to metadata
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/168
+    - description: Minimum supported Kibana for this version is 7.15
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/169
+    - description: Add more behavior protection fields (ip, code_signature, dns, registry)
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/170
+    - description: Add Rule detection event schema
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/177
+    - description: Add all code_signature ECS fields
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/178
+    - description: update to ECS 1.11.0
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/pull/173
+- version: 1.0.0
+  changes:
+    - description: GA Release
+      type: enhancement
+      link: https://github.com/elastic/endpoint-package/tree/v1.0.0
