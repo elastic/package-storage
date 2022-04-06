@@ -29,6 +29,9 @@
 - description: Stores the from email address from the RFC5322 From - header field.
   name: email.from.address
   type: keyword
+- description: Stores the from email address to the RFC5322 From - header field.
+  name: email.to.address
+  type: keyword
 - description: A brief summary of the topic of the message
   ignore_above: 1024
   multi_fields:
