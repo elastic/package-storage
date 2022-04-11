@@ -6,7 +6,7 @@
     "title": "[Cisco Duo] Failed Login attempts",
     "uiStateJSON": "{\"isLayerTOCOpen\":true,\"openTOCDetails\":[]}"
   },
-  "coreMigrationVersion": "7.15.0",
+  "coreMigrationVersion": "7.17.2",
   "id": "cisco_duo-158c0e80-148c-11ec-9386-31989719f9db",
   "migrationVersion": {
     "map": "7.14.0"
@@ -18,7 +18,5 @@
       "type": "index-pattern"
     }
   ],
-  "type": "map",
-  "updated_at": "2021-09-13T12:14:03.121Z",
-  "version": "WzE5NDQsMV0="
+  "type": "map"
 }
