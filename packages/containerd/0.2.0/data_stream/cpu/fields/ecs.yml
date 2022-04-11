@@ -18,3 +18,10 @@
   dimension: true
   name: container.id
   type: keyword
+- description: |
+    Total CPU usage normalized by the number of CPU cores.
+  format: percent
+  metric_type: gauge
+  name: container.cpu.usage
+  type: scaled_float
+  unit: percent

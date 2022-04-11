@@ -18,3 +18,16 @@
   dimension: true
   name: container.id
   type: keyword
+- description: |
+    Bytes read during the life of the container
+  format: bytes
+  metric_type: counter
+  name: container.disk.read.bytes
+  type: long
+- description: |
+    Bytes written during the life of the container
+  format: bytes
+  metric_type: counter
+  name: container.disk.write.bytes
+  type: long
+  unit: byte
