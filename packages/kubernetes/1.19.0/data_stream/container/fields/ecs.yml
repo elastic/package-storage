@@ -23,3 +23,17 @@
 - description: Runtime managing this container.
   name: container.runtime
   type: keyword
+- description: |
+    Total CPU usage normalized by the number of CPU cores.
+  format: percent
+  metric_type: gauge
+  name: container.cpu.usage
+  type: scaled_float
+  unit: percent
+- description: |
+    Memory usage percentage.
+  format: percent
+  metric_type: gauge
+  name: container.memory.usage
+  type: scaled_float
+  unit: percent
