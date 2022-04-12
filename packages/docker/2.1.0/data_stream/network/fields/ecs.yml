@@ -251,3 +251,15 @@
     For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.
   name: host.type
   type: keyword
+- description: |
+    Total number of outgoing bytes.
+  format: bytes
+  metric_type: counter
+  name: container.network.egress.bytes
+  type: long
+- description: |
+    Total number of incoming bytes.
+  format: bytes
+  metric_type: counter
+  name: container.network.ingress.bytes
+  type: long

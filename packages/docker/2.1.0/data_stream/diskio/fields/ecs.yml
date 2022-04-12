@@ -251,3 +251,16 @@
     For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.
   name: host.type
   type: keyword
+- description: |
+    Bytes read during the life of the container
+  format: bytes
+  metric_type: counter
+  name: container.disk.read.bytes
+  type: long
+- description: |
+    Bytes written during the life of the container
+  format: bytes
+  metric_type: counter
+  name: container.disk.write.bytes
+  type: long
+  unit: byte

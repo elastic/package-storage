@@ -251,3 +251,10 @@
     For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.
   name: host.type
   type: keyword
+- description: |
+    Memory usage percentage.
+  format: percent
+  metric_type: gauge
+  name: container.memory.usage
+  type: scaled_float
+  unit: percent
