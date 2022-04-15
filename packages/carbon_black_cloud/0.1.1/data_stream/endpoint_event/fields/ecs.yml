@@ -64,6 +64,11 @@
 - description: Host ip addresses.
   name: host.ip
   type: ip
+- description: |-
+    Name of the host.
+    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
+  name: host.name
+  type: keyword
 - description: OS family (such as redhat, debian, freebsd, windows).
   name: host.os.family
   type: keyword
@@ -180,4 +185,9 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
   type: keyword

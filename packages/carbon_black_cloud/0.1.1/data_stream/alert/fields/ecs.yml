@@ -56,6 +56,11 @@
   name: host.ip
   type: ip
 - description: |-
+    Name of the host.
+    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
+  name: host.name
+  type: keyword
+- description: |-
     Use the `os.type` field to categorize the operating system into one of the broad commercial families.
     One of these following values should be used (lowercase): linux, macos, unix, windows.
     If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
@@ -98,6 +103,11 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
