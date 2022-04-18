@@ -1,6 +1,47 @@
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: client.as.number
+  type: long
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: client.as.organization.name
+  type: keyword
 - description: Bytes sent from the client to the server.
   name: client.bytes
   type: long
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: client.domain
+  type: keyword
+- description: City name.
+  name: client.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: client.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: client.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: client.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  name: client.geo.location
+  type: geo_point
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: client.geo.name
+  type: keyword
+- description: Region ISO code.
+  name: client.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: client.geo.region_name
+  type: keyword
 - description: IP address of the client (IPv4 or IPv6).
   name: client.ip
   type: ip
@@ -9,6 +50,11 @@
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: client.mac
   type: keyword
+- description: |-
+    Translated IP of source based NAT sessions (e.g. internal client to internet).
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: client.nat.ip
+  type: ip
 - description: |-
     Translated port of source based NAT sessions (e.g. internal client to internet).
     Typically connections traversing load balancers, firewalls, or routers.
@@ -20,6 +66,18 @@
 - description: Port of the client.
   name: client.port
   type: long
+- description: User email address.
+  name: client.user.email
+  type: keyword
+- description: Name of the group.
+  name: client.user.group.name
+  type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: client.user.name
+  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: destination.as.number
   type: long
@@ -312,6 +370,9 @@
 - description: Vendor name of the observer.
   name: observer.vendor
   type: keyword
+- description: Hostname of the observer.
+  name: observer.hostname
+  type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
   type: keyword
@@ -336,9 +397,45 @@
 - description: Name of the ruleset, policy, group, or parent category in which the rule used to generate this event is a member.
   name: rule.ruleset
   type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: server.as.number
+  type: long
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: server.as.organization.name
+  type: keyword
 - description: Bytes sent from the server to the client.
   name: server.bytes
   type: long
+- description: City name.
+  name: server.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: server.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: server.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: server.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  name: server.geo.location
+  type: geo_point
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: server.geo.name
+  type: keyword
+- description: Region ISO code.
+  name: server.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: server.geo.region_name
+  type: keyword
 - description: IP address of the server (IPv4 or IPv6).
   name: server.ip
   type: ip
@@ -347,6 +444,11 @@
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: server.mac
   type: keyword
+- description: |-
+    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
+    Typically used with load balancers, firewalls, or routers.
+  name: server.nat.ip
+  type: ip
 - description: |-
     Translated port of destination based NAT sessions (e.g. internet to private DMZ)
     Typically used with load balancers, firewalls, or routers.
@@ -358,6 +460,9 @@
 - description: Port of the server.
   name: server.port
   type: long
+- description: User email address.
+  name: server.user.email
+  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: source.as.number
   type: long
