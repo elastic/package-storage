@@ -1,6 +1,11 @@
 - description: Bytes sent from the client to the server.
   name: client.bytes
   type: long
+- description: |-
+    The domain name of the client system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: client.domain
+  type: keyword
 - description: IP address of the client (IPv4 or IPv6).
   name: client.ip
   type: ip
@@ -20,6 +25,11 @@
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
@@ -55,6 +65,9 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  type: keyword
+- description: Unique identifier for the group on the system/platform.
+  name: group.id
   type: keyword
 - description: |-
     Total bytes transferred in both directions.
@@ -115,25 +128,17 @@
 - description: Bytes sent from the source to the destination.
   name: source.bytes
   type: long
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: source.domain
+  type: keyword
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
   type: ip
 - description: Port of the source.
   name: source.port
   type: long
-- description: |-
-    The domain name of the client system.
-    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
-  name: client.domain
-  type: keyword
-- description: Unique identifier for the group on the system/platform.
-  name: group.id
-  type: keyword
-- description: |-
-    The domain name of the source system.
-    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
-  name: source.domain
-  type: keyword
 - description: Unique identifier of the user.
   name: user.id
   type: keyword

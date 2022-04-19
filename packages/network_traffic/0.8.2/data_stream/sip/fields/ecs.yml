@@ -22,6 +22,11 @@
   name: ecs.version
   type: keyword
 - description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: |-
     This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
@@ -47,6 +52,31 @@
     The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data coming in at a regular interval or not.
   name: event.kind
   type: keyword
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
+  name: event.original
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
+    `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
+    Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
+    Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
+    Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
+  name: event.outcome
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
+  type: keyword
+- description: |-
+    Sequence number of the event.
+    The sequence number is a value published by some event sources, to make the exact ordering of events unambiguous, regardless of the timestamp precision.
+  name: event.sequence
+  type: long
 - description: event.start contains the date when the event started or when the activity was first observed.
   name: event.start
   type: date
@@ -55,6 +85,12 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  type: keyword
+- description: |-
+    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
+    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
+    The field value must be normalized to lowercase for querying.
+  name: network.application
   type: keyword
 - description: |-
     Total bytes transferred in both directions.
@@ -85,6 +121,9 @@
 - description: Host IP address when the source IP address is the proxy.
   name: network.forwarded_ip
   type: ip
+- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
+  name: network.iana_number
+  type: keyword
 - description: |-
     In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
     The field value must be normalized to lowercase for querying.
@@ -100,9 +139,15 @@
     The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  type: keyword
 - description: Bytes sent from the server to the client.
   name: server.bytes
   type: long
@@ -121,21 +166,6 @@
 - description: Port of the source.
   name: source.port
   type: long
-- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
-  name: network.iana_number
-  type: keyword
-- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
-  name: related.hosts
-  type: keyword
-- description: All the user names or other user identifiers seen on the event.
-  name: related.user
-  type: keyword
-- description: |-
-    When a specific application or service is identified from network connection details (source/dest IPs, ports, certificates, or wire format), this field captures the application's or service's name.
-    For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
-    The field value must be normalized to lowercase for querying.
-  name: network.application
-  type: keyword
 - description: Short name or login of the user.
   multi_fields:
     - name: text

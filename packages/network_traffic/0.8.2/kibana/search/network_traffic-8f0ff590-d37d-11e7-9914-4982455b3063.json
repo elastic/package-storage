@@ -6,7 +6,7 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"exists\":{\"field\":\"tls.detailed.server_certificate.public_key_size\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"tls.detailed.server_certificate.public_key_size\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"}}],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:network_traffic.tls\"},\"version\":true}"
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"exists\":{\"field\":\"tls.server.x509.public_key_size\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"tls.server.x509.public_key_size\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"}}],\"highlightAll\":true,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:network_traffic.tls\"},\"version\":true}"
     },
     "sort": [
       [
