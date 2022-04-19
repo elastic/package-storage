@@ -1,9 +1,23 @@
 pull_request_rules:
-  - name: Automatic merge for snapshot branch when CI passes and author is elasticmachine
+  - name: Automatic merge for snapshot branch when CI passes and author is elasticmachine or apmmachine
     conditions:
-      - check-success=package-storage/pr-merge
-      - base=snapshot
-      - author=elasticmachine
+      - or:
+        - author=elasticmachine
+        - author=apmmachine
+      - and:
+        - check-success=package-storage/pr-merge
+        - base=snapshot
     actions:
       merge:
         method: squash
+
+  - name: Delete upstream branch after merging changes automatically  or it's closed
+    conditions:
+      - or:
+        - merged
+        - closed
+      - or:
+        - head~=^update-snapshot.*
+        - head~=^update-apm.*
+    actions:
+      delete_head_branch:
