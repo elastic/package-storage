@@ -10,3 +10,14 @@ pull_request_rules:
     actions:
       merge:
         method: squash
+
+  - name: Delete upstream branch after merging changes automatically  or it's closed
+    conditions:
+      - or:
+        - merged
+        - closed
+      - or:
+        - head~=^update-snapshot.*
+        - head~=^update-apm.*
+    actions:
+      delete_head_branch:
