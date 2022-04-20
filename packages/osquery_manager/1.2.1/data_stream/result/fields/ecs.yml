@@ -222,6 +222,8 @@
   name: file.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: file.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -562,6 +564,8 @@
   name: threat.enrichments.indicator.file.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: threat.enrichments.indicator.file.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -598,6 +602,8 @@
   name: threat.enrichments.indicator.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: threat.enrichments.indicator.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -673,6 +679,8 @@
   name: threat.indicator.file.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: threat.indicator.file.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -709,6 +717,8 @@
   name: threat.indicator.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: threat.indicator.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -727,6 +737,8 @@
   name: tls.client.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: tls.client.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -751,6 +763,8 @@
   name: tls.server.x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: tls.server.x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
@@ -781,6 +795,8 @@
   name: x509.not_before
   type: date
 - description: Exponent used to derive the public key. This is algorithm specific.
+  doc_values: false
+  index: false
   name: x509.public_key_exponent
   type: long
 - description: The size of the public key space in bits.
