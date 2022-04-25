@@ -1589,7 +1589,9 @@
 - description: Internal product name of the file, provided at compile-time.
   name: process.parent.pe.product
   type: keyword
-- description: Identifier of the group of processes the process belongs to.
+- description: |-
+    Deprecated for removal in next major version release. This field is superseded by `process.group_leader.pid`.
+    Identifier of the group of processes the process belongs to.
   name: process.parent.pgid
   type: long
 - description: Process id.
@@ -1644,7 +1646,9 @@
 - description: Internal product name of the file, provided at compile-time.
   name: process.pe.product
   type: keyword
-- description: Identifier of the group of processes the process belongs to.
+- description: |-
+    Deprecated for removal in next major version release. This field is superseded by `process.group_leader.pid`.
+    Identifier of the group of processes the process belongs to.
   name: process.pgid
   type: long
 - description: Process id.
