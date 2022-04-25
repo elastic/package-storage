@@ -73,6 +73,18 @@
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
   type: keyword
+- description: The email address of the sender, typically from the RFC 5322 `From:` header field.
+  name: email.from.address
+  type: keyword
+- description: The email address of recipient
+  name: email.to.address
+  type: keyword
+- description: A brief summary of the topic of the message.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: email.subject
+  type: keyword
 - description: |-
     Timestamp when an event arrived in the central data store.
     This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
