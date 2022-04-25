@@ -103,6 +103,24 @@
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
   type: keyword
+- description: The email address of CC recipient
+  name: email.cc.address
+  type: keyword
+- description: The email address of the sender, typically from the RFC 5322 `From:` header field.
+  name: email.from.address
+  type: keyword
+- description: Per RFC 5322, specifies the address responsible for the actual transmission of the message.
+  name: email.sender.address
+  type: keyword
+- description: The email address of recipient
+  name: email.to.address
+  type: keyword
+- description: A brief summary of the topic of the message.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: email.subject
+  type: keyword
 - description: Error code describing the error.
   name: error.code
   type: keyword
