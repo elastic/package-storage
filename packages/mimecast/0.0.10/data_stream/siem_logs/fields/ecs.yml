@@ -136,3 +136,40 @@
     Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
   name: event.outcome
   type: keyword
+- description: City name.
+  name: source.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: source.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  level: core
+  name: source.geo.location
+  type: geo_point
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
+- description: Client ASN number.
+  name: source.as.asn
+  type: long
+- description: Client Organization name.
+  name: source.as.organization_name
+  type: keyword
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: source.as.number
+  type: long
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: source.as.organization.name
+  type: keyword

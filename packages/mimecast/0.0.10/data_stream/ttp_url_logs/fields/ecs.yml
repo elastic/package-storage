@@ -55,9 +55,6 @@
 - description: The name of the rule or signature generating the event.
   name: rule.name
   type: keyword
-- description: User email address.
-  name: user.email
-  type: keyword
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
@@ -67,20 +64,12 @@
       type: match_only_text
   name: url.original
   type: wildcard
-- description: Short name or login of the user.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user.name
-  type: keyword
-- description: |-
-    Name of the directory the user is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: user.domain
-  type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
+- description: User email address.
+  name: user.email
+  type: keyword
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
   type: keyword
