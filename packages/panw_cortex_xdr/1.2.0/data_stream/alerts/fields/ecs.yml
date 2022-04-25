@@ -12,6 +12,18 @@
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: The email address of the sender, typically from the RFC 5322 `From:` header field.
+  name: email.from.address
+  type: keyword
+- description: The email address of recipient
+  name: email.to.address
+  type: keyword
+- description: A brief summary of the topic of the message.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: email.subject
+  type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy.
     `event.kind` gives high-level information about what type of information the event contains, without being specific to the contents of the event. For example, values of this field distinguish alert events from metric events.
