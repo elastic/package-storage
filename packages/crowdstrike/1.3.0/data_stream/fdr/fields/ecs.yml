@@ -321,7 +321,9 @@
       type: match_only_text
   name: process.parent.name
   type: keyword
-- description: Identifier of the group of processes the process belongs to.
+- description: |-
+    Deprecated for removal in next major version release. This field is superseded by `process.group_leader.pid`.
+    Identifier of the group of processes the process belongs to.
   name: process.pgid
   type: long
 - description: Process id.
