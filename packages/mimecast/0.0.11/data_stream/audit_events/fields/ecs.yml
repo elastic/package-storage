@@ -1,50 +1,11 @@
-- description: |-
-    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
-    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
-  doc_values: false
-  index: false
-  name: event.original
-  type: keyword
-- description: |-
-    The action captured by the event.
-    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
-  name: event.action
-  type: keyword
-- description: User email address.
-  name: user.email
-  type: keyword
-- description: Unique ID to describe the event.
-  name: event.id
-  type: keyword
-- description: List of keywords used to tag each event.
-  name: tags
-  type: keyword
-- description: |-
-    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
-    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
-  name: ecs.version
-  type: keyword
-- description: IP address of the client (IPv4 or IPv6).
-  name: client.ip
-  type: ip
-- description: Name of the file including the extension, without the directory.
-  name: file.name
-  type: keyword
-- description: Short name or login of the user.
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: client.as.number
+  type: long
+- description: Organization name.
   multi_fields:
     - name: text
       type: match_only_text
-  name: user.name
-  type: keyword
-- description: |-
-    Name of the directory the user is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: user.domain
-  type: keyword
-- description: |-
-    File extension, excluding the leading dot.
-    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
-  name: file.extension
+  name: client.as.organization.name
   type: keyword
 - description: City name.
   name: client.geo.city_name
@@ -59,7 +20,6 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: client.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -68,39 +28,64 @@
 - description: Region name.
   name: client.geo.region_name
   type: keyword
-- description: Client ASN number.
-  name: client.as.asn
-  type: long
-- description: Client Organization name.
-  name: client.as.organization_name
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
   type: keyword
-- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
-  name: client.as.number
-  type: long
-- description: Organization name.
+- description: The email address of the sender, typically from the RFC 5322 `From:` header field.
+  name: email.from.address
+  type: keyword
+- description: The date and time the email message was composed. Many email clients will fill in this value automatically when the message is sent by a user.
+  name: email.origination_timestamp
+  type: date
+- description: A brief summary of the topic of the message.
   multi_fields:
     - name: text
       type: match_only_text
-  name: client.as.organization.name
-  type: keyword
-- description: The email address(es) of the message recipient(s)
-  name: email.to.address
-  type: keyword
-- description: Stores the from email address from the RFC5322 From - header field.
-  name: email.from.address
-  type: keyword
-- description: A brief summary of the topic of the message
-  ignore_above: 1024
-  multi_fields:
-    - default_field: false
-      name: text
-      norms: false
-      type: text
   name: email.subject
   type: keyword
-- description: The date and time the email message was composed. Many email clients will fill this in automatically when the message is sent by a user.
-  name: email.origination_timestamp
+- description: The email address of recipient
+  name: email.to.address
+  type: keyword
+- description: |-
+    The action captured by the event.
+    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
+  name: event.action
+  type: keyword
+- description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
   type: date
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
+  name: event.original
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
+  type: keyword
+- description: |-
+    File extension, excluding the leading dot.
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: file.extension
+  type: keyword
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
 - description: |-
     File size in bytes.
     Only relevant when `file.type` is "file".
@@ -111,4 +96,21 @@
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  type: keyword
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
+- description: |-
+    Name of the directory the user is a member of.
+    For example, an LDAP or Active Directory domain name.
+  name: user.domain
+  type: keyword
+- description: User email address.
+  name: user.email
+  type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user.name
   type: keyword
