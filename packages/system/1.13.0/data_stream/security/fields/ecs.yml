@@ -153,6 +153,9 @@
   name: process.parent.name
   type: keyword
 - description: Process id.
+  name: process.parent.pid
+  type: long
+- description: Process id.
   name: process.pid
   type: long
 - description: |-
