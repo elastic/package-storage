@@ -175,16 +175,16 @@
   name: event.timezone
   type: keyword
 - description: |-
-    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
-    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
-    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
-  name: event.category
-  type: keyword
-- description: |-
     This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  type: keyword
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
+    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
+    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
+  name: event.category
   type: keyword
 - description: |-
     Array of file attributes.
@@ -328,9 +328,6 @@
 - description: Host IP address when the source IP address is the proxy.
   name: network.forwarded_ip
   type: ip
-- description: Name given by operators to sections of their network.
-  name: network.name
-  type: keyword
 - description: |-
     Total packets transferred in both directions.
     If `source.packets` and `destination.packets` are known, `network.packets` is their sum.
@@ -365,6 +362,15 @@
     MAC addresses of the observer.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: observer.mac
+  type: keyword
+- description: |-
+    Custom name of the observer.
+    This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization.
+    If no custom name is needed, the field can be left empty.
+  name: observer.name
+  type: keyword
+- description: Observer serial number.
+  name: observer.serial_number
   type: keyword
 - description: |-
     Process name.
@@ -421,9 +427,6 @@
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: server.mac
   type: keyword
-- description: IP address of the server (IPv4 or IPv6).
-  name: server.ip
-  type: ip
 - description: |-
     The domain name of the server system.
     This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
@@ -678,4 +681,16 @@
   type: keyword
 - description: Region name.
   name: client.geo.region_name
+  type: keyword
+- description: Unique identifier for the organization.
+  name: organization.id
+  type: keyword
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: organization.name
+  type: keyword
+- description: Name given by operators to sections of their network.
+  name: network.name
   type: keyword
