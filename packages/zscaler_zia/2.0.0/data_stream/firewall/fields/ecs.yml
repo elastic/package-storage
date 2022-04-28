@@ -1,5 +1,14 @@
-- description: Bytes sent from the client to the server.
-  name: client.bytes
+- description: Bytes sent from the destination to the source.
+  name: destination.bytes
+  type: long
+- description: Country name.
+  name: destination.geo.country_name
+  type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: Port of the destination.
+  name: destination.port
   type: long
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
@@ -12,6 +21,11 @@
   name: event.action
   type: keyword
 - description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
+- description: |-
     Hostname of the host.
     It normally contains what the `hostname` command returns on the host machine.
   name: host.hostname
@@ -21,6 +35,11 @@
     For example, the original event identifies the network connection being from a specific web service in a `https` network connection, like `facebook` or `twitter`.
     The field value must be normalized to lowercase for querying.
   name: network.application
+  type: keyword
+- description: |-
+    A hash of source and destination IPs and ports, as well as the protocol used in a communication. This is a tool-agnostic standard to identify flows.
+    Learn more at https://github.com/corelight/community-id-spec.
+  name: network.community_id
   type: keyword
 - description: |-
     In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
@@ -38,12 +57,15 @@
 - description: The name of the rule or signature generating the event.
   name: rule.name
   type: keyword
-- description: Bytes sent from the server to the client.
-  name: server.bytes
+- description: Bytes sent from the source to the destination.
+  name: source.bytes
   type: long
-- description: Country name.
-  name: server.geo.country_name
-  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Port of the source.
+  name: source.port
+  type: long
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword

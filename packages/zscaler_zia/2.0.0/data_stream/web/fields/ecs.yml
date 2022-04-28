@@ -1,17 +1,6 @@
-- description: IP address of the client (IPv4 or IPv6).
-  name: client.ip
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
   type: ip
-- description: |-
-    Translated IP of source based NAT sessions (e.g. internal client to internet).
-    Typically connections traversing load balancers, firewalls, or routers.
-  name: client.nat.ip
-  type: ip
-- description: Short name or login of the user.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: client.user.name
-  type: keyword
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
@@ -63,6 +52,20 @@
   type: keyword
 - description: Name of the ruleset, policy, group, or parent category in which the rule used to generate this event is a member.
   name: rule.ruleset
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: |-
+    Translated ip of source based NAT sessions (e.g. internal client to internet)
+    Typically connections traversing load balancers, firewalls, or routers.
+  name: source.nat.ip
+  type: ip
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: source.user.name
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
@@ -116,9 +119,6 @@
 - description: Username of the request.
   name: url.username
   type: keyword
-- description: User email address.
-  name: user.email
-  type: keyword
 - description: Name of the device.
   name: user_agent.device.name
   type: keyword
@@ -148,4 +148,7 @@
   type: keyword
 - description: Version of the user agent.
   name: user_agent.version
+  type: keyword
+- description: User email address.
+  name: user.email
   type: keyword
