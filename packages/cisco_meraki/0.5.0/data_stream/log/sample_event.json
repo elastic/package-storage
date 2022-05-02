@@ -1,0 +1,95 @@
+{
+    "@timestamp": "2021-11-23T18:13:18.348Z",
+    "agent": {
+        "ephemeral_id": "b81987d6-cf2e-4101-af0b-0415b1576f88",
+        "hostname": "docker-fleet-agent",
+        "id": "9e1c0aac-8d48-4c33-a9f5-98e770f2028e",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "7.17.0"
+    },
+    "cisco_meraki": {
+        "event_subtype": "ids_alerted",
+        "event_type": "security_event",
+        "security": {
+            "decision": "allowed",
+            "dhost": "D0-AB-D5-7B-43-73",
+            "priority": "1",
+            "signature": "1:29708:4"
+        }
+    },
+    "data_stream": {
+        "dataset": "cisco_meraki.log",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "destination": {
+        "ip": "10.0.3.162",
+        "port": 56391
+    },
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "9e1c0aac-8d48-4c33-a9f5-98e770f2028e",
+        "snapshot": false,
+        "version": "7.17.0"
+    },
+    "event": {
+        "action": "ids-signature-matched",
+        "agent_id_status": "verified",
+        "category": [
+            "network",
+            "threat"
+        ],
+        "dataset": "cisco_meraki.log",
+        "ingested": "2022-04-26T04:02:28Z",
+        "original": "\u003c134\u003e1 1637691198.348361125 MX84 security_event ids_alerted signature=1:29708:4 priority=1 timestamp=1637691198.330873 dhost=D0:AB:D5:7B:43:73 direction=ingress protocol=tcp/ip src=67.43.156.12:80 dst=10.0.3.162:56391 decision=allowed message: BROWSER-IE Microsoft Internet Explorer CSS uninitialized object access attempt detected",
+        "type": [
+            "info",
+            "indicator"
+        ]
+    },
+    "input": {
+        "type": "udp"
+    },
+    "log": {
+        "source": {
+            "address": "192.168.208.4:40317"
+        }
+    },
+    "network": {
+        "direction": "ingress",
+        "protocol": "tcp/ip"
+    },
+    "observer": {
+        "hostname": "MX84"
+    },
+    "source": {
+        "as": {
+            "number": 35908
+        },
+        "geo": {
+            "continent_name": "Asia",
+            "country_iso_code": "BT",
+            "country_name": "Bhutan",
+            "location": {
+                "lat": 27.5,
+                "lon": 90.5
+            }
+        },
+        "ip": "67.43.156.12",
+        "port": 80
+    },
+    "tags": [
+        "preserve_original_event",
+        "cisco-meraki",
+        "forwarded"
+    ],
+    "threat": {
+        "indicator": {
+            "description": " BROWSER-IE Microsoft Internet Explorer CSS uninitialized object access attempt detected",
+            "last_seen": "2021-11-23T18:13:18.330Z"
+        }
+    }
+}
