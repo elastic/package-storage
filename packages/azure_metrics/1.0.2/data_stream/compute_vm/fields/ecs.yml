@@ -1,0 +1,158 @@
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Service address
+  name: service.address
+  type: keyword
+- description: |-
+    The type of the service data is collected from.
+    The type can be used to group and correlate logs and metrics from one service type.
+    Example: If logs or metrics are collected from Elasticsearch, `service.type` would be `elasticsearch`.
+  name: service.type
+  type: keyword
+- description: Unique container id.
+  name: container.id
+  type: keyword
+- description: Container name.
+  name: container.name
+  type: keyword
+- description: Runtime managing this container.
+  name: container.runtime
+  type: keyword
+- description: Name of the image the container was built on.
+  name: container.image.name
+  type: keyword
+- description: |-
+    A host is defined as a general computing instance.
+    ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes.
+  fields:
+    - description: Operating system architecture.
+      name: architecture
+      type: keyword
+    - description: |-
+        Percent CPU used which is normalized by the number of CPU cores and it ranges from 0 to 1.
+        Scaling factor: 1000.
+        For example: For a two core host, this value should be the average of the two cores, between 0 and 1.
+      name: cpu.usage
+      type: scaled_float
+    - description: The total number of bytes (gauge) read successfully (aggregated from all disks) since the last metric collection.
+      name: disk.read.bytes
+      type: long
+    - description: The total number of bytes (gauge) written successfully (aggregated from all disks) since the last metric collection.
+      name: disk.write.bytes
+      type: long
+    - description: |-
+        Name of the domain of which the host is a member.
+        For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider.
+      name: domain
+      type: keyword
+    - description: City name.
+      name: geo.city_name
+      type: keyword
+    - description: Two-letter code representing continent's name.
+      name: geo.continent_code
+      type: keyword
+    - description: Name of the continent.
+      name: geo.continent_name
+      type: keyword
+    - description: Country ISO code.
+      name: geo.country_iso_code
+      type: keyword
+    - description: Country name.
+      name: geo.country_name
+      type: keyword
+    - description: Longitude and latitude.
+      name: geo.location
+      type: geo_point
+    - description: |-
+        User-defined description of a location, at the level of granularity they care about.
+        Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+        Not typically used in automated geolocation.
+      name: geo.name
+      type: keyword
+    - description: |-
+        Postal code associated with the location.
+        Values appropriate for this field may also be known as a postcode or ZIP code and will vary widely from country to country.
+      name: geo.postal_code
+      type: keyword
+    - description: Region ISO code.
+      name: geo.region_iso_code
+      type: keyword
+    - description: Region name.
+      name: geo.region_name
+      type: keyword
+    - description: The time zone of the location, such as IANA time zone name.
+      name: geo.timezone
+      type: keyword
+    - description: |-
+        Hostname of the host.
+        It normally contains what the `hostname` command returns on the host machine.
+      name: hostname
+      type: keyword
+    - description: |-
+        Unique host id.
+        As hostname is not always unique, use values that are meaningful in your environment.
+        Example: The current usage of `beat.name`.
+      name: id
+      type: keyword
+    - description: Host ip addresses.
+      name: ip
+      type: ip
+    - description: |-
+        Host MAC addresses.
+        The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+      name: mac
+      type: keyword
+    - description: |-
+        Name of the host.
+        It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
+      name: name
+      type: keyword
+    - description: The number of bytes (gauge) sent out on all network interfaces by the host since the last metric collection.
+      name: network.egress.bytes
+      type: long
+    - description: The number of packets (gauge) sent out on all network interfaces by the host since the last metric collection.
+      name: network.egress.packets
+      type: long
+    - description: The number of bytes received (gauge) on all network interfaces by the host since the last metric collection.
+      name: network.ingress.bytes
+      type: long
+    - description: The number of packets (gauge) received on all network interfaces by the host since the last metric collection.
+      name: network.ingress.packets
+      type: long
+    - description: OS family (such as redhat, debian, freebsd, windows).
+      name: os.family
+      type: keyword
+    - description: Operating system name, including the version or code name.
+      name: os.full
+      type: keyword
+    - description: Operating system kernel version as a raw string.
+      name: os.kernel
+      type: keyword
+    - description: Operating system name, without the version.
+      name: os.name
+      type: keyword
+    - description: Operating system platform (such centos, ubuntu, windows).
+      name: os.platform
+      type: keyword
+    - description: |-
+        Use the `os.type` field to categorize the operating system into one of the broad commercial families.
+        One of these following values should be used (lowercase): linux, macos, unix, windows.
+        If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+      name: os.type
+      type: keyword
+    - description: Operating system version as a raw string.
+      name: os.version
+      type: keyword
+    - description: |-
+        Type of host.
+        For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.
+      name: type
+      type: keyword
+    - description: Seconds the host has been up.
+      name: uptime
+      type: long
+  name: host
+  type: group
