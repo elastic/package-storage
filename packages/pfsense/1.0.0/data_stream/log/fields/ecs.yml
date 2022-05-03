@@ -134,6 +134,11 @@
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
   type: keyword
+- description: |-
+    Duration of the event in nanoseconds.
+    If event.start and event.end are known this value should be the difference between the end and start time.
+  name: event.duration
+  type: long
 - description: Unique ID to describe the event.
   name: event.id
   type: keyword
@@ -163,6 +168,21 @@
     Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
     Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
   name: event.outcome
+  type: keyword
+- description: |-
+    Source of the event.
+    Event transports such as Syslog or the Windows Event Log typically mention the source of an event. It can be the name of the software that generated the event (e.g. Sysmon, httpd), or of a subsystem of the operating system (kernel, Microsoft-Windows-Security-Auditing).
+  name: event.provider
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
+  type: keyword
+- description: |-
+    This field should be populated when the event's timestamp does not include timezone information already (e.g. default Syslog timestamps). It's optional otherwise.
+    Acceptable timezone formats are: a canonical ID (e.g. "Europe/Amsterdam"), abbreviated (e.g. "EST") or an HH:mm differential (e.g. "-05:00").
+  name: event.timezone
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
@@ -445,34 +465,17 @@
   name: http.version
   type: keyword
 - description: |-
+    Mime type of the body of the response.
+    This value must only be populated based on the content of the response body, not on the `Content-Type` header. Comparing the mime type of a response with the response's Content-Type header can be helpful in detecting misconfigured servers.
+  name: http.response.mime_type
+  type: keyword
+- description: |-
     The type of the observer the data is coming from.
     There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`.
   name: observer.type
   type: keyword
 - description: Vendor name of the observer.
   name: observer.vendor
-  type: keyword
-- description: City name.
-  name: observer.geo.city_name
-  type: keyword
-- description: Name of the continent.
-  name: observer.geo.continent_name
-  type: keyword
-- description: Country ISO code.
-  name: observer.geo.country_iso_code
-  type: keyword
-- description: Country name.
-  name: observer.geo.country_name
-  type: keyword
-- description: Region ISO code.
-  name: observer.geo.region_iso_code
-  type: keyword
-- description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
-  name: observer.geo.location
-  type: geo_point
-- description: Region name.
-  name: observer.geo.region_name
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
@@ -553,3 +556,14 @@
 - description: Type of Filebeat input.
   name: input.type
   type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
+- description: Process id.
+  name: process.pid
+  type: long
