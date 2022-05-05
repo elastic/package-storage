@@ -1,4 +1,12 @@
 - description: |-
+    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: destination.address
+  type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
+- description: |-
     An array containing an object for each answer section returned by the server.
     The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
     Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
@@ -28,9 +36,6 @@
     If the name field contains non-printable characters (below 32 or above 126), those characters should be represented as escaped base 10 integers (\DDD). Back slashes and quotes should be escaped. Tabs, carriage returns, and line feeds should be converted to \t, \r, and \n respectively.
   name: dns.question.name
   type: keyword
-- description: The type of record being queried.
-  name: dns.question.type
-  type: keyword
 - description: |-
     The highest registered domain, stripped of the subdomain.
     For example, the registered domain for "foo.example.com" is "example.com".
@@ -47,6 +52,9 @@
     This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
   name: dns.question.top_level_domain
   type: keyword
+- description: The type of record being queried.
+  name: dns.question.type
+  type: keyword
 - description: |-
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
@@ -61,11 +69,34 @@
   name: ecs.version
   type: keyword
 - description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
+  type: date
+- description: Unique ID to describe the event.
+  name: event.id
+  type: keyword
+- description: |-
     Timestamp when an event arrived in the central data store.
     This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event.
     In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
   name: event.ingested
   type: date
+- description: |-
+    This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy.
+    `event.kind` gives high-level information about what type of information the event contains, without being specific to the contents of the event. For example, values of this field distinguish alert events from metric events.
+    The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data coming in at a regular interval or not.
+  name: event.kind
+  type: keyword
+- description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
+  name: event.original
+  type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
     `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
@@ -89,14 +120,6 @@
   type: keyword
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
-  type: ip
-- description: |-
-    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
-    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
-  name: destination.address
-  type: keyword
-- description: IP address of the destination (IPv4 or IPv6).
-  name: destination.ip
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
