@@ -10,10 +10,10 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"client.ip\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"bucket\",\"type\":\"terms\"},{\"enabled\":true,\"id\":\"3\",\"params\":{\"field\":\"source.geo.country_name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"perPage\":10,\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"Top Threat Client IPs\",\"type\":\"table\"}"
   },
-  "coreMigrationVersion": "7.15.0",
+  "coreMigrationVersion": "8.0.0",
   "id": "cloudflare-0ca03f10-338b-11e9-ab62-2d2dc754fa8f",
   "migrationVersion": {
-    "visualization": "7.14.0"
+    "visualization": "8.0.0"
   },
   "references": [
     {

@@ -10,10 +10,10 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"}],\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"invertColors\":false,\"labels\":{\"show\":true},\"metricColorMode\":\"None\",\"percentageMode\":false,\"style\":{\"bgColor\":false,\"bgFill\":\"#000\",\"fontSize\":30,\"labelColor\":false,\"subText\":\"\"},\"useRanges\":false},\"type\":\"metric\"},\"title\":\"Uncached Requests\",\"type\":\"metric\"}"
   },
-  "coreMigrationVersion": "7.15.0",
+  "coreMigrationVersion": "8.0.0",
   "id": "cloudflare-df169f00-3aa4-11e9-bd1f-75f359ac0c3f",
   "migrationVersion": {
-    "visualization": "7.14.0"
+    "visualization": "8.0.0"
   },
   "references": [
     {

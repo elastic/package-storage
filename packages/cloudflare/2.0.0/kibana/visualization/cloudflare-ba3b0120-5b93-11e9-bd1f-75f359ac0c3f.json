@@ -9,10 +9,10 @@
     "version": 1,
     "visState": "{\"aggs\":[],\"params\":{\"fontSize\":14,\"markdown\":\"Detailed View\\nBreakdown of Origin Response Status Codes by Various Metrics\",\"openLinksInNewTab\":false},\"title\":\"Detailed View Breakdown of Origin Response Status Codes by Various Metrics - text\",\"type\":\"markdown\"}"
   },
-  "coreMigrationVersion": "7.15.0",
+  "coreMigrationVersion": "8.0.0",
   "id": "cloudflare-ba3b0120-5b93-11e9-bd1f-75f359ac0c3f",
   "migrationVersion": {
-    "visualization": "7.14.0"
+    "visualization": "8.0.0"
   },
   "references": [
     {

@@ -10,10 +10,10 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"user_agent.original\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"perPage\":10,\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"Top Threat User Agents\",\"type\":\"table\"}"
   },
-  "coreMigrationVersion": "7.15.0",
+  "coreMigrationVersion": "8.0.0",
   "id": "cloudflare-bf9032b0-39d0-11e9-bd1f-75f359ac0c3f",
   "migrationVersion": {
-    "visualization": "7.14.0"
+    "visualization": "8.0.0"
   },
   "references": [
     {
