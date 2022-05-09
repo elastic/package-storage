@@ -1,28 +1,22 @@
 {
-    "@timestamp": "2022-04-04T10:53:20.597Z",
+    "@timestamp": "2022-04-11T09:45:08.887Z",
     "agent": {
-        "ephemeral_id": "1a8a01d7-f619-4c9c-8528-af2b6792d9c0",
-        "id": "4e4e07c4-a787-4988-a436-5c373d54738a",
+        "ephemeral_id": "fd3ce7d1-e237-45c7-88f9-875edafec41e",
+        "id": "e7990c69-6909-48d1-be06-89dbe36d302c",
         "name": "docker-fleet-agent",
         "type": "metricbeat",
         "version": "8.1.0"
     },
     "apache_spark": {
-        "nodes": {
-            "main": {
-                "applications": {
-                    "count": 0,
-                    "waiting": 0
-                },
-                "workers": {
-                    "alive": 0,
-                    "count": 0
-                }
+        "application": {
+            "name": "PythonWordCount.1649670292906",
+            "runtime": {
+                "ms": 16007
             }
         }
     },
     "data_stream": {
-        "dataset": "apache_spark.nodes",
+        "dataset": "apache_spark.application",
         "namespace": "ep",
         "type": "metrics"
     },
@@ -30,15 +24,15 @@
         "version": "8.1.0"
     },
     "elastic_agent": {
-        "id": "4e4e07c4-a787-4988-a436-5c373d54738a",
+        "id": "e7990c69-6909-48d1-be06-89dbe36d302c",
         "snapshot": false,
         "version": "8.1.0"
     },
     "event": {
         "agent_id_status": "verified",
-        "dataset": "apache_spark.nodes",
-        "duration": 6157145,
-        "ingested": "2022-04-04T10:53:24Z",
+        "dataset": "apache_spark.application",
+        "duration": 21401735,
+        "ingested": "2022-04-11T09:45:12Z",
         "kind": "metric",
         "module": "apache_spark",
         "type": "info"
@@ -48,23 +42,22 @@
         "containerized": true,
         "hostname": "docker-fleet-agent",
         "ip": [
-            "192.168.64.7"
+            "192.168.0.5"
         ],
         "mac": [
-            "02:42:c0:a8:40:07"
+            "02:42:c0:a8:00:05"
         ],
         "name": "docker-fleet-agent",
         "os": {
             "codename": "focal",
             "family": "debian",
-            "kernel": "5.4.0-100-generic",
+            "kernel": "5.4.0-107-generic",
             "name": "Ubuntu",
             "platform": "ubuntu",
             "type": "linux",
             "version": "20.04.3 LTS (Focal Fossa)"
         }
     },
-    "jolokia": {},
     "metricset": {
         "name": "jmx",
         "period": 60000
