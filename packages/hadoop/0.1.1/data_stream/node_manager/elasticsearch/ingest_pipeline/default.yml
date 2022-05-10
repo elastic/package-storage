@@ -1,5 +1,5 @@
 ---
-description: Pipeline for parsing Hadoop Application metrics
+description: Pipeline for parsing Hadoop Datanode metrics
 processors:
   - set:
       field: ecs.version
@@ -11,75 +11,67 @@ processors:
       field: event.kind
       value: metric
   - set:
-      field: event.module
-      value: httpjson
-  - set:
       field: event.category
       value: database
   - rename:
-      field: message
-      target_field: event.original
-      ignore_missing: true
-  - json:
-      field: event.original
-      target_field: json
-      ignore_failure: true
-  - rename:
-      field: json.id
-      target_field: hadoop.application.id
+      field: http
+      target_field: hadoop
       ignore_missing: true
       ignore_failure: true
+  - script:
+      source: >
+        ctx.hadoop.node_manager.temp = ctx.hadoop.node_manager.beans[0];
+        ctx.hadoop.node_manager.remove("beans")
   - rename:
-      field: json.progress
-      target_field: hadoop.application.progress
-      ignore_missing: true
-      ignore_failure: true
-  - date:
-      field: json.startedTime
-      target_field: hadoop.application.time.started
-      formats:
-        - "epoch_millis"
-      ignore_failure: true
-  - date:
-      field: json.finishedTime
-      target_field: hadoop.application.time.finished
-      formats:
-        - "epoch_millis"
-      ignore_failure: true
-  - rename:
-      field: json.elapsedTime
-      target_field: hadoop.application.time.elapsed
+      field: hadoop.node_manager.temp.ContainerLaunchDurationAvgTime
+      target_field: hadoop.node_manager.container_launch_duration_avg_time
       ignore_missing: true
       ignore_failure: true
   - rename:
-      field: json.allocatedMB
-      target_field: hadoop.application.allocated.mb
+      field: hadoop.node_manager.temp.ContainerLaunchDurationNumOps
+      target_field: hadoop.node_manager.container_launch_duration_num_ops
       ignore_missing: true
       ignore_failure: true
   - rename:
-      field: json.allocatedVCores
-      target_field: hadoop.application.allocated.v_cores
+      field: hadoop.node_manager.temp.AllocatedContainers
+      target_field: hadoop.node_manager.allocated_containers
       ignore_missing: true
       ignore_failure: true
   - rename:
-      field: json.runningContainers
-      target_field: hadoop.application.running_containers
+      field: hadoop.node_manager.temp.ContainersCompleted
+      target_field: hadoop.node_manager.containers.completed
       ignore_missing: true
       ignore_failure: true
   - rename:
-      field: json.memorySeconds
-      target_field: hadoop.application.memory_seconds
+      field: hadoop.node_manager.temp.ContainersFailed
+      target_field: hadoop.node_manager.containers.failed
       ignore_missing: true
       ignore_failure: true
   - rename:
-      field: json.vcoreSeconds
-      target_field: hadoop.application.vcore_seconds
+      field: hadoop.node_manager.temp.ContainersIniting
+      target_field: hadoop.node_manager.containers.initing
+      ignore_missing: true
+      ignore_failure: true
+  - rename:
+      field: hadoop.node_manager.temp.ContainersKilled
+      target_field: hadoop.node_manager.containers.killed
+      ignore_missing: true
+      ignore_failure: true
+  - rename:
+      field: hadoop.node_manager.temp.ContainersLaunched
+      target_field: hadoop.node_manager.containers.launched
+      ignore_missing: true
+      ignore_failure: true
+  - rename:
+      field: hadoop.node_manager.temp.ContainersRunning
+      target_field: hadoop.node_manager.containers.running
       ignore_missing: true
       ignore_failure: true
   - remove:
-      field: json
-      ignore_failure: true
+      field:
+        - hadoop.node_manager.temp
       ignore_missing: true
+      ignore_failure: true
   - script:
       description: Drops null/empty values recursively
       lang: painless
@@ -97,11 +89,6 @@ processors:
           return false;
         }
         drop(ctx);
-  - remove:
-      field: event.original
-      if: "ctx?.tags == null || !(ctx.tags.contains('preserve_original_event'))"
-      ignore_failure: true
-      ignore_missing: true
 on_failure:
   - set:
       field: error.message
