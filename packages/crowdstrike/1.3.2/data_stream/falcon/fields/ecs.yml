@@ -164,11 +164,6 @@
 - description: Port of the destination.
   name: destination.port
   type: long
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
-  type: keyword
 - description: SHA1 hash.
   name: file.hash.sha1
   type: keyword
@@ -231,7 +226,4 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
-  type: keyword
-- description: Unique container id.
-  name: container.id
   type: keyword
