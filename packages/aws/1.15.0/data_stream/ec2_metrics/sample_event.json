@@ -1,0 +1,157 @@
+{
+    "@timestamp": "2022-01-10T00:27:00.000Z",
+    "agent": {
+        "ephemeral_id": "3fe9a7bb-b963-43fc-b42d-4469899cff56",
+        "id": "243f8454-f7b2-4517-915e-d7b5044da34e",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.0.0-beta1"
+    },
+    "aws": {
+        "cloudwatch": {
+            "namespace": "AWS/EC2"
+        },
+        "dimensions": {
+            "InstanceId": "i-0fed3d32593de60a2"
+        },
+        "ec2": {
+            "cpu": {
+                "credit_balance": 15.466493,
+                "credit_usage": 0.02978
+            },
+            "diskio": {
+                "read": {
+                    "bytes_per_sec": 0,
+                    "count_per_sec": 0
+                },
+                "write": {
+                    "bytes_per_sec": 0,
+                    "count_per_sec": 0
+                }
+            },
+            "instance": {
+                "core": {
+                    "count": 1
+                },
+                "image": {
+                    "id": "ami-041e2461f66f7190f"
+                },
+                "monitoring": {
+                    "state": "enabled"
+                },
+                "private": {
+                    "dns_name": "ip-172-31-94-158.ec2.internal",
+                    "ip": "172.31.94.158"
+                },
+                "public": {
+                    "dns_name": "ec2-3-87-48-88.compute-1.amazonaws.com",
+                    "ip": "3.87.48.88"
+                },
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "threads_per_core": 1
+            },
+            "network": {
+                "in": {
+                    "bytes_per_sec": 1088550.3,
+                    "packets_per_sec": 750.1166666666667
+                },
+                "out": {
+                    "bytes_per_sec": 7878.933333333333,
+                    "packets_per_sec": 181.11666666666667
+                }
+            }
+        },
+        "tags": {
+            "Name": "elastic-package-test-60186"
+        }
+    },
+    "cloud": {
+        "account": {
+            "id": "144492464627",
+            "name": "elastic-siem"
+        },
+        "availability_zone": "us-east-1a",
+        "instance": {
+            "id": "i-0fed3d32593de60a2",
+            "name": "elastic-package-test-60186"
+        },
+        "machine": {
+            "type": "t1.micro"
+        },
+        "provider": "aws",
+        "region": "us-east-1"
+    },
+    "data_stream": {
+        "dataset": "aws.ec2_metrics",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "243f8454-f7b2-4517-915e-d7b5044da34e",
+        "snapshot": false,
+        "version": "8.0.0-beta1"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "aws.ec2_metrics",
+        "duration": 20742211587,
+        "ingested": "2022-01-10T00:42:24Z",
+        "module": "aws"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "cpu": {
+            "usage": 13.6065573770492
+        },
+        "disk": {
+            "read": {
+                "bytes": 0
+            },
+            "write": {
+                "bytes": 0
+            }
+        },
+        "hostname": "docker-fleet-agent",
+        "id": "4ccba669f0df47fa3f57a9e4169ae7f1",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "elastic-package-test-60186",
+        "network": {
+            "egress": {
+                "bytes": 472736,
+                "packets": 10867
+            },
+            "ingress": {
+                "bytes": 65313018,
+                "packets": 45007
+            }
+        },
+        "os": {
+            "codename": "Core",
+            "family": "redhat",
+            "kernel": "5.11.0-43-generic",
+            "name": "CentOS Linux",
+            "platform": "centos",
+            "type": "linux",
+            "version": "7 (Core)"
+        }
+    },
+    "metricset": {
+        "name": "ec2",
+        "period": 300000
+    },
+    "service": {
+        "type": "aws"
+    }
+}
