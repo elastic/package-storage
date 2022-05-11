@@ -1,0 +1,48 @@
+{
+    "expected": [
+        {
+            "destination": {
+                "as": {
+                    "number": 29518,
+                    "organization": {
+                        "name": "Bredband2 AB"
+                    }
+                },
+                "geo": {
+                    "city_name": "Linköping",
+                    "continent_name": "Europe",
+                    "country_iso_code": "SE",
+                    "country_name": "Sweden",
+                    "location": {
+                        "lat": 58.4167,
+                        "lon": 15.6167
+                    },
+                    "region_iso_code": "SE-E",
+                    "region_name": "Östergötland County"
+                },
+                "ip": "89.160.20.112"
+            },
+            "event": {
+                "ingested": "2022-04-07T23:49:36.792320139Z"
+            },
+            "source": {
+                "as": {
+                    "number": 209
+                },
+                "geo": {
+                    "city_name": "Milton",
+                    "continent_name": "North America",
+                    "country_iso_code": "US",
+                    "country_name": "United States",
+                    "location": {
+                        "lat": 47.2513,
+                        "lon": -122.3149
+                    },
+                    "region_iso_code": "US-WA",
+                    "region_name": "Washington"
+                },
+                "ip": "216.160.83.61"
+            }
+        }
+    ]
+}
