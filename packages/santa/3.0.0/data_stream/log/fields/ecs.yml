@@ -9,6 +9,18 @@
     In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
   name: event.ingested
   type: date
+- description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.path
+  type: keyword
+- description: Target path for symlinks.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.target_path
+  type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: file.x509.issuer.common_name
   type: keyword
@@ -49,6 +61,14 @@
 - description: Process id.
   name: process.parent.pid
   type: long
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
 - description: The time the process started.
   name: process.start
   type: date
