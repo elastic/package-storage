@@ -9,6 +9,11 @@
     In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` < `event.created` < `event.ingested`.
   name: event.ingested
   type: date
+- description: |-
+    Unique identifier of this agent (if one exists).
+    Example: For Beats this would be beat.id.
+  name: agent.id
+  type: keyword
 - description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
   multi_fields:
     - name: text
@@ -58,6 +63,12 @@
 - description: Process id.
   name: process.pid
   type: long
+- description: |-
+    Unique identifier for the process.
+    The implementation of this is specified by the data source, but some examples of what could be used here are a process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process.
+    Constructing a globally unique identifier is a common practice to mitigate PID reuse as well as to identify a specific process over time, across multiple monitored hosts.
+  name: process.entity_id
+  type: keyword
 - description: Process id.
   name: process.parent.pid
   type: long
