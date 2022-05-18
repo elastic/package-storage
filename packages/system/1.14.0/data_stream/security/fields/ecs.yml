@@ -260,3 +260,26 @@
       type: match_only_text
   name: user.changes.name
   type: keyword
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
+- description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.path
+  type: keyword
+- description: Target path for symlinks.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.target_path
+  type: keyword
+- description: Directory where the file is located. It should include the drive letter, when appropriate.
+  name: file.directory
+  type: keyword
+- description: |-
+    File extension, excluding the leading dot.
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: file.extension
+  type: keyword
