@@ -1,0 +1,76 @@
+{
+    "@timestamp": "2022-05-12T11:38:03.923Z",
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "event": {
+        "action": "exec",
+        "category": [
+            "process"
+        ],
+        "kind": "event",
+        "original": "[2022-05-12T11:38:03.923Z] I santad: action=EXEC|decision=ALLOW|reason=BINARY|explain=critical system binary|sha256=43158bf397bf52001067319c591249307e2862daf8690828c15cdcc1ddf6166d|cert_sha256=d84db96af8c2e60ac4c851a21ec460f6f84e0235beb17d24a78712b9b021ed57|cert_cn=Software Signing|pid=71993|pidversion=1097732|ppid=1|uid=0|user=root|gid=0|group=wheel|mode=M|path=/usr/libexec/xpcproxy|args=xpcproxy com.apple.CoreAuthentication.agent",
+        "outcome": "success",
+        "type": [
+            "start"
+        ]
+    },
+    "file": {
+        "x509": {
+            "issuer": {
+                "common_name": "Software Signing"
+            }
+        }
+    },
+    "group": {
+        "id": "0",
+        "name": "wheel"
+    },
+    "log": {
+        "level": "I"
+    },
+    "process": {
+        "args": [
+            "/usr/libexec/xpcproxy",
+            "xpcproxy",
+            "com.apple.CoreAuthentication.agent"
+        ],
+        "executable": "/usr/libexec/xpcproxy",
+        "hash": {
+            "sha256": "43158bf397bf52001067319c591249307e2862daf8690828c15cdcc1ddf6166d"
+        },
+        "parent": {
+            "pid": 1
+        },
+        "pid": 71993,
+        "start": "2022-05-12T11:38:03.923Z"
+    },
+    "related": {
+        "hash": [
+            "d84db96af8c2e60ac4c851a21ec460f6f84e0235beb17d24a78712b9b021ed57",
+            "43158bf397bf52001067319c591249307e2862daf8690828c15cdcc1ddf6166d"
+        ],
+        "user": [
+            "root"
+        ]
+    },
+    "santa": {
+        "action": "EXEC",
+        "certificate": {
+            "common_name": "Software Signing",
+            "sha256": "d84db96af8c2e60ac4c851a21ec460f6f84e0235beb17d24a78712b9b021ed57"
+        },
+        "decision": "ALLOW",
+        "explain": "critical system binary",
+        "mode": "M",
+        "pidversion": 1097732,
+        "reason": "BINARY"
+    },
+    "tags": [
+        "preserve_original_event"
+    ],
+    "user": {
+        "id": "0",
+        "name": "root"
+    }
+}
