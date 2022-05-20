@@ -280,6 +280,12 @@
   level: core
   name: source.geo.location
   type: geo_point
+- description: Region ISO code.
+  name: source.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: source.geo.region_name
+  type: keyword
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
   type: ip
@@ -380,6 +386,9 @@
     - name: text
       type: match_only_text
   name: user.name
+  type: keyword
+- description: User email address.
+  name: user.email
   type: keyword
 - description: Unparsed user_agent string.
   multi_fields:
