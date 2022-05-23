@@ -1,0 +1,100 @@
+{
+    "@timestamp": "2022-01-23T09:16:05.341Z",
+    "agent": {
+        "ephemeral_id": "0d2f83ac-67e6-454f-84eb-859aa503167a",
+        "hostname": "docker-fleet-agent",
+        "id": "df142714-8028-4ef0-a80c-4eb03051c084",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "7.17.0"
+    },
+    "cloud": {
+        "availability_zone": "europe-west2-a",
+        "instance": {
+            "id": "8340998530665147",
+            "name": "instance"
+        },
+        "project": {
+            "id": "project"
+        },
+        "provider": "gcp",
+        "region": "europe-west2"
+    },
+    "data_stream": {
+        "dataset": "gcp.dns",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "dns": {
+        "answers": [
+            {
+                "class": "IN",
+                "data": "127.0.0.1",
+                "name": "elastic.co",
+                "ttl": "300",
+                "type": "A"
+            }
+        ],
+        "question": {
+            "name": "elastic.co",
+            "registered_domain": "elastic.co",
+            "top_level_domain": "co",
+            "type": "A"
+        },
+        "resolved_ip": [
+            "127.0.0.1"
+        ],
+        "response_code": "NOERROR"
+    },
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "df142714-8028-4ef0-a80c-4eb03051c084",
+        "snapshot": false,
+        "version": "7.17.0"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "created": "2022-05-20T07:25:43.755Z",
+        "dataset": "gcp.dns",
+        "id": "vwroyze8pg7y",
+        "ingested": "2022-05-20T07:25:44Z",
+        "kind": "event",
+        "outcome": "success"
+    },
+    "gcp": {
+        "dns": {
+            "auth_answer": true,
+            "protocol": "UDP",
+            "query_name": "elastic.co.",
+            "query_type": "A",
+            "rdata": "elastic.co.\t300\tIN\ta\t127.0.0.1",
+            "response_code": "NOERROR",
+            "server_latency": 14,
+            "source_ip": "10.154.0.3",
+            "source_network": "default",
+            "vm_instance_id": "8340998530665147",
+            "vm_instance_name": "694119234537.instance",
+            "vm_project_id": "project",
+            "vm_zone_name": "europe-west2-a"
+        }
+    },
+    "input": {
+        "type": "gcp-pubsub"
+    },
+    "log": {
+        "logger": "projects/project/logs/dns.googleapis.com%2Fdns_queries"
+    },
+    "network": {
+        "transport": "udp"
+    },
+    "source": {
+        "address": "10.154.0.3",
+        "ip": "10.154.0.3"
+    },
+    "tags": [
+        "forwarded",
+        "gcp-dns"
+    ]
+}
