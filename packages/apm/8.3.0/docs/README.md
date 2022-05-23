@@ -461,6 +461,8 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | service.node.name | Name of a service node. This allows for two nodes of the same service running on the same host to be differentiated. Therefore, `service.node.name` should typically be unique across nodes of a given service. In the case of Elasticsearch, the `service.node.name` could contain the unique node name within the Elasticsearch cluster. In cases where the service doesn't have the concept of a node name, the host name or container name can be used to distinguish running instances that make up this service. If those do not provide uniqueness (e.g. multiple instances of the service running on the same host) - the node name can be manually set. | keyword |  |  |
 | service.runtime.name | Name of the runtime used. | keyword |  |  |
 | service.runtime.version | Version of the runtime used. | keyword |  |  |
+| service.target.name | Target service for which data is collected. | keyword |  |  |
+| service.target.type | Type of the target service for which data is collected | keyword |  |  |
 | service.version | Version of the service the data was collected from. This allows to look at a data set only for a specific version of a service. | keyword |  |  |
 | source.domain | Source domain. | keyword |  |  |
 | source.ip | IP address of the source (IPv4 or IPv6). | ip |  |  |
