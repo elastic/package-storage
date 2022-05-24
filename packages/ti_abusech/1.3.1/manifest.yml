@@ -1,0 +1,26 @@
+name: ti_abusech
+title: AbuseCH
+version: 1.3.1
+release: ga
+description: Ingest threat intelligence indicators from URL Haus and Malware Bazaar feeds with Elastic Agent.
+type: integration
+format_version: 1.0.0
+license: basic
+categories: [security]
+conditions:
+  kibana.version: ^8.0.0
+icons:
+  - src: /img/abusech2.svg
+    title: AbuseCH
+    size: 512x512
+    type: image/svg+xml
+policy_templates:
+  - name: ti_abusech
+    title: AbuseCH API
+    description: Ingest threat intelligence indicators from URL Haus and Malware Bazaar feeds with Elastic Agent.
+    inputs:
+      - type: httpjson
+        title: "Collect AbuseCH logs via API"
+        description: "Ingest threat intelligence indicators from URL Haus and Malware Bazaar feeds with Elastic Agent."
+owner:
+  github: elastic/security-external-integrations
