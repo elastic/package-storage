@@ -193,9 +193,6 @@
 - description: IP address of the client (IPv4 or IPv6).
   name: client.ip
   type: ip
-- description: Port of the source.
-  name: source.port
-  type: long
 - description: User's full name, if available.
   multi_fields:
     - name: text
