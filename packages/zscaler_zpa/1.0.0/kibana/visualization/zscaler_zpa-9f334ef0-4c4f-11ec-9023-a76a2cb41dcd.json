@@ -1,0 +1,27 @@
+{
+  "attributes": {
+    "description": "",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"zscaler_zpa.user_status\\\"\"}}"
+    },
+    "title": "[Zscaler][ZPA] Distribution of User by Session Status",
+    "uiStateJSON": "{\"vis\":{\"legendOpen\":true}}",
+    "version": 1,
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Session Status\",\"field\":\"zscaler_zpa.user_status.session.status\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"addLegend\":true,\"addTooltip\":true,\"distinctColors\":false,\"isDonut\":false,\"labels\":{\"last_level\":false,\"percentDecimals\":2,\"position\":\"default\",\"show\":true,\"truncate\":100,\"values\":true,\"valuesFormat\":\"percent\"},\"legendPosition\":\"right\",\"maxLegendLines\":1,\"nestedLegend\":false,\"palette\":{\"name\":\"temperature\",\"type\":\"palette\"},\"truncateLegend\":true,\"type\":\"pie\"},\"title\":\"[Zscaler][ZPA] Distribution of User by Session Status\",\"type\":\"pie\"}"
+  },
+  "coreMigrationVersion": "7.16.0",
+  "id": "zscaler_zpa-9f334ef0-4c4f-11ec-9023-a76a2cb41dcd",
+  "migrationVersion": {
+    "visualization": "7.14.0"
+  },
+  "references": [
+    {
+      "id": "logs-*",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2021-11-26T12:58:31.486Z",
+  "version": "WzU4NTksMV0="
+}
