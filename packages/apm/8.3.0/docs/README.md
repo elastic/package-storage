@@ -408,15 +408,18 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | host.ip | Host ip addresses. | ip |  |  |
 | host.name | Name of the host. It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use. | keyword |  |  |
 | host.os.platform | Operating system platform (such centos, ubuntu, windows). | keyword |  |  |
+| jvm.gc.alloc |  | long | byte | gauge |
+| jvm.gc.count |  | long |  | gauge |
+| jvm.gc.time |  | long | ms | gauge |
 | jvm.memory.heap.committed |  | long | byte | gauge |
 | jvm.memory.heap.max |  | long | byte | gauge |
 | jvm.memory.heap.pool.committed |  | long | byte | gauge |
 | jvm.memory.heap.pool.max |  | long | byte | gauge |
 | jvm.memory.heap.pool.used |  | long | byte | gauge |
 | jvm.memory.heap.used |  | long | byte | gauge |
-| jvm.memory.non_heap.pool.committed |  | long | byte | gauge |
-| jvm.memory.non_heap.pool.max |  | long | byte | gauge |
-| jvm.memory.non_heap.pool.used |  | long | byte | gauge |
+| jvm.memory.non_heap.committed |  | long | byte | gauge |
+| jvm.memory.non_heap.max |  | long | byte | gauge |
+| jvm.memory.non_heap.used |  | long | byte | gauge |
 | jvm.thread.count |  | long |  | gauge |
 | kubernetes.namespace | Kubernetes namespace | keyword |  |  |
 | kubernetes.node.name | Kubernetes node name | keyword |  |  |
@@ -425,7 +428,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | labels | Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as keyword. Example: `docker` and `k8s` labels. | object |  |  |
 | metricset.name | Name of the set of metrics. | keyword |  |  |
 | network.connection.type | Network connection type, eg. "wifi", "cell" | keyword |  |  |
-| nodejs.eventloop.delay.avg.msg |  | scaled_float | ms | gauge |
+| nodejs.eventloop.delay.avg.ms |  | scaled_float | ms | gauge |
 | nodejs.handles.active |  | long |  | gauge |
 | nodejs.memory.arrayBuffers.bytes |  | long | byte | gauge |
 | nodejs.memory.external.bytes |  | long | byte | gauge |
@@ -487,6 +490,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | system.process.cgroup.cpuacct.total.ns | Total CPU time for the current cgroup CPU in nanoseconds. | long | nanos | counter |
 | system.process.cgroup.memory.mem.limit.bytes | Memory limit for the current cgroup slice. | long | byte | gauge |
 | system.process.cgroup.memory.mem.usage.bytes | Memory usage by the current cgroup slice. | long | byte | gauge |
+| system.process.cgroup.memory.stats.inactive_file.bytes | File-backed memory on inactive LRU list, in bytes. | long | byte | gauge |
 | system.process.cpu.system.norm.pct | The percentage of CPU time spent by the process executing kernel code since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%. | scaled_float | percent | gauge |
 | system.process.cpu.total.norm.pct | The percentage of CPU time spent by the process since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%. | scaled_float | percent | gauge |
 | system.process.cpu.user.norm.pct | The percentage of CPU time spent by the process executing application code since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%. | scaled_float | percent | gauge |
