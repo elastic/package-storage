@@ -1,0 +1,27 @@
+{
+  "attributes": {
+    "description": "",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"zscaler_zpa.user_activity\\\"\"}}"
+    },
+    "title": "[Zscaler][ZPA] Top 10 AppGroups",
+    "uiStateJSON": "{}",
+    "version": 1,
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"App Groups\",\"field\":\"zscaler_zpa.user_activity.app_group\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"autoFitRowToContent\":false,\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":false,\"showTotal\":false,\"totalFunc\":\"sum\"},\"title\":\"[Zscaler][ZPA] Top 10 AppGroups\",\"type\":\"table\"}"
+  },
+  "coreMigrationVersion": "7.16.0",
+  "id": "zscaler_zpa-d124a2a0-4c4b-11ec-9023-a76a2cb41dcd",
+  "migrationVersion": {
+    "visualization": "7.14.0"
+  },
+  "references": [
+    {
+      "id": "logs-*",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2021-11-26T12:58:31.486Z",
+  "version": "WzU4NjQsMV0="
+}
