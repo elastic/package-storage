@@ -9,14 +9,11 @@
     "version": 1,
     "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Data sent\",\"field\":\"http.response.body.bytes\"},\"schema\":\"metric\",\"type\":\"sum\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"extended_bounds\":{},\"field\":\"@timestamp\",\"interval\":\"auto\",\"min_doc_count\":1},\"schema\":\"segment\",\"type\":\"date_histogram\"},{\"enabled\":true,\"id\":\"3\",\"params\":{},\"schema\":\"radius\",\"type\":\"count\"}],\"listeners\":{},\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"drawLinesBetweenPoints\":true,\"interpolate\":\"linear\",\"legendPosition\":\"right\",\"radiusRatio\":\"17\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"showCircles\":true,\"smoothLines\":true,\"times\":[],\"yAxis\":{}},\"title\":\"Sent sizes\",\"type\":\"line\"}"
   },
-  "coreMigrationVersion": "7.13.0",
+  "coreMigrationVersion": "8.0.0",
   "id": "traefik-Sent-sizes",
   "migrationVersion": {
-    "visualization": "7.12.0"
+    "visualization": "8.0.0"
   },
-  "namespaces": [
-    "default"
-  ],
   "references": [
     {
       "id": "logs-*",
