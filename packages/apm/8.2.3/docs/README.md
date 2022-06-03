@@ -429,6 +429,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | span.self_time.sum.us | Aggregated span duration, excluding the time periods where a direct child was running, in microseconds. | long | micros |
 | span.subtype | A further sub-division of the type (e.g. postgresql, elasticsearch) | keyword |  |
 | span.type | Keyword of specific relevance in the service's domain (eg: 'db.postgresql.query', 'template.erb', 'cache', etc). | keyword |  |
+| tags | List of keywords used to tag each event. | keyword |  |
 | timeseries.instance | Time series instance ID | keyword |  |
 | transaction.duration.histogram | Pre-aggregated histogram of transaction durations. | histogram |  |
 | transaction.name | Generic designation of a transaction in the scope of a single service (eg. 'GET /users/:id'). | keyword |  |
