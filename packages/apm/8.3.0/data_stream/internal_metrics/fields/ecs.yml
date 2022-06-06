@@ -215,6 +215,9 @@
     Typically used with load balancers, firewalls, or routers.
   name: source.nat.port
   type: long
+- description: List of keywords used to tag each event.
+  name: tags
+  type: keyword
 - description: |-
     Name of the directory the user is a member of.
     For example, an LDAP or Active Directory domain name.

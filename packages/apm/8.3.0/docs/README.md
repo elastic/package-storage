@@ -496,6 +496,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | system.process.cpu.user.norm.pct | The percentage of CPU time spent by the process executing application code since the last event. This value is normalized by the number of CPU cores and it ranges from 0 to 100%. | scaled_float | percent | gauge |
 | system.process.memory.rss.bytes | The Resident Set Size. The amount of memory the process occupied in main memory (RAM). | long | byte | gauge |
 | system.process.memory.size | The total virtual memory the process has. | long | byte | gauge |
+| tags | List of keywords used to tag each event. | keyword |  |  |
 | timeseries.instance | Time series instance ID | keyword |  |  |
 | transaction.duration.histogram | Pre-aggregated histogram of transaction durations. | histogram |  |  |
 | transaction.name | Generic designation of a transaction in the scope of a single service (eg. 'GET /users/:id'). | keyword |  |  |
