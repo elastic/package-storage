@@ -36,7 +36,5 @@
       "type": "index-pattern"
     }
   ],
-  "type": "visualization",
-  "updated_at": "2021-09-28T11:42:36.076Z",
-  "version": "WzczOSwxXQ=="
+  "type": "visualization"
 }
