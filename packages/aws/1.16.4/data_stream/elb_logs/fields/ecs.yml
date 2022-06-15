@@ -35,6 +35,11 @@
     Note: The `:` is not part of the scheme.
   name: url.scheme
   type: keyword
+- description: |-
+    The query field describes the query string of the request, such as "q=elasticsearch".
+    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
+  name: url.query
+  type: keyword
 - description: Name of the device.
   name: user_agent.device.name
   type: keyword
@@ -137,6 +142,9 @@
   type: keyword
 - description: Country ISO code.
   name: source.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
   name: source.geo.location
