@@ -109,6 +109,9 @@
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
+- description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
+  name: related.hash
+  type: keyword
 - description: |-
     Some event server addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
@@ -186,6 +189,9 @@
 - description: List of state or province names (ST, S, or P)
   name: tls.client.x509.subject.state_or_province
   type: keyword
+- description: A hash that identifies clients based on how they perform an SSL/TLS handshake.
+  name: tls.client.ja3
+  type: keyword
 - description: String indicating the curve used for the given cipher, when applicable.
   name: tls.curve
   type: keyword
@@ -239,6 +245,18 @@
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.subject.state_or_province
+  type: keyword
+- description: A hash that identifies servers based on how they perform an SSL/TLS handshake.
+  name: tls.server.ja3s
+  type: keyword
+- description: Timestamp indicating when server certificate is no longer considered valid.
+  name: tls.server.not_after
+  type: date
+- description: Timestamp indicating when server certificate is first considered valid.
+  name: tls.server.not_before
+  type: date
+- description: Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the server. For consistency with other hash values, this value should be formatted as an uppercase hash.
+  name: tls.server.hash.sha1
   type: keyword
 - description: Numeric part of the version parsed from the original string.
   name: tls.version
