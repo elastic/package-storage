@@ -142,6 +142,9 @@
     The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
+- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
+  name: network.iana_number
+  type: keyword
 - description: |-
     Custom name of the observer.
     This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization.
@@ -277,3 +280,9 @@
 - description: Identifies a threat indicator as a port number (irrespective of direction).
   name: threat.indicator.port
   type: long
+- description: A hash that identifies clients based on how they perform an SSL/TLS handshake.
+  name: tls.client.ja3
+  type: keyword
+- description: A hash that identifies servers based on how they perform an SSL/TLS handshake.
+  name: tls.server.ja3s
+  type: keyword
