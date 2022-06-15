@@ -41,6 +41,11 @@
   name: destination.ip
   type: ip
 - description: |-
+    MAC address of the destination.
+    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+  name: destination.mac
+  type: keyword
+- description: |-
     Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
     Typically used with load balancers, firewalls, or routers.
   name: destination.nat.ip
@@ -110,6 +115,20 @@
 - description: Inode representing the file in the filesystem.
   name: file.inode
   type: keyword
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
+- description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.path
+  type: keyword
+- description: |-
+    File size in bytes.
+    Only relevant when `file.type` is "file".
+  name: file.size
+  type: long
 - description: File type (file, dir, or symlink).
   name: file.type
   type: keyword
@@ -198,6 +217,14 @@
 - description: Observer version.
   name: observer.version
   type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
   type: keyword
@@ -261,6 +288,11 @@
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
   type: ip
+- description: |-
+    MAC address of the source.
+    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+  name: source.mac
+  type: keyword
 - description: |-
     Translated ip of source based NAT sessions (e.g. internal client to internet)
     Typically connections traversing load balancers, firewalls, or routers.
