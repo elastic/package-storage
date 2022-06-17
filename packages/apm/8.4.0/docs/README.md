@@ -475,6 +475,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | span.destination.service.resource | Identifier for the destination service resource being operated on (e.g. 'http://elastic.co:80', 'elasticsearch', 'rabbitmq/queue_name') | keyword |  |  |
 | span.destination.service.response_time.count | Number of aggregated outgoing requests. | long |  |  |
 | span.destination.service.response_time.sum.us | Aggregated duration of outgoing requests, in microseconds. | long | micros |  |
+| span.name | Generic designation of a span in the scope of a transaction. | keyword |  |  |
 | span.self_time.count | Number of aggregated spans. | long |  |  |
 | span.self_time.sum.us | Aggregated span duration, excluding the time periods where a direct child was running, in microseconds. | long | micros |  |
 | span.subtype | A further sub-division of the type (e.g. postgresql, elasticsearch) | keyword |  |  |
