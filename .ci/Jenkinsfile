@@ -24,7 +24,7 @@ pipeline {
     PACKAGE_STORAGE_UPLOADER_CREDENTIALS = 'upload-package-to-package-storage'
     PACKAGE_STORAGE_UPLOADER_GCP_SERVICE_ACCOUNT = 'secret/gce/elastic-bekitzur/service-account/package-storage-uploader'
     PACKAGE_STORAGE_INTERNAL_BUCKET_QUEUE_PUBLISHING_PATH = "gs://elastic-bekitzur-package-storage-internal/queue-publishing/${env.REPO_BUILD_TAG}"
-    BUILD_ARTIFACTS_PATH = 'build/packages'
+    BUILD_ARTIFACTS_PATH = 'packages-zip'
   }
   options {
     timeout(time: 4, unit: 'HOURS')
