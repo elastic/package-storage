@@ -141,7 +141,7 @@ pipeline {
         DOCKER_IMG_TAG_BRANCH = "${env.DOCKER_IMG_PR}:${env.BRANCH_NAME}"
       }
       steps {
-        cleanup()
+        //cleanup()
         pushDockerImage()
       }
     }
