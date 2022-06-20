@@ -8,7 +8,7 @@ LABEL package-registry=${PACKAGE_REGISTRY}
 
 # Adds specific config and packages
 COPY deployment/package-registry.yml /package-registry/config.yml
-COPY packages /packages/production
+COPY build/packages /packages/production
 
 # Sanity check on the packages. If packages are not valid, container does not even build.
 RUN ./package-registry -dry-run

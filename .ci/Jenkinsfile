@@ -27,7 +27,7 @@ pipeline {
     BUILD_ARTIFACTS_PATH = 'build/packages'
   }
   options {
-    timeout(time: 1, unit: 'HOURS')
+    timeout(time: 4, unit: 'HOURS')
     buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20', daysToKeepStr: '30'))
     timestamps()
     ansiColor('xterm')
@@ -88,7 +88,7 @@ pipeline {
     /**
      Execute integration tests.
      */
-    stage('TestIntegration') {
+    /*stage('TestIntegration') {
       environment {
         HOME = "${env.WORKSPACE}"
       }
@@ -109,25 +109,24 @@ pipeline {
           )
         }
       }
-    }
-    /**
-     Publish Docker images.
-     */
-    stage('Publish Docker image'){
-      when {
-        anyOf {
-          branch 'snapshot'
-          branch 'staging'
-          branch 'production'
-        }
-      }
-      environment {
-        DOCKER_IMG_TAG = "${env.DOCKER_IMG}:${env.GIT_BASE_COMMIT}"
-        DOCKER_IMG_TAG_BRANCH = "${env.DOCKER_IMG}:${env.BRANCH_NAME}"
-      }
+    }*/
+    stage('Zip and sign') {
+      /*when {
+        branch 'production'
+      }*/
       steps {
-        cleanup()
-        pushDockerImage()
+        script {
+          cleanup()
+          dir("${BASE_DIR}") {
+            def unpublishedPresent = buildUnpublishedPackages()
+            if (!unpublishedPresent) {
+              echo 'All packages are in sync'
+              return
+            }
+            signArtifactsWithElastic()
+            //publishToPackageStorage()
+          }
+        }
       }
     }
     /**
@@ -144,25 +143,6 @@ pipeline {
       steps {
         cleanup()
         pushDockerImage()
-      }
-    }
-    stage('v2: Sync packages') {
-      when {
-        branch 'production'
-      }
-      steps {
-        script {
-          cleanup()
-          dir("${BASE_DIR}") {
-            def unpublishedPresent = buildUnpublishedPackages()
-            if (!unpublishedPresent) {
-              echo 'All packages are in sync'
-              return
-            }
-            signArtifactsWithElastic()
-            publishToPackageStorage()
-          }
-        }
       }
     }
   }
@@ -215,12 +195,12 @@ def buildUnpublishedPackages() {
         findFiles()?.findAll{ !it.name.endsWith('@tmp') }?.collect{ it.name }?.sort()?.each {
           def packageVersion = it
           // Check if the package revision is published
-          def responseCode = httpRequest(method: "HEAD",
+          /*def responseCode = httpRequest(method: "HEAD",
             url: "https://package-storage.elastic.co/artifacts/packages/${packageName}-${packageVersion}.zip",
             response_code_only: true)
           if (responseCode == 200) {
             return // already published
-          }
+          }*/
           sh(label: "Pre-compression actions", script: "mkdir -p target && cp -r ${packageVersion} target/${packageName}-${packageVersion}")
           zip(zipFile: "${packageName}-${packageVersion}.zip", dir: "target")
           sh(label: "Post-compression actions", script: """
