@@ -1,0 +1,68 @@
+---
+description: Pipeline for processing Strelka logs
+processors:
+- set:
+    field: 'ecs.version'
+    value: '8.2.0'
+- set:
+    field: 'event.ingested' 
+    value: '{{_ingest.timestamp}}'
+- set:
+    field: 'event.kind'
+    value: 'alert'
+- set:
+    field: 'event.outcome'
+    value: 'success'
+- set:
+    field: 'event.category'
+    value: ['network', 'file']
+- set:
+    field: 'event.action'
+    value: 'network-file'
+- json:
+    field: 'message'
+    add_to_root: true
+- set:
+    field: 'event.original'
+    value: '{{message}}'
+- set:
+    field: 'event.hash'
+    value: '{{scan.hash.sha256}}'
+- set:
+    field: 'message'
+    value: 'Strelka has scanned a file located at {{request.attributes.filename}}'
+- date:
+    field: 'request.time'
+    target_field: 'event.created'
+    formats: ['UNIX']
+- set:
+    field: 'event.id'
+    value: '{{request.id}}'
+- rename:
+    field: 'request.id'
+    target_field: 'event.code'
+- set:
+    field: 'host.id'
+    value: '{{agent.id}}'
+- grok:
+    field: 'request.attributes.filename'
+    patterns: ['%{GREEDYDATA:file_path}/%{GREEDYDATA:file_name}\.%{GREEDYDATA:file_extension}']
+- set:
+    field: 'file.path'
+    value: '{{file_path}}'
+- set:
+    field: 'file.name'
+    value: '{{file_name}}'
+- set:
+    field: 'file.extension'
+    value: '{{file_extension}}'
+- set:
+    field: 'file.type'
+    value: 'file'
+on_failure:
+- set:
+    field: 'error.message'
+    value: '{{ _ingest.on_failure_message }}'
+- set:
+    field: 'event.outcome'
+    value: 'failure'

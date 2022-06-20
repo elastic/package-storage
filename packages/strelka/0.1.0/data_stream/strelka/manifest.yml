@@ -1,0 +1,13 @@
+title: "Strelka"
+type: logs
+streams:
+  - input: logfile
+    title: Strelka logs
+    description: Collect Strelka logs
+    vars:
+      - name: paths
+        type: text
+        title: Paths
+        multi: true
+        default:
+          - /var/log/strelka/strelka.log
