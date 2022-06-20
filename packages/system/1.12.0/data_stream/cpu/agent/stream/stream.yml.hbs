@@ -1,9 +1,0 @@
-metricsets: ["cpu"]
-cpu.metrics:
-{{#each cpu.metrics}}
-- {{this}}
-{{/each}}
-period: {{period}}
-{{#if system.hostfs}}
-system.hostfs: {{system.hostfs}}
-{{/if}}
