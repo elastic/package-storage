@@ -1,9 +1,0 @@
-metricsets: ["diskio"]
-diskio.include_devices:
-{{#each diskio.include_devices}}
-- {{this}}
-{{/each}}
-period: {{period}}
-{{#if system.hostfs}}
-system.hostfs: {{system.hostfs}}
-{{/if}}
