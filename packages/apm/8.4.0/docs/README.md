@@ -382,9 +382,15 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | destination.port | Port of the destination. | long |  |  |
 | ecs.version | ECS version this event conforms to. `ecs.version` is a required field and must exist in all events. When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events. | keyword |  |  |
 | event.outcome | This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy. `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event. Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective. Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer. Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense. | keyword |  |  |
+| faas.billed_duration | The number of milliseconds for which the FaaS end user is billed. | long | ms | counter |
 | faas.coldstart | Boolean indicating whether the function invocation was a coldstart or not. | boolean |  |  |
+| faas.coldstart_duration | The number of milliseconds elapsed during cold start. | float | ms | counter |
+| faas.duration | The total number of milliseconds elapsed during the execution of the FaaS invocation. | float | ms | counter |
+| faas.execution | Request ID of the function invocation. | keyword |  |  |
 | faas.id | A unique identifier of the invoked serverless function. | keyword |  |  |
 | faas.name | The lambda function name. | keyword |  |  |
+| faas.timeout | The FaaS invocation timeout, expressed in milliseconds. | long | ms | counter |
+| faas.trigger.request_id | The ID of the origin trigger request. | keyword |  |  |
 | faas.trigger.type | The trigger type. | keyword |  |  |
 | faas.version | The lambda function version. | keyword |  |  |
 | golang.goroutines | The number of goroutines that currently exist. | long |  | counter |
