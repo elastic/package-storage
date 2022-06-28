@@ -15,7 +15,9 @@
       type: match_only_text
   name: destination.as.organization.name
   type: keyword
-- description: Destination domain.
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: destination.domain
   type: keyword
 - description: City name.
@@ -52,6 +54,7 @@
     MAC address of the destination.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: destination.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: Packets sent from the destination to the source.
   name: destination.packets
@@ -175,12 +178,12 @@
   type: keyword
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
-    The field value must be normalized to lowercase for querying. See the documentation section "Implementing ECS".
+    The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
 - description: Absolute path to the process executable.
@@ -235,7 +238,9 @@
       type: match_only_text
   name: source.as.organization.name
   type: keyword
-- description: Source domain.
+- description: |-
+    The domain name of the source system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: source.domain
   type: keyword
 - description: City name.
@@ -272,6 +277,7 @@
     MAC address of the source.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: source.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: Port of the source.
   name: source.port
