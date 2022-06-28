@@ -44,6 +44,7 @@
     MAC address of the destination.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: destination.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
@@ -292,6 +293,7 @@
     MAC address of the source.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: source.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Translated ip of source based NAT sessions (e.g. internal client to internet)
