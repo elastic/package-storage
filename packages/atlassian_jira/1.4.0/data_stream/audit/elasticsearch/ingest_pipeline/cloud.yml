@@ -1,13 +1,14 @@
 ---
-description: Pipeline for processing sample logs
+description: Pipeline for processing Atlassian Jira Cloud audit logs.
 processors:
 - set:
     field: _tmp.timestamp
     copy_from: json.created
     if: ctx.json?.created != null
-- rename:
+- convert:
     field: json.id
     target_field: event.id
+    type: string
     ignore_missing: true
 - rename:
     field: json.remoteAddress
