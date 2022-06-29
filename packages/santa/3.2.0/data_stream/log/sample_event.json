@@ -1,0 +1,98 @@
+{
+    "@timestamp": "2022-05-12T11:30:05.248Z",
+    "agent": {
+        "ephemeral_id": "ea9b3ab9-896a-456a-8e87-7a6452edad19",
+        "id": "2c596a05-d358-406e-924c-bf221088f43c",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.2.1"
+    },
+    "data_stream": {
+        "dataset": "santa.log",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "2c596a05-d358-406e-924c-bf221088f43c",
+        "snapshot": true,
+        "version": "8.2.1"
+    },
+    "event": {
+        "action": "link",
+        "agent_id_status": "verified",
+        "dataset": "santa.log",
+        "ingested": "2022-05-18T03:34:40Z",
+        "kind": "event"
+    },
+    "file": {
+        "path": "/private/var/db/santa/santa.log",
+        "target_path": "/private/var/db/santa/santa.log.0"
+    },
+    "group": {
+        "id": "0",
+        "name": "wheel"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": false,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "192.168.160.7"
+        ],
+        "mac": [
+            "02:42:c0:a8:a0:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.104-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "input": {
+        "type": "log"
+    },
+    "log": {
+        "file": {
+            "path": "/tmp/service_logs/santa.log"
+        },
+        "level": "I",
+        "offset": 1150
+    },
+    "process": {
+        "args": [
+            "/usr/sbin/newsyslog"
+        ],
+        "entity_id": "2c596a05-d358-406e-924c-bf221088f43c-71559-1096716",
+        "executable": "/usr/sbin/newsyslog",
+        "name": "newsyslog",
+        "parent": {
+            "pid": 1
+        },
+        "pid": 71559,
+        "start": "2022-05-12T11:30:05.248Z"
+    },
+    "related": {
+        "user": [
+            "root"
+        ]
+    },
+    "santa": {
+        "action": "LINK",
+        "pidversion": 1096716
+    },
+    "tags": [
+        "santa-log"
+    ],
+    "user": {
+        "id": "0",
+        "name": "root"
+    }
+}
