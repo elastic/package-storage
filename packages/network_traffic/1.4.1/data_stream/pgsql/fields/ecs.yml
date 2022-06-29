@@ -100,6 +100,34 @@
     The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
+- description: |-
+    Array of process arguments, starting with the absolute path to the executable.
+    May be filtered to protect sensitive information.
+  name: process.args
+  type: keyword
+- description: Absolute path to the process executable.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.executable
+  type: keyword
+- description: The working directory of the process.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.working_directory
+  type: keyword
+- description: The time the process started.
+  name: process.start
+  type: date
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
