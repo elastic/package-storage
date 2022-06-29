@@ -73,6 +73,7 @@
     MAC address of the destination.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: destination.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
@@ -249,6 +250,7 @@
     Host MAC addresses.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: host.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Name of the host.
@@ -362,6 +364,7 @@
     MAC addresses of the observer.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: observer.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Custom name of the observer.
@@ -426,6 +429,7 @@
     MAC address of the server.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: server.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     The domain name of the server system.
@@ -493,6 +497,7 @@
     MAC address of the source.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: source.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
     Translated ip of source based NAT sessions (e.g. internal client to internet)
