@@ -1,0 +1,27 @@
+{
+  "attributes": {
+    "description": "",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"tenable_sc.asset\\\" \"}}"
+    },
+    "title": "[Tenable SC] Distribution of Assets by Policy Name",
+    "uiStateJSON": "{}",
+    "version": 1,
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Count\",\"field\":\"tenable_sc.asset.custom_hash\"},\"schema\":\"metric\",\"type\":\"cardinality\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Policy Name\",\"field\":\"tenable_sc.asset.policy.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"segment\",\"type\":\"terms\"}],\"params\":{\"addLegend\":true,\"addTooltip\":true,\"distinctColors\":false,\"isDonut\":false,\"labels\":{\"last_level\":false,\"percentDecimals\":2,\"position\":\"default\",\"show\":true,\"truncate\":100,\"values\":true,\"valuesFormat\":\"percent\"},\"legendPosition\":\"right\",\"maxLegendLines\":1,\"nestedLegend\":false,\"palette\":{\"name\":\"temperature\",\"type\":\"palette\"},\"truncateLegend\":true,\"type\":\"pie\"},\"title\":\"[Tenable SC] Distribution of Assets by Policy Name\",\"type\":\"pie\"}"
+  },
+  "coreMigrationVersion": "7.16.0",
+  "id": "tenable_sc-5de3dfd0-30bd-11ec-b7d2-eba3454d2335",
+  "migrationVersion": {
+    "visualization": "7.14.0"
+  },
+  "references": [
+    {
+      "id": "logs-*",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2021-10-21T08:10:56.520Z",
+  "version": "WzM0MTcsMV0="
+}
