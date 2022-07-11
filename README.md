@@ -48,10 +48,10 @@ In addition to updating the Dockerfile, also the package-registry version on the
 
 ```
 go get github.com/elastic/package-registry@v0.7.0
-mage vendor
+mage modTidy
 ```
 
-This will update the go module files and pull in the most recent vendor files.
+This will update the go module files.
 
 With all the changes above, a pull request can be opened. As soon as the pull request is merged, a new Docker image is automatically built by CI and can be deployed.
 
