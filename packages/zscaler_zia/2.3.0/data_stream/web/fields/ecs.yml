@@ -88,6 +88,12 @@
     The `#` is not part of the fragment.
   name: url.fragment
   type: keyword
+- description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: url.full
+  type: wildcard
 - description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
