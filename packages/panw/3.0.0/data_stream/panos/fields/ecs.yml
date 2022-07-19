@@ -46,6 +46,11 @@
 - description: Bytes sent from the destination to the source.
   name: destination.bytes
   type: long
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: destination.domain
+  type: keyword
 - description: City name.
   name: destination.geo.city_name
   type: keyword
@@ -59,7 +64,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -122,6 +126,11 @@
   name: event.category
   type: keyword
 - description: |-
+    Identification code for this event, if one exists.
+    Some event sources use event codes to identify messages unambiguously, regardless of message language or wording adjustments over time. An example of this is the Windows Event ID.
+  name: event.code
+  type: keyword
+- description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
     This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
     In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
@@ -143,12 +152,24 @@
   name: event.kind
   type: keyword
 - description: |-
+    Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
+    This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
+  doc_values: false
+  index: false
+  name: event.original
+  type: keyword
+- description: |-
     This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
     `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
     Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective.
     Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer.
     Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense.
   name: event.outcome
+  type: keyword
+- description: |-
+    Reason why this event happened, according to the source.
+    This describes the why of a particular action or outcome captured in the event. Where `event.action` captures the action from the event, `event.reason` describes why that action was taken. For example, a web proxy with an `event.action` which denied the request may also populate `event.reason` with the reason why (e.g. `blocked site`).
+  name: event.reason
   type: keyword
 - description: |-
     The numeric severity of the event according to your event source.
@@ -180,11 +201,45 @@
   name: labels
   type: object
 - description: |-
-    Custom key/value pairs.
-    Can be used to add meta information to events. Should not contain nested objects. All values are stored as keyword.
-    Example: `docker` and `k8s` labels.
-  name: labels
-  type: object
+    Unique host id.
+    As hostname is not always unique, use values that are meaningful in your environment.
+    Example: The current usage of `beat.name`.
+  name: host.id
+  type: keyword
+- description: Host ip addresses.
+  name: host.ip
+  type: ip
+- description: |-
+    Host MAC addresses.
+    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
+  name: host.mac
+  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
+  type: keyword
+- description: |-
+    Name of the host.
+    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
+  name: host.name
+  type: keyword
+- description: OS family (such as redhat, debian, freebsd, windows).
+  name: host.os.family
+  type: keyword
+- description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: host.os.full
+  type: keyword
+- description: |-
+    HTTP request method.
+    The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
+  name: http.request.method
+  type: keyword
+- description: Referrer for this HTTP request.
+  name: http.request.referrer
+  type: keyword
+- description: HTTP version.
+  name: http.version
+  type: keyword
 - description: |-
     Original log level of the log event.
     If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
@@ -282,6 +337,12 @@
 - description: Network zone of outbound traffic as reported by the observer to categorize the destination area of egress traffic, e.g. Internal, External, DMZ, HR, Legal, etc.
   name: observer.egress.zone
   type: keyword
+- description: |-
+    User-defined description of a location, at the level of granularity they care about.
+    Could be the name of their data centers, the floor number, if this describes a local physical entity, city names.
+    Not typically used in automated geolocation.
+  name: observer.geo.name
+  type: keyword
 - description: Hostname of the observer.
   name: observer.hostname
   type: keyword
@@ -319,6 +380,9 @@
   type: keyword
 - description: The name of the rule or signature generating the event.
   name: rule.name
+  type: keyword
+- description: A rule ID that is unique within the scope of a set or group of agents, observers, or other entities using the rule for detection of this event.
+  name: rule.uuid
   type: keyword
 - description: Bytes sent from the server to the client.
   name: server.bytes
@@ -378,7 +442,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -426,8 +489,53 @@
       type: match_only_text
   name: source.user.name
   type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: source.user.name
+  type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  type: keyword
+- description: String indicating the cipher used during the current connection.
+  name: tls.cipher
+  type: keyword
+- description: Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash.
+  name: tls.client.hash.md5
+  type: keyword
+- description: Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash.
+  name: tls.client.hash.sha1
+  type: keyword
+- description: Certificate fingerprint using the SHA256 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash.
+  name: tls.client.hash.sha256
+  type: keyword
+- description: Date/Time indicating when client certificate is no longer considered valid.
+  name: tls.client.not_after
+  type: date
+- description: Date/Time indicating when client certificate is first considered valid.
+  name: tls.client.not_before
+  type: date
+- description: Also called an SNI, this tells the server which hostname to which the client is attempting to connect to. When this value is available, it should get copied to `destination.domain`.
+  name: tls.client.server_name
+  type: keyword
+- description: The size of the public key space in bits.
+  name: tls.client.x509.public_key_size
+  type: long
+- description: Unique serial number issued by the certificate authority. For consistency, if this value is alphanumeric, it should be formatted without colons and uppercase characters.
+  name: tls.client.x509.serial_number
+  type: keyword
+- description: Version of x509 format.
+  name: tls.client.x509.version_number
+  type: keyword
+- description: String indicating the curve used for the given cipher, when applicable.
+  name: tls.curve
+  type: keyword
+- description: Numeric part of the version parsed from the original string.
+  name: tls.version
+  type: keyword
+- description: Normalized lowercase protocol name parsed from original string.
+  name: tls.version_protocol
   type: keyword
 - description: |-
     Unmodified original url as seen in the event source.
@@ -438,9 +546,39 @@
       type: match_only_text
   name: url.original
   type: wildcard
+- description: Name of the device.
+  name: user_agent.device.name
+  type: keyword
+- description: Name of the user agent.
+  name: user_agent.name
+  type: keyword
 - description: Unparsed user_agent string.
   multi_fields:
     - name: text
       type: match_only_text
   name: user_agent.original
+  type: keyword
+- description: Operating system name, including the version or code name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user_agent.os.full
+  type: keyword
+- description: Operating system name, without the version.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user_agent.os.name
+  type: keyword
+- description: Operating system version as a raw string.
+  name: user_agent.os.version
+  type: keyword
+- description: Version of the user agent.
+  name: user_agent.version
+  type: keyword
+- description: List of common name (CN) of issuing certificate authority.
+  name: x509.issuer.common_name
+  type: keyword
+- description: List of common names (CN) of subject.
+  name: x509.subject.common_name
   type: keyword
