@@ -3,7 +3,9 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
   type: keyword
-- description: Destination domain.
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
   name: destination.domain
   type: keyword
 - description: IP address of the destination (IPv4 or IPv6).
@@ -30,9 +32,7 @@
   type: long
 - description: |-
     HTTP request method.
-    Prior to ECS 1.6.0 the following guidance was provided:
-    "The field value must be normalized to lowercase for querying."
-    As of ECS 1.6.0, the guidance is deprecated because the original case of the method may be useful in anomaly detection.  Original case will be mandated in ECS 2.0.0
+    The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
   name: http.request.method
   type: keyword
 - description: Referrer for this HTTP request.
@@ -143,20 +143,8 @@
 - description: Name of the device.
   name: user_agent.device.name
   type: keyword
-- description: Name of the device.
-  name: user_agent.device.name
-  type: keyword
 - description: Name of the user agent.
   name: user_agent.name
-  type: keyword
-- description: Name of the user agent.
-  name: user_agent.name
-  type: keyword
-- description: Unparsed user_agent string.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user_agent.original
   type: keyword
 - description: Unparsed user_agent string.
   multi_fields:
@@ -169,12 +157,6 @@
     - name: text
       type: match_only_text
   name: user_agent.os.full
-  type: keyword
-- description: Operating system name, without the version.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user_agent.os.name
   type: keyword
 - description: Operating system name, without the version.
   multi_fields:
