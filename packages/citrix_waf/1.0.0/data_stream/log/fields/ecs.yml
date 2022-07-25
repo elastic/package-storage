@@ -5,6 +5,15 @@
     Required field for all events.
   name: '@timestamp'
   type: date
+- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
+  name: client.as.number
+  type: long
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: client.as.organization.name
+  type: keyword
 - description: City name.
   name: client.geo.city_name
   type: keyword
@@ -32,77 +41,6 @@
     - name: text
       type: match_only_text
   name: client.user.name
-  type: keyword
-- description: |-
-    Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
-    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
-  name: destination.address
-  type: keyword
-- description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
-  name: destination.as.number
-  type: long
-- description: Organization name.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: destination.as.organization.name
-  type: keyword
-- description: Bytes sent from the destination to the source.
-  name: destination.bytes
-  type: long
-- description: |-
-    The domain name of the destination system.
-    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
-  name: destination.domain
-  type: keyword
-- description: City name.
-  name: destination.geo.city_name
-  type: keyword
-- description: Name of the continent.
-  name: destination.geo.continent_name
-  type: keyword
-- description: Country ISO code.
-  name: destination.geo.country_iso_code
-  type: keyword
-- description: Country name.
-  name: destination.geo.country_name
-  type: keyword
-- description: Longitude and latitude.
-  level: core
-  name: destination.geo.location
-  type: geo_point
-- description: Region ISO code.
-  name: destination.geo.region_iso_code
-  type: keyword
-- description: Region name.
-  name: destination.geo.region_name
-  type: keyword
-- description: IP address of the destination (IPv4 or IPv6).
-  name: destination.ip
-  type: ip
-- description: |-
-    Translated ip of destination based NAT sessions (e.g. internet to private DMZ)
-    Typically used with load balancers, firewalls, or routers.
-  name: destination.nat.ip
-  type: ip
-- description: |-
-    Port the source session is translated to by NAT Device.
-    Typically used with load balancers, firewalls, or routers.
-  name: destination.nat.port
-  type: long
-- description: Port of the destination.
-  name: destination.port
-  type: long
-- description: |-
-    Name of the directory the user is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: destination.user.domain
-  type: keyword
-- description: Short name or login of the user.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: destination.user.name
   type: keyword
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
