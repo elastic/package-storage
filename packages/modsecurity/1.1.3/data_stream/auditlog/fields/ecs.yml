@@ -25,8 +25,8 @@
 - description: Referrer for this HTTP request.
   name: http.request.referrer
   type: keyword
-- description: Size in bytes of the response body.
-  name: http.response.body.bytes
+- description: Total size in bytes of the response (body and headers).
+  name: http.response.bytes
   type: long
 - description: HTTP response status code.
   name: http.response.status_code
