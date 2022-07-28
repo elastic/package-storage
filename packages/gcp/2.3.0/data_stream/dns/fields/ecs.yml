@@ -124,3 +124,23 @@
 - description: List of keywords used to tag each event.
   name: tags
   type: keyword
+- description: |-
+    Original log level of the log event.
+    If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
+    Some examples are `warn`, `err`, `i`, `informational`.
+  name: log.level
+  type: keyword
+- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
+  name: network.iana_number
+  type: keyword
+- description: |-
+    In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
+    The field value must be normalized to lowercase for querying.
+  name: network.protocol
+  type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  type: ip
