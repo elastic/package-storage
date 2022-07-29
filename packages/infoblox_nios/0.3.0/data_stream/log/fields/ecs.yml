@@ -33,9 +33,7 @@
 - description: The type of data contained in this resource record.
   name: dns.answers.type
   type: keyword
-- description: |-
-    Array of 2 letter DNS header flags.
-    Expected values are: AA, TC, RD, RA, AD, CD, DO.
+- description: Array of 2 letter DNS header flags.
   name: dns.header_flags
   type: keyword
 - description: The class of records being queried.
