@@ -296,6 +296,14 @@
     If `source.packets` and `destination.packets` are known, `network.packets` is their sum.
   name: network.packets
   type: long
+- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
+  name: network.iana_number
+  type: keyword
+- description: |-
+    In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
+    The field value must be normalized to lowercase for querying.
+  name: network.type
+  type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
   type: ip
@@ -332,6 +340,11 @@
 - description: Header entrypoint of the ELF file.
   name: process.elf.header.entrypoint
   type: long
+- description: |-
+    An array containing an object for each section of the ELF file.
+    The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
+  name: process.elf.sections
+  type: nested
 - description: Chi-square probability distribution of the section.
   name: process.elf.sections.chi2
   type: long
@@ -382,6 +395,11 @@
 - description: Header entrypoint of the ELF file.
   name: process.parent.elf.header.entrypoint
   type: long
+- description: |-
+    An array containing an object for each section of the ELF file.
+    The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
+  name: process.parent.elf.sections
+  type: nested
 - description: Chi-square probability distribution of the section.
   name: process.parent.elf.sections.chi2
   type: long
@@ -405,14 +423,13 @@
     The field should be absent if there is no exit code for the event (e.g. process start).
   name: process.parent.exit_code
   type: long
-- description: Identifier of the group of processes the process belongs to.
+- description: |-
+    Deprecated for removal in next major version release. This field is superseded by `process.group_leader.pid`.
+    Identifier of the group of processes the process belongs to.
   name: process.parent.pgid
   type: long
 - description: Process id.
   name: process.parent.pid
-  type: long
-- description: Parent process' pid.
-  name: process.parent.ppid
   type: long
 - description: The time the process started.
   name: process.parent.start
@@ -423,14 +440,13 @@
 - description: Seconds the process has been up.
   name: process.parent.uptime
   type: long
-- description: Identifier of the group of processes the process belongs to.
+- description: |-
+    Deprecated for removal in next major version release. This field is superseded by `process.group_leader.pid`.
+    Identifier of the group of processes the process belongs to.
   name: process.pgid
   type: long
 - description: Process id.
   name: process.pid
-  type: long
-- description: Parent process' pid.
-  name: process.ppid
   type: long
 - description: The time the process started.
   name: process.start
@@ -494,6 +510,9 @@
 - description: Port of the source.
   name: source.port
   type: long
+- description: A list of associated indicators objects enriching the event, and the context of that association/enrichment.
+  name: threat.enrichments
+  type: nested
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: threat.enrichments.indicator.as.number
   type: long
@@ -534,6 +553,11 @@
 - description: Header entrypoint of the ELF file.
   name: threat.enrichments.indicator.file.elf.header.entrypoint
   type: long
+- description: |-
+    An array containing an object for each section of the ELF file.
+    The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
+  name: threat.enrichments.indicator.file.elf.sections
+  type: nested
 - description: Chi-square probability distribution of the section.
   name: threat.enrichments.indicator.file.elf.sections.chi2
   type: long
