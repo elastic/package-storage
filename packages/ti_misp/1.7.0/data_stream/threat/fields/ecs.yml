@@ -70,26 +70,7 @@
 - description: Count of AV/EDR vendors that successfully detected malicious file or URL.
   name: threat.indicator.scanner_stats
   type: long
-- description: |-
-    Type of indicator as represented by Cyber Observable in STIX 2.0.
-    Recommended values:
-      * autonomous-system
-      * artifact
-      * directory
-      * domain-name
-      * email-addr
-      * file
-      * ipv4-addr
-      * ipv6-addr
-      * mac-addr
-      * mutex
-      * port
-      * process
-      * software
-      * url
-      * user-account
-      * windows-registry-key
-      * x509-certificate
+- description: Type of indicator as represented by Cyber Observable in STIX 2.0.
   name: threat.indicator.type
   type: keyword
 - description: Identifies a threat indicator as an IP address (irrespective of direction).
@@ -157,13 +138,7 @@
 - description: SHA256 hash.
   name: threat.indicator.file.hash.sha256
   type: keyword
-- description: |-
-    Traffic Light Protocol sharing markings.
-    Recommended values are:
-      * WHITE
-      * GREEN
-      * AMBER
-      * RED
+- description: Traffic Light Protocol sharing markings.
   name: threat.indicator.marking.tlp
   type: keyword
 - description: Identifies a threat indicator as a port number (irrespective of direction).
