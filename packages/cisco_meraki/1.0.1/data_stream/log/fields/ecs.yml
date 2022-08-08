@@ -673,10 +673,8 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  name: client.geo.location.lat
-  type: geo_point
-- description: Longitude and latitude.
-  name: client.geo.location.lon
+  level: core
+  name: client.geo.location
   type: geo_point
 - description: Region ISO code.
   name: client.geo.region_iso_code
