@@ -1,6 +1,11 @@
 ---
 description: Pipeline for ingesting APM application logs.
 processors:
+  - rename:
+      field: process.ppid
+      ignore_failure: true
+      ignore_missing: true
+      target_field: process.parent.pid
   - grok:
       field: observer.version
       pattern_definitions:

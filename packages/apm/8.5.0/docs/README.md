@@ -127,8 +127,8 @@ Traces are written to `traces-apm-*` data streams, except for RUM traces, which 
 | observer.version | Observer version. | keyword |
 | parent.id | The ID of the parent event. | keyword |
 | process.args | Array of process arguments, starting with the absolute path to the executable. May be filtered to protect sensitive information. | keyword |
+| process.parent.pid | Process id. | long |
 | process.pid | Process id. | long |
-| process.ppid | Parent process' pid. | long |
 | process.title | Process title. The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened. | keyword |
 | process.title.text | Multi-field of `process.title`. | match_only_text |
 | processor.event | Processor event. | keyword |
@@ -289,8 +289,8 @@ Application metrics are written to service-specific `metrics-apm.app.*-*` data s
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |
 | observer.version | Observer version. | keyword |
 | process.args | Array of process arguments, starting with the absolute path to the executable. May be filtered to protect sensitive information. | keyword |
+| process.parent.pid | Process id. | long |
 | process.pid | Process id. | long |
-| process.ppid | Parent process' pid. | long |
 | process.title | Process title. The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened. | keyword |
 | process.title.text | Multi-field of `process.title`. | match_only_text |
 | processor.event | Processor event. | constant_keyword |
@@ -449,8 +449,8 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |  |  |
 | observer.version | Observer version. | keyword |  |  |
 | process.args | Array of process arguments, starting with the absolute path to the executable. May be filtered to protect sensitive information. | keyword |  |  |
+| process.parent.pid | Process id. | long |  |  |
 | process.pid | Process id. | long |  |  |
-| process.ppid | Parent process' pid. | long |  |  |
 | process.title | Process title. The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened. | keyword |  |  |
 | process.title.text | Multi-field of `process.title`. | match_only_text |  |  |
 | processor.event | Processor event. | constant_keyword |  |  |
@@ -625,8 +625,8 @@ Application errors are written to `logs-apm.error.*` data stream.
 | observer.version | Observer version. | keyword |
 | parent.id | The ID of the parent event. | keyword |
 | process.args | Array of process arguments, starting with the absolute path to the executable. May be filtered to protect sensitive information. | keyword |
+| process.parent.pid | Process id. | long |
 | process.pid | Process id. | long |
-| process.ppid | Parent process' pid. | long |
 | process.title | Process title. The proctitle, some times the same as process name. Can also be different: for example a browser setting its title to the web page currently opened. | keyword |
 | process.title.text | Multi-field of `process.title`. | match_only_text |
 | processor.event | Processor event. | constant_keyword |
