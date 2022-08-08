@@ -21,6 +21,11 @@ processors:
       ignore_failure: true
       ignore_missing: true
       target_field: user_agent
+  - rename:
+      field: process.ppid
+      ignore_failure: true
+      ignore_missing: true
+      target_field: process.parent.pid
   - geoip:
       database_file: GeoLite2-City.mmdb
       field: client.ip
