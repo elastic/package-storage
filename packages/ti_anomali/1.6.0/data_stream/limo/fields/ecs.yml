@@ -56,26 +56,7 @@
 - description: The date and time when intelligence source first reported sighting this indicator.
   name: threat.indicator.first_seen
   type: date
-- description: |-
-    Type of indicator as represented by Cyber Observable in STIX 2.0.
-    Recommended values:
-      * autonomous-system
-      * artifact
-      * directory
-      * domain-name
-      * email-addr
-      * file
-      * ipv4-addr
-      * ipv6-addr
-      * mac-addr
-      * mutex
-      * port
-      * process
-      * software
-      * url
-      * user-account
-      * windows-registry-key
-      * x509-certificate
+- description: Type of indicator as represented by Cyber Observable in STIX 2.0.
   name: threat.indicator.type
   type: keyword
 - description: Identifies a threat indicator as an IP address (irrespective of direction).
