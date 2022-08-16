@@ -70,6 +70,14 @@
 - description: Observer version.
   name: observer.version
   type: keyword
+- description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
   type: keyword
