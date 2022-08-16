@@ -48,7 +48,7 @@
             }
         ],
         "type": "eql",
-        "version": 6
+        "version": 4
     },
     "id": "2fba96c0-ade5-4bce-b92f-a5df2509da3f",
     "type": "security-rule"
