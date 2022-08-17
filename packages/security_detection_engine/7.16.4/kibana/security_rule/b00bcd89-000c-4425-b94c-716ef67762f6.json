@@ -24,8 +24,7 @@
             "Host",
             "macOS",
             "Threat Detection",
-            "Defense Evasion",
-            "CVE_2020_9771"
+            "Defense Evasion"
         ],
         "threat": [
             {
@@ -46,7 +45,7 @@
         ],
         "timestamp_override": "event.ingested",
         "type": "query",
-        "version": 4
+        "version": 1
     },
     "id": "b00bcd89-000c-4425-b94c-716ef67762f6",
     "type": "security-rule"
