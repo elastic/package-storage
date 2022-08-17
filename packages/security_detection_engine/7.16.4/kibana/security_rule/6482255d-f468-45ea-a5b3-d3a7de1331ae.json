@@ -52,7 +52,7 @@
         ],
         "timestamp_override": "event.ingested",
         "type": "query",
-        "version": 3
+        "version": 1
     },
     "id": "6482255d-f468-45ea-a5b3-d3a7de1331ae",
     "type": "security-rule"

@@ -38,7 +38,7 @@
                 "technique": [
                     {
                         "id": "T1218",
-                        "name": "System Binary Proxy Execution",
+                        "name": "Signed Binary Proxy Execution",
                         "reference": "https://attack.mitre.org/techniques/T1218/"
                     }
                 ]
@@ -54,7 +54,7 @@
             }
         ],
         "type": "eql",
-        "version": 12
+        "version": 9
     },
     "id": "63e65ec3-43b1-45b0-8f2d-45b34291dc44",
     "type": "security-rule"
