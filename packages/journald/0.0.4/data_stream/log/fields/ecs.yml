@@ -4,6 +4,11 @@
   name: ecs.version
   type: keyword
 - description: |-
+    Identification code for this event, if one exists.
+    Some event sources use event codes to identify messages unambiguously, regardless of message language or wording adjustments over time. An example of this is the Windows Event ID.
+  name: event.code
+  type: keyword
+- description: |-
     Hostname of the host.
     It normally contains what the `hostname` command returns on the host machine.
   name: host.hostname
@@ -29,7 +34,7 @@
     For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
     If multiple messages exist, they can be combined into one message.
   name: message
-  type: text
+  type: match_only_text
 - description: |-
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
@@ -45,9 +50,9 @@
     Some arguments may be filtered to protect sensitive information.
   multi_fields:
     - name: text
-      type: text
+      type: match_only_text
   name: process.command_line
-  type: keyword
+  type: wildcard
 - description: Process id.
   name: process.pid
   type: long
