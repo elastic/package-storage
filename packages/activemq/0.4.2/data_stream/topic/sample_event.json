@@ -1,0 +1,105 @@
+{
+    "@timestamp": "2022-06-29T16:13:05.413Z",
+    "activemq": {
+        "topic": {
+            "consumers": {
+                "count": 0
+            },
+            "mbean": "org.apache.activemq:brokerName=localhost,destinationName=ActiveMQ.Advisory.MasterBroker,destinationType=Topic,type=Broker",
+            "memory": {
+                "broker": {
+                    "pct": 0
+                }
+            },
+            "messages": {
+                "dequeue": {
+                    "count": 0
+                },
+                "dispatch": {
+                    "count": 0
+                },
+                "enqueue": {
+                    "count": 1,
+                    "time": {
+                        "avg": 0,
+                        "max": 0,
+                        "min": 0
+                    }
+                },
+                "expired": {
+                    "count": 0
+                },
+                "inflight": {
+                    "count": 0
+                },
+                "size": {
+                    "avg": 1024
+                }
+            },
+            "name": "ActiveMQ.Advisory.MasterBroker",
+            "producers": {
+                "count": 0
+            }
+        }
+    },
+    "agent": {
+        "ephemeral_id": "97eb0219-9f47-414b-9e73-6b806294b181",
+        "id": "4052b5b6-59e4-4711-8a2c-f6c667f81bbd",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.2.0"
+    },
+    "data_stream": {
+        "dataset": "activemq.topic",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "4052b5b6-59e4-4711-8a2c-f6c667f81bbd",
+        "snapshot": false,
+        "version": "8.2.0"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "activemq.topic",
+        "duration": 16295694,
+        "ingested": "2022-06-29T16:13:08Z",
+        "module": "activemq"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.19.0.7"
+        ],
+        "mac": [
+            "02:42:ac:13:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "3.10.0-1160.66.1.el7.x86_64",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "topic",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_activemq_1:8161/api/jolokia/%3FignoreErrors=true\u0026canonicalNaming=false",
+        "type": "activemq"
+    },
+    "tags": [
+        "forwarded",
+        "activemq-topic"
+    ]
+}
