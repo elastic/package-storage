@@ -1,8 +1,0 @@
-- name: activemq.log
-  type: group
-  fields:
-    - name: stack_trace
-      type: keyword
-- name: log.flags
-  type: keyword
-  description: Log flags
