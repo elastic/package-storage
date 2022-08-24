@@ -1,9 +1,9 @@
-title: "GCP Load Balancing Metrics"
+title: "GCP Storage Metrics"
 type: metrics
 streams:
   - input: gcp/metrics
-    title: GCP Load Balancing Metrics
-    description: Collect GCP Load Balancing Metrics
+    title: GCP Storage Metrics
+    description: Collect GCP Storage Metrics
     vars:
       - name: zone
         type: text
