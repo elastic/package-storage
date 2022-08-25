@@ -1,6 +1,0 @@
-type: metrics
-title: IIS web server metrics
-streams:
-  - input: iis/metrics
-    title: IIS web server metrics
-    description: Collect IIS web server metrics
