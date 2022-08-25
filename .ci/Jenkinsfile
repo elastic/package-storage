@@ -249,7 +249,7 @@ def signArtifactsWithElastic() {
       token: TOKEN,
       parameters: [
         gcs_input_path: env.INFRA_SIGNING_BUCKET_ARTIFACTS_PATH,
-      ]
+      ],
       useCrumbCache: true,
       useJobInfoCache: true)
   }
