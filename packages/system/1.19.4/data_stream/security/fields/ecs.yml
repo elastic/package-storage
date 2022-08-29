@@ -326,3 +326,9 @@
     Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
   name: file.extension
   type: keyword
+- description: Error code describing the error.
+  name: error.code
+  type: keyword
+- description: Error message.
+  name: error.message
+  type: match_only_text
