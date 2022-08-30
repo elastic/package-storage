@@ -36,3 +36,6 @@ processors:
             ignore_failure: true
             ignore_missing: true
       target_field: client.geo
+  - remove:
+      field: _metric_descriptions
+      ignore_missing: true
