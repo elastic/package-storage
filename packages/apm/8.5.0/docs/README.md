@@ -506,12 +506,14 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | tags | List of keywords used to tag each event. | keyword |  |  |
 | timeseries.instance | Time series instance ID | keyword |  |  |
 | transaction.duration.histogram | Pre-aggregated histogram of transaction durations. | histogram |  |  |
+| transaction.failure_count | Count of transactions with 'event.outcome: failure' | long |  |  |
 | transaction.name | Generic designation of a transaction in the scope of a single service (eg. 'GET /users/:id'). | keyword |  |  |
 | transaction.result | The result of the transaction. HTTP status code for HTTP-related transactions. | keyword |  |  |
 | transaction.root | Identifies metrics for root transactions. This can be used for calculating metrics for traces. | boolean |  |  |
 | transaction.sampled | Transactions that are 'sampled' will include all available information. Transactions that are not sampled will not have spans or context. | boolean |  |  |
 | transaction.self_time.count | Number of aggregated transactions. | long |  |  |
 | transaction.self_time.sum.us | Aggregated transaction duration, excluding the time periods where a direct child was running, in microseconds. | long | micros |  |
+| transaction.success_count | Count of transactions with 'event.outcome: success' | long |  |  |
 | transaction.type | Keyword of specific relevance in the service's domain (eg. 'request', 'backgroundjob', etc) | keyword |  |  |
 | user.domain | Name of the directory the user is a member of. For example, an LDAP or Active Directory domain name. | keyword |  |  |
 | user.email | User email address. | keyword |  |  |
