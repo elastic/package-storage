@@ -289,6 +289,14 @@
   name: process.executable
   type: keyword
 - description: |-
+    Process name.
+    Sometimes called program name or similar.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: process.name
+  type: keyword
+- description: |-
     The exit code of the process, if this is a termination event.
     The field should be absent if there is no exit code for the event (e.g. process start).
   name: process.exit_code
