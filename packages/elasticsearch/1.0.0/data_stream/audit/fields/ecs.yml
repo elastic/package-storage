@@ -1,0 +1,24 @@
+- description: The full HTTP request body.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: http.request.body.content
+  type: wildcard
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: url.original
+  type: wildcard
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user.name
+  type: keyword
