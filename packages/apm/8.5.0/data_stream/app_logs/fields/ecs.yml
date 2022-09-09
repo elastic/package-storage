@@ -133,6 +133,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Name of the host.
@@ -198,6 +200,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: Process id.
   name: process.pid
