@@ -122,6 +122,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Name of the host.
@@ -159,6 +161,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: Process id.
   name: process.pid
@@ -217,6 +221,8 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Name of the directory the user is a member of.
