@@ -1,5 +1,7 @@
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
@@ -197,9 +199,13 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: |-
     In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.

@@ -11,6 +11,8 @@
     The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
     Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
   name: dns.answers
+  normalize:
+    - array
   type: object
 - description: The class of DNS data contained in this resource record.
   name: dns.answers.class
@@ -59,6 +61,8 @@
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
   name: dns.resolved_ip
+  normalize:
+    - array
   type: ip
 - description: The DNS response code.
   name: dns.response_code
@@ -123,6 +127,8 @@
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Original log level of the log event.
@@ -140,7 +146,11 @@
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
