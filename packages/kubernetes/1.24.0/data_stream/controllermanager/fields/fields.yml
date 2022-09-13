@@ -1,0 +1,139 @@
+- name: kubernetes.controllermanager
+  type: group
+  fields:
+    - name: url
+      dimension: true
+      type: keyword
+      description: >
+        Request url
+
+    - name: verb
+      dimension: true
+      type: keyword
+      description: >
+        Request verb
+
+    - name: code
+      dimension: true
+      type: keyword
+      description: |
+        HTTP code
+    - name: method
+      dimension: true
+      type: keyword
+      description: |
+        HTTP method
+    - name: host
+      dimension: true
+      type: keyword
+      description: |
+        Request host
+    - name: name
+      dimension: true
+      type: keyword
+      description: |
+        Name for the resource
+    - name: zone
+      dimension: true
+      type: keyword
+      description: |
+        Infrastructure zone
+    - name: process
+      type: group
+      fields:
+        - name: cpu.sec
+          type: double
+          metric_type: counter
+          description: CPU seconds
+        - name: memory.resident.bytes
+          type: long
+          format: bytes
+          unit: byte
+          metric_type: gauge
+          description: Bytes in resident memory
+        - name: memory.virtual.bytes
+          type: long
+          format: bytes
+          unit: byte
+          metric_type: gauge
+          description: Bytes in virtual memory
+        - name: fds.open.count
+          type: long
+          metric_type: gauge
+          description: Number of open file descriptors
+        - name: fds.max.count
+          type: long
+          metric_type: gauge
+          description: Maximum number of open file descriptors
+        - name: started.sec
+          type: double
+          metric_type: gauge
+          description: Seconds since the process started
+    - name: client
+      type: group
+      fields:
+        - name: request.count
+          type: long
+          metric_type: counter
+          description: >
+            Number of requests as client
+
+        - name: request.duration.us.bucket.*
+          type: object
+          object_type: long
+          description: Response latency distribution, histogram buckets
+        - name: request.duration.us.sum
+          type: long
+          unit: micros
+          metric_type: counter
+          description: Request duration, sum in microseconds
+        - name: request.duration.us.count
+          type: long
+          metric_type: counter
+          description: Request duration, number of operations
+    - name: workqueue
+      type: group
+      fields:
+        - name: longestrunning.sec
+          type: double
+          metric_type: gauge
+          description: Longest running processors
+        - name: unfinished.sec
+          type: double
+          metric_type: gauge
+          description: Unfinished processors
+        - name: adds.count
+          type: long
+          metric_type: counter
+          description: Workqueue add count
+        - name: depth.count
+          type: long
+          metric_type: gauge
+          description: Workqueue depth count
+        - name: retries.count
+          type: long
+          metric_type: counter
+          description: Workqueue number of retries
+    - name: node.collector
+      type: group
+      fields:
+        - name: eviction.count
+          type: long
+          metric_type: counter
+          description: Number of node evictions
+        - name: unhealthy.count
+          type: long
+          metric_type: gauge
+          description: Number of unhealthy nodes
+        - name: count
+          type: long
+          metric_type: gauge
+          description: Number of nodes
+        - name: health.pct
+          type: long
+          metric_type: gauge
+          description: Percentage of healthy nodes
+    - name: leader.is_master
+      type: boolean
+      description: |
+        Whether the node is master
