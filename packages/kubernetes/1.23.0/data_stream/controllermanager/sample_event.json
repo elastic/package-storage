@@ -1,0 +1,102 @@
+{
+    "kubernetes": {
+        "controllermanager": {
+            "verb": "GET",
+            "client": {
+                "request": {
+                    "duration": {
+                        "us": {
+                            "bucket": {
+                                "1000": 10787,
+                                "2000": 13002,
+                                "4000": 13442,
+                                "8000": 13533,
+                                "16000": 13558,
+                                "32000": 13568,
+                                "64000": 13571,
+                                "128000": 13571,
+                                "256000": 13571,
+                                "512000": 13571,
+                                "+Inf": 13571
+                            },
+                            "count": 13571,
+                            "sum": 12994981.660999978
+                        }
+                    }
+                }
+            },
+            "url": "https://172.18.0.2:6443/apis?timeout=32s"
+        }
+    },
+    "agent": {
+        "name": "kind-control-plane",
+        "id": "d5aadb7a-c9ec-4563-b83a-1c4bb5f1471f",
+        "ephemeral_id": "7ae929a5-2943-43de-98e8-693dc0c381d7",
+        "type": "metricbeat",
+        "version": "8.4.0"
+    },
+    "@timestamp": "2022-07-27T08:44:46.219Z",
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "service": {
+        "address": "https://0.0.0.0:10257/metrics",
+        "type": "kubernetes"
+    },
+    "data_stream": {
+        "namespace": "default",
+        "type": "metrics",
+        "dataset": "kubernetes.controllermanager"
+    },
+    "host": {
+        "hostname": "kind-control-plane",
+        "os": {
+            "kernel": "5.10.47-linuxkit",
+            "codename": "focal",
+            "name": "Ubuntu",
+            "type": "linux",
+            "family": "debian",
+            "version": "20.04.4 LTS (Focal Fossa)",
+            "platform": "ubuntu"
+        },
+        "containerized": true,
+        "ip": [
+            "10.244.0.1",
+            "10.244.0.1",
+            "10.244.0.1",
+            "10.244.0.1",
+            "10.244.0.1",
+            "172.23.0.2",
+            "172.18.0.2",
+            "fc00:f853:ccd:e793::2",
+            "fe80::42:acff:fe12:2"
+        ],
+        "name": "kind-control-plane",
+        "mac": [
+            "02:42:ac:12:00:02",
+            "02:42:ac:17:00:02",
+            "06:9c:33:01:a5:e7",
+            "06:f8:26:c9:76:70",
+            "0e:c0:30:20:74:c5",
+            "76:48:b8:c1:a7:ee",
+            "d6:f7:d3:28:f5:9c"
+        ],
+        "architecture": "x86_64"
+    },
+    "elastic_agent": {
+        "id": "d5aadb7a-c9ec-4563-b83a-1c4bb5f1471f",
+        "version": "8.4.0",
+        "snapshot": false
+    },
+    "metricset": {
+        "period": 10000,
+        "name": "controllermanager"
+    },
+    "event": {
+        "duration": 59137358,
+        "agent_id_status": "verified",
+        "ingested": "2022-07-27T08:44:46Z",
+        "module": "kubernetes",
+        "dataset": "kubernetes.controllermanager"
+    }
+}
