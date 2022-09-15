@@ -10,7 +10,7 @@
     "description": "",
     "hits": 0,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"event.dataset : \\\"cassandra.log\\\" \"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"cassandra.log\\\" \"}}"
     },
     "sort": [
       [
