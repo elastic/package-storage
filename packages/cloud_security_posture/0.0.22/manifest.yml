@@ -1,16 +1,16 @@
 format_version: 1.0.0
 name: cloud_security_posture
 title: "Kubernetes Security Posture Management"
-version: 0.0.32
-release: beta
+version: 0.0.22
 license: basic
 description: "Check Kubernetes cluster compliance with the Kubernetes CIS benchmark."
 type: integration
 categories:
   - containers
   - kubernetes
+release: experimental
 conditions:
-  kibana.version: "^8.5.0"
+  kibana.version: "^8.4.0"
 screenshots:
   - src: /img/dashboard.png
     title: Dashboard page
@@ -43,16 +43,16 @@ policy_templates:
     description: Check Kubernetes cluster compliance with the Kubernetes CIS benchmark.
     multiple: false
     inputs:
-      - type: cloudbeat/cis_k8s
+      - type: cloudbeat/vanilla
         title: Enable CIS Kubernetes Benchmark
         description: Collecting findings
-      - type: cloudbeat/cis_eks
+      - type: cloudbeat/eks
         title: Enable Amazon EKS Benchmark
         description: Collecting findings
 vars:
-  - name: runtimeCfg
+  - name: dataYaml
     type: yaml
-    title: Configuration used for evaluation
+    title: Rules Activation Yaml
     multi: false
     required: false
     show_user: false
