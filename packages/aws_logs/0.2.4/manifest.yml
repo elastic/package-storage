@@ -3,7 +3,7 @@ name: aws_logs
 title: Custom AWS Logs
 description: Collect raw logs from AWS S3 or CloudWatch with Elastic Agent.
 type: integration
-version: 0.2.5
+version: 0.2.4
 release: beta
 license: basic
 categories:
@@ -70,7 +70,7 @@ vars:
     multi: false
     required: false
     show_user: false
-    default: ""
+    default: "amazonaws.com"
     description: URL of the entry point for an AWS web service
   - name: proxy_url
     type: text
