@@ -1,4 +1,5 @@
 metricsets: ["collector"]
+bearer_token_file: {{bearer_token_file}}
 hosts:
 {{#each hosts}}
   - {{this}}
@@ -14,9 +15,6 @@ metrics_filters.include:
 metrics_path: {{metrics_path}}
 period: {{period}}
 rate_counters: {{rate_counters}}
-{{#if bearer_token_file}}
-bearer_token_file: {{bearer_token_file}}
-{{/if}}
 {{#if ssl.certificate_authorities}}
 ssl.certificate_authorities:
 {{#each ssl.certificate_authorities}}
