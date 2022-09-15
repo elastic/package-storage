@@ -12,11 +12,6 @@
   name: service.id
   type: keyword
 - description: |-
-    Address where data about this service was collected from.
-    This should be a URI, network address (ipv4:port or [ipv6]:port) or a resource path (sockets).
-  name: service.address
-  type: keyword
-- description: |-
     Version of the service the data was collected from.
     This allows to look at a data set only for a specific version of a service.
   name: service.version
@@ -28,6 +23,12 @@
   name: service.type
   type: keyword
 - description: |-
+    Name of the service data is collected from.
+    The name of the service is normally user given. This allows for distributed services that run on multiple hosts to correlate the related instances based on the name.
+    In the case of Elasticsearch the `service.name` could contain the cluster name. For Beats the `service.name` is by default a copy of the `service.type` field if no name is specified.
+  name: service.name
+  type: keyword
+- description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
@@ -35,24 +36,3 @@
 - description: Process id.
   name: process.pid
   type: long
-- description: |-
-    Name of the dataset.
-    If an event source publishes more than one type of log or events (e.g. access log, error log), the dataset is used to specify which one the event comes from.
-    It's recommended but not required to start the dataset name with the module name, followed by a dot, then the dataset name.
-  name: event.dataset
-  type: keyword
-- description: |-
-    Duration of the event in nanoseconds.
-    If event.start and event.end are known this value should be the difference between the end and start time.
-  name: event.duration
-  type: long
-- description: |-
-    Name of the module this data is coming from.
-    If your monitoring agent supports the concept of modules or plugins to process events of a given source (e.g. Apache logs), `event.module` should contain the name of this module.
-  name: event.module
-  type: keyword
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
-  type: keyword

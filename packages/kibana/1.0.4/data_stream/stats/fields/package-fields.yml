@@ -1,6 +1,6 @@
-- name: cluster_uuid
-  type: alias
-  path: kibana.elasticsearch.cluster.id
+- name: elasticsearch.cluster.id
+  type: keyword
+  description: ID of the Elasticsearch cluster
 - name: kibana_stats
   type: group
   fields:
@@ -9,13 +9,7 @@
       path: kibana.stats.response_time.max.ms
     - name: kibana.status
       type: alias
-      path: kibana.stats.status
-    - name: kibana.uuid
-      type: alias
-      path: service.id
-    - name: kibana.version
-      type: alias
-      path: service.version
+      path: kibana.stats.kibana.status
     - name: os.memory.free_in_bytes
       type: alias
       path: kibana.stats.os.memory.free_in_bytes
@@ -55,6 +49,5 @@
     - name: response_times.average
       type: alias
       path: kibana.stats.response_time.avg.ms
-    - name: timestamp
-      type: alias
-      path: '@timestamp'
+- name: kibana
+  type: group

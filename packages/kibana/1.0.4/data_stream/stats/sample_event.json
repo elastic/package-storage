@@ -1,72 +1,53 @@
 {
+    "@timestamp": "2021-08-11T09:37:48.038Z",
     "agent": {
+        "hostname": "docker-fleet-agent",
         "name": "docker-fleet-agent",
-        "id": "44d99b67-3ac6-44a7-aa72-63367a8c2f8b",
+        "id": "09cdd3e1-f67a-4aca-bd69-ab2a5127490c",
+        "ephemeral_id": "c73a88e9-ff0d-4bc0-8454-a4eace232146",
         "type": "metricbeat",
-        "ephemeral_id": "ab3cdd2a-3336-4682-a038-6844197893f4",
-        "version": "8.5.0"
+        "version": "7.15.0"
     },
     "process": {
-        "pid": 7
+        "pid": 1218
     },
-    "@timestamp": "2022-08-06T22:34:12.983Z",
+    "elastic_agent": {
+        "id": "09cdd3e1-f67a-4aca-bd69-ab2a5127490c",
+        "version": "7.15.0",
+        "snapshot": true
+    },
     "ecs": {
-        "version": "8.0.0"
+        "version": "1.10.0"
+    },
+    "elasticsearch": {
+        "cluster": {
+            "id": "hEwxs-BJRuWNwJOV__gppg"
+        }
+    },
+    "service": {
+        "address": "http://kibana:5601/api/stats?extended=true",
+        "name": "kibana",
+        "id": "e7e31ce0-d42c-4829-8465-baf52f0b8334",
+        "type": "kibana",
+        "version": "7.15.0"
     },
     "data_stream": {
         "namespace": "default",
         "type": "metrics",
         "dataset": "kibana.stats"
     },
-    "service": {
-        "address": "https://kibana:5601/api/stats?extended=true",
-        "id": "79307ef1-725a-4f29-992a-446bcbedf380",
-        "type": "kibana",
-        "version": "8.5.0"
-    },
-    "elastic_agent": {
-        "id": "44d99b67-3ac6-44a7-aa72-63367a8c2f8b",
-        "version": "8.5.0",
-        "snapshot": true
-    },
-    "host": {
-        "hostname": "docker-fleet-agent",
-        "os": {
-            "kernel": "5.10.47-linuxkit",
-            "codename": "focal",
-            "name": "Ubuntu",
-            "type": "linux",
-            "family": "debian",
-            "version": "20.04.4 LTS (Focal Fossa)",
-            "platform": "ubuntu"
-        },
-        "containerized": true,
-        "ip": [
-            "172.21.0.7"
-        ],
-        "name": "docker-fleet-agent",
-        "mac": [
-            "02:42:ac:15:00:07"
-        ],
-        "architecture": "x86_64"
-    },
     "metricset": {
         "period": 10000,
         "name": "stats"
     },
     "event": {
-        "duration": 22471757,
+        "duration": 16850171,
         "agent_id_status": "verified",
-        "ingested": "2022-08-06T22:34:13Z",
+        "ingested": "2021-08-11T09:37:51.538117032Z",
         "module": "kibana",
         "dataset": "kibana.stats"
     },
     "kibana": {
-        "elasticsearch": {
-            "cluster": {
-                "id": "wMZ6Mw1nR1ydMG25AiiOLw"
-            }
-        },
         "stats": {
             "request": {
                 "total": 4,
@@ -74,15 +55,12 @@
             },
             "process": {
                 "memory": {
-                    "resident_set_size": {
-                        "bytes": 510763008
-                    },
                     "heap": {
                         "total": {
-                            "bytes": 354033664
+                            "bytes": 296554496
                         },
                         "used": {
-                            "bytes": 280320136
+                            "bytes": 228129512
                         },
                         "size_limit": {
                             "bytes": 4345298944
@@ -90,42 +68,26 @@
                     }
                 },
                 "event_loop_delay": {
-                    "ms": 10.395972266666668
+                    "ms": 0.56603500014171
                 },
                 "uptime": {
-                    "ms": 64365
+                    "ms": 1088184
                 }
             },
-            "os": {
-                "distroRelease": "Ubuntu-20.04",
-                "distro": "Ubuntu",
-                "memory": {
-                    "used_in_bytes": 4305055744,
-                    "total_in_bytes": 35739144192,
-                    "free_in_bytes": 31434088448
-                },
-                "load": {
-                    "5m": 0.66,
-                    "15m": 0.25,
-                    "1m": 1.66
-                },
-                "platformRelease": "linux-5.10.47-linuxkit",
-                "platform": "linux"
-            },
-            "name": "kibana",
             "host": {
                 "name": "0.0.0.0"
             },
-            "index": ".kibana",
+            "name": "kibana",
+            "index": "kibana",
             "response_time": {
                 "avg": {
-                    "ms": 8
+                    "ms": 11
                 },
                 "max": {
-                    "ms": 11
+                    "ms": 16
                 }
             },
-            "concurrent_connections": 10,
+            "concurrent_connections": 8,
             "snapshot": true,
             "status": "green"
         }
