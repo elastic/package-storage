@@ -23,7 +23,7 @@ streams:
         title: Repository
         description: The GitHub Repository
         multi: false
-        required: false
+        required: true
         show_user: true
       - name: http_client_timeout
         type: text
