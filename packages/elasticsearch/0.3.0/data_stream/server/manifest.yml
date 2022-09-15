@@ -11,6 +11,7 @@ streams:
         required: true
         show_user: true
         default:
+          - /var/log/elasticsearch/*.log
           - /var/log/elasticsearch/*_server.json
     template_path: log.yml.hbs
     title: Server logs

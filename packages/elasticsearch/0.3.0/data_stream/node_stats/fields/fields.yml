@@ -261,10 +261,10 @@
                 - name: control_group
                   type: keyword
                 - name: limit.bytes
-                  type: keyword
+                  type: long
                   format: bytes
                 - name: usage.bytes
-                  type: keyword
+                  type: long
                   format: bytes
     - name: process.cpu.pct
       type: double
