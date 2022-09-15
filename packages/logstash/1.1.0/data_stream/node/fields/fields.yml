@@ -1,49 +1,45 @@
-- name: logstash
+- name: logstash.node
   type: group
+  release: ga
   fields:
-    - name: elasticsearch.cluster.id
+    - name: host
       type: keyword
-    - name: node
+    - name: version
+      type: keyword
+    - name: id
+      type: keyword
+    - name: state.pipeline
       type: group
       fields:
-        - name: jvm
-          type: group
-          fields:
-            - name: version
-              type: keyword
-              ignore_above: 1024
-        - name: host
-          type: keyword
-        - name: version
-          type: keyword
         - name: id
           type: keyword
-        - name: state.pipeline
+        - name: hash
+          type: keyword
+        - name: ephemeral_id
+          type: keyword
+        - name: batch_size
+          type: long
+        - name: workers
+          type: long
+        - name: representation
           type: group
           fields:
-            - name: id
-              type: keyword
             - name: hash
               type: keyword
-            - name: ephemeral_id
+            - name: type
               type: keyword
-            - name: batch_size
-              type: long
-            - name: workers
-              type: long
-            - name: representation
+            - name: version
+              type: keyword
+            - name: graph
               type: group
               fields:
-                - name: hash
-                  type: keyword
-                - name: type
-                  type: keyword
-                - name: version
-                  type: keyword
-                - name: graph
-                  type: group
-                  fields:
-                    - name: edges
-                      type: object
-                    - name: vertices
-                      type: object
+                - name: edges
+                  type: object
+                - name: vertices
+                  type: object
+    - name: jvm
+      type: group
+      fields:
+        - name: version
+          type: keyword
+          description: JVM version
