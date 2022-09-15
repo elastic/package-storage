@@ -155,26 +155,10 @@
     The field value must be normalized to lowercase for querying.
   name: network.transport
   type: keyword
-- description: IANA Protocol Number (https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). Standardized list of protocols. This aligns well with NetFlow and sFlow related logs which use the IANA Protocol Number.
-  name: network.iana_number
-  type: keyword
 - description: |-
     In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc
     The field value must be normalized to lowercase for querying.
   name: network.type
-  type: keyword
-- description: |-
-    Total packets transferred in both directions.
-    If `source.packets` and `destination.packets` are known, `network.packets` is their sum.
-  name: network.packets
-  type: long
-- description: |-
-    Total bytes transferred in both directions.
-    If `source.bytes` and `destination.bytes` are known, `network.bytes` is their sum.
-  name: network.bytes
-  type: long
-- description: VLAN ID as reported by the observer.
-  name: network.vlan.id
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
@@ -195,9 +179,6 @@
   type: keyword
 - description: Vendor name of the observer.
   name: observer.vendor
-  type: keyword
-- description: Interface name as reported by the system.
-  name: observer.ingress.interface.name
   type: keyword
 - description: |-
     Process name.
