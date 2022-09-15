@@ -29,7 +29,6 @@
         Kubernetes pod IP
 
     - name: namespace
-      dimension: true
       type: keyword
       description: >
         Kubernetes namespace
@@ -76,7 +75,7 @@
         Kubernetes deployment name
 
     - name: statefulset.name
-      dimension: true
+      dimensions: true
       type: keyword
       description: >
         Kubernetes statefulset name

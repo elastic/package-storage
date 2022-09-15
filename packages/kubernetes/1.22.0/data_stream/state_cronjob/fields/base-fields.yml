@@ -31,7 +31,6 @@
         Kubernetes pod IP
 
     - name: namespace
-      dimension: true
       type: keyword
       description: >
         Kubernetes namespace
