@@ -20,10 +20,7 @@
         "severity": "low",
         "tags": [
             "Elastic",
-            "Host",
-            "Internal",
-            "LotL",
-            "ML"
+            "ML-ProblemChild"
         ],
         "timestamp_override": "event.ingested",
         "type": "query",

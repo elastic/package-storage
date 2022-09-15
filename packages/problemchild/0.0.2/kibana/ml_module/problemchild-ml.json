@@ -9,19 +9,35 @@
         },
         "query": {
             "bool": {
-                "minimum_should_match": 1,
                 "should": [
                     {
-                        "exists": {
-                            "field": "problemchild.prediction"
+                        "bool": {
+                            "filter": [
+                                {
+                                    "exists": {
+                                        "field": "process.name"
+                                    }
+                                },
+                                {
+                                    "exists": {
+                                        "field": "host.hostname"
+                                    }
+                                },
+                                {
+                                    "exists": {
+                                        "field": "process.command_line"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
                         "exists": {
-                            "field": "blocklist_label"
+                            "field": "problemchild.prediction_probability"
                         }
                     }
-                ]
+                ],
+                "minimum_should_match": 1
             }
         },
         "jobs": [
@@ -47,13 +63,12 @@
                                 "detector_description": "rare process given a host",
                                 "detector_index": 0,
                                 "function": "rare",
-                                "partition_field_name": "host.name"
+                                "partition_field_name": "host.hostname"
                             }
                         ],
                         "influencers": [
                             "process.name",
-                            "host.name",
-                            "user.name",
+                            "host.hostname",
                             "process.command_line"
                         ]
                     },
@@ -84,14 +99,14 @@
                         "bucket_span": "15m",
                         "detectors": [
                             {
-                                "by_field_name": "host.name",
+                                "by_field_name": "host.hostname",
                                 "detector_description": "high number of malicious processes by host",
                                 "detector_index": 0,
                                 "field_name": "problemchild.prediction_probability",
                                 "function": "high_sum"
                             },
                             {
-                                "by_field_name": "host.name",
+                                "by_field_name": "host.hostname",
                                 "detector_description": "high number of malicious processes by host",
                                 "detector_index": 0,
                                 "field_name": "blocklist_label",
@@ -100,8 +115,7 @@
                         ],
                         "influencers": [
                             "process.name",
-                            "host.name",
-                            "user.name",
+                            "host.hostname",
                             "process.command_line"
                         ]
                     },
@@ -142,7 +156,6 @@
                         "influencers": [
                             "process.name",
                             "user.name",
-                            "host.name",
                             "process.command_line"
                         ]
                     },
@@ -183,9 +196,7 @@
                         "influencers": [
                             "process.name",
                             "process.parent.name",
-                            "process.command_line",
-                            "host.name",
-                            "user.name"
+                            "process.command_line"
                         ]
                     },
                     "data_description": {
@@ -216,14 +227,14 @@
                         "detectors": [
                             {
                                 "by_field_name": "user.name",
-                                "detector_description": "high sum of model hits by user",
+                                "detector_description": "high sum by user",
                                 "detector_index": 0,
                                 "field_name": "problemchild.prediction_probability",
                                 "function": "high_sum"
                             },
                             {
                                 "by_field_name": "user.name",
-                                "detector_description": "high sum of blocklist hits by user",
+                                "detector_description": "high sum by host",
                                 "detector_index": 0,
                                 "field_name": "blocklist_label",
                                 "function": "high_sum"
@@ -232,7 +243,6 @@
                         "influencers": [
                             "process.name",
                             "user.name",
-                            "host.name",
                             "process.command_line"
                         ]
                     },
@@ -264,14 +274,14 @@
                         "detectors": [
                             {
                                 "by_field_name": "process.parent.name",
-                                "detector_description": "high sum of model hits by parent process",
+                                "detector_description": "high sum by parent process",
                                 "detector_index": 0,
                                 "field_name": "problemchild.prediction_probability",
                                 "function": "high_sum"
                             },
                             {
                                 "by_field_name": "process.parent.name",
-                                "detector_description": "high sum of blocklist hits by parent process",
+                                "detector_description": "high sum by host",
                                 "detector_index": 0,
                                 "field_name": "blocklist_label",
                                 "function": "high_sum"
@@ -280,9 +290,7 @@
                         "influencers": [
                             "process.name",
                             "process.parent.name",
-                            "process.command_line",
-                            "host.name",
-                            "user.name"
+                            "process.command_line"
                         ]
                     },
                     "data_description": {
