@@ -116,9 +116,6 @@
     The field value must be normalized to lowercase for querying.
   name: network.type
   type: keyword
-- description: Hostname of the observer.
-  name: observer.hostname
-  type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
   type: ip
@@ -147,11 +144,6 @@
     - name: text
       type: match_only_text
   name: user.name
-  type: keyword
-- description: |-
-    Name of the directory the user is a member of.
-    For example, an LDAP or Active Directory domain name.
-  name: user.domain
   type: keyword
 - description: Name of the device.
   name: user_agent.device.name
