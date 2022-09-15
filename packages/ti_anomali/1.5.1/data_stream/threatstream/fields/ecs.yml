@@ -65,7 +65,26 @@
 - description: The date and time when intelligence source last reported sighting this indicator.
   name: threat.indicator.last_seen
   type: date
-- description: Type of indicator as represented by Cyber Observable in STIX 2.0.
+- description: |-
+    Type of indicator as represented by Cyber Observable in STIX 2.0.
+    Recommended values:
+      * autonomous-system
+      * artifact
+      * directory
+      * domain-name
+      * email-addr
+      * file
+      * ipv4-addr
+      * ipv6-addr
+      * mac-addr
+      * mutex
+      * port
+      * process
+      * software
+      * url
+      * user-account
+      * windows-registry-key
+      * x509-certificate
   name: threat.indicator.type
   type: keyword
 - description: Identifies a threat indicator as an IP address (irrespective of direction).
@@ -133,10 +152,23 @@
 - description: The name of the indicator's provider.
   name: threat.indicator.provider
   type: keyword
-- description: Traffic Light Protocol sharing markings.
+- description: |-
+    Traffic Light Protocol sharing markings.
+    Recommended values are:
+      * WHITE
+      * GREEN
+      * AMBER
+      * RED
   name: threat.indicator.marking.tlp
   type: keyword
-- description: Identifies the vendor-neutral confidence rating using the None/Low/Medium/High scale defined in Appendix A of the STIX 2.1 framework. Vendor-specific confidence scales may be added as custom fields.
+- description: |-
+    Identifies the vendor-neutral confidence rating using the None/Low/Medium/High scale defined in Appendix A of the STIX 2.1 framework. Vendor-specific confidence scales may be added as custom fields.
+    Expected values are:
+      * Not Specified
+      * None
+      * Low
+      * Medium
+      * High
   name: threat.indicator.confidence
   type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
