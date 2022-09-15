@@ -7,11 +7,6 @@
   name: host.ip
   type: ip
 - description: |-
-    A unique identifier for each HTTP request to correlate logs between clients and servers in transactions.
-    The id may be contained in a non-standard HTTP header, such as `X-Request-ID` or `X-Correlation-ID`.
-  name: http.request.id
-  type: keyword
-- description: |-
     HTTP request method.
     The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
   name: http.request.method
@@ -36,9 +31,6 @@
 - description: All of the IPs seen on your event.
   name: related.ip
   type: ip
-- description: All the user names or other user identifiers seen on the event.
-  name: related.user
-  type: keyword
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
@@ -90,21 +82,6 @@
       type: match_only_text
   name: url.original
   type: wildcard
-- description: Path of the request, such as "/search".
-  name: url.path
-  type: wildcard
-- description: |-
-    The query field describes the query string of the request, such as "q=elasticsearch".
-    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
-  name: url.query
-  type: keyword
-- description: |-
-    The field contains the file extension from the original request url, excluding the leading dot.
-    The file extension is only set if it exists, as not every url has a file extension.
-    The leading period must not be included. For example, the value must be "png", not ".png".
-    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
-  name: url.extension
-  type: keyword
 - description: Short name or login of the user.
   multi_fields:
     - name: text
