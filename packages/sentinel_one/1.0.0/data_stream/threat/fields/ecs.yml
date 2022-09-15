@@ -58,7 +58,8 @@
   type: keyword
 - description: |-
     Use the `os.type` field to categorize the operating system into one of the broad commercial families.
-    If the OS you're dealing with is not listed as an expected value, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
+    One of these following values should be used (lowercase): linux, macos, unix, windows.
+    If the OS you're dealing with is not in the list, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
   name: host.os.type
   type: keyword
 - description: |-
@@ -69,14 +70,6 @@
   type: match_only_text
 - description: Observer version.
   name: observer.version
-  type: keyword
-- description: |-
-    Process name.
-    Sometimes called program name or similar.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: process.name
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
