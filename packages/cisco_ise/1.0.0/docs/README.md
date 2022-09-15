@@ -37,11 +37,11 @@ An example event for `log` looks as following:
 {
     "@timestamp": "2020-02-21T19:13:08.328Z",
     "agent": {
-        "ephemeral_id": "4f4b968e-48f2-4442-984d-73a340e75b02",
-        "id": "bdb81c52-44a4-414c-996b-bcfa977c5f7a",
+        "ephemeral_id": "868c4a5a-ab3d-44f9-b28c-dd0da1bd08f8",
+        "id": "882c1c63-68d0-49f9-8411-0e89960d3b00",
         "name": "docker-fleet-agent",
         "type": "filebeat",
-        "version": "8.3.3"
+        "version": "8.3.0"
     },
     "cisco_ise": {
         "log": {
@@ -59,7 +59,7 @@ An example event for `log` looks as following:
             "avpair": {
                 "priv_lvl": 15,
                 "start_time": "2020-03-26T01:17:12.000Z",
-                "task_id": "2962",
+                "task_id": 2962,
                 "timezone": "GMT"
             },
             "category": {
@@ -158,12 +158,12 @@ An example event for `log` looks as following:
         "ip": "81.2.69.144"
     },
     "ecs": {
-        "version": "8.4.0"
+        "version": "8.3.0"
     },
     "elastic_agent": {
-        "id": "bdb81c52-44a4-414c-996b-bcfa977c5f7a",
-        "snapshot": false,
-        "version": "8.3.3"
+        "id": "882c1c63-68d0-49f9-8411-0e89960d3b00",
+        "snapshot": true,
+        "version": "8.3.0"
     },
     "event": {
         "action": "tacacs-accounting",
@@ -172,7 +172,7 @@ An example event for `log` looks as following:
             "configuration"
         ],
         "dataset": "cisco_ise.log",
-        "ingested": "2022-08-29T04:16:29Z",
+        "ingested": "2022-04-15T15:33:23Z",
         "kind": "event",
         "sequence": 18415781,
         "timezone": "+00:00",
@@ -184,12 +184,12 @@ An example event for `log` looks as following:
         "hostname": "cisco-ise-host"
     },
     "input": {
-        "type": "udp"
+        "type": "tcp"
     },
     "log": {
         "level": "notice",
         "source": {
-            "address": "192.168.144.4:53137"
+            "address": "172.25.0.1:51632"
         },
         "syslog": {
             "priority": 182,
@@ -276,7 +276,7 @@ An example event for `log` looks as following:
 | cisco_ise.log.avpair.priv_lvl |  | long |
 | cisco_ise.log.avpair.start_time |  | date |
 | cisco_ise.log.avpair.stop_time |  | date |
-| cisco_ise.log.avpair.task_id |  | keyword |
+| cisco_ise.log.avpair.task_id |  | long |
 | cisco_ise.log.avpair.timezone |  | keyword |
 | cisco_ise.log.called_station.id |  | keyword |
 | cisco_ise.log.calling_station.id |  | keyword |

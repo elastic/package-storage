@@ -206,7 +206,7 @@
         - name: stop_time
           type: date
         - name: task_id
-          type: keyword
+          type: long
         - name: timezone
           type: keyword
     - name: called_station
