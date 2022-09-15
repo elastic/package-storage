@@ -16,15 +16,14 @@
                                     "dataType": "number",
                                     "isBucketed": false,
                                     "label": "Heap Used",
-                                    "operationType": "last_value",
+                                    "operationType": "median",
                                     "params": {
                                         "format": {
                                             "id": "bytes",
                                             "params": {
                                                 "decimals": 0
                                             }
-                                        },
-                                        "sortField": "@timestamp"
+                                        }
                                     },
                                     "scale": "ratio",
                                     "sourceField": "spring_boot.memory.heap.used"
@@ -34,15 +33,14 @@
                                     "dataType": "number",
                                     "isBucketed": false,
                                     "label": "Non Heap Used",
-                                    "operationType": "last_value",
+                                    "operationType": "median",
                                     "params": {
                                         "format": {
                                             "id": "bytes",
                                             "params": {
                                                 "decimals": 0
                                             }
-                                        },
-                                        "sortField": "@timestamp"
+                                        }
                                     },
                                     "scale": "ratio",
                                     "sourceField": "spring_boot.memory.non_heap.used"

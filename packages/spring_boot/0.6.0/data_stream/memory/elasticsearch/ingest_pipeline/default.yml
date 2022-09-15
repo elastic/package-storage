@@ -21,7 +21,7 @@ processors:
       value: metric
   - set:
       field: event.category
-      value: web
+      value: database
   - set:
       field: event.module
       value: spring_boot

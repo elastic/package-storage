@@ -15,15 +15,14 @@
                                     "dataType": "number",
                                     "isBucketed": false,
                                     "label": "Current Threads",
-                                    "operationType": "last_value",
+                                    "operationType": "median",
                                     "params": {
                                         "format": {
                                             "id": "number",
                                             "params": {
                                                 "decimals": 0
                                             }
-                                        },
-                                        "sortField": "@timestamp"
+                                        }
                                     },
                                     "scale": "ratio",
                                     "sourceField": "spring_boot.threading.threads.count"

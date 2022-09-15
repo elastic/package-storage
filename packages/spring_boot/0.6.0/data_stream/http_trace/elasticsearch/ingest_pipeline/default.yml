@@ -23,10 +23,10 @@ processors:
       value: info
   - set:
       field: event.kind
-      value: event
+      value: metric
   - set:
       field: event.category
-      value: web
+      value: database
   - set:
       field: event.dataset
       value: spring_boot.http_trace
