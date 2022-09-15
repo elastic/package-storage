@@ -94,9 +94,6 @@
 - description: Region name.
   name: source.geo.region_name
   type: keyword
-- description: Port of the source.
-  name: source.port
-  type: long
 - description: User email address.
   name: user.email
   type: keyword
