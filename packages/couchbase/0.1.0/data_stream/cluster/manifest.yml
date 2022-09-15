@@ -1,10 +1,10 @@
-title: Couchbase bucket metrics
+title: Couchbase cluster metrics
 type: metrics
 streams:
   - input: http/metrics
     template_path: stream.yml.hbs
-    title: Couchbase bucket metrics
-    description: Collect Couchbase bucket metrics.
+    title: Couchbase cluster metrics
+    description: Collect Couchbase cluster metrics.
     vars:
       - name: period
         type: text
@@ -21,7 +21,7 @@ streams:
         show_user: false
         default:
           - forwarded
-          - couchbase-bucket
+          - couchbase-cluster
       - name: processors
         type: yaml
         title: Processors

@@ -51,6 +51,11 @@
     - array
   type: keyword
 - description: |-
+    Some event server addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
+    Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
+  name: server.address
+  type: keyword
+- description: |-
     Address where data about this service was collected from.
     This should be a URI, network address (ipv4:port or [ipv6]:port) or a resource path (sockets).
   name: service.address

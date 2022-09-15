@@ -1,10 +1,10 @@
-title: Couchbase bucket metrics
+title: Couchbase Sync Gateway CBL Replications metrics
 type: metrics
 streams:
-  - input: http/metrics
+  - input: prometheus/metrics
     template_path: stream.yml.hbs
-    title: Couchbase bucket metrics
-    description: Collect Couchbase bucket metrics.
+    title: Couchbase Sync Gateway CBL Replications metrics
+    description: This data stream collects CBL Replications metrics using sync gateway prometheus exporter.
     vars:
       - name: period
         type: text
@@ -21,7 +21,7 @@ streams:
         show_user: false
         default:
           - forwarded
-          - couchbase-bucket
+          - couchbase-cbl_replication
       - name: processors
         type: yaml
         title: Processors

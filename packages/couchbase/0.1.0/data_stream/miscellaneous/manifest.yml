@@ -1,10 +1,10 @@
-title: Couchbase bucket metrics
+title: Couchbase Sync Gateway Delta Sync, Import, Security and GSI views metrics.
 type: metrics
 streams:
-  - input: http/metrics
+  - input: prometheus/metrics
     template_path: stream.yml.hbs
-    title: Couchbase bucket metrics
-    description: Collect Couchbase bucket metrics.
+    title: Couchbase Sync Gateway Delta Sync, Import, Security and GSI views metrics.
+    description: This data stream collects Delta Sync, Import, Security and GSI views metrics using sync gateway prometheus exporter.
     vars:
       - name: period
         type: text
@@ -21,7 +21,7 @@ streams:
         show_user: false
         default:
           - forwarded
-          - couchbase-bucket
+          - couchbase-miscellaneous
       - name: processors
         type: yaml
         title: Processors
