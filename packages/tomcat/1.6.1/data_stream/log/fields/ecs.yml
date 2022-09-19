@@ -58,7 +58,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: IP address of the destination (IPv4 or IPv6).
@@ -174,6 +173,8 @@
     Array of file attributes.
     Attributes names will vary by platform. Here's a non-exhaustive list of values that are expected in this field: archive, compressed, directory, encrypted, execute, hidden, read, readonly, system, write.
   name: file.attributes
+  normalize:
+    - array
   type: keyword
 - description: Directory where the file is located. It should include the drive letter, when appropriate.
   name: file.directory
@@ -228,11 +229,15 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Host MAC addresses.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: host.mac
+  normalize:
+    - array
   pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
@@ -371,12 +376,18 @@
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: The name of the rule or signature generating the event.
   name: rule.name
@@ -437,7 +448,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: IP address of the source (IPv4 or IPv6).
@@ -480,9 +490,13 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
