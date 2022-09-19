@@ -22,6 +22,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     HTTP request method.
@@ -55,9 +57,13 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: Bytes sent from the source to the destination.
   name: source.bytes
@@ -95,7 +101,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -137,7 +142,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -148,6 +152,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
@@ -243,6 +249,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: Interface name as reported by the system.
   name: interface.name
