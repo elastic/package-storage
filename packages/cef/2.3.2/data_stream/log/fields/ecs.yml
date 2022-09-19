@@ -28,7 +28,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -81,9 +80,13 @@
   type: keyword
 - description: The email address of the sender, typically from the RFC 5322 `From:` header field.
   name: email.from.address
+  normalize:
+    - array
   type: keyword
 - description: The email address of recipient
   name: email.to.address
+  normalize:
+    - array
   type: keyword
 - description: A brief summary of the topic of the message.
   multi_fields:
@@ -194,6 +197,8 @@
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
+  normalize:
+    - array
   type: ip
 - description: The product name of the observer.
   name: observer.product
@@ -219,15 +224,23 @@
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: A categorization value keyword used by the entity using the rule for detection of this event.
   name: rule.category
@@ -268,7 +281,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -316,6 +328,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Unmodified original url as seen in the event source.
@@ -342,6 +356,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Identification code for this event, if one exists.
