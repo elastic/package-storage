@@ -19,18 +19,24 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy.
@@ -53,9 +59,13 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
@@ -84,7 +94,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -104,6 +113,8 @@
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: User email address.
   name: user.email
