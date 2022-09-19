@@ -40,7 +40,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -110,6 +109,8 @@
   type: long
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     HTTP request method.
@@ -158,9 +159,13 @@
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: A categorization value keyword used by the entity using the rule for detection of this event.
   name: rule.category
@@ -201,7 +206,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -227,24 +231,34 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Name of the threat framework used to further categorize and classify the tactic and technique of the reported threat. Framework classification can be provided by detecting systems, evaluated at ingest time, or retrospectively tagged to events.
   name: threat.framework
   type: keyword
 - description: The id of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/ )
   name: threat.tactic.id
+  normalize:
+    - array
   type: keyword
 - description: Name of the type of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/)
   name: threat.tactic.name
+  normalize:
+    - array
   type: keyword
 - description: The id of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   name: threat.technique.id
+  normalize:
+    - array
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   multi_fields:
     - name: text
       type: match_only_text
   name: threat.technique.name
+  normalize:
+    - array
   type: keyword
 - description: A hash that identifies clients based on how they perform an SSL/TLS handshake.
   name: tls.client.ja3
@@ -275,21 +289,33 @@
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.server.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: tls.server.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: tls.server.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: tls.server.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: tls.server.x509.not_after
@@ -302,21 +328,33 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.server.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: tls.server.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: tls.server.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: tls.server.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Numeric part of the version parsed from the original string.
   name: tls.version
