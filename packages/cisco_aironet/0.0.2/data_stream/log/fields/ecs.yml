@@ -72,7 +72,6 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: client.geo.location
   type: geo_point
 - description: Region ISO code.
