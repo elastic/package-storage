@@ -41,7 +41,6 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: client.geo.location
   type: geo_point
 - description: Region ISO code.
@@ -91,7 +90,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -169,6 +167,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Duration of the event in nanoseconds.
@@ -225,6 +225,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: Size in bytes of the request body.
   name: http.request.body.bytes
@@ -325,6 +327,8 @@
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Custom name of the observer.
@@ -353,9 +357,13 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: A rule ID that is unique within the scope of an agent, observer, or other entity using the rule for detection of this event.
   name: rule.id
@@ -457,6 +465,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: String indicating the cipher used during the current connection.
   name: tls.cipher
