@@ -94,6 +94,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: Unique ID to describe the event.
   name: event.id
@@ -109,6 +111,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: MD5 hash.
   name: file.hash.md5
@@ -142,9 +146,13 @@
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: A rule ID that is unique within the scope of an agent, observer, or other entity using the rule for detection of this event.
   name: rule.id
@@ -200,6 +208,8 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: MD5 hash.
   name: threat.indicator.file.hash.md5
@@ -224,6 +234,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.roles
+  normalize:
+    - array
   type: keyword
 - description: Name of the device.
   name: user_agent.device.name
