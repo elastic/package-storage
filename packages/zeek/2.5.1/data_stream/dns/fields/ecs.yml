@@ -25,7 +25,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -51,6 +50,8 @@
     The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
     Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
   name: dns.answers
+  normalize:
+    - array
   type: object
 - description: The class of DNS data contained in this resource record.
   name: dns.answers.class
@@ -73,6 +74,8 @@
   type: keyword
 - description: Array of 2 letter DNS header flags.
   name: dns.header_flags
+  normalize:
+    - array
   type: keyword
 - description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
   name: dns.id
@@ -108,6 +111,8 @@
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
   name: dns.resolved_ip
+  normalize:
+    - array
   type: ip
 - description: The DNS response code.
   name: dns.response_code
@@ -131,6 +136,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
@@ -179,9 +186,13 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     A hash of source and destination IPs and ports, as well as the protocol used in a communication. This is a tool-agnostic standard to identify flows.
@@ -200,6 +211,8 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
@@ -228,7 +241,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: |-
