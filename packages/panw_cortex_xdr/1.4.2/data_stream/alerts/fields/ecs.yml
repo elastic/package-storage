@@ -11,12 +11,18 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: The email address of the sender, typically from the RFC 5322 `From:` header field.
   name: email.from.address
+  normalize:
+    - array
   type: keyword
 - description: The email address of recipient
   name: email.to.address
+  normalize:
+    - array
   type: keyword
 - description: A brief summary of the topic of the message.
   multi_fields:
@@ -42,12 +48,16 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Timestamp when an event arrived in the central data store.
@@ -95,10 +105,14 @@
     Host MAC addresses.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: host.mac
+  normalize:
+    - array
   pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Unique host id.
@@ -145,7 +159,6 @@
   name: destination.geo.region_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: destination.geo.location
   type: geo_point
 - description: IP address of the source (IPv4 or IPv6).
@@ -173,7 +186,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: source.geo.location
   type: geo_point
 - description: SHA256 hash.
@@ -318,10 +330,16 @@
     Content when writing string types.
     Populated as an array when writing string data to the registry. For single string registry types (REG_SZ, REG_EXPAND_SZ), this should be an array with one string. For sequences of string with REG_MULTI_SZ, this array will be variable length. For numeric data, such as REG_DWORD and REG_QWORD, this should be populated with the decimal representation (e.g `"1"`).
   name: registry.data.strings
+  normalize:
+    - array
   type: wildcard
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
