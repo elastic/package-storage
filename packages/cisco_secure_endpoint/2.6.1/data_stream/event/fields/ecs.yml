@@ -64,6 +64,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: Unique ID to describe the event.
   name: event.id
@@ -80,9 +82,13 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
@@ -100,14 +106,20 @@
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: |-
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: |-
     Length of the process.args array.
@@ -198,7 +210,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: IP address of the destination (IPv4 or IPv6).
@@ -227,25 +238,39 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: The id of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/ )
   name: threat.tactic.id
+  normalize:
+    - array
   type: keyword
 - description: The reference url of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/ )
   name: threat.tactic.reference
+  normalize:
+    - array
   type: keyword
 - description: Name of the type of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/)
   name: threat.tactic.name
+  normalize:
+    - array
   type: keyword
 - description: The id of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   name: threat.technique.id
+  normalize:
+    - array
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   multi_fields:
     - name: text
       type: match_only_text
   name: threat.technique.name
+  normalize:
+    - array
   type: keyword
 - description: The reference url of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   name: threat.technique.reference
+  normalize:
+    - array
   type: keyword
