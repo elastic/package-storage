@@ -124,6 +124,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: |-
     Length of the process.args array.
@@ -194,7 +196,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: Region ISO code.
