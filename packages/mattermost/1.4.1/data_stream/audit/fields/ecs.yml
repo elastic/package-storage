@@ -70,7 +70,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -90,6 +89,8 @@
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
@@ -122,6 +123,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.target.roles
+  normalize:
+    - array
   type: keyword
 - description: Unique identifier for the group on the system/platform.
   name: user.target.group.id
@@ -137,7 +140,11 @@
   type: keyword
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
