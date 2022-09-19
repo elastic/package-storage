@@ -31,7 +31,6 @@
   name: client.geo.region_iso_code
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: client.geo.location
   type: geo_point
 - description: Region name.
@@ -76,7 +75,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -227,7 +225,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -439,7 +436,6 @@
   name: observer.geo.region_iso_code
   type: keyword
 - description: Longitude and latitude.
-  example: '{ "lon": -73.614830, "lat": 45.505918 }'
   name: observer.geo.location
   type: geo_point
 - description: Region name.
