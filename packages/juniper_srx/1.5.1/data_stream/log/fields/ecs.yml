@@ -77,7 +77,6 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: client.geo.location
   type: geo_point
 - description: |-
@@ -168,6 +167,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: client.user.roles
+  normalize:
+    - array
   type: keyword
 - description: |-
     The cloud account or organization id used to identify different entities in a multi-tenant environment.
@@ -236,6 +237,8 @@
   type: keyword
 - description: Container image tags.
   name: container.image.tag
+  normalize:
+    - array
   type: keyword
 - description: Image labels.
   name: container.labels
@@ -281,7 +284,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -373,6 +375,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: destination.user.roles
+  normalize:
+    - array
   type: keyword
 - description: Boolean to capture if a signature is present.
   name: dll.code_signature.exists
@@ -443,6 +447,8 @@
     The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
     Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
   name: dns.answers
+  normalize:
+    - array
   type: object
 - description: The class of DNS data contained in this resource record.
   name: dns.answers.class
@@ -465,6 +471,8 @@
   type: keyword
 - description: Array of 2 letter DNS header flags.
   name: dns.header_flags
+  normalize:
+    - array
   type: keyword
 - description: The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
   name: dns.id
@@ -503,6 +511,8 @@
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
   name: dns.resolved_ip
+  normalize:
+    - array
   type: ip
 - description: The DNS response code.
   name: dns.response_code
@@ -546,6 +556,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Identification code for this event, if one exists.
@@ -647,6 +659,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     URL linking to an external system to continue investigation of this event.
@@ -662,6 +676,8 @@
     Array of file attributes.
     Attributes names will vary by platform. Here's a non-exhaustive list of values that are expected in this field: archive, compressed, directory, encrypted, execute, hidden, read, readonly, system, write.
   name: file.attributes
+  normalize:
+    - array
   type: keyword
 - description: Boolean to capture if a signature is present.
   name: file.code_signature.exists
@@ -794,27 +810,41 @@
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: file.x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: file.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: file.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: file.x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: file.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: file.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: file.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: file.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: file.x509.not_after
@@ -844,24 +874,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: file.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: file.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: file.x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: file.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: file.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: file.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: file.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: file.x509.version_number
@@ -937,7 +979,6 @@
   name: host.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: host.geo.location
   type: geo_point
 - description: |-
@@ -965,11 +1006,15 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Host MAC addresses.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: host.mac
+  normalize:
+    - array
   pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
@@ -1209,7 +1254,6 @@
   name: observer.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: observer.geo.location
   type: geo_point
 - description: |-
@@ -1250,11 +1294,15 @@
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     MAC addresses of the observer.
     The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
   name: observer.mac
+  normalize:
+    - array
   pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
   type: keyword
 - description: |-
@@ -1409,6 +1457,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: |-
     Length of the process.args array.
@@ -1485,6 +1535,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.parent.args
+  normalize:
+    - array
   type: keyword
 - description: |-
     Length of the process.args array.
@@ -1680,6 +1732,8 @@
     Content when writing string types.
     Populated as an array when writing string data to the registry. For single string registry types (REG_SZ, REG_EXPAND_SZ), this should be an array with one string. For sequences of string with REG_MULTI_SZ, this array will be variable length. For numeric data, such as REG_DWORD and REG_QWORD, this should be populated with the decimal representation (e.g `"1"`).
   name: registry.data.strings
+  normalize:
+    - array
   type: wildcard
 - description: Standard registry type for encoding contents
   name: registry.data.type
@@ -1698,18 +1752,28 @@
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: Name, organization, or pseudonym of the author or authors who created the rule used to generate this event.
   name: rule.author
+  normalize:
+    - array
   type: keyword
 - description: A categorization value keyword used by the entity using the rule for detection of this event.
   name: rule.category
@@ -1775,7 +1839,6 @@
   name: server.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: server.geo.location
   type: geo_point
 - description: |-
@@ -1867,6 +1930,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: server.user.roles
+  normalize:
+    - array
   type: keyword
 - description: |-
     Ephemeral identifier of this service (if one exists).
@@ -1940,7 +2005,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -2032,33 +2096,49 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: source.user.roles
+  normalize:
+    - array
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Name of the threat framework used to further categorize and classify the tactic and technique of the reported threat. Framework classification can be provided by detecting systems, evaluated at ingest time, or retrospectively tagged to events.
   name: threat.framework
   type: keyword
 - description: The id of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/ )
   name: threat.tactic.id
+  normalize:
+    - array
   type: keyword
 - description: Name of the type of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/)
   name: threat.tactic.name
+  normalize:
+    - array
   type: keyword
 - description: The reference url of tactic used by this threat. You can use a MITRE ATT&CK® tactic, for example. (ex. https://attack.mitre.org/tactics/TA0002/ )
   name: threat.tactic.reference
+  normalize:
+    - array
   type: keyword
 - description: The id of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   name: threat.technique.id
+  normalize:
+    - array
   type: keyword
 - description: The name of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   multi_fields:
     - name: text
       type: match_only_text
   name: threat.technique.name
+  normalize:
+    - array
   type: keyword
 - description: The reference url of technique used by this threat. You can use a MITRE ATT&CK® technique, for example. (ex. https://attack.mitre.org/techniques/T1059/)
   name: threat.technique.reference
+  normalize:
+    - array
   type: keyword
 - description: String indicating the cipher used during the current connection.
   name: tls.cipher
@@ -2068,6 +2148,8 @@
   type: keyword
 - description: Array of PEM-encoded certificates that make up the certificate chain offered by the client. This is usually mutually-exclusive of `client.certificate` since that value should be the first certificate in the chain.
   name: tls.client.certificate_chain
+  normalize:
+    - array
   type: keyword
 - description: Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash.
   name: tls.client.hash.md5
@@ -2098,30 +2180,46 @@
   type: keyword
 - description: Array of ciphers offered by the client during the client hello.
   name: tls.client.supported_ciphers
+  normalize:
+    - array
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: tls.client.x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.client.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: tls.client.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: tls.client.x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.client.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: tls.client.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: tls.client.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.client.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: tls.client.x509.not_after
@@ -2151,24 +2249,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.client.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: tls.client.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: tls.client.x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.client.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: tls.client.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: tls.client.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.client.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: tls.client.x509.version_number
@@ -2190,6 +2300,8 @@
   type: keyword
 - description: Array of PEM-encoded certificates that make up the certificate chain offered by the server. This is usually mutually-exclusive of `server.certificate` since that value should be the first certificate in the chain.
   name: tls.server.certificate_chain
+  normalize:
+    - array
   type: keyword
 - description: Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the server. For consistency with other hash values, this value should be formatted as an uppercase hash.
   name: tls.server.hash.md5
@@ -2217,27 +2329,41 @@
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: tls.server.x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.server.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: tls.server.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: tls.server.x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: tls.server.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: tls.server.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: tls.server.x509.not_after
@@ -2267,24 +2393,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.server.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: tls.server.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: tls.server.x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: tls.server.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: tls.server.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: tls.server.x509.version_number
@@ -2417,6 +2555,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.roles
+  normalize:
+    - array
   type: keyword
 - description: Name of the device.
   name: user_agent.device.name
@@ -2467,6 +2607,8 @@
     The type of system or architecture that the vulnerability affects. These may be platform-specific (for example, Debian or SUSE) or general (for example, Database or Firewall). For example (https://qualysguard.qualys.com/qwebhelp/fo_portal/knowledgebase/vulnerability_categories.htm[Qualys vulnerability categories])
     This field must be an array.
   name: vulnerability.category
+  normalize:
+    - array
   type: keyword
 - description: The classification of the vulnerability scoring system. For example (https://www.first.org/cvss/)
   name: vulnerability.classification
@@ -2517,27 +2659,41 @@
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: x509.not_after
@@ -2567,24 +2723,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: x509.version_number
