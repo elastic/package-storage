@@ -36,7 +36,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -97,6 +96,8 @@
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
   name: dns.resolved_ip
+  normalize:
+    - array
   type: ip
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
@@ -105,15 +106,21 @@
   type: keyword
 - description: The email address of CC recipient
   name: email.cc.address
+  normalize:
+    - array
   type: keyword
 - description: The email address of the sender, typically from the RFC 5322 `From:` header field.
   name: email.from.address
+  normalize:
+    - array
   type: keyword
 - description: Per RFC 5322, specifies the address responsible for the actual transmission of the message.
   name: email.sender.address
   type: keyword
 - description: The email address of recipient
   name: email.to.address
+  normalize:
+    - array
   type: keyword
 - description: A brief summary of the topic of the message.
   multi_fields:
@@ -132,6 +139,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Identification code for this event, if one exists.
@@ -192,6 +201,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     File extension, excluding the leading dot.
@@ -306,15 +317,23 @@
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: A categorization value keyword used by the entity using the rule for detection of this event.
   name: rule.category
@@ -364,7 +383,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: |-
@@ -418,6 +436,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name of subject of the issuer of the x.509 certificate presented by the client.
   name: tls.client.issuer
@@ -427,15 +447,21 @@
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.client.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: Subject of the issuer of the x.509 certificate presented by the server.
   name: tls.server.issuer
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.server.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.server.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
@@ -456,4 +482,6 @@
     The type of system or architecture that the vulnerability affects. These may be platform-specific (for example, Debian or SUSE) or general (for example, Database or Firewall). For example (https://qualysguard.qualys.com/qwebhelp/fo_portal/knowledgebase/vulnerability_categories.htm[Qualys vulnerability categories])
     This field must be an array.
   name: vulnerability.category
+  normalize:
+    - array
   type: keyword
