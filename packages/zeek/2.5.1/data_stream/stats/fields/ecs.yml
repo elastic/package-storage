@@ -27,4 +27,6 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip

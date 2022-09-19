@@ -25,7 +25,6 @@
   name: destination.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: destination.geo.location
   type: geo_point
 - description: |-
@@ -56,6 +55,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
@@ -81,9 +82,13 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
@@ -92,6 +97,8 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
@@ -120,7 +127,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: |-

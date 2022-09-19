@@ -33,6 +33,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Same as network.iana_number, but instead using the Keyword name of the transport layer (udp, tcp, ipv6-icmp, etc.)
@@ -41,4 +43,6 @@
   type: keyword
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword

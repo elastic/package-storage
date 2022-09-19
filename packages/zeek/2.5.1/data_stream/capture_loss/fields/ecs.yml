@@ -30,7 +30,11 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
