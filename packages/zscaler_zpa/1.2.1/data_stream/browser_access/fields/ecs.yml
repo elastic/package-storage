@@ -16,7 +16,7 @@
 - description: Region ISO code.
   name: client.geo.region_iso_code
   type: keyword
-- description: Longitude and latitude
+- description: Longitude and latitude.
   name: client.geo.location
   type: geo_point
 - description: Region name.
@@ -63,9 +63,13 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".

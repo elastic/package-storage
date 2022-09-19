@@ -24,7 +24,6 @@
   name: observer.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: observer.geo.location
   type: geo_point
 - description: Unique identifier for the organization.
@@ -40,9 +39,13 @@
   type: ip
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Unique identifier of the user.
   name: user.id
@@ -67,12 +70,18 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.target.roles
+  normalize:
+    - array
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: x509.issuer.distinguished_name

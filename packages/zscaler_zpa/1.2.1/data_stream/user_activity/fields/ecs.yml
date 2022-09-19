@@ -2,7 +2,6 @@
   name: client.geo.country_iso_code
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: client.geo.location
   type: geo_point
 - description: IP address of the client (IPv4 or IPv6).
@@ -32,12 +31,18 @@
   type: long
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
