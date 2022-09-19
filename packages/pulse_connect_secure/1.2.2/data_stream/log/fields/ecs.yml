@@ -58,7 +58,6 @@
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: client.geo.location
   type: geo_point
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
@@ -88,10 +87,6 @@
 - description: Country name.
   name: source.geo.country_name
   type: keyword
-- description: Longitude and latitude.
-  level: core
-  name: source.geo.location
-  type: geo_point
 - description: IP address of the client (IPv4 or IPv6).
   name: client.ip
   type: ip
@@ -121,6 +116,8 @@
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Custom name of the observer.
@@ -141,6 +138,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
@@ -204,7 +203,6 @@
   name: source.geo.country_name
   type: keyword
 - description: Longitude and latitude.
-  level: core
   name: source.geo.location
   type: geo_point
 - description: IP address of the source (IPv4 or IPv6).
