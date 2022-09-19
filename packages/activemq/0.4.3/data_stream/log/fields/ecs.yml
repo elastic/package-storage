@@ -19,6 +19,11 @@
   name: event.kind
   type: keyword
 - description: |-
+    Name of the module this data is coming from.
+    If your monitoring agent supports the concept of modules or plugins to process events of a given source (e.g. Apache logs), `event.module` should contain the name of this module.
+  name: event.module
+  type: keyword
+- description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
     This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`.
   doc_values: false
@@ -44,4 +49,6 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
