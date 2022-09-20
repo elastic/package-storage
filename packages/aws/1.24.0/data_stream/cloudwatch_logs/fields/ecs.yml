@@ -14,6 +14,8 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Timestamp when an event arrived in the central data store.

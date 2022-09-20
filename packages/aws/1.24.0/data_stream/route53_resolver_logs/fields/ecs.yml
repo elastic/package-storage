@@ -14,6 +14,8 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     The name being queried.
@@ -47,6 +49,8 @@
     The main keys that should be present in these objects are defined by ECS. Records that have more information may contain more keys than what ECS defines.
     Not all DNS data sources give all details about DNS answers. At minimum, answer objects must contain the `data` key. If more information is available, map as much of it to ECS as possible, and add any additional fields to the answer objects as custom fields.
   name: dns.answers
+  normalize:
+    - array
   type: object
 - description: The class of records being queried.
   name: dns.question.class
@@ -71,9 +75,13 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: Port of the source.
   name: source.port
