@@ -1,0 +1,105 @@
+{
+    "@timestamp": "2022-09-15T08:40:01.593Z",
+    "activemq": {
+        "broker": {
+            "connections": {
+                "count": 18
+            },
+            "consumers": {
+                "count": 0
+            },
+            "mbean": "org.apache.activemq:brokerName=localhost,type=Broker",
+            "memory": {
+                "broker": {
+                    "pct": 0
+                },
+                "store": {
+                    "pct": 0
+                },
+                "temp": {
+                    "pct": 0
+                }
+            },
+            "messages": {
+                "count": 18,
+                "dequeue": {
+                    "count": 0
+                },
+                "enqueue": {
+                    "count": 38
+                }
+            },
+            "name": "localhost",
+            "producers": {
+                "count": 0
+            }
+        }
+    },
+    "agent": {
+        "ephemeral_id": "610c5ccb-2a67-4fcc-83fc-aa5904971538",
+        "id": "abd9aa75-4cf4-40e6-ac3c-8a1f152d8fa9",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.3.3"
+    },
+    "data_stream": {
+        "dataset": "activemq.broker",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "abd9aa75-4cf4-40e6-ac3c-8a1f152d8fa9",
+        "snapshot": false,
+        "version": "8.3.3"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "category": [
+            "web"
+        ],
+        "dataset": "activemq.broker",
+        "duration": 14118688,
+        "ingested": "2022-09-15T08:40:05Z",
+        "kind": "metric",
+        "module": "activemq",
+        "type": [
+            "info"
+        ]
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "3.10.0-1160.71.1.el7.x86_64",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "broker",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_activemq_1:8161/api/jolokia/%3FignoreErrors=true\u0026canonicalNaming=false",
+        "type": "activemq"
+    },
+    "tags": [
+        "forwarded",
+        "activemq-broker"
+    ]
+}
