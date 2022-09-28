@@ -116,7 +116,8 @@
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
     When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
   name: ecs.version
-  type: keyword
+  type: constant_keyword
+  value: 8.6.0-dev
 - description: |-
     This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy.
     `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event.
