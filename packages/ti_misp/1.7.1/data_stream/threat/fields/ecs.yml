@@ -11,6 +11,8 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Error message.
   name: error.message
@@ -20,6 +22,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Timestamp when an event arrived in the central data store.
@@ -45,6 +49,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex.
@@ -58,8 +64,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.roles
-  type: keyword
-- name: threat.feed.name
+  normalize:
+    - array
   type: keyword
 - description: The date and time when intelligence source first reported sighting this indicator.
   name: threat.indicator.first_seen
