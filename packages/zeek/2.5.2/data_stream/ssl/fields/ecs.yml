@@ -308,6 +308,3 @@
 - description: Normalized lowercase protocol name parsed from original string.
   name: tls.version_protocol
   type: keyword
-- description: Normalized lowercase protocol name parsed from original string.
-  name: tls.version_protocol
-  type: keyword
