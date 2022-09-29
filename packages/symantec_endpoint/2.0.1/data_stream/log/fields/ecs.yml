@@ -75,12 +75,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
-  type: keyword
-- description: |-
-    Name of the dataset.
-    If an event source publishes more than one type of log or events (e.g. access log, error log), the dataset is used to specify which one the event comes from.
-    It's recommended but not required to start the dataset name with the module name, followed by a dot, then the dataset name.
-  name: event.dataset
+  normalize:
+    - array
   type: keyword
 - description: |-
     Timestamp when an event arrived in the central data store.
@@ -94,11 +90,6 @@
     The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data coming in at a regular interval or not.
   name: event.kind
   type: keyword
-- description: |-
-    Name of the module this data is coming from.
-    If your monitoring agent supports the concept of modules or plugins to process events of a given source (e.g. Apache logs), `event.module` should contain the name of this module.
-  name: event.module
-  type: keyword
 - description: event.start contains the date when the event started or when the activity was first observed.
   name: event.start
   type: date
@@ -107,6 +98,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: SHA1 hash.
   name: file.hash.sha1
@@ -136,6 +129,8 @@
   type: long
 - description: List of common name (CN) of issuing certificate authority.
   name: file.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is first considered valid.
   name: file.x509.not_before
@@ -202,12 +197,18 @@
   type: long
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: A rule ID that is unique within the scope of an agent, observer, or other entity using the rule for detection of this event.
   name: rule.id
@@ -275,6 +276,8 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
