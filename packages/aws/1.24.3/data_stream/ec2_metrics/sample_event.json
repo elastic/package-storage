@@ -1,0 +1,158 @@
+{
+    "@timestamp": "2022-05-26T12:40:00.000Z",
+    "agent": {
+        "name": "docker-fleet-agent",
+        "id": "24d50340-a9d0-4d5d-9f42-fe9cb4b8c95d",
+        "type": "metricbeat",
+        "ephemeral_id": "f8282deb-ebc7-4d1f-9386-207f56657244",
+        "version": "8.2.0"
+    },
+    "elastic_agent": {
+        "id": "24d50340-a9d0-4d5d-9f42-fe9cb4b8c95d",
+        "version": "8.2.0",
+        "snapshot": false
+    },
+    "cloud": {
+        "availability_zone": "us-east-1c",
+        "instance": {
+            "name": "elastic-package-test-33138",
+            "id": "i-0de58890d94dda2e3"
+        },
+        "provider": "aws",
+        "machine": {
+            "type": "t1.micro"
+        },
+        "region": "us-east-1",
+        "account": {
+            "name": "elastic-beats",
+            "id": "428152502467"
+        }
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "service": {
+        "type": "aws"
+    },
+    "data_stream": {
+        "namespace": "default",
+        "type": "metrics",
+        "dataset": "aws.ec2_metrics"
+    },
+    "host": {
+        "hostname": "docker-fleet-agent",
+        "disk": {
+            "read": {
+                "bytes": 0
+            },
+            "write": {
+                "bytes": 0
+            }
+        },
+        "os": {
+            "kernel": "5.10.47-linuxkit",
+            "codename": "focal",
+            "name": "Ubuntu",
+            "type": "linux",
+            "family": "debian",
+            "version": "20.04.4 LTS (Focal Fossa)",
+            "platform": "ubuntu"
+        },
+        "containerized": true,
+        "ip": [
+            "192.168.80.7"
+        ],
+        "name": "elastic-package-test-33138",
+        "cpu": {
+            "usage": 0.08265027322397175
+        },
+        "id": "i-0de58890d94dda2e3",
+        "mac": [
+            "02:42:c0:a8:50:07"
+        ],
+        "architecture": "x86_64",
+        "network": {
+            "ingress": {
+                "bytes": 1992
+            },
+            "egress": {
+                "bytes": 1800
+            }
+        }
+    },
+    "metricset": {
+        "period": 300000,
+        "name": "cloudwatch"
+    },
+    "event": {
+        "duration": 15936070000,
+        "agent_id_status": "verified",
+        "ingested": "2022-05-26T12:44:52Z",
+        "module": "aws",
+        "dataset": "aws.ec2_metrics"
+    },
+    "aws": {
+        "ec2": {
+            "diskio": {
+                "read": {
+                    "count_per_sec": 0,
+                    "bytes_per_sec": 0
+                },
+                "write": {
+                    "count_per_sec": 0,
+                    "bytes_per_sec": 0
+                }
+            },
+            "instance": {
+                "image": {
+                    "id": "ami-0ff900168d0231cd3"
+                },
+                "core": {
+                    "count": 1
+                },
+                "private": {
+                    "ip": "172.31.16.45",
+                    "dns_name": "ip-172-31-16-45.ec2.internal"
+                },
+                "threads_per_core": 1,
+                "public": {
+                    "ip": "54.90.153.147",
+                    "dns_name": "ec2-54-90-153-147.compute-1.amazonaws.com"
+                },
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "monitoring": {
+                    "state": "enabled"
+                }
+            },
+            "cpu": {
+                "credit_balance": 144,
+                "credit_usage": 0.004121
+            },
+            "status": {
+                "check_failed": 0,
+                "check_failed_instance": 0,
+                "check_failed_system": 0
+            },
+            "network": {
+                "in": {
+                    "bytes_per_sec": 33.2
+                },
+                "out": {
+                    "bytes_per_sec": 30
+                }
+            }
+        },
+        "cloudwatch": {
+            "namespace": "AWS/EC2"
+        },
+        "dimensions": {
+            "InstanceId": "i-0de58890d94dda2e3"
+        },
+        "tags": {
+            "Name": "elastic-package-test-33138"
+        }
+    }
+}
