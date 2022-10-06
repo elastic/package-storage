@@ -11,11 +11,14 @@
     "title": "[Logs GCP] VPC Flow",
     "version": 1
   },
-  "coreMigrationVersion": "7.17.0",
+  "coreMigrationVersion": "7.17.6",
   "id": "gcp-9484a4cd-685f-450e-aeaa-728fbdbea20f",
   "migrationVersion": {
-    "dashboard": "7.17.0"
+    "dashboard": "7.17.3"
   },
+  "namespaces": [
+    "default"
+  ],
   "references": [
     {
       "id": "logs-*",
@@ -148,5 +151,7 @@
       "type": "tag"
     }
   ],
-  "type": "dashboard"
+  "type": "dashboard",
+  "updated_at": "2022-09-14T09:47:20.533Z",
+  "version": "WzcxOSwxXQ=="
 }
