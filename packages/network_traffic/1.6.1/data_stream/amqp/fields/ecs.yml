@@ -31,6 +31,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Name of the dataset.
@@ -60,6 +62,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     Total bytes transferred in both directions.
@@ -108,6 +112,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: Absolute path to the process executable.
   multi_fields:
@@ -126,6 +132,8 @@
   type: date
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: Bytes sent from the server to the client.
   name: server.bytes

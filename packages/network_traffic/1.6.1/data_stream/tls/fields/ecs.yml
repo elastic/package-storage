@@ -31,6 +31,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     Name of the dataset.
@@ -60,6 +62,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     Total bytes transferred in both directions.
@@ -108,6 +112,8 @@
     Array of process arguments, starting with the absolute path to the executable.
     May be filtered to protect sensitive information.
   name: process.args
+  normalize:
+    - array
   type: keyword
 - description: Absolute path to the process executable.
   multi_fields:
@@ -126,9 +132,13 @@
   type: date
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: Bytes sent from the server to the client.
   name: server.bytes
@@ -161,6 +171,8 @@
   type: keyword
 - description: Array of PEM-encoded certificates that make up the certificate chain offered by the client. This is usually mutually-exclusive of `client.certificate` since that value should be the first certificate in the chain.
   name: tls.client.certificate_chain
+  normalize:
+    - array
   type: keyword
 - description: Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash.
   name: tls.client.hash.md5
@@ -191,30 +203,46 @@
   type: keyword
 - description: Array of ciphers offered by the client during the client hello.
   name: tls.client.supported_ciphers
+  normalize:
+    - array
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: tls.client.x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.client.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: tls.client.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: tls.client.x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.client.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: tls.client.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: tls.client.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.client.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: tls.client.x509.not_after
@@ -244,24 +272,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.client.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: tls.client.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: tls.client.x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.client.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: tls.client.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: tls.client.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.client.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: tls.client.x509.version_number
@@ -283,6 +323,8 @@
   type: keyword
 - description: Array of PEM-encoded certificates that make up the certificate chain offered by the server. This is usually mutually-exclusive of `server.certificate` since that value should be the first certificate in the chain.
   name: tls.server.certificate_chain
+  normalize:
+    - array
   type: keyword
 - description: Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the server. For consistency with other hash values, this value should be formatted as an uppercase hash.
   name: tls.server.hash.md5
@@ -310,27 +352,41 @@
   type: keyword
 - description: List of subject alternative names (SAN). Name types vary by certificate authority and certificate type but commonly contain IP addresses, DNS names (and wildcards), and email addresses.
   name: tls.server.x509.alternative_names
+  normalize:
+    - array
   type: keyword
 - description: List of common name (CN) of issuing certificate authority.
   name: tls.server.x509.issuer.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) codes
   name: tls.server.x509.issuer.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of issuing certificate authority.
   name: tls.server.x509.issuer.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.issuer.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of issuing certificate authority.
   name: tls.server.x509.issuer.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of issuing certificate authority.
   name: tls.server.x509.issuer.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.issuer.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Time at which the certificate is no longer considered valid.
   name: tls.server.x509.not_after
@@ -360,24 +416,36 @@
   type: keyword
 - description: List of common names (CN) of subject.
   name: tls.server.x509.subject.common_name
+  normalize:
+    - array
   type: keyword
 - description: List of country \(C) code
   name: tls.server.x509.subject.country
+  normalize:
+    - array
   type: keyword
 - description: Distinguished name (DN) of the certificate subject entity.
   name: tls.server.x509.subject.distinguished_name
   type: keyword
 - description: List of locality names (L)
   name: tls.server.x509.subject.locality
+  normalize:
+    - array
   type: keyword
 - description: List of organizations (O) of subject.
   name: tls.server.x509.subject.organization
+  normalize:
+    - array
   type: keyword
 - description: List of organizational units (OU) of subject.
   name: tls.server.x509.subject.organizational_unit
+  normalize:
+    - array
   type: keyword
 - description: List of state or province names (ST, S, or P)
   name: tls.server.x509.subject.state_or_province
+  normalize:
+    - array
   type: keyword
 - description: Version of x509 format.
   name: tls.server.x509.version_number
