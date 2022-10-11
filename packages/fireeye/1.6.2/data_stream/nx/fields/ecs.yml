@@ -117,9 +117,6 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
   type: keyword
-- description: Port of the destination.
-  name: destination.port
-  type: long
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: destination.as.number
   type: long
