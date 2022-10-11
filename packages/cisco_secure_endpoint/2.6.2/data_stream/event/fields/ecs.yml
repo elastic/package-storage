@@ -71,11 +71,6 @@
   name: event.id
   type: keyword
 - description: |-
-    Identification code for this event, if one exists.
-    Some event sources use event codes to identify messages unambiguously, regardless of message language or wording adjustments over time. An example of this is the Windows Event ID.
-  name: event.code
-  type: keyword
-- description: |-
     This field should be populated when the event's timestamp does not include timezone information already (e.g. default Syslog timestamps). It's optional otherwise.
     Acceptable timezone formats are: a canonical ID (e.g. "Europe/Amsterdam"), abbreviated (e.g. "EST") or an HH:mm differential (e.g. "-05:00").
   name: event.timezone
