@@ -1,0 +1,16 @@
+- name: apache.access
+  type: group
+  fields:
+    - name: ssl.protocol
+      type: keyword
+      description: |
+        SSL protocol version.
+    - name: ssl.cipher
+      type: keyword
+      description: |
+        SSL cipher name.
+        - name: nginx.access
+    - name: remote_addresses
+      type: keyword
+      description: |
+        An array of remote addresses. It is a list because it is common to include, besides the client IP address, IP addresses from headers like `X-Forwarded-For`.
