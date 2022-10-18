@@ -43,3 +43,39 @@
   normalize:
     - array
   type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  normalize:
+    - array
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  normalize:
+    - array
+  type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  normalize:
+    - array
+  type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user.effective.name
+  type: keyword
+- description: Unique identifier of the user.
+  name: user.id
+  type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user.name
+  type: keyword
+- description: IP address of the source (IPv4 or IPv6).
+  name: source.ip
+  type: ip
+- description: Port of the source.
+  name: source.port
+  type: long
