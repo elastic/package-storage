@@ -46,3 +46,6 @@
     In the case of Elasticsearch the `service.name` could contain the cluster name. For Beats the `service.name` is by default a copy of the `service.type` field if no name is specified.
   name: service.name
   type: keyword
+- description: Error message.
+  name: error.message
+  type: match_only_text
