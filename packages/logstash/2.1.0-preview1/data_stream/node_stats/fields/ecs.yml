@@ -60,3 +60,6 @@
     It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
   name: host.name
   type: keyword
+- description: Error message.
+  name: error.message
+  type: match_only_text

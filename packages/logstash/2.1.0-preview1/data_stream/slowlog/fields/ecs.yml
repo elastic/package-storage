@@ -16,3 +16,13 @@
     Some examples are `warn`, `err`, `i`, `informational`.
   name: log.level
   type: keyword
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
+    If the event wasn't read from a log file, do not populate this field.
+  name: log.file.path
+  type: keyword
