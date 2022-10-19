@@ -1,0 +1,13 @@
+metricsets: ["ccr"]
+hosts:
+{{#each hosts}}
+  - {{this}}
+{{/each}}
+scope: {{scope}}
+{{#if username}}
+username: {{username}}
+{{/if}}
+{{#if password}}
+password: {{password}}
+{{/if}}
+period: {{period}}
