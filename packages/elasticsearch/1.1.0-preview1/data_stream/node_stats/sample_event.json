@@ -1,0 +1,305 @@
+{
+    "@timestamp": "2022-09-02T14:32:24.121Z",
+    "agent": {
+        "ephemeral_id": "5d429743-0cf8-44a9-afb4-7523cf960d76",
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.3.2"
+    },
+    "data_stream": {
+        "dataset": "elasticsearch.node_stats",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "snapshot": false,
+        "version": "8.3.2"
+    },
+    "elasticsearch": {
+        "cluster": {
+            "id": "PdQA6zKZQaK1LAvajgbnug",
+            "name": "elasticsearch"
+        },
+        "node": {
+            "id": "vnPGsgkoQ5-kwzmE6DOjOQ",
+            "master": true,
+            "mlockall": false,
+            "name": "be467614bdb0",
+            "stats": {
+                "fs": {
+                    "io_stats": {},
+                    "summary": {
+                        "available": {
+                            "bytes": 36166852608
+                        },
+                        "free": {
+                            "bytes": 46061998080
+                        },
+                        "total": {
+                            "bytes": 193393164288
+                        }
+                    },
+                    "total": {
+                        "available_in_bytes": 36166852608,
+                        "total_in_bytes": 193393164288
+                    }
+                },
+                "indices": {
+                    "bulk": {
+                        "avg_size": {
+                            "bytes": 139
+                        },
+                        "avg_time": {
+                            "ms": 4
+                        },
+                        "operations": {
+                            "total": {
+                                "count": 6
+                            }
+                        },
+                        "total_size": {
+                            "bytes": 5303
+                        },
+                        "total_time": {
+                            "ms": 175
+                        }
+                    },
+                    "docs": {
+                        "count": 11,
+                        "deleted": 0
+                    },
+                    "fielddata": {
+                        "memory": {
+                            "bytes": 0
+                        }
+                    },
+                    "indexing": {
+                        "index_time": {
+                            "ms": 31
+                        },
+                        "index_total": {
+                            "count": 11
+                        },
+                        "throttle_time": {
+                            "ms": 0
+                        }
+                    },
+                    "query_cache": {
+                        "memory": {
+                            "bytes": 0
+                        }
+                    },
+                    "request_cache": {
+                        "memory": {
+                            "bytes": 0
+                        }
+                    },
+                    "search": {
+                        "query_time": {
+                            "ms": 19
+                        },
+                        "query_total": {
+                            "count": 9
+                        }
+                    },
+                    "segments": {
+                        "count": 6,
+                        "doc_values": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "fixed_bit_set": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "index_writer": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "memory": {
+                            "bytes": 0
+                        },
+                        "norms": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "points": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "stored_fields": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "term_vectors": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "terms": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        },
+                        "version_map": {
+                            "memory": {
+                                "bytes": 0
+                            }
+                        }
+                    },
+                    "store": {
+                        "size": {
+                            "bytes": 40643
+                        }
+                    }
+                },
+                "jvm": {
+                    "gc": {
+                        "collectors": {
+                            "old": {
+                                "collection": {
+                                    "count": 0,
+                                    "ms": 0
+                                }
+                            },
+                            "young": {
+                                "collection": {
+                                    "count": 9,
+                                    "ms": 217
+                                }
+                            }
+                        }
+                    },
+                    "mem": {
+                        "heap": {
+                            "max": {
+                                "bytes": 1073741824
+                            },
+                            "used": {
+                                "bytes": 400155760,
+                                "pct": 37
+                            }
+                        }
+                    }
+                },
+                "os": {
+                    "cgroup": {
+                        "cpu": {
+                            "cfs": {
+                                "quota": {
+                                    "us": -1
+                                }
+                            },
+                            "stat": {
+                                "elapsed_periods": {
+                                    "count": 0
+                                },
+                                "times_throttled": {
+                                    "count": 0
+                                }
+                            }
+                        },
+                        "cpuacct": {
+                            "usage": {
+                                "ns": 56233628308
+                            }
+                        },
+                        "memory": {
+                            "control_group": "/",
+                            "limit": {
+                                "bytes": "9223372036854771712"
+                            },
+                            "usage": {
+                                "bytes": "1536434176"
+                            }
+                        }
+                    },
+                    "cpu": {
+                        "load_avg": {
+                            "1m": 1.53
+                        }
+                    }
+                },
+                "process": {
+                    "cpu": {
+                        "pct": 1
+                    }
+                },
+                "thread_pool": {
+                    "get": {
+                        "queue": {
+                            "count": 0
+                        },
+                        "rejected": {
+                            "count": 0
+                        }
+                    },
+                    "search": {
+                        "queue": {
+                            "count": 0
+                        },
+                        "rejected": {
+                            "count": 0
+                        }
+                    },
+                    "write": {
+                        "queue": {
+                            "count": 0
+                        },
+                        "rejected": {
+                            "count": 0
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "elasticsearch.node_stats",
+        "duration": 34932600,
+        "ingested": "2022-09-02T14:32:25Z",
+        "module": "elasticsearch"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.47-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "node_stats",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_elasticsearch_1:9200",
+        "name": "elasticsearch",
+        "type": "elasticsearch"
+    }
+}

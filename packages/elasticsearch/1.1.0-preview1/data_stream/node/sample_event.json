@@ -1,0 +1,95 @@
+{
+    "@timestamp": "2022-09-02T14:13:34.927Z",
+    "agent": {
+        "ephemeral_id": "47946444-4c3a-4915-91dd-bf515aba9740",
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.3.2"
+    },
+    "data_stream": {
+        "dataset": "elasticsearch.node",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "snapshot": false,
+        "version": "8.3.2"
+    },
+    "elasticsearch": {
+        "cluster": {
+            "id": "ziL93dUTRmGy5hsfhhq3Ww",
+            "name": "elasticsearch"
+        },
+        "node": {
+            "id": "3nCEJ8F6SCuBH_c_YJNQSA",
+            "jvm": {
+                "memory": {
+                    "heap": {
+                        "init": {
+                            "bytes": 1073741824
+                        },
+                        "max": {
+                            "bytes": 1073741824
+                        }
+                    },
+                    "nonheap": {
+                        "init": {
+                            "bytes": 7667712
+                        },
+                        "max": {
+                            "bytes": 0
+                        }
+                    }
+                },
+                "version": "18.0.2"
+            },
+            "name": "1a6b5d803000",
+            "process": {
+                "mlockall": false
+            },
+            "version": "8.5.0"
+        }
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "elasticsearch.node",
+        "duration": 18259400,
+        "ingested": "2022-09-02T14:13:35Z",
+        "module": "elasticsearch"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.47-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "node",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_elasticsearch_1:9200",
+        "name": "elasticsearch",
+        "type": "elasticsearch"
+    }
+}

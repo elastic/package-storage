@@ -1,0 +1,90 @@
+{
+    "@timestamp": "2022-09-02T14:19:48.613Z",
+    "agent": {
+        "ephemeral_id": "7533d718-43c3-4106-aa29-37168d6a2769",
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.3.2"
+    },
+    "data_stream": {
+        "dataset": "elasticsearch.shard",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "snapshot": false,
+        "version": "8.3.2"
+    },
+    "elasticsearch": {
+        "cluster": {
+            "id": "hBVXsE1NTkqWp6cdjr-yWw",
+            "name": "elasticsearch",
+            "state": {
+                "id": "V7ASeCFmSXWm7W-tuSl_bA"
+            },
+            "stats": {
+                "state": {
+                    "state_uuid": "V7ASeCFmSXWm7W-tuSl_bA"
+                }
+            }
+        },
+        "index": {
+            "name": ".ds-.logs-deprecation.elasticsearch-default-2022.09.02-000001"
+        },
+        "node": {
+            "id": "JGcyPUWaTiOW2Ri0hDUC-A",
+            "name": "32a9c755b09e"
+        },
+        "shard": {
+            "number": 0,
+            "primary": true,
+            "relocating_node": {},
+            "source_node": {
+                "name": "32a9c755b09e",
+                "uuid": "JGcyPUWaTiOW2Ri0hDUC-A"
+            },
+            "state": "STARTED"
+        }
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "elasticsearch.shard",
+        "duration": 17200300,
+        "ingested": "2022-09-02T14:19:49Z",
+        "module": "elasticsearch"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.47-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "shard",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_elasticsearch_1:9200",
+        "type": "elasticsearch"
+    }
+}

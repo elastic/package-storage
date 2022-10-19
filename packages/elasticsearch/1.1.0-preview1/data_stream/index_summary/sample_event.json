@@ -1,0 +1,162 @@
+{
+    "@timestamp": "2022-09-02T14:23:38.078Z",
+    "agent": {
+        "ephemeral_id": "5dcbe5f9-d61d-4931-b4f3-a334e8e999b2",
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "name": "docker-fleet-agent",
+        "type": "metricbeat",
+        "version": "8.3.2"
+    },
+    "data_stream": {
+        "dataset": "elasticsearch.index_summary",
+        "namespace": "ep",
+        "type": "metrics"
+    },
+    "ecs": {
+        "version": "8.0.0"
+    },
+    "elastic_agent": {
+        "id": "1ead23a7-d3be-410c-b5c7-c48d297f4939",
+        "snapshot": false,
+        "version": "8.3.2"
+    },
+    "elasticsearch": {
+        "cluster": {
+            "id": "zZUl__19TuWgxPiewmnJ3Q",
+            "name": "elasticsearch"
+        },
+        "index": {
+            "summary": {
+                "primaries": {
+                    "bulk": {
+                        "operations": {
+                            "count": 3
+                        },
+                        "size": {
+                            "bytes": 45
+                        },
+                        "time": {
+                            "avg": {
+                                "bytes": 4
+                            }
+                        }
+                    },
+                    "docs": {
+                        "count": 3,
+                        "deleted": 0
+                    },
+                    "indexing": {
+                        "index": {
+                            "count": 3,
+                            "time": {
+                                "ms": 14
+                            }
+                        }
+                    },
+                    "search": {
+                        "query": {
+                            "count": 9,
+                            "time": {
+                                "ms": 20
+                            }
+                        }
+                    },
+                    "segments": {
+                        "count": 3,
+                        "memory": {
+                            "bytes": 0
+                        }
+                    },
+                    "store": {
+                        "size": {
+                            "bytes": 8466
+                        }
+                    }
+                },
+                "total": {
+                    "bulk": {
+                        "operations": {
+                            "count": 3
+                        },
+                        "size": {
+                            "bytes": 45
+                        },
+                        "time": {
+                            "avg": {
+                                "bytes": 4
+                            }
+                        }
+                    },
+                    "docs": {
+                        "count": 3,
+                        "deleted": 0
+                    },
+                    "indexing": {
+                        "index": {
+                            "count": 3,
+                            "time": {
+                                "ms": 14
+                            }
+                        }
+                    },
+                    "search": {
+                        "query": {
+                            "count": 9,
+                            "time": {
+                                "ms": 20
+                            }
+                        }
+                    },
+                    "segments": {
+                        "count": 3,
+                        "memory": {
+                            "bytes": 0
+                        }
+                    },
+                    "store": {
+                        "size": {
+                            "bytes": 8466
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "dataset": "elasticsearch.index_summary",
+        "duration": 32732300,
+        "ingested": "2022-09-02T14:23:39Z",
+        "module": "elasticsearch"
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.18.0.7"
+        ],
+        "mac": [
+            "02:42:ac:12:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.47-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "metricset": {
+        "name": "index_summary",
+        "period": 10000
+    },
+    "service": {
+        "address": "http://elastic-package-service_elasticsearch_1:9200",
+        "name": "elasticsearch",
+        "type": "elasticsearch"
+    }
+}
