@@ -3,6 +3,11 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
   type: keyword
+- description: |-
+    The domain name of the destination system.
+    This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
+  name: destination.domain
+  type: keyword
 - description: IP address of the destination (IPv4 or IPv6).
   name: destination.ip
   type: ip
@@ -70,7 +75,14 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  normalize:
+    - array
+  type: keyword
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
@@ -109,6 +121,8 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
@@ -181,3 +195,18 @@
 - description: Username of the request.
   name: url.username
   type: keyword
+- description: String indicating the cipher used during the current connection.
+  name: tls.cipher
+  type: keyword
+- description: Also called an SNI, this tells the server which hostname to which the client is attempting to connect to. When this value is available, it should get copied to `destination.domain`.
+  name: tls.client.server_name
+  type: keyword
+- description: Numeric part of the version parsed from the original string.
+  name: tls.version
+  type: keyword
+- description: Normalized lowercase protocol name parsed from original string.
+  name: tls.version_protocol
+  type: keyword
+- description: Boolean flag indicating if this TLS connection was resumed from an existing TLS negotiation.
+  name: tls.resumed
+  type: boolean
