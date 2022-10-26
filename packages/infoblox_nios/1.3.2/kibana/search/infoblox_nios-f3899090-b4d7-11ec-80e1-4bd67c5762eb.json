@@ -9,7 +9,7 @@
     "grid": {},
     "hideChart": false,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"infoblox_nios.log\\\" and infoblox_nios.log.type : \\\"DNS\\\"\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
     },
     "sort": [
       [
