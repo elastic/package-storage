@@ -132,9 +132,7 @@ Traces are written to `traces-apm-*` data streams, except for RUM traces, which 
 | network.connection.subtype | Detailed network connection sub-type, e.g. "LTE", "CDMA" | keyword |  |
 | network.connection.type | Network connection type, eg. "wifi", "cell" | keyword |  |
 | numeric_labels | Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as scaled_float. | object |  |
-| observer.ephemeral_id | Ephemeral identifier of the APM Server. | keyword |  |
 | observer.hostname | Hostname of the observer. | keyword |  |
-| observer.id | Unique identifier of the APM Server. | keyword |  |
 | observer.name | Custom name of the observer. This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization. If no custom name is needed, the field can be left empty. | keyword |  |
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |  |
 | observer.version | Observer version. | keyword |  |
@@ -305,9 +303,7 @@ Application metrics are written to service-specific `metrics-apm.app.*-*` data s
 | metricset.name | Name of the set of metrics. | keyword |
 | network.connection.type | Network connection type, eg. "wifi", "cell" | keyword |
 | numeric_labels | Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as scaled_float. | object |
-| observer.ephemeral_id | Ephemeral identifier of the APM Server. | keyword |
 | observer.hostname | Hostname of the observer. | keyword |
-| observer.id | Unique identifier of the APM Server. | keyword |
 | observer.name | Custom name of the observer. This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization. If no custom name is needed, the field can be left empty. | keyword |
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |
 | observer.version | Observer version. | keyword |
@@ -465,9 +461,7 @@ Internal metrics are written to `metrics-apm.internal-*` data streams.
 | nodejs.memory.heap.used.bytes |  | long | byte | gauge |
 | nodejs.requests.active |  | long |  | gauge |
 | numeric_labels | Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as scaled_float. | object |  |  |
-| observer.ephemeral_id | Ephemeral identifier of the APM Server. | keyword |  |  |
 | observer.hostname | Hostname of the observer. | keyword |  |  |
-| observer.id | Unique identifier of the APM Server. | keyword |  |  |
 | observer.name | Custom name of the observer. This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization. If no custom name is needed, the field can be left empty. | keyword |  |  |
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |  |  |
 | observer.version | Observer version. | keyword |  |  |
@@ -652,9 +646,7 @@ Application errors are written to `logs-apm.error.*` data stream.
 | network.connection.subtype | Detailed network connection sub-type, e.g. "LTE", "CDMA" | keyword |
 | network.connection.type | Network connection type, eg. "wifi", "cell" | keyword |
 | numeric_labels | Custom key/value pairs. Can be used to add meta information to events. Should not contain nested objects. All values are stored as scaled_float. | object |
-| observer.ephemeral_id | Ephemeral identifier of the APM Server. | keyword |
 | observer.hostname | Hostname of the observer. | keyword |
-| observer.id | Unique identifier of the APM Server. | keyword |
 | observer.name | Custom name of the observer. This is a name that can be given to an observer. This can be helpful for example if multiple firewalls of the same model are used in an organization. If no custom name is needed, the field can be left empty. | keyword |
 | observer.type | The type of the observer the data is coming from. There is no predefined list of observer types. Some examples are `forwarder`, `firewall`, `ids`, `ips`, `proxy`, `poller`, `sensor`, `APM server`. | keyword |
 | observer.version | Observer version. | keyword |

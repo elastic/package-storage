@@ -20,6 +20,12 @@ processors:
         - observer.version_patch
       ignore_missing: true
   - remove:
+      field:
+        - observer.id
+        - observer.ephemeral_id
+      ignore_failure: true
+      ignore_missing: true
+  - remove:
       field: ecs
       ignore_failure: true
       ignore_missing: true
