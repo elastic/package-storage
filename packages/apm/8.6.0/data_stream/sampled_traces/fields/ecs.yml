@@ -9,3 +9,8 @@
     A trace groups multiple events like transactions that belong together. For example, a user request handled by multiple inter-connected services.
   name: trace.id
   type: keyword
+- description: |-
+    Ephemeral identifier of this agent (if one exists).
+    This id normally changes across restarts, but `agent.id` does not.
+  name: agent.ephemeral_id
+  type: keyword
