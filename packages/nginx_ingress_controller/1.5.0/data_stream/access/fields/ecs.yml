@@ -5,6 +5,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     A unique identifier for each HTTP request to correlate logs between clients and servers in transactions.
@@ -19,6 +21,9 @@
 - description: Referrer for this HTTP request.
   name: http.request.referrer
   type: keyword
+- description: Total size in bytes of the request (body and headers).
+  name: http.request.bytes
+  type: long
 - description: Size in bytes of the response body.
   name: http.response.body.bytes
   type: long
@@ -35,9 +40,13 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: |-
     Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
@@ -80,30 +89,8 @@
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
-  type: keyword
-- description: |-
-    Unmodified original url as seen in the event source.
-    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
-    This field is meant to represent the URL as it was observed, complete or not.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: url.original
-  type: wildcard
-- description: Path of the request, such as "/search".
-  name: url.path
-  type: wildcard
-- description: |-
-    The query field describes the query string of the request, such as "q=elasticsearch".
-    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
-  name: url.query
-  type: keyword
-- description: |-
-    The field contains the file extension from the original request url, excluding the leading dot.
-    The file extension is only set if it exists, as not every url has a file extension.
-    The leading period must not be included. For example, the value must be "png", not ".png".
-    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
-  name: url.extension
+  normalize:
+    - array
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
@@ -141,3 +128,51 @@
 - description: Version of the user agent.
   name: user_agent.version
   type: keyword
+- description: |-
+    Unmodified original url as seen in the event source.
+    Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
+    This field is meant to represent the URL as it was observed, complete or not.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: url.original
+  type: wildcard
+- description: |-
+    Domain of the url, such as "www.elastic.co".
+    In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
+    If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field.
+  name: url.domain
+  type: keyword
+- description: |-
+    The field contains the file extension from the original request url, excluding the leading dot.
+    The file extension is only set if it exists, as not every url has a file extension.
+    The leading period must not be included. For example, the value must be "png", not ".png".
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: url.extension
+  type: keyword
+- description: Path of the request, such as "/search".
+  name: url.path
+  type: wildcard
+- description: |-
+    The query field describes the query string of the request, such as "q=elasticsearch".
+    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
+  name: url.query
+  type: keyword
+- description: |-
+    Scheme of the request, such as "https".
+    Note: The `:` is not part of the scheme.
+  name: url.scheme
+  type: keyword
+- description: If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: url.full
+  type: wildcard
+- description: |-
+    event.created contains the date/time when the event was first read by an agent, or by your pipeline.
+    This field is distinct from @timestamp in that @timestamp typically contain the time extracted from the original event.
+    In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source.
+    In case the two timestamps are identical, @timestamp should be used.
+  name: event.created
+  type: date
