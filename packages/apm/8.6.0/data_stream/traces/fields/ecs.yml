@@ -9,6 +9,7 @@
   name: agent.name
   type: keyword
 - description: Version of the agent.
+  index: false
   name: agent.version
   type: keyword
 - description: |-
@@ -23,21 +24,26 @@
   name: client.port
   type: long
 - description: City name.
+  index: false
   name: client.geo.city_name
   type: keyword
 - description: Name of the continent.
+  index: false
   name: client.geo.continent_name
   type: keyword
 - description: Country ISO code.
+  index: false
   name: client.geo.country_iso_code
   type: keyword
 - description: Country name.
+  index: false
   name: client.geo.country_name
   type: keyword
 - description: Longitude and latitude.
   name: client.geo.location
   type: geo_point
 - description: Region ISO code.
+  index: false
   name: client.geo.region_iso_code
   type: keyword
 - description: Region name.
@@ -54,6 +60,7 @@
   name: cloud.account.name
   type: keyword
 - description: Availability zone in which this host, resource, or service is located.
+  index: false
   name: cloud.availability_zone
   type: keyword
 - description: Instance ID of the host machine.
@@ -76,6 +83,7 @@
   name: cloud.project.name
   type: keyword
 - description: Name of the cloud provider. Example values are aws, azure, gcp, or digitalocean.
+  index: false
   name: cloud.provider
   type: keyword
 - description: Region in which this host, resource, or service is located.
@@ -154,6 +162,7 @@
   name: host.os.version
   type: keyword
 - description: Operating system platform (such centos, ubuntu, windows).
+  index: false
   name: host.os.platform
   type: keyword
 - description: Operating system name, including the version or code name.
@@ -350,6 +359,7 @@
   name: user_agent.name
   type: keyword
 - description: Unparsed user_agent string.
+  index: false
   multi_fields:
     - name: text
       type: match_only_text
@@ -368,6 +378,7 @@
   name: user_agent.os.kernel
   type: keyword
 - description: Operating system name, without the version.
+  index: false
   multi_fields:
     - name: text
       type: match_only_text
