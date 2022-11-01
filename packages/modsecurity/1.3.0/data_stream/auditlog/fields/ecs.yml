@@ -179,3 +179,52 @@
 - description: A rule ID that is unique within the scope of an agent, observer, or other entity using the rule for detection of this event.
   name: rule.id
   type: keyword
+- description: City name.
+  name: destination.geo.city_name
+  type: keyword
+- description: Name of the continent.
+  name: destination.geo.continent_name
+  type: keyword
+- description: Country ISO code.
+  name: destination.geo.country_iso_code
+  type: keyword
+- description: Country name.
+  name: destination.geo.country_name
+  type: keyword
+- description: Longitude and latitude.
+  name: destination.geo.location.lat
+  type: geo_point
+- description: Longitude and latitude.
+  name: destination.geo.location.lon
+  type: geo_point
+- description: Region ISO code.
+  name: destination.geo.region_iso_code
+  type: keyword
+- description: Region name.
+  name: destination.geo.region_name
+  type: keyword
+- description: The full HTTP request body.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: http.request.body.content
+  type: wildcard
+- description: Total size in bytes of the request (body and headers).
+  name: http.request.bytes
+  type: long
+- description: |-
+    Mime type of the body of the request.
+    This value must only be populated based on the content of the request body, not on the `Content-Type` header. Comparing the mime type of a request with the request's Content-Type header can be helpful in detecting threats or misconfigured clients.
+  name: http.request.mime_type
+  type: keyword
+- description: The full HTTP response body.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: http.response.body.content
+  type: wildcard
+- description: |-
+    Unique identifier of the transaction within the scope of its trace.
+    A transaction is the highest level of work measured within a service, such as a request to a server.
+  name: transaction.id
+  type: keyword
