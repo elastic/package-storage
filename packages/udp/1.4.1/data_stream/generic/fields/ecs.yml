@@ -1,0 +1,55 @@
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: |-
+    Original log level of the log event.
+    If the source of the event provides a log level or textual severity, this is the one that goes in `log.level`. If your source doesn't specify one, you may put your event transport's severity here (e.g. Syslog severity).
+    Some examples are `warn`, `err`, `i`, `informational`.
+  name: log.level
+  type: keyword
+- description: The IP or DNS name of the source sending the UDP packet.
+  name: log.source.address
+  type: keyword
+- description: |-
+    For log events the message field contains the log message, optimized for viewing in a log viewer.
+    For structured logs without an original message field, other fields can be concatenated to form a human-readable summary of the event.
+    If multiple messages exist, they can be combined into one message.
+  name: message
+  type: match_only_text
+- description: The device or application that originated the Syslog message, if available.
+  name: log.syslog.appname
+  type: keyword
+- description: |-
+    The Syslog numeric facility of the log event, if available.
+    According to RFCs 5424 and 3164, this value should be an integer between 0 and 23.
+  name: log.syslog.facility.code
+  type: long
+- description: The Syslog text-based facility of the log event, if available.
+  name: log.syslog.facility.name
+  type: keyword
+- description: The hostname, FQDN, or IP of the machine that originally sent the Syslog message. This is sourced from the hostname field of the syslog header. Depending on the environment, this value may be different from the host that handled the event, especially if the host handling the events is acting as a collector.
+  name: log.syslog.hostname
+  type: keyword
+- description: |-
+    Syslog numeric priority of the event, if available.
+    According to RFCs 5424 and 3164, the priority is 8 * facility + severity. This number is therefore expected to contain a value between 0 and 191.
+  name: log.syslog.priority
+  type: long
+- description: The process name or ID that originated the Syslog message, if available.
+  name: log.syslog.procid
+  type: keyword
+- description: |-
+    The Syslog numeric severity of the log event, if available.
+    If the event source publishing via Syslog provides a different numeric severity value (e.g. firewall, IDS), your source's numeric severity should go to `event.severity`. If the event source does not specify a distinct severity, you can optionally copy the Syslog severity to `event.severity`.
+  name: log.syslog.severity.code
+  type: long
+- description: |-
+    The Syslog numeric severity of the log event, if available.
+    If the event source publishing via Syslog provides a different severity value (e.g. firewall, IDS), your source's text severity should go to `log.level`. If the event source does not specify a distinct severity, you can optionally copy the Syslog severity to `log.level`.
+  name: log.syslog.severity.name
+  type: keyword
+- description: The version of the Syslog protocol specification. Only applicable for RFC 5424 messages.
+  name: log.syslog.version
+  type: keyword
