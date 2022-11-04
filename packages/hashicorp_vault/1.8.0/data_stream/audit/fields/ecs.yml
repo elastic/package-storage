@@ -13,6 +13,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: Unique ID to describe the event.
   name: event.id
@@ -43,6 +45,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     For log events the message field contains the log message, optimized for viewing in a log viewer.
@@ -52,6 +56,8 @@
   type: match_only_text
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
@@ -60,6 +66,8 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: source.as.number
