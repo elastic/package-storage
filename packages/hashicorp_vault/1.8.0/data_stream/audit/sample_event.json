@@ -1,0 +1,89 @@
+{
+    "@timestamp": "2022-08-18T17:07:22.769Z",
+    "agent": {
+        "ephemeral_id": "623671b3-bcc9-4060-9806-e1cb0b945aae",
+        "id": "03109bfa-7015-46bd-9433-3879357210cd",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.3.2"
+    },
+    "data_stream": {
+        "dataset": "hashicorp_vault.audit",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.4.0"
+    },
+    "elastic_agent": {
+        "id": "03109bfa-7015-46bd-9433-3879357210cd",
+        "snapshot": false,
+        "version": "8.3.2"
+    },
+    "event": {
+        "action": "update",
+        "agent_id_status": "verified",
+        "category": [
+            "authentication"
+        ],
+        "dataset": "hashicorp_vault.audit",
+        "id": "e54c706f-1a3d-9662-3705-872e05c9c39f",
+        "ingested": "2022-08-18T17:07:55Z",
+        "kind": "event",
+        "original": "{\"time\":\"2022-08-18T17:07:22.76907021Z\",\"type\":\"request\",\"auth\":{\"token_type\":\"default\"},\"request\":{\"id\":\"e54c706f-1a3d-9662-3705-872e05c9c39f\",\"operation\":\"update\",\"namespace\":{\"id\":\"root\"},\"path\":\"sys/audit/test\"}}",
+        "outcome": "success",
+        "type": [
+            "change"
+        ]
+    },
+    "hashicorp_vault": {
+        "audit": {
+            "auth": {
+                "token_type": "default"
+            },
+            "request": {
+                "id": "e54c706f-1a3d-9662-3705-872e05c9c39f",
+                "namespace": {
+                    "id": "root"
+                },
+                "operation": "update",
+                "path": "sys/audit/test"
+            },
+            "type": "request"
+        }
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": false,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.23.0.7"
+        ],
+        "mac": [
+            "02:42:ac:17:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.76-linuxkit",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.4 LTS (Focal Fossa)"
+        }
+    },
+    "input": {
+        "type": "log"
+    },
+    "log": {
+        "file": {
+            "path": "/tmp/service_logs/vault/audit.json"
+        },
+        "offset": 0
+    },
+    "tags": [
+        "preserve_original_event",
+        "hashicorp-vault-audit"
+    ]
+}
