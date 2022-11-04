@@ -1,0 +1,32 @@
+{
+  "attributes": {
+    "description": "",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"zscaler_zpa.app_connector_status.connector_up_time\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"},\"query\":{\"exists\":{\"field\":\"zscaler_zpa.app_connector_status.connector_up_time\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"zscaler_zpa.app_connector_status\\\"\"}}"
+    },
+    "title": "[Zscaler][ZPA] Top 10 Connector with highest uptime",
+    "uiStateJSON": "{}",
+    "version": 1,
+    "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"aggregate\":\"max\",\"customLabel\":\"Connector UpTime\",\"field\":\"zscaler_zpa.app_connector_status.connector_up_time\",\"size\":10,\"sortField\":\"@timestamp\",\"sortOrder\":\"desc\"},\"schema\":\"metric\",\"type\":\"top_hits\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Connector Name\",\"field\":\"zscaler_zpa.app_connector_status.connector.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"_key\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"autoFitRowToContent\":false,\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":false,\"showTotal\":false,\"totalFunc\":\"sum\"},\"title\":\"[Zscaler][ZPA] Top 10 Connector with highest uptime\",\"type\":\"table\"}"
+  },
+  "coreMigrationVersion": "7.16.0",
+  "id": "zscaler_zpa-17759700-4c5b-11ec-9023-a76a2cb41dcd",
+  "migrationVersion": {
+    "visualization": "7.14.0"
+  },
+  "references": [
+    {
+      "id": "logs-*",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    },
+    {
+      "id": "logs-*",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2021-12-16T06:17:25.442Z",
+  "version": "WzIxMjgsMV0="
+}

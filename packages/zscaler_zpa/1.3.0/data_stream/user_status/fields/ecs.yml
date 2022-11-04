@@ -1,0 +1,52 @@
+- description: Country ISO code.
+  name: client.geo.country_iso_code
+  type: keyword
+- description: Longitude and latitude.
+  name: client.geo.location
+  type: geo_point
+- description: IP address of the client (IPv4 or IPv6).
+  name: client.ip
+  type: ip
+- description: |-
+    ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
+    When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events.
+  name: ecs.version
+  type: keyword
+- description: Organization name.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: organization.name
+  type: keyword
+- description: Country ISO code.
+  name: server.geo.country_iso_code
+  type: keyword
+- description: Longitude and latitude.
+  name: server.geo.location
+  type: geo_point
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  normalize:
+    - array
+  type: keyword
+- description: All of the IPs seen on your event.
+  name: related.ip
+  normalize:
+    - array
+  type: ip
+- description: List of keywords used to tag each event.
+  name: tags
+  normalize:
+    - array
+  type: keyword
+- description: Short name or login of the user.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: user.name
+  type: keyword
+- description: List of common name (CN) of issuing certificate authority.
+  name: x509.issuer.common_name
+  normalize:
+    - array
+  type: keyword
