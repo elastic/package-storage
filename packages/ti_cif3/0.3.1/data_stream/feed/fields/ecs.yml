@@ -207,10 +207,7 @@
   name: threat.indicator.geo.country_iso_code
   type: keyword
 - description: Longitude and latitude.
-  name: threat.indicator.geo.location.lat
-  type: geo_point
-- description: Longitude and latitude.
-  name: threat.indicator.geo.location.lon
+  name: threat.indicator.geo.location
   type: geo_point
 - description: Region name.
   name: threat.indicator.geo.region_name
