@@ -5,6 +5,8 @@
   type: keyword
 - description: The email address of the sender, typically from the RFC 5322 `From:` header field.
   name: email.from.address
+  normalize:
+    - array
   type: keyword
 - description: Identifier from the RFC 5322 `Message-ID:` email header that refers to a particular email message.
   name: email.message_id
@@ -17,6 +19,8 @@
   type: keyword
 - description: The email address of recipient
   name: email.to.address
+  normalize:
+    - array
   type: keyword
 - description: |-
     The action captured by the event.
@@ -47,6 +51,8 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: The name of the rule or signature generating the event.
   name: rule.name
@@ -61,4 +67,6 @@
   type: ip
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword

@@ -38,6 +38,8 @@
   type: keyword
 - description: The email address of the sender, typically from the RFC 5322 `From:` header field.
   name: email.from.address
+  normalize:
+    - array
   type: keyword
 - description: The date and time the email message was composed. Many email clients will fill in this value automatically when the message is sent by a user.
   name: email.origination_timestamp
@@ -50,6 +52,8 @@
   type: keyword
 - description: The email address of recipient
   name: email.to.address
+  normalize:
+    - array
   type: keyword
 - description: |-
     The action captured by the event.
@@ -93,12 +97,18 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     Name of the directory the user is a member of.
