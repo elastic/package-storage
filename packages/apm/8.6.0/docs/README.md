@@ -183,6 +183,7 @@ Traces are written to `traces-apm-*` data streams, except for RUM traces, which 
 | span.message.age.ms | Age of a message in milliseconds. | long |  |
 | span.message.queue.name | Name of the message queue or topic where the message is published or received. | keyword |  |
 | span.name | Generic designation of a span in the scope of a transaction. | keyword |  |
+| span.representative_count | The approximate number of spans represented, based on the inverse sampling rate. This will only be set when the sampling rate is known. | scaled_float |  |
 | span.subtype | A further sub-division of the type (e.g. postgresql, elasticsearch) | keyword |  |
 | span.sync | Indicates whether the span was executed synchronously or asynchronously. | boolean |  |
 | span.type | Keyword of specific relevance in the service's domain (eg: 'db.postgresql.query', 'template.erb', 'cache', etc). | keyword |  |
@@ -201,6 +202,7 @@ Traces are written to `traces-apm-*` data streams, except for RUM traces, which 
 | transaction.message.queue.name | Name of the message queue or topic where the message is published or received. | keyword |  |
 | transaction.name | Generic designation of a transaction in the scope of a single service (eg. 'GET /users/:id'). | keyword |  |
 | transaction.name.text | Multi-field of `transaction.name`. | text |  |
+| transaction.representative_count | The approximate number of transactions represented, based on the inverse sampling rate. | scaled_float |  |
 | transaction.result | The result of the transaction. HTTP status code for HTTP-related transactions. | keyword |  |
 | transaction.sampled | Transactions that are 'sampled' will include all available information. Transactions that are not sampled will not have spans or context. | boolean |  |
 | transaction.span_count.dropped | The total amount of dropped spans for this transaction. | long |  |
