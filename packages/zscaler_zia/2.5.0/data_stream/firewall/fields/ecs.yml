@@ -53,6 +53,8 @@
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: The name of the rule or signature generating the event.
   name: rule.name
@@ -68,6 +70,8 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: User email address.
   name: user.email
