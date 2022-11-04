@@ -63,6 +63,8 @@
   type: keyword
 - description: Array of user roles at the time of the event.
   name: user.roles
+  normalize:
+    - array
   type: keyword
 - description: Name given by operators to sections of their network.
   name: network.name
