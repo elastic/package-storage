@@ -6,6 +6,8 @@
   type: keyword
 - description: Container image tags.
   name: container.image.tag
+  normalize:
+    - array
   type: keyword
 - description: Image labels.
   name: container.labels
@@ -34,6 +36,8 @@
     `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
     This field is an array. This will allow proper categorization of some events that fall in multiple categories.
   name: event.category
+  normalize:
+    - array
   type: keyword
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
@@ -84,6 +88,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     File extension, excluding the leading dot.
@@ -164,21 +170,31 @@
   type: date
 - description: All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search).
   name: related.hash
+  normalize:
+    - array
   type: keyword
 - description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
   name: related.hosts
+  normalize:
+    - array
   type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: All the user names or other user identifiers seen on the event.
   name: related.user
+  normalize:
+    - array
   type: keyword
 - description: The description of the rule generating the event.
   name: rule.description
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Name of the threat framework used to further categorize and classify the tactic and technique of the reported threat. Framework classification can be provided by detecting systems, evaluated at ingest time, or retrospectively tagged to events.
   name: threat.framework
@@ -188,6 +204,8 @@
     - name: text
       type: match_only_text
   name: threat.technique.name
+  normalize:
+    - array
   type: keyword
 - description: |-
     Name of the directory the user is a member of.
