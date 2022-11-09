@@ -21,6 +21,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: Path of the request, such as "/search".
   name: url.path
