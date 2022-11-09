@@ -2,7 +2,7 @@
 # It should always be a specific version to make sure builds are reproducible.
 ARG PACKAGE_REGISTRY=v1.15.0
 
-FROM docker.elastic.co/package-registry/distribution:production AS production
+FROM docker.elastic.co/package-registry/distribution:production-old AS production
 FROM docker.elastic.co/package-registry/distribution:staging AS staging
 
 FROM docker.elastic.co/package-registry/package-registry:${PACKAGE_REGISTRY}
