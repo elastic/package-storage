@@ -5,6 +5,8 @@
   type: keyword
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: |-
     Full path to the log file this event came from, including the file name. It should include the drive letter, when appropriate.
@@ -31,4 +33,6 @@
   type: long
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
