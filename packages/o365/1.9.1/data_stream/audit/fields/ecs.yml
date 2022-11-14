@@ -14,9 +14,6 @@
 - description: Port of the client.
   name: client.port
   type: long
-- description: Unique container id.
-  name: container.id
-  type: keyword
 - description: IP address of the destination (IPv4 or IPv6).
   name: destination.ip
   type: ip
@@ -113,17 +110,6 @@
   type: keyword
 - description: Name of the group.
   name: group.name
-  type: keyword
-- description: |-
-    Unique host id.
-    As hostname is not always unique, use values that are meaningful in your environment.
-    Example: The current usage of `beat.name`.
-  name: host.id
-  type: keyword
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
   type: keyword
 - description: |-
     For log events the message field contains the log message, optimized for viewing in a log viewer.
