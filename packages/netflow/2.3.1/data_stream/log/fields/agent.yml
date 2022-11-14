@@ -1,100 +1,78 @@
-- name: cloud
-  title: Cloud
-  group: 2
-  description: Fields related to the cloud or infrastructure the events are coming from.
+- description: Fields related to the cloud or infrastructure the events are coming from.
+  fields:
+    - description: Name of the project in Google Cloud.
+      name: project.id
+      type: keyword
+    - description: Image ID for the cloud instance.
+      name: image.id
+      type: keyword
   footnote: 'Examples: If Metricbeat is running on an EC2 host and fetches data from its host, the cloud info contains the data about this machine. If Metricbeat runs on a remote machine outside the cloud and fetches data from a service running in the cloud, the field contains cloud data from the machine the service is running on.'
-  type: group
-  fields:
-    - name: project.id
-      type: keyword
-      description: Name of the project in Google Cloud.
-    - name: image.id
-      type: keyword
-      description: Image ID for the cloud instance.
-- name: container
-  title: Container
   group: 2
-  description: 'Container fields are used for meta information about the specific container that is the source of information.
-
-    These fields help correlate data based containers from any runtime.'
+  name: cloud
+  title: Cloud
   type: group
+- description: |-
+    Container fields are used for meta information about the specific container that is the source of information.
+    These fields help correlate data based containers from any runtime.
   fields:
-    - name: id
-      level: core
+    - description: Unique container id.
+      name: id
       type: keyword
-      ignore_above: 1024
-      description: Unique container id.
-    - name: image.name
-      level: extended
+    - description: Name of the image the container was built on.
+      name: image.name
       type: keyword
-      ignore_above: 1024
-      description: Name of the image the container was built on.
-    - name: labels
-      level: extended
+    - description: Image labels.
+      name: labels
       type: object
-      object_type: keyword
-      description: Image labels.
-    - name: name
-      level: extended
+    - description: Container name.
+      name: name
       type: keyword
-      ignore_above: 1024
-      description: Container name.
-- name: host
-  title: Host
   group: 2
-  description: 'A host is defined as a general computing instance.
-
-    ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes.'
+  name: container
+  title: Container
   type: group
+- description: |-
+    A host is defined as a general computing instance.
+    ECS host.* fields should be populated with details about the host on which the event happened, or from which the measurement was taken. Host types include hardware, virtual machines, Docker containers, and Kubernetes nodes.
   fields:
-    - name: domain
-      level: extended
-      type: keyword
-      ignore_above: 1024
-      description: 'Name of the domain of which the host is a member.
-
-        For example, on Windows this could be the host''s Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host''s LDAP provider.'
+    - default_field: false
+      description: |-
+        Name of the domain of which the host is a member.
+        For example, on Windows this could be the host's Active Directory domain or NetBIOS domain name. For Linux this could be the domain of the host's LDAP provider.
       example: CONTOSO
-      default_field: false
-    - name: os.kernel
+      ignore_above: 1024
       level: extended
+      name: domain
       type: keyword
-      ignore_above: 1024
-      description: Operating system kernel version as a raw string.
-      example: 4.4.0-112-generic
-    - name: os.platform
-      level: extended
+    - description: Operating system kernel version as a raw string.
+      name: os.kernel
       type: keyword
-      ignore_above: 1024
-      description: Operating system platform (such centos, ubuntu, windows).
-      example: darwin
-    - name: os.version
-      level: extended
+    - description: Operating system platform (such centos, ubuntu, windows).
+      name: os.platform
       type: keyword
-      ignore_above: 1024
-      description: Operating system version as a raw string.
-      example: 10.14.1
-    - name: type
-      level: core
+    - description: Operating system version as a raw string.
+      name: os.version
       type: keyword
-      ignore_above: 1024
-      description: 'Type of host.
-
-        For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.'
-    - name: containerized
-      type: boolean
-      description: >
+    - description: |-
+        Type of host.
+        For Cloud providers this can be the machine type like `t2.medium`. If vm, this could be the container, for example, or other information meaningful in your environment.
+      name: type
+      type: keyword
+    - description: |
         If the host is a container.
-
-    - name: os.build
-      type: keyword
-      example: "18D109"
-      description: >
+      name: containerized
+      type: boolean
+    - description: |
         OS build information.
-
-    - name: os.codename
+      example: 18D109
+      name: os.build
       type: keyword
-      example: "stretch"
-      description: >
+    - description: |
         OS codename, if any.
-
+      example: stretch
+      name: os.codename
+      type: keyword
+  group: 2
+  name: host
+  title: Host
+  type: group
