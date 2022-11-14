@@ -36,9 +36,6 @@
 - description: Unique identifier of the user.
   name: client.user.id
   type: keyword
-- description: Unique container id.
-  name: container.id
-  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: destination.as.number
   type: long
