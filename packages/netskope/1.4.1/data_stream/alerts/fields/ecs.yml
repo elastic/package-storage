@@ -5,11 +5,6 @@
   name: client.port
   type: long
 - description: |-
-    The cloud account or organization id used to identify different entities in a multi-tenant environment.
-    Examples: AWS account id, Google Cloud ORG Id, or other unique identifier.
-  name: cloud.account.id
-  type: keyword
-- description: |-
     The cloud account name or alias used to identify different entities in a multi-tenant environment.
     Examples: AWS account name, Google Cloud ORG display name.
   name: cloud.account.name
@@ -61,9 +56,6 @@
 - description: The time zone of the location, such as IANA time zone name.
   name: destination.geo.timezone
   type: keyword
-- description: IP address of the destination (IPv4 or IPv6).
-  name: destination.ip
-  type: ip
 - description: Port of the destination.
   name: destination.port
   type: long
@@ -95,17 +87,6 @@
     Only relevant when `file.type` is "file".
   name: file.size
   type: long
-- description: |-
-    Hostname of the host.
-    It normally contains what the `hostname` command returns on the host machine.
-  name: host.hostname
-  type: keyword
-- description: Operating system name, without the version.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: host.os.name
-  type: keyword
 - description: Referrer for this HTTP request.
   name: http.request.referrer
   type: keyword
@@ -129,9 +110,6 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: source.address
   type: keyword
-- description: IP address of the source (IPv4 or IPv6).
-  name: source.ip
-  type: ip
 - description: City name.
   name: source.geo.city_name
   type: keyword

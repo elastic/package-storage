@@ -9,25 +9,16 @@
     Typically connections traversing load balancers, firewalls, or routers.
   name: client.nat.ip
   type: ip
-- description: Packets sent from the client to the server.
-  name: client.packets
-  type: long
 - description: |-
     The cloud account name or alias used to identify different entities in a multi-tenant environment.
     Examples: AWS account name, Google Cloud ORG display name.
   name: cloud.account.name
-  type: keyword
-- description: Region in which this host, resource, or service is located.
-  name: cloud.region
   type: keyword
 - description: |-
     The cloud service name is intended to distinguish services running on different platforms within a provider, eg AWS EC2 vs Lambda, GCP GCE vs App Engine, Azure VM vs App Server.
     Examples: app engine, app service, cloud run, fargate, lambda.
   name: cloud.service.name
   type: keyword
-- description: Bytes sent from the client to the server.
-  name: client.bytes
-  type: long
 - description: |-
     Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
@@ -134,11 +125,6 @@
     Only relevant when `file.type` is "file".
   name: file.size
   type: long
-- description: |-
-    Hostname of the host.
-    It normally contains what the `hostname` command returns on the host machine.
-  name: host.hostname
-  type: keyword
 - description: |-
     In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
     The field value must be normalized to lowercase for querying.
