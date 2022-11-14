@@ -26,9 +26,6 @@
       type: match_only_text
   name: client.user.name
   type: keyword
-- description: Unique container id.
-  name: container.id
-  type: keyword
 - description: |-
     Some event destination addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field.
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
@@ -204,33 +201,6 @@
     Example: `docker` and `k8s` labels.
   name: labels
   type: object
-- description: |-
-    Unique host id.
-    As hostname is not always unique, use values that are meaningful in your environment.
-    Example: The current usage of `beat.name`.
-  name: host.id
-  type: keyword
-- description: Host ip addresses.
-  name: host.ip
-  normalize:
-    - array
-  type: ip
-- description: |-
-    Host MAC addresses.
-    The notation format from RFC 7042 is suggested: Each octet (that is, 8-bit byte) is represented by two [uppercase] hexadecimal digits giving the value of the octet as an unsigned integer. Successive octets are separated by a hyphen.
-  name: host.mac
-  normalize:
-    - array
-  pattern: ^[A-F0-9]{2}(-[A-F0-9]{2}){5,}$
-  type: keyword
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
-  type: keyword
-- description: OS family (such as redhat, debian, freebsd, windows).
-  name: host.os.family
-  type: keyword
 - description: Operating system name, including the version or code name.
   multi_fields:
     - name: text
@@ -489,12 +459,6 @@
     Name of the directory the user is a member of.
     For example, an LDAP or Active Directory domain name.
   name: source.user.domain
-  type: keyword
-- description: Short name or login of the user.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: source.user.name
   type: keyword
 - description: Short name or login of the user.
   multi_fields:
