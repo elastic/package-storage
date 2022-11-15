@@ -90,6 +90,8 @@
     Array containing all IPs seen in `answers.data`.
     The `answers` array can be difficult to use, because of the variety of data formats it can contain. Extracting all IP addresses seen in there to `dns.resolved_ip` makes it possible to index them as IP addresses, and makes them easier to visualize and query for.
   name: dns.resolved_ip
+  normalize:
+    - array
   type: ip
 - description: Extracted when possible from the file's metadata. Indicates when it was built or compiled. It can also be faked by malware creators.
   name: elf.creation_date
@@ -237,6 +239,8 @@
   type: long
 - description: Host ip addresses.
   name: host.ip
+  normalize:
+    - array
   type: ip
 - description: The number of bytes (gauge) sent out on all network interfaces by the host since the last metric collection.
   name: host.network.egress.bytes
@@ -306,6 +310,8 @@
   type: keyword
 - description: IP addresses of the observer.
   name: observer.ip
+  normalize:
+    - array
   type: ip
 - description: Time when package was installed.
   name: package.installed
@@ -344,6 +350,8 @@
     An array containing an object for each section of the ELF file.
     The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
   name: process.elf.sections
+  normalize:
+    - array
   type: nested
 - description: Chi-square probability distribution of the section.
   name: process.elf.sections.chi2
@@ -399,6 +407,8 @@
     An array containing an object for each section of the ELF file.
     The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
   name: process.parent.elf.sections
+  normalize:
+    - array
   type: nested
 - description: Chi-square probability distribution of the section.
   name: process.parent.elf.sections.chi2
@@ -459,6 +469,8 @@
   type: long
 - description: All of the IPs seen on your event.
   name: related.ip
+  normalize:
+    - array
   type: ip
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: server.as.number
@@ -512,6 +524,8 @@
   type: long
 - description: A list of associated indicators objects enriching the event, and the context of that association/enrichment.
   name: threat.enrichments
+  normalize:
+    - array
   type: nested
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: threat.enrichments.indicator.as.number
@@ -557,6 +571,8 @@
     An array containing an object for each section of the ELF file.
     The keys that should be present in these objects are defined by sub-fields underneath `elf.sections.*`.
   name: threat.enrichments.indicator.file.elf.sections
+  normalize:
+    - array
   type: nested
 - description: Chi-square probability distribution of the section.
   name: threat.enrichments.indicator.file.elf.sections.chi2
