@@ -1,0 +1,59 @@
+{
+    "attributes": {
+        "columns": [
+            "log.level",
+            "logstash.slowlog.plugin_type",
+            "logstash.slowlog.plugin_name",
+            "logstash.slowlog.message",
+            "logstash.slowlog.plugin_params",
+            "logstash.slowlog.execution_time_ns"
+        ],
+        "description": "",
+        "grid": {},
+        "hideChart": false,
+        "hits": 0,
+        "isTextBasedQuery": false,
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"highlightAll\":true,\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"version\":true,\"filter\":[{\"meta\":{\"alias\":null,\"negate\":false,\"disabled\":false,\"type\":\"phrase\",\"key\":\"data_stream.dataset\",\"params\":{\"query\":\"logstash.slowlog\"},\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\"},\"query\":{\"match_phrase\":{\"data_stream.dataset\":\"logstash.slowlog\"}},\"$state\":{\"store\":\"appState\"}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+        },
+        "sort": [
+            [
+                "log.level",
+                "asc"
+            ]
+        ],
+        "timeRestore": false,
+        "title": "Slow logs [Logs Logstash]",
+        "version": 1
+    },
+    "coreMigrationVersion": "8.5.0",
+    "id": "logstash-742e45d0-cbdd-11e7-9852-73e0a9df1bb6",
+    "migrationVersion": {
+        "search": "8.0.0"
+    },
+    "references": [
+        {
+            "id": "logs-*",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "logs-*",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
+            "type": "index-pattern"
+        },
+        {
+            "id": "managed",
+            "name": "tag-ref-managed",
+            "type": "tag"
+        },
+        {
+            "id": "logstash",
+            "name": "tag-ref-logstash",
+            "type": "tag"
+        }
+    ],
+    "type": "search",
+    "updated_at": "2022-09-14T14:45:48.992Z",
+    "version": "WzExMDQsMV0="
+}
