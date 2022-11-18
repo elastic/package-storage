@@ -42,6 +42,11 @@
   normalize:
     - array
   type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  normalize:
+    - array
+  type: keyword
 - description: List of keywords used to tag each event.
   name: tags
   normalize:
