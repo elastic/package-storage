@@ -49,35 +49,6 @@
   name: event.url
   type: keyword
 - description: |-
-    Hostname of the host.
-    It normally contains what the `hostname` command returns on the host machine.
-  name: host.hostname
-  type: keyword
-- description: |-
-    Unique host id.
-    As hostname is not always unique, use values that are meaningful in your environment.
-    Example: The current usage of `beat.name`.
-  name: host.id
-  type: keyword
-- description: Host ip addresses.
-  name: host.ip
-  normalize:
-    - array
-  type: ip
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
-  type: keyword
-- description: |-
-    Use the `os.type` field to categorize the operating system into one of the broad commercial families.
-    If the OS you're dealing with is not listed as an expected value, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
-  name: host.os.type
-  type: keyword
-- description: Operating system version as a raw string.
-  name: host.os.version
-  type: keyword
-- description: |-
     Unique identifier for the process.
     The implementation of this is specified by the data source, but some examples of what could be used here are a process-generated UUID, Sysmon Process GUIDs, or a hash of some uniquely identifying components of a process.
     Constructing a globally unique identifier is a common practice to mitigate PID reuse as well as to identify a specific process over time, across multiple monitored hosts.

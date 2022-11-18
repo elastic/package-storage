@@ -2,15 +2,16 @@
   "attributes": {
     "columns": [
       "event.id",
-      "client.user.id",
       "event.reason",
-      "client.ip"
+      "event.url",
+      "carbon_black_cloud.alert.threat_indicators.process_name",
+      "carbon_black_cloud.alert.category"
     ],
     "description": "",
     "grid": {},
-    "hideChart": true,
+    "hideChart": false,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset : \\\"carbon_black_cloud.audit\\\"\"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
     },
     "sort": [
       [
@@ -18,10 +19,10 @@
         "desc"
       ]
     ],
-    "title": "[Carbon Black Cloud] Audit Essential Details"
+    "title": "Alerts Essential Details [Logs Carbon Black Cloud]"
   },
   "coreMigrationVersion": "7.17.0",
-  "id": "carbon_black_cloud-4272e690-8d71-11ec-ac12-4bc77fa14e95",
+  "id": "carbon_black_cloud-b23c6730-3a6e-11ed-a8e8-41eb8778c6de",
   "migrationVersion": {
     "search": "7.9.3"
   },

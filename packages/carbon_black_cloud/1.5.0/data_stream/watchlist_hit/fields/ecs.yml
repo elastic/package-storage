@@ -30,32 +30,6 @@
   name: event.severity
   type: long
 - description: |-
-    Hostname of the host.
-    It normally contains what the `hostname` command returns on the host machine.
-  name: host.hostname
-  type: keyword
-- description: |-
-    Unique host id.
-    As hostname is not always unique, use values that are meaningful in your environment.
-    Example: The current usage of `beat.name`.
-  name: host.id
-  type: keyword
-- description: Host ip addresses.
-  name: host.ip
-  normalize:
-    - array
-  type: ip
-- description: |-
-    Name of the host.
-    It can contain what `hostname` returns on Unix systems, the fully qualified domain name, or a name specified by the user. The sender decides which value to use.
-  name: host.name
-  type: keyword
-- description: |-
-    Use the `os.type` field to categorize the operating system into one of the broad commercial families.
-    If the OS you're dealing with is not listed as an expected value, the field should not be populated. Please let us know by opening an issue with ECS, to propose its addition.
-  name: host.os.type
-  type: keyword
-- description: |-
     Full command line that started the process, including the absolute path to the executable, and all arguments.
     Some arguments may be filtered to protect sensitive information.
   multi_fields:
