@@ -72,6 +72,11 @@
   normalize:
     - array
   type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  normalize:
+    - array
+  type: keyword
 - description: Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet.
   name: source.as.number
   type: long
