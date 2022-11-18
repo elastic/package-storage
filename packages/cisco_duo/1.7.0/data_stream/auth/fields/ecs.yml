@@ -63,11 +63,21 @@
   normalize:
     - array
   type: keyword
+- description: All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases.
+  name: related.hosts
+  normalize:
+    - array
+  type: keyword
 - description: All of the IPs seen on your event.
   name: related.ip
   normalize:
     - array
   type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  normalize:
+    - array
+  type: keyword
 - description: IP address of the source (IPv4 or IPv6).
   name: source.ip
   type: ip
