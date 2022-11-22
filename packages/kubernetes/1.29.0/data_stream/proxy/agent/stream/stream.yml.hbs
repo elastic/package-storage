@@ -1,0 +1,11 @@
+metricsets: ["proxy"]
+hosts:
+{{#each hosts}}
+  - {{this}}
+{{/each}}
+period: {{period}}
+
+{{#if processors}}
+processors:
+{{processors}}
+{{/if}}
