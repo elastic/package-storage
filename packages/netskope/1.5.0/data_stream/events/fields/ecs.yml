@@ -1,6 +1,3 @@
-- description: Packets sent from the client to the server.
-  name: client.packets
-  type: long
 - description: Bytes sent from the client to the server.
   name: client.bytes
   type: long
@@ -9,6 +6,9 @@
     Typically connections traversing load balancers, firewalls, or routers.
   name: client.nat.ip
   type: ip
+- description: Packets sent from the client to the server.
+  name: client.packets
+  type: long
 - description: |-
     The cloud account name or alias used to identify different entities in a multi-tenant environment.
     Examples: AWS account name, Google Cloud ORG display name.

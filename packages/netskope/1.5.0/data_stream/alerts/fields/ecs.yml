@@ -19,9 +19,6 @@
     Then it should be duplicated to `.ip` or `.domain`, depending on which one it is.
   name: destination.address
   type: keyword
-- description: IP address of the destination (IPv4 or IPv6).
-  name: destination.ip
-  type: ip
 - description: |-
     The domain name of the destination system.
     This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment.
@@ -56,6 +53,9 @@
 - description: The time zone of the location, such as IANA time zone name.
   name: destination.geo.timezone
   type: keyword
+- description: IP address of the destination (IPv4 or IPv6).
+  name: destination.ip
+  type: ip
 - description: Port of the destination.
   name: destination.port
   type: long
