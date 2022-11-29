@@ -14,11 +14,6 @@
     This value will typically be extracted from the `Content-Type` MIME header field.
   name: email.attachments.file.mime_type
   type: keyword
-- description: |-
-    The MIME media type of the attachment.
-    This value will typically be extracted from the `Content-Type` MIME header field.
-  name: email.attachments.file.mime_type
-  type: keyword
 - description: Name of the attachment file including the file extension.
   name: email.attachments.file.name
   type: keyword
@@ -43,11 +38,6 @@
   name: email.to.address
   normalize:
     - array
-  type: keyword
-- description: |-
-    The action captured by the event.
-    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
-  name: event.action
   type: keyword
 - description: |-
     The action captured by the event.

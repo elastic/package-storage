@@ -23,9 +23,6 @@
 - description: Name of the attachment file including the file extension.
   name: email.attachments.file.name
   type: keyword
-- description: Name of the attachment file including the file extension.
-  name: email.attachments.file.name
-  type: keyword
 - description: Attachment file size in bytes.
   name: email.attachments.file.size
   type: long
@@ -64,11 +61,6 @@
   type: match_only_text
 - description: The type of the error, for example the class name of the exception.
   name: error.type
-  type: keyword
-- description: |-
-    The action captured by the event.
-    This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer.
-  name: event.action
   type: keyword
 - description: |-
     The action captured by the event.
