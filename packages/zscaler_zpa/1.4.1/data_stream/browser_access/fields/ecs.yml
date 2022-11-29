@@ -10,9 +10,6 @@
 - description: Name of the continent.
   name: client.geo.continent_name
   type: keyword
-- description: Country ISO code.
-  name: client.geo.country_iso_code
-  type: keyword
 - description: Region ISO code.
   name: client.geo.region_iso_code
   type: keyword
