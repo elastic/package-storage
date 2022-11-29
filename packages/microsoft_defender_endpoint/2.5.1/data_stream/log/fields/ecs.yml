@@ -1,19 +1,7 @@
-- description: Unique container id.
-  name: container.id
-  type: keyword
-- description: Name of the image the container was built on.
-  name: container.image.name
-  type: keyword
 - description: Container image tags.
   name: container.image.tag
   normalize:
     - array
-  type: keyword
-- description: Image labels.
-  name: container.labels
-  type: object
-- description: Container name.
-  name: container.name
   type: keyword
 - description: Runtime managing this container.
   name: container.runtime
