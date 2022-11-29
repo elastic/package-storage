@@ -1,0 +1,103 @@
+{
+    "@timestamp": "2021-05-14T14:38:37.000Z",
+    "agent": {
+        "ephemeral_id": "50ed089a-af46-4876-bead-1165f4c9f380",
+        "id": "4d88038c-4b3b-4bb4-95f4-cc5789c88852",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.0.0"
+    },
+    "data_stream": {
+        "dataset": "modsecurity.auditlog",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.5.0"
+    },
+    "elastic_agent": {
+        "id": "4d88038c-4b3b-4bb4-95f4-cc5789c88852",
+        "snapshot": false,
+        "version": "8.0.0"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "category": [
+            "web"
+        ],
+        "dataset": "modsecurity.auditlog",
+        "ingested": "2022-10-28T18:58:45Z",
+        "kind": "event",
+        "timezone": "+00:00",
+        "type": [
+            "access"
+        ]
+    },
+    "host": {
+        "architecture": "x86_64",
+        "containerized": true,
+        "hostname": "docker-fleet-agent",
+        "ip": [
+            "172.28.0.7"
+        ],
+        "mac": [
+            "02:42:ac:1c:00:07"
+        ],
+        "name": "docker-fleet-agent",
+        "os": {
+            "codename": "focal",
+            "family": "debian",
+            "kernel": "5.10.102.1-microsoft-standard-WSL2",
+            "name": "Ubuntu",
+            "platform": "ubuntu",
+            "type": "linux",
+            "version": "20.04.3 LTS (Focal Fossa)"
+        }
+    },
+    "http": {
+        "request": {
+            "method": "PUT"
+        },
+        "response": {
+            "mime_type": "application/json; charset=utf-8",
+            "status_code": 400
+        },
+        "version": "1.1"
+    },
+    "input": {
+        "type": "log"
+    },
+    "log": {
+        "file": {
+            "path": "/tmp/service_logs/modsec-audit.log"
+        },
+        "offset": 0
+    },
+    "modsec": {
+        "audit": {
+            "server": "nginx/1.14.0"
+        }
+    },
+    "source": {
+        "ip": "37.120.205.2",
+        "port": 56047
+    },
+    "tags": [
+        "modsec-audit"
+    ],
+    "url": {
+        "domain": "www.test.com",
+        "original": "https://www.test.com:443/orders/2734183/finish",
+        "path": "/orders/2734183/finish",
+        "port": 443,
+        "scheme": "https"
+    },
+    "user_agent": {
+        "device": {
+            "name": "Other"
+        },
+        "name": "okhttp",
+        "original": "okhttp/2.7.5",
+        "version": "2.7.5"
+    }
+}
