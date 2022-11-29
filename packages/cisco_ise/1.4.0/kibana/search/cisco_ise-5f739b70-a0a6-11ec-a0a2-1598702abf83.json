@@ -11,7 +11,7 @@
     "grid": {},
     "hideChart": false,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"event.dataset : \\\"cisco_ise.log\\\" \"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
     },
     "sort": [
       [
@@ -19,7 +19,7 @@
         "desc"
       ]
     ],
-    "title": "Cisco ISE Search"
+    "title": "Log Stream [Logs Cisco ISE]"
   },
   "coreMigrationVersion": "7.17.0",
   "id": "cisco_ise-5f739b70-a0a6-11ec-a0a2-1598702abf83",

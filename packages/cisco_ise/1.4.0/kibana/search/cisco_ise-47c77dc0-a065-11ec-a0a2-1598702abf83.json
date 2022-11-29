@@ -9,7 +9,7 @@
     "grid": {},
     "hideChart": false,
     "kibanaSavedObjectMeta": {
-      "searchSourceJSON": "{\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\",\"key\":\"cisco_ise.log.category.name\",\"negate\":false,\"params\":{\"query\":\"CISE_Posture_and_Client_Provisioning_Audit\"},\"type\":\"phrase\"},\"query\":{\"match_phrase\":{\"cisco_ise.log.category.name\":\"CISE_Posture_and_Client_Provisioning_Audit\"}}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"event.dataset : \\\"cisco_ise.log\\\" \"}}"
+      "searchSourceJSON": "{\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
     },
     "sort": [
       [
@@ -28,11 +28,6 @@
     {
       "id": "logs-*",
       "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
-      "type": "index-pattern"
-    },
-    {
-      "id": "logs-*",
-      "name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
       "type": "index-pattern"
     }
   ],
