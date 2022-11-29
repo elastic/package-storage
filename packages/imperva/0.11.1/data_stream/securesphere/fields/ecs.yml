@@ -480,11 +480,6 @@
     This value can be determined precisely with a list like the public suffix list (http://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk".
   name: source.top_level_domain
   type: keyword
-- description: List of keywords used to tag each event.
-  name: tags
-  normalize:
-    - array
-  type: keyword
 - description: |-
     Domain of the url, such as "www.elastic.co".
     In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field.
