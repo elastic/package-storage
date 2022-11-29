@@ -51,6 +51,11 @@
   normalize:
     - array
   type: ip
+- description: All the user names or other user identifiers seen on the event.
+  name: related.user
+  normalize:
+    - array
+  type: keyword
 - description: The name of the rule or signature generating the event.
   name: rule.name
   type: keyword
