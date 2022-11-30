@@ -15,14 +15,6 @@
   name: event.id
   type: keyword
 - description: |-
-    This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy.
-    `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory.
-    This field is an array. This will allow proper categorization of some events that fall in multiple categories.
-  name: event.category
-  normalize:
-    - array
-  type: keyword
-- description: |-
     This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy.
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
@@ -131,20 +123,8 @@
 - description: Name of the device.
   name: user_agent.device.name
   type: keyword
-- description: Name of the device.
-  name: user_agent.device.name
-  type: keyword
 - description: Name of the user agent.
   name: user_agent.name
-  type: keyword
-- description: Name of the user agent.
-  name: user_agent.name
-  type: keyword
-- description: Unparsed user_agent string.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user_agent.original
   type: keyword
 - description: Unparsed user_agent string.
   multi_fields:
@@ -157,12 +137,6 @@
     - name: text
       type: match_only_text
   name: user_agent.os.full
-  type: keyword
-- description: Operating system name, without the version.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user_agent.os.name
   type: keyword
 - description: Operating system name, without the version.
   multi_fields:
