@@ -568,12 +568,6 @@
       type: match_only_text
   name: user_agent.original
   type: keyword
-- description: Unparsed user_agent string.
-  multi_fields:
-    - name: text
-      type: match_only_text
-  name: user_agent.original
-  type: keyword
 - description: OS family (such as redhat, debian, freebsd, windows).
   name: user_agent.os.family
   type: keyword
