@@ -1,0 +1,112 @@
+{
+    "@timestamp": "2022-11-07T12:01:11.000Z",
+    "agent": {
+        "ephemeral_id": "000518fe-188d-4c99-85a8-d23b3b117579",
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.4.0"
+    },
+    "data_stream": {
+        "dataset": "google_workspace.groups",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.5.0"
+    },
+    "elastic_agent": {
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "snapshot": false,
+        "version": "8.4.0"
+    },
+    "event": {
+        "action": "change_acl_permission",
+        "agent_id_status": "verified",
+        "category": [
+            "iam"
+        ],
+        "created": "2022-11-08T12:01:11.213Z",
+        "dataset": "google_workspace.groups",
+        "id": "1",
+        "ingested": "2022-11-08T12:01:14Z",
+        "kind": "event",
+        "provider": "groups",
+        "type": [
+            "group",
+            "change"
+        ]
+    },
+    "google_workspace": {
+        "actor": {
+            "type": "USER"
+        },
+        "event": {
+            "type": "acl_change"
+        },
+        "groups": {
+            "acl_permission": "can_add_members",
+            "email": "group@example.com",
+            "new_value": [
+                "managers",
+                "members"
+            ],
+            "old_value": [
+                "managers"
+            ]
+        },
+        "kind": "admin#reports#activity",
+        "organization": {
+            "domain": "elastic.com"
+        }
+    },
+    "group": {
+        "domain": "example.com",
+        "name": "group"
+    },
+    "input": {
+        "type": "httpjson"
+    },
+    "organization": {
+        "id": "1"
+    },
+    "related": {
+        "ip": [
+            "98.235.162.24"
+        ],
+        "user": [
+            "foo"
+        ]
+    },
+    "source": {
+        "as": {
+            "number": 7922,
+            "organization": {
+                "name": "Comcast Cable Communications, Inc."
+            }
+        },
+        "ip": "98.235.162.24",
+        "user": {
+            "domain": "bar.com",
+            "email": "foo@bar.com",
+            "id": "1",
+            "name": "foo"
+        }
+    },
+    "tags": [
+        "forwarded",
+        "google-workspace-groups"
+    ],
+    "user": {
+        "domain": "bar.com",
+        "email": "foo@bar.com",
+        "id": "1",
+        "name": "foo",
+        "target": {
+            "group": {
+                "domain": "example.com",
+                "name": "group"
+            }
+        }
+    }
+}

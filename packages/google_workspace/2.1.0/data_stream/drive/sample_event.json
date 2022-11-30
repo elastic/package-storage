@@ -1,0 +1,112 @@
+{
+    "@timestamp": "2022-11-07T11:58:09.000Z",
+    "agent": {
+        "ephemeral_id": "2efd345d-8614-433f-9322-e414e8affe84",
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.4.0"
+    },
+    "data_stream": {
+        "dataset": "google_workspace.drive",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.5.0"
+    },
+    "elastic_agent": {
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "snapshot": false,
+        "version": "8.4.0"
+    },
+    "event": {
+        "action": "add_to_folder",
+        "agent_id_status": "verified",
+        "category": [
+            "file"
+        ],
+        "created": "2022-11-08T11:58:09.036Z",
+        "dataset": "google_workspace.drive",
+        "id": "1",
+        "ingested": "2022-11-08T11:58:12Z",
+        "kind": "event",
+        "provider": "drive",
+        "type": [
+            "change"
+        ]
+    },
+    "file": {
+        "name": "document title",
+        "owner": "owner",
+        "type": "file"
+    },
+    "google_workspace": {
+        "actor": {
+            "type": "USER"
+        },
+        "drive": {
+            "billable": false,
+            "destination_folder_id": "1234",
+            "destination_folder_title": "folder title",
+            "file": {
+                "id": "1234",
+                "owner": {
+                    "email": "owner@example.com",
+                    "is_shared_drive": false
+                },
+                "type": "document"
+            },
+            "originating_app_id": "1234",
+            "primary_event": true,
+            "visibility": "people_with_link"
+        },
+        "event": {
+            "type": "access"
+        },
+        "kind": "admin#reports#activity",
+        "organization": {
+            "domain": "elastic.com"
+        }
+    },
+    "input": {
+        "type": "httpjson"
+    },
+    "organization": {
+        "id": "1"
+    },
+    "related": {
+        "ip": [
+            "98.235.162.24"
+        ],
+        "user": [
+            "owner",
+            "foo"
+        ]
+    },
+    "source": {
+        "as": {
+            "number": 7922,
+            "organization": {
+                "name": "Comcast Cable Communications, Inc."
+            }
+        },
+        "ip": "98.235.162.24",
+        "user": {
+            "domain": "bar.com",
+            "email": "foo@bar.com",
+            "id": "1",
+            "name": "foo"
+        }
+    },
+    "tags": [
+        "forwarded",
+        "google-workspace-drive"
+    ],
+    "user": {
+        "domain": "bar.com",
+        "email": "foo@bar.com",
+        "id": "1",
+        "name": "foo"
+    }
+}

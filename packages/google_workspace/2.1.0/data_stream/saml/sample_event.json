@@ -1,0 +1,100 @@
+{
+    "@timestamp": "2022-11-07T12:10:22.000Z",
+    "agent": {
+        "ephemeral_id": "83ed1759-6938-4e99-ac13-2b87bf1500d1",
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "name": "docker-fleet-agent",
+        "type": "filebeat",
+        "version": "8.4.0"
+    },
+    "data_stream": {
+        "dataset": "google_workspace.saml",
+        "namespace": "ep",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "8.5.0"
+    },
+    "elastic_agent": {
+        "id": "028e4d41-c14a-49b1-90be-56ac7eeebf3c",
+        "snapshot": false,
+        "version": "8.4.0"
+    },
+    "event": {
+        "action": "login_failure",
+        "agent_id_status": "verified",
+        "category": [
+            "authentication",
+            "session"
+        ],
+        "created": "2022-11-08T12:10:22.763Z",
+        "dataset": "google_workspace.saml",
+        "id": "1",
+        "ingested": "2022-11-08T12:10:26Z",
+        "kind": "event",
+        "outcome": "failure",
+        "provider": "saml",
+        "type": [
+            "start"
+        ]
+    },
+    "google_workspace": {
+        "actor": {
+            "type": "USER"
+        },
+        "event": {
+            "type": "login"
+        },
+        "kind": "admin#reports#activity",
+        "organization": {
+            "domain": "elastic.com"
+        },
+        "saml": {
+            "application_name": "app",
+            "failure_type": "failure_app_not_configured_for_user",
+            "initiated_by": "idp",
+            "orgunit_path": "ounit",
+            "second_level_status_code": "SUCCESS_URI",
+            "status_code": "SUCCESS_URI"
+        }
+    },
+    "input": {
+        "type": "httpjson"
+    },
+    "organization": {
+        "id": "1"
+    },
+    "related": {
+        "ip": [
+            "98.235.162.24"
+        ],
+        "user": [
+            "foo"
+        ]
+    },
+    "source": {
+        "as": {
+            "number": 7922,
+            "organization": {
+                "name": "Comcast Cable Communications, Inc."
+            }
+        },
+        "ip": "98.235.162.24",
+        "user": {
+            "domain": "bar.com",
+            "email": "foo@bar.com",
+            "id": "1",
+            "name": "foo"
+        }
+    },
+    "tags": [
+        "forwarded",
+        "google-workspace-saml"
+    ],
+    "user": {
+        "domain": "bar.com",
+        "email": "foo@bar.com",
+        "id": "1",
+        "name": "foo"
+    }
+}
