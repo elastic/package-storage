@@ -107,11 +107,6 @@
     Only relevant when `file.type` is "file".
   name: file.size
   type: long
-- description: Host ip addresses.
-  name: host.ip
-  normalize:
-    - array
-  type: ip
 - description: |-
     HTTP request method.
     The value should retain its casing from the original event. For example, `GET`, `get`, and `GeT` are all considered valid values for this field.
