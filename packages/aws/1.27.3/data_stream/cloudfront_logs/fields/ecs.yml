@@ -54,6 +54,9 @@
 - description: HTTP version.
   name: http.version
   type: keyword
+- description: Host IP address when the source IP address is the proxy.
+  name: network.forwarded_ip
+  type: ip
 - description: |-
     In the OSI Model this would be the Application Layer protocol. For example, `http`, `dns`, or `ssh`.
     The field value must be normalized to lowercase for querying.
