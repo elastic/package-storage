@@ -12,6 +12,8 @@
   type: keyword
 - description: List of keywords used to tag each event.
   name: tags
+  normalize:
+    - array
   type: keyword
 - description: |-
     ECS version this event conforms to. `ecs.version` is a required field and must exist in all events.
@@ -32,6 +34,8 @@
     `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization.
     This field is an array. This will allow proper categorization of some events that fall in multiple event types.
   name: event.type
+  normalize:
+    - array
   type: keyword
 - description: |-
     event.created contains the date/time when the event was first read by an agent, or by your pipeline.
