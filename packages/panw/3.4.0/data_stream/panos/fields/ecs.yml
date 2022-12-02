@@ -192,6 +192,15 @@
   normalize:
     - array
   type: keyword
+- description: Name of the file including the extension, without the directory.
+  name: file.name
+  type: keyword
+- description: Full path to the file, including the file name. It should include the drive letter, when appropriate.
+  multi_fields:
+    - name: text
+      type: match_only_text
+  name: file.path
+  type: keyword
 - description: File type (file, dir, or symlink).
   name: file.type
   type: keyword
@@ -511,6 +520,13 @@
   name: tls.version_protocol
   type: keyword
 - description: |-
+    The field contains the file extension from the original request url, excluding the leading dot.
+    The file extension is only set if it exists, as not every url has a file extension.
+    The leading period must not be included. For example, the value must be "png", not ".png".
+    Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz").
+  name: url.extension
+  type: keyword
+- description: |-
     Unmodified original url as seen in the event source.
     Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path.
     This field is meant to represent the URL as it was observed, complete or not.
@@ -519,6 +535,14 @@
       type: match_only_text
   name: url.original
   type: wildcard
+- description: Path of the request, such as "/search".
+  name: url.path
+  type: wildcard
+- description: |-
+    The query field describes the query string of the request, such as "q=elasticsearch".
+    The `?` is excluded from the query string. If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases.
+  name: url.query
+  type: keyword
 - description: Name of the device.
   name: user_agent.device.name
   type: keyword
