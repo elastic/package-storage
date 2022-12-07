@@ -22,6 +22,9 @@
   "migrationVersion": {
     "dashboard": "7.16.0"
   },
+  "namespaces": [
+    "default"
+  ],
   "references": [
     {
       "id": "logs-*",
@@ -114,5 +117,7 @@
       "type": "search"
     }
   ],
-  "type": "dashboard"
+  "type": "dashboard",
+  "updated_at": "2022-10-27T20:30:51.209Z",
+  "version": "WzYzNCwxXQ=="
 }
