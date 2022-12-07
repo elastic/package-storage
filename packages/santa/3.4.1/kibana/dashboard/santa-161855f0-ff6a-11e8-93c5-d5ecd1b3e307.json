@@ -1,0 +1,52 @@
+{
+  "attributes": {
+    "description": "Process executions on macOS monitored by Google Santa.",
+    "hits": 0,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"data_stream.dataset:santa.log\"}}"
+    },
+    "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+    "panelsJSON": "[{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"fontSize\":12,\"markdown\":\"![Santa Icon](https://raw.githubusercontent.com/google/santa/main/Source/santa/Resources/Images.xcassets/AppIcon.appiconset/santa-hat-icon-128.png)\\n\\nGoogle Santa is a binary whitelisting/blacklisting system for macOS that monitors process executions.\",\"openLinksInNewTab\":false},\"title\":\"Description [Logs Santa]\",\"type\":\"markdown\",\"uiState\":{}}},\"gridData\":{\"h\":12,\"i\":\"1\",\"w\":10,\"x\":0,\"y\":0},\"panelIndex\":\"1\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[],\"searchSource\":{}},\"description\":\"\",\"params\":{\"axis_formatter\":\"number\",\"axis_position\":\"left\",\"axis_scale\":\"normal\",\"drop_last_bucket\":1,\"filter\":{\"language\":\"kuery\",\"query\":\"(data_stream.dataset:santa.log)\"},\"id\":\"61ca57f0-469d-11e7-af02-69e470af7417\",\"index_pattern\":\"logs-*\",\"interval\":\"auto\",\"series\":[{\"axis_position\":\"right\",\"chart_type\":\"line\",\"color\":\"#68BC00\",\"fill\":0.5,\"formatter\":\"number\",\"id\":\"61ca57f1-469d-11e7-af02-69e470af7417\",\"label\":\"Decision\",\"line_width\":1,\"metrics\":[{\"id\":\"61ca57f2-469d-11e7-af02-69e470af7417\",\"type\":\"count\"}],\"point_size\":1,\"separate_axis\":0,\"split_color_mode\":\"gradient\",\"split_mode\":\"terms\",\"stacked\":\"none\",\"terms_field\":\"santa.decision\"}],\"show_grid\":1,\"show_legend\":1,\"time_field\":\"@timestamp\",\"type\":\"timeseries\",\"use_kibana_indexes\":false},\"title\":\"Decisions [Logs Santa]\",\"type\":\"metrics\",\"uiState\":{}}},\"gridData\":{\"h\":12,\"i\":\"2\",\"w\":38,\"x\":10,\"y\":0},\"panelIndex\":\"2\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Total Events\"},\"schema\":\"metric\",\"type\":\"count\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"invertColors\":false,\"labels\":{\"show\":true},\"metricColorMode\":\"None\",\"percentageMode\":false,\"style\":{\"bgColor\":false,\"bgFill\":\"#000\",\"fontSize\":60,\"labelColor\":false,\"subText\":\"\"},\"useRanges\":false},\"type\":\"metric\"},\"title\":\"Total Events [Logs Santa]\",\"type\":\"metric\",\"uiState\":{}}},\"gridData\":{\"h\":10,\"i\":\"3\",\"w\":10,\"x\":8,\"y\":12},\"panelIndex\":\"3\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Decision\",\"field\":\"santa.decision\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"segment\",\"type\":\"terms\"},{\"enabled\":true,\"id\":\"3\",\"params\":{\"customLabel\":\"Reason\",\"field\":\"santa.reason\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"segment\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"distinctColors\":true,\"isDonut\":true,\"labels\":{\"last_level\":true,\"show\":false,\"truncate\":100,\"values\":true},\"legendPosition\":\"right\",\"palette\":{\"name\":\"kibana_palette\",\"type\":\"palette\"},\"type\":\"pie\"},\"title\":\"Decision and Reason [Logs Santa]\",\"type\":\"pie\",\"uiState\":{\"vis\":{\"colors\":{\"ALLOW\":\"#7EB26D\"}}}}},\"gridData\":{\"h\":10,\"i\":\"4\",\"w\":12,\"x\":36,\"y\":12},\"panelIndex\":\"4\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Hosts Reporting\",\"field\":\"agent.name\"},\"schema\":\"metric\",\"type\":\"cardinality\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"invertColors\":false,\"labels\":{\"show\":true},\"metricColorMode\":\"None\",\"percentageMode\":false,\"style\":{\"bgColor\":false,\"bgFill\":\"#000\",\"fontSize\":60,\"labelColor\":false,\"subText\":\"\"},\"useRanges\":false},\"type\":\"metric\"},\"title\":\"Num of Hosts Reporting [Logs Santa]\",\"type\":\"metric\",\"uiState\":{}}},\"gridData\":{\"h\":10,\"i\":\"5\",\"w\":8,\"x\":0,\"y\":12},\"panelIndex\":\"5\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"field\":\"santa.certificate.common_name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"segment\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"maxFontSize\":39,\"minFontSize\":12,\"orientation\":\"single\",\"palette\":{\"name\":\"kibana_palette\",\"type\":\"palette\"},\"scale\":\"linear\",\"showLabel\":true},\"title\":\"Code Signers [Logs Santa]\",\"type\":\"tagcloud\",\"uiState\":{}}},\"gridData\":{\"h\":10,\"i\":\"6\",\"w\":18,\"x\":18,\"y\":12},\"panelIndex\":\"6\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{}},\"gridData\":{\"h\":10,\"i\":\"7\",\"w\":48,\"x\":0,\"y\":22},\"panelIndex\":\"7\",\"panelRefName\":\"panel_6\",\"version\":\"7.0.0-alpha1-SNAPSHOT\"}]",
+    "timeRestore": false,
+    "title": "[Logs Santa] Overview",
+    "version": 1
+  },
+  "coreMigrationVersion": "8.1.0",
+  "id": "santa-161855f0-ff6a-11e8-93c5-d5ecd1b3e307",
+  "migrationVersion": {
+    "dashboard": "8.1.0"
+  },
+  "namespaces": [
+    "default"
+  ],
+  "references": [
+    {
+      "id": "santa-6d56a010-ff6a-11e8-93c5-d5ecd1b3e307",
+      "name": "panel_6",
+      "type": "search"
+    },
+    {
+      "id": "santa-6d56a010-ff6a-11e8-93c5-d5ecd1b3e307",
+      "name": "3:search_0",
+      "type": "search"
+    },
+    {
+      "id": "santa-6d56a010-ff6a-11e8-93c5-d5ecd1b3e307",
+      "name": "4:search_0",
+      "type": "search"
+    },
+    {
+      "id": "santa-6d56a010-ff6a-11e8-93c5-d5ecd1b3e307",
+      "name": "5:search_0",
+      "type": "search"
+    },
+    {
+      "id": "santa-6d56a010-ff6a-11e8-93c5-d5ecd1b3e307",
+      "name": "6:search_0",
+      "type": "search"
+    }
+  ],
+  "type": "dashboard",
+  "updated_at": "2022-11-23T06:23:56.756Z",
+  "version": "WzU3OSwxXQ=="
+}
