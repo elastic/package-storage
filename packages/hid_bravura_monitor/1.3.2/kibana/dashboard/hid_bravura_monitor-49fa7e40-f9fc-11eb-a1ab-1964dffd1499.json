@@ -1,0 +1,52 @@
+{
+  "attributes": {
+    "description": "",
+    "hits": 0,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}"
+    },
+    "optionsJSON": "{\"hidePanelTitles\":false,\"useMargins\":true}",
+    "panelsJSON": "[{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"drop_partials\":false,\"extended_bounds\":{},\"field\":\"@timestamp\",\"interval\":\"auto\",\"min_doc_count\":1,\"scaleMetricValues\":false,\"timeRange\":{\"from\":\"now-15m\",\"to\":\"now\"},\"useNormalizedEsInterval\":true},\"schema\":\"segment\",\"type\":\"date_histogram\"},{\"enabled\":true,\"id\":\"3\",\"params\":{\"customLabel\":\"Node\",\"field\":\"host.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":100},\"schema\":\"group\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"labels\":{\"filter\":true,\"show\":true,\"truncate\":100},\"position\":\"bottom\",\"scale\":{\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{},\"type\":\"category\"}],\"detailedTooltip\":true,\"grid\":{\"categoryLines\":false},\"isVislibVis\":true,\"labels\":{\"show\":false},\"legendPosition\":\"right\",\"palette\":{\"name\":\"kibana_palette\",\"type\":\"palette\"},\"seriesParams\":[{\"data\":{\"id\":\"1\",\"label\":\"Count\"},\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"mode\":\"stacked\",\"show\":true,\"showCircles\":true,\"type\":\"histogram\",\"valueAxis\":\"ValueAxis-1\"}],\"thresholdLine\":{\"color\":\"#E7664C\",\"show\":false,\"style\":\"full\",\"value\":10,\"width\":1},\"times\":[],\"type\":\"histogram\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":true,\"truncate\":100},\"name\":\"LeftAxis-1\",\"position\":\"left\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"Count\"},\"type\":\"value\"}]},\"title\":\"Users: Issues: Histogram\",\"type\":\"histogram\",\"uiState\":{}}},\"gridData\":{\"h\":14,\"i\":\"aed09807-f936-4881-960d-30039d3fb5cd\",\"w\":48,\"x\":0,\"y\":0},\"panelIndex\":\"aed09807-f936-4881-960d-30039d3fb5cd\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Node\",\"field\":\"host.name\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":100},\"schema\":\"bucket\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"Users: Issues: Nodes\",\"type\":\"table\",\"uiState\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}}},\"gridData\":{\"h\":20,\"i\":\"fa9c7f19-26bc-489f-ad23-1774eaf8dcc6\",\"w\":16,\"x\":0,\"y\":14},\"panelIndex\":\"fa9c7f19-26bc-489f-ad23-1774eaf8dcc6\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Process\",\"field\":\"log.logger\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":5},\"schema\":\"bucket\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"Users: Issues: Processes\",\"type\":\"table\",\"uiState\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}}},\"gridData\":{\"h\":20,\"i\":\"ded4c445-2a0a-448c-9318-38b166d11d73\",\"w\":16,\"x\":16,\"y\":14},\"panelIndex\":\"ded4c445-2a0a-448c-9318-38b166d11d73\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{},\"savedVis\":{\"data\":{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Users\",\"field\":\"user.id\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":10000},\"schema\":\"bucket\",\"type\":\"terms\"}],\"searchSource\":{\"filter\":[],\"query\":{\"language\":\"kuery\",\"query\":\"\"}}},\"description\":\"\",\"params\":{\"perPage\":10,\"percentageCol\":\"\",\"showMetricsAtAllLevels\":false,\"showPartialRows\":false,\"showToolbar\":true,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"Users: Issues: Affected users\",\"type\":\"table\",\"uiState\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}}},\"gridData\":{\"h\":20,\"i\":\"a58e223b-2453-4dcd-9de5-8a6101d9964d\",\"w\":16,\"x\":32,\"y\":14},\"panelIndex\":\"a58e223b-2453-4dcd-9de5-8a6101d9964d\",\"type\":\"visualization\",\"version\":\"8.0.0\"},{\"embeddableConfig\":{\"enhancements\":{}},\"gridData\":{\"h\":17,\"i\":\"4909f0f5-c8df-40f8-bc49-df24cb056b8c\",\"w\":48,\"x\":0,\"y\":34},\"panelIndex\":\"4909f0f5-c8df-40f8-bc49-df24cb056b8c\",\"panelRefName\":\"panel_4\",\"version\":\"8.0.0\"}]",
+    "timeRestore": false,
+    "title": "[Bravura Monitor] Users - Issues",
+    "version": 1
+  },
+  "coreMigrationVersion": "8.1.0",
+  "id": "hid_bravura_monitor-49fa7e40-f9fc-11eb-a1ab-1964dffd1499",
+  "migrationVersion": {
+    "dashboard": "8.1.0"
+  },
+  "namespaces": [
+    "default"
+  ],
+  "references": [
+    {
+      "id": "hid_bravura_monitor-9e4165d0-1a1a-11eb-abcf-effcd51852fa",
+      "name": "panel_4",
+      "type": "search"
+    },
+    {
+      "id": "hid_bravura_monitor-9e4165d0-1a1a-11eb-abcf-effcd51852fa",
+      "name": "aed09807-f936-4881-960d-30039d3fb5cd:search_0",
+      "type": "search"
+    },
+    {
+      "id": "hid_bravura_monitor-9e4165d0-1a1a-11eb-abcf-effcd51852fa",
+      "name": "fa9c7f19-26bc-489f-ad23-1774eaf8dcc6:search_0",
+      "type": "search"
+    },
+    {
+      "id": "hid_bravura_monitor-9e4165d0-1a1a-11eb-abcf-effcd51852fa",
+      "name": "ded4c445-2a0a-448c-9318-38b166d11d73:search_0",
+      "type": "search"
+    },
+    {
+      "id": "hid_bravura_monitor-9e4165d0-1a1a-11eb-abcf-effcd51852fa",
+      "name": "a58e223b-2453-4dcd-9de5-8a6101d9964d:search_0",
+      "type": "search"
+    }
+  ],
+  "type": "dashboard",
+  "updated_at": "2022-11-21T21:15:03.667Z",
+  "version": "WzY3NCwxXQ=="
+}
