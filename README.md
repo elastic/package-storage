@@ -1,4 +1,10 @@
+# DEPRECATED
+
+Since migration to Package Storage V2 was completed, this repository is not intended to be used anymore.
+More information can be found at https://github.com/elastic/elastic-package/blob/main/docs/howto/use_package_storage_v2.md
+
 # Package Storage
+
 This is a storage repository for the packages served through the package registry service.  See the [`package-registry` repository](https://github.com/elastic/package-registry) for basic registry API usage and examples.
 
 The `package-storage` repository contains 3 branches with the packages for the different environments:
